@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING
   });
   User.associate = function(models){
-      User.belongsTo(models.Role, {foreignKey: 'role'});
-      User.belongsTo(models.Zone, {foreignKey: 'zone'});
+      User.belongsTo(models.Role, {foreignKey: 'idRole'});
+      User.belongsTo(models.Zone, {foreignKey: 'idZone'});
   }
   return User;
 };

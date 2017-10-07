@@ -4,8 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   });
   Zone.associate = function(models){
-      Zone.hasMany(models.User, {foreignKey: 'zone'});
-      Zone.hasMany(models.Line, {foreignKey: 'line'});
+
+      Zone.hasMany(models.User, {foreignKey: 'idZone'});
+
+      Zone.hasMany(models.Line, {foreignKey: 'idZone'});
   }
   return Zone;
 };

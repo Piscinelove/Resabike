@@ -12,9 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     token : DataTypes.STRING
   });
   Booking.associate = function(models){
-      Booking.belongsTo(models.Station, {foreignKey: 'departureStation'});
-      Booking.belongsTo(models.Station, {foreignKey: 'arrivalStation'});
-      Booking.belongsTo(models.Line, {foreignKey: 'line'});
+
+      Booking.belongsTo(models.Station, {foreignKey: 'idStartStation'});
+      Booking.belongsTo(models.Station, {foreignKey: 'idEndStation'});
+
+      Booking.belongsTo(models.Line, {foreignKey: 'idLine'});
+
+      Booking.hasMany(models.Trip, {foreignKey: 'idBooking'});
   }
   return Booking;
 };
