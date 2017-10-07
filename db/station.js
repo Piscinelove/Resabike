@@ -1,22 +1,19 @@
 var models = require('../models');
+var dbLine = require('../db/line');
 
 
 
-// var getStationIdByName = function(name)
-// {
-//     return new Promise(function (resolve, reject) {
-//         models.Station.findOne
-//         ({
-//             where: {name: name}
-//         }).then(function (station) {
-//             console.log("Id : "+station.id);
-//             resolve(station.id);
-//         }).catch(function (err) {
-//             console.log("Error : "+err.message);
-//         });
-//     });
-//
-// }
+var getStationIdByName = function(name)
+{
+    models.Station.findOne
+    ({
+        where: {name: name}
+    }).then(function (station) {
+        console.log("Id : "+station.id);
+    }).catch(function (err) {
+        console.log("Error : "+err.message);
+    });
+}
 
 
 
@@ -42,15 +39,17 @@ function insertStationInDatabase(stationsArray)
         {
             var stop = stops[i];
             console.log(stop.line+"line ici");
-            promises.push(insertStation(stop.name));
+            //promises.push(insertStation(stop.name));
         }
 
         Promise.all(promises).then(function () {
             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");
-        });
+            dbLine.insertLineInDatabase(stationsArray, 1);
+        })
 
     })
 }
 
 module.exports.insertStation = insertStation;
 module.exports.insertStationInDatabase = insertStationInDatabase;
+module.exports.getStationIdByName = getStationIdByName;
