@@ -12,3 +12,16 @@ a {
   color:#1E1E1E;
   font-weight:bold;
 }
+
+.background-color{
+  background: linear-gradient(50deg, HSLA(205, 62%, 44%, 1), #F62D51);
+}
+
+.header {
+  color: #ee6e73;
+  font-weight: 300;
+}
+
+.parallax-container1 {
+  height: 100vh;
+}
