@@ -3,49 +3,78 @@ var dbLine = require('../db/line');
 
 
 
-var getStationIdByName = function(name)
+function getStationIdByName(name)
 {
-    models.Station.findOne
-    ({
-        where: {name: name}
-    }).then(function (station) {
-        console.log("Id : "+station.id);
-    }).catch(function (err) {
-        console.log("Error : "+err.message);
-    });
+    return Promise.resolve(
+        models.Station.findOne
+        ({
+            where: {name: name}
+        })
+    )
 }
 
 
+
+// function insertStation(id, name)
+// {
+//     models.Station.create({
+//         id:id,
+//         name: name
+//     }).then(function() {
+//         console.error(`${name} station saved successfully in database`);
+//     }).catch(function(err) {
+//         console.log(`${err}`);
+//     });
+// }
 
 function insertStation(id, name)
 {
-    models.Station.create({
-        id:id,
-        name: name
-    }).then(function() {
-        console.error(`${name} station saved successfully in database`);
-    }).catch(function(err) {
-        console.log(`${err}`);
-    });
+    return Promise.resolve(
+        models.Station.create({
+            id: id,
+            name: name
+        })
+    )
 }
 
-function insertStationInDatabase(stationsArray)
-{
-    var stops = stationsArray;
+// function insertStationInDatabase(stationsArray)
+// {
+//     var stops = stationsArray;
+//
+//     return new Promise(function (resolve, reject) {
+//         var promises = [];
+//
+//         for (let i = 0; i < stops.length; i++)
+//         {
+//             var stop = stops[i];
+//             console.log(stop.line+"line ici");
+//             promises.push(insertStation(stop.stopid, stop.name));
+//         }
+//
+//         Promise.all(promises).then(function () {
+//             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");
+//             //dbLine.insertLineInDatabase(stationsArray, 1);
+//         })
+//
+//     })
+// }
 
-    return new Promise(function (resolve, reject) {
+function insertStationInDatabase(stationsToAdd)
+{
+    return Promise.resolve().then(function () {
+
         var promises = [];
+        var stops = stationsToAdd;
 
         for (let i = 0; i < stops.length; i++)
         {
             var stop = stops[i];
-            console.log(stop.line+"line ici");
-            //promises.push(insertStation(stop.stopid, stop.name));
+            promises.push(insertStation(stop.stopid, stop.name));
         }
 
-        Promise.all(promises).then(function () {
+        return Promise.all(promises).then(function () {
             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");
-            dbLine.insertLineInDatabase(stationsArray, 1);
+            return stationsToAdd;
         })
 
     })

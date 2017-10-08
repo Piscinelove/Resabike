@@ -2,6 +2,34 @@ doctype html
 html
   head
     title= title
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css')
+    link(rel='stylesheet', href="https://fonts.googleapis.com/icon?family=Material+Icons")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav
+      div.nav-wrapper
+        div.container
+          a(href="#").brand-logo
+            span.resabike res
+            | abike
+          a(href="#", data-activates="mobile-demo").button-collapse
+            i.material-icons menu
+          ul#nav-mobile.right.hide-on-med-and-down
+            li
+              a Test1
+            li
+              a Test2
+            li
+              a Test3
+          ul.side-nav#mobile-demo
+            li
+              a Test1
+            li
+              a Test2
+            li
+              a Test3
+
     block content
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js', type="text/javascript")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js', type="text/javascript")
+    script(src='/javascripts/side-nav.js', type="text/javascript")
