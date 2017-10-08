@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Line = sequelize.define('Line', {
-    number: DataTypes.INTEGER
+    order: DataTypes.INTEGER
   });
   Line.associate = function(models){
 

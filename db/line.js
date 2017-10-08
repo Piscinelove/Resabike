@@ -31,7 +31,7 @@ var createLine = function(number, zone, departureId, arrivalId)
     return new Promise(function (resolve, reject) {
         models.Line.create
         ({
-                number: number,
+                id: number,
                 idZone: zone,
                 idStartStation: departureId,
                 idEndStation: arrivalId
@@ -43,10 +43,12 @@ var createLine = function(number, zone, departureId, arrivalId)
     });
 }
 
+
 function insertLineInDatabase(stationsArray, idZone)
 {
     var stops = stationsArray;
     var stopsLines = [];
+    console.log("Y'a quoi : "+stationsArray[0].line);
 
     return new Promise(function (resolve, reject) {
         var promises = [];
@@ -56,17 +58,23 @@ function insertLineInDatabase(stationsArray, idZone)
             var stop = stops[i];
             if(stop.line != null)
             {
-                // stopsLines.push(stop.line)
-                // for(let j = i+1; j < stops.length-1; j++)
-                // {
-                //     if(stops[j].line == null)
-                //         stopsLines.push(stop.line)
-                // }
+                stopsLines.push({'idLine':stop.line,'idStop':stop.stopid});
+
+                for(let j = i+1; j < stops.length-1; j++)
+                {
+                   if(stops[j].line == null)
+                       stopsLines.push({'idLine':stop.line,'idStop':stops[j].stopid});
+                }
                 console.log(stop.line + " "+ idZone + " "+ stop.name+" "+ stop.terminal+" fdp");
-                promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
+                //promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
 
             }
         }
+        for (let i = 0; i < stopsLines.length; i++)
+        {
+            console.log("linestationtest : " + stopsLines[i].idLine +" et "+stopsLines[i].idStop);
+        }
+
         Promise.all(promises);
 
     })

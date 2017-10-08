@@ -17,9 +17,10 @@ var getStationIdByName = function(name)
 
 
 
-function insertStation(name)
+function insertStation(id, name)
 {
     models.Station.create({
+        id:id,
         name: name
     }).then(function() {
         console.error(`${name} station saved successfully in database`);
@@ -39,7 +40,7 @@ function insertStationInDatabase(stationsArray)
         {
             var stop = stops[i];
             console.log(stop.line+"line ici");
-            //promises.push(insertStation(stop.name));
+            //promises.push(insertStation(stop.stopid, stop.name));
         }
 
         Promise.all(promises).then(function () {
