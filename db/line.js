@@ -26,6 +26,28 @@ var insertLine = function(number, zone, departure, arrival)
     })
 }
 
+var insertLineStationInDatabase = function(stationsAndLinesArray)
+{
+    var lineStation = stationsAndLinesArray;
+
+    return new Promise(function (resolve, reject) {
+
+        for (let i = 0; i < lineStation.length; i++)
+        {
+            models.LineStation.create
+            ({
+                order: i,
+                idLine: lineStation[i].idLine,
+                idStation: lineStation[i].idStop
+            }).then(function () {
+                resolve();
+            }).catch(function (err) {
+                console.log("Error : "+err.message);
+            });
+        }
+    })
+}
+
 var createLine = function(number, zone, departureId, arrivalId)
 {
     return new Promise(function (resolve, reject) {
@@ -47,7 +69,7 @@ var createLine = function(number, zone, departureId, arrivalId)
 function insertLineInDatabase(stationsArray, idZone)
 {
     var stops = stationsArray;
-    var stopsLines = [];
+    var stationsAndLinesArray = [];
     console.log("Y'a quoi : "+stationsArray[0].line);
 
     return new Promise(function (resolve, reject) {
@@ -58,24 +80,28 @@ function insertLineInDatabase(stationsArray, idZone)
             var stop = stops[i];
             if(stop.line != null)
             {
-                stopsLines.push({'idLine':stop.line,'idStop':stop.stopid});
+                stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.stopid});
 
                 for(let j = i+1; j < stops.length-1; j++)
                 {
                    if(stops[j].line == null)
-                       stopsLines.push({'idLine':stop.line,'idStop':stops[j].stopid});
+                       stationsAndLinesArray.push({'idLine':stop.line,'idStop':stops[j].stopid});
                 }
                 console.log(stop.line + " "+ idZone + " "+ stop.name+" "+ stop.terminal+" fdp");
                 //promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
 
             }
         }
-        for (let i = 0; i < stopsLines.length; i++)
+        for (let i = 0; i < stationsAndLinesArray.length; i++)
         {
-            console.log("linestationtest : " + stopsLines[i].idLine +" et "+stopsLines[i].idStop);
+            console.log("linestationtest : " + stationsAndLinesArray[i].idLine +" et "+stationsAndLinesArray[i].idStop);
         }
 
-        Promise.all(promises);
+        Promise.all(promises).then(function () {
+            insertLineStationInDatabase(stationsAndLinesArray).then(function () {
+                console.log("LineStation Inserted !");
+            });
+        });
 
     })
 }
