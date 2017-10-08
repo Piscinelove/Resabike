@@ -3,11 +3,13 @@ var models = require('../models');
 function insertLineStation(order, idLine, idStation)
 {
     return Promise.resolve(
-        models.LineStation.create
+        models.LineStation.findCreateFind
         ({
-            order: order,
-            idLine: idLine,
-            idStation: idStation
+            where:{
+                order: order,
+                idLine: idLine,
+                idStation: idStation
+            }
         })
     )
 }

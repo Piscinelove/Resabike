@@ -1,5 +1,6 @@
 var models = require('../models');
 var dbLine = require('../db/line');
+var dbZone = require('../db/zone');
 
 
 
@@ -12,7 +13,6 @@ function getStationIdByName(name)
         })
     )
 }
-
 
 
 // function insertStation(id, name)
@@ -30,9 +30,10 @@ function getStationIdByName(name)
 function insertStation(id, name)
 {
     return Promise.resolve(
-        models.Station.create({
-            id: id,
-            name: name
+        models.Station.upsert
+        ({
+                id: id,
+                name: name
         })
     )
 }
@@ -71,6 +72,12 @@ function insertStationInDatabase(stationsToAdd)
             var stop = stops[i];
             promises.push(insertStation(stop.stopid, stop.name));
         }
+
+        //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
+        promises.push(insertStation(8583435,"Zinal, village de vacances"));
+        promises.push(dbZone.createZone("Anniviers"));
+        //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
+
 
         return Promise.all(promises).then(function () {
             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");

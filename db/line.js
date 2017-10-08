@@ -1,5 +1,5 @@
 var models = require('../models');
-var station = require('../db/station');
+var dbStation = require('../db/station');
 
 // function insertLine(number, zone, departure, arrival)
 // {
@@ -31,14 +31,8 @@ function insertLine(number, zone, departure, arrival)
 
         var promises = [];
 
-        promises.push(models.Station.findOne
-        ({
-            where: {name: departure}
-        }));
-        promises.push(models.Station.findOne
-        ({
-            where: {name: arrival}
-        }));
+        promises.push(dbStation.getStationIdByName(departure));
+        promises.push(dbStation.getStationIdByName(arrival));
 
         return Promise.all(promises).then(function (results) {
             console.log("fdp6 : "+number);
@@ -93,7 +87,7 @@ function insertLine(number, zone, departure, arrival)
 function createLine(number, zone, departureId, arrivalId)
 {
     return Promise.resolve(
-        models.Line.create
+        models.Line.upsert
         ({
             id: number,
             idZone: zone,
