@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Line = sequelize.define('Line', {
-    order: DataTypes.INTEGER
+
   });
   Line.associate = function(models){
 
@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
 
       Line.hasMany(models.Booking, {foreignKey: 'idLine'});
 
-      Line.belongsToMany(models.Station, {through: 'lineStation',foreignKey: 'idLine'});
+      //Line.belongsToMany(models.Station, {through: 'lineStation',foreignKey: 'idLine'});
+      Line.hasMany(models.LineStation, {foreignKey: 'idLine'});
 
       Line.hasMany(models.Trip, {foreignKey: 'idLine'});
   }

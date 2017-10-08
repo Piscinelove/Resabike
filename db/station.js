@@ -40,12 +40,12 @@ function insertStationInDatabase(stationsArray)
         {
             var stop = stops[i];
             console.log(stop.line+"line ici");
-            //promises.push(insertStation(stop.stopid, stop.name));
+            promises.push(insertStation(stop.stopid, stop.name));
         }
 
         Promise.all(promises).then(function () {
             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");
-            dbLine.insertLineInDatabase(stationsArray, 1);
+            //dbLine.insertLineInDatabase(stationsArray, 1);
         })
 
     })
