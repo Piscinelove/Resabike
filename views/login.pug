@@ -12,11 +12,15 @@ block content
         p Duis aliquam neque quis purus congue, non scelerisque erat auctor. Quisque blandit nulla ut ante posuere, id lacinia nulla hendrerit. Nulla eget tortor ut velit tincidunt egestas ut et metus. Nulla non tempus mauris. Aliquam vehicula magna eu lectus ultrices dictum. Pellentesque nunc arcu, vulputate quis ex eu, pretium tempus sapien. Maecenas lobortis facilisis turpis at fringilla. Vivamus molestie sollicitudin sem, et sollicitudin diam tincidunt nec. Donec semper molestie arcu, at condimentum nibh posuere sed. Nam ipsum ligula, ullamcorper a cursus nec, interdum sed elit. Curabitur in semper urna, a condimentum leo. Nulla facilisi. Duis in metus tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed convallis nisl id nisi porttitor tincidunt id non justo.
         div.row
             div.col.s12
-                div.row
-                    div.input-field.col.s12
-                        i.material-icons.prefix textsms
-                        input(type="text")#autocomplete-input.autocomplete
-                        label(for="autocomplete-input") départ
+                div.input-field.col.s12
+                    i.material-icons.prefix add_location
+                    input(type="text")#departure.autocomplete
+                    label(for="departure") départ
+                div.input-field.col.s12
+                    i.material-icons.prefix add_location
+                    input(type="text")#arrival.autocomplete
+                    label(for="arrival") arrivée
+
     div.parallax-container
         div.parallax
             img(src="images/background-bike2.jpg")
