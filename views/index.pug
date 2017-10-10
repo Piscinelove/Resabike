@@ -2,5 +2,97 @@ extends layout
 
 block content
 
-  h1= title
-  p Welcome to #{title}
+  div.parallax-container.parallax-container1
+    div.parallax
+      img(src="images/background-bike.jpg")
+
+  div#home.section.white.container.full-section
+    h2.header Home
+    div.row
+      div.col.s12
+        p RESABIKE.CH est un projet visant à faciliter la vie des cyclistes voyageant en transports publics sur les lignes régionales. Nous parlons donc principalement des bus et autres cars postaux, et surtout dans les régions touristiques ! L’idée étant qu’il est plus agréable pour tout le monde (exploitant, conducteur, voyageur…) de savoir combien de cyclistes souhaitent voyager avec leur monture. Cela permet de prévoir au mieux les éventuelles remorques à atteler, ou d’annoncer aux voyageurs que le porte-vélos est déjà bien rempli.
+        br
+        h5 Partenaires
+        p Le projet RESABIKE peut compter sur le soutien de plusieurs transporteurs valaisans, ainsi que sur les connaissances des professeurs et étudiants de la filière informatique de la HES-SO de Sierre.
+    div.row
+      div.col.s4
+        img(src="images/HES.png")
+      div.col.s4
+        img(src="images/PAG.jpg")
+      div.col.s4
+        //img(src="images/epg.jpg")
+
+  div.parallax-container
+      div.parallax
+        img(src="images/background-bike2.jpg")
+
+  div#about.section.white.container.full-section
+    div.row
+      div.col.s4
+        h2.header A propos
+      div.col.s8
+        i.material-icons.prefix.medium.right-align directions_bike
+    div.row
+      div.col.s4
+        h3.center-align 2014
+        p Face au succès grandissant du transport de vélos sur les lignes des cars postaux du Val d’Anniviers, nous trouvions dommage que certains cyclistes ne puissent pas profiter de leur journée car toutes les places étaient occupées sur le porte-vélos. Nous avons donc conçu un petit formulaire de réservations «online»…
+      div.col.s4
+        h3.center-align 2015
+        p Les remorques spécialement conçues pour le transport des vélos, combinées au système de réservation, permettent de satisfaire au mieux les besoins des bikers…
+      div.col.s4
+        h3.center-align 2016
+        p De plus en plus de réservations nous arrivent pour d’autres lignes que celles du Val d’Anniviers. C’est alors que germe l’idée de créer un site internet permettant de réserver ses courses pour d’autres régions que le Valais central. Des statistiques de fréquentation pourront ainsi être facilement établies…
+    div.row
+      div.col.s4
+        h4.date-color 876
+        h5.center-align vélos annoncés en 2014..
+      div.col.s4
+        h4.date-color  1624
+        h5.center-align vélos annoncés en 2015...
+      div.col.s4
+        h4.date-color  1727
+        h5.center-align vélos annoncés en 2016 !
+
+  div.parallax-container
+    div.parallax
+      img(src="images/background-bike2.jpg")
+
+  div#book.section.white.container.full-section
+    h2.header Reservation
+    p je reserve ici
+
+  div.parallax-container
+    div.parallax
+      img(src="images/background-bike2.jpg")
+
+  div#where.section.white.container.full-section
+    h2.header Où aller ?
+    p différente zone ici
+
+  div.parallax-container
+    div.parallax
+      img(src="images/background-bike2.jpg")
+
+  div#contact.section.white.container.full-section
+    h2.header Contact
+    p Pour toutes questions ou complément d'informations veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+      div.row
+        form.col.s12
+          div.row
+            div.input-field.col.s6
+              i.material-icons.prefix person
+              input(id="icon_nom" type="text").validate
+              label(for="icon_nom" data-error="Veuillez saisir un nom valide.") nom
+            div.input-field.col.s6
+              i.material-icons.prefix email
+              input(id="icon_email" type="email").validate
+              label(for="icon_email" data-error="Veuillez saisir un email valide.") email
+      div.row
+        form.col.s12
+          div.row
+            div.input-field.col.s12
+              i.material-icons.prefix mode_edit
+              textarea(id="taContact").materialize-textarea
+              label(for="taContact") Ecrire ici...
+      button(type="submit" name="action").btn.waves-effect.waves-light.right Envoyer
+        i.material-icons.right send

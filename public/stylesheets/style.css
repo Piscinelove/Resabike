@@ -25,3 +25,36 @@ a {
 .parallax-container1 {
   height: 100vh;
 }
+.full-section {
+  height: 100vh;
+}
+
+p {
+  text-align: justify;
+}
+
+h2{
+  padding-bottom: 0.5em;
+}
+.date-color{
+  color : #4db6ac;
+  text-align: center;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.img-partenaire{
+  display: block;
+  max-width:20px;
+  max-height:20px;
+  width: auto;
+  height: auto;
+}
