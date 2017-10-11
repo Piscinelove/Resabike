@@ -5,10 +5,12 @@ block content
   div.parallax-container.parallax-container1
     div.parallax
       img(src="images/background-bike.jpg")
+      a.waves-effect.waves-light.btn-large.home-button Je reserve !
+
 
   div#home.section.white.container.full-section
     h2.header Home
-    div.row
+    div.margin-partenaire.row
       div.col.s12
         p RESABIKE.CH est un projet visant à faciliter la vie des cyclistes voyageant en transports publics sur les lignes régionales. Nous parlons donc principalement des bus et autres cars postaux, et surtout dans les régions touristiques ! L’idée étant qu’il est plus agréable pour tout le monde (exploitant, conducteur, voyageur…) de savoir combien de cyclistes souhaitent voyager avec leur monture. Cela permet de prévoir au mieux les éventuelles remorques à atteler, ou d’annoncer aux voyageurs que le porte-vélos est déjà bien rempli.
         br
@@ -16,11 +18,11 @@ block content
         p Le projet RESABIKE peut compter sur le soutien de plusieurs transporteurs valaisans, ainsi que sur les connaissances des professeurs et étudiants de la filière informatique de la HES-SO de Sierre.
     div.row
       div.col.s4
-        img(src="images/HES.png")
+        img(src="images/hes-so.png").img-partenaire
       div.col.s4
-        img(src="images/PAG.jpg")
+        img(src="images/poste.jpg").img-partenaire
       div.col.s4
-        //img(src="images/epg.jpg")
+        img(src="images/logo.jpg").img-partenaire
 
   div.parallax-container
       div.parallax
@@ -29,9 +31,9 @@ block content
   div#about.section.white.container.full-section
     div.row
       div.col.s4
-        h2.header A propos
+        h2.header Histoire
       div.col.s8
-        i.material-icons.prefix.medium.right-align directions_bike
+        i(id="icone-bike").material-icons.prefix.medium.right-align directions_bike
     div.row
       div.col.s4
         h3.center-align 2014
@@ -81,18 +83,18 @@ block content
           div.row
             div.input-field.col.s6
               i.material-icons.prefix person
-              input(id="icon_nom" type="text").validate
-              label(for="icon_nom" data-error="Veuillez saisir un nom valide.") nom
+              input(id="icon_nom" ,type="text").validate
+              label(for="icon_nom" ,data-error="Veuillez saisir un nom valide.") nom
             div.input-field.col.s6
               i.material-icons.prefix email
-              input(id="icon_email" type="email").validate
-              label(for="icon_email" data-error="Veuillez saisir un email valide.") email
+              input(id="icon_email", type="email").validate
+              label(for="icon_email", data-error="Veuillez saisir un email valide.") email
       div.row
         form.col.s12
           div.row
             div.input-field.col.s12
               i.material-icons.prefix mode_edit
-              textarea(id="taContact").materialize-textarea
-              label(for="taContact") Ecrire ici...
+              textarea(id="taContact", data-length="500", maxlength="500").materialize-textarea.textarea-contact
+              label(for="taContact") Formulaire de contact
       button(type="submit" name="action").btn.waves-effect.waves-light.right Envoyer
         i.material-icons.right send

@@ -52,9 +52,24 @@ main {
 }
 
 .img-partenaire{
-  display: block;
-  max-width:20px;
-  max-height:20px;
-  width: auto;
-  height: auto;
+ width:100%;
+}
+
+.textarea-contact{
+  max-height: 11em;
+}
+
+.margin-partenaire{
+  margin-bottom: 5em ;
+}
+
+#icone-bike{
+  margin-top: 0.4em;
+}
+
+.home-button{
+  margin-top: 20em;
+  margin-bottom: 10em;
+  margin-right: 10em;
+  margin-left: 60em;
 }
