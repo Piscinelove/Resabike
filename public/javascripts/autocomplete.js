@@ -11,7 +11,9 @@ $(document).ready(function(){
             $.each(data, function( id, val ) {
                 if (val.iconclass.toLowerCase().indexOf("bus") >= 0)
                 {
-                    stations[val.label] = null;
+                    stations[val.label] = val.id;
+                    //a tester
+                    //stations[val.id] = null;
                 }
             });
 
@@ -19,14 +21,16 @@ $(document).ready(function(){
                 data: stations,
                 limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
                 onAutocomplete: function(val) {
-                    alert(stations);
                     // Callback function when value is autcompleted.
                 },
                 minLength: 3, // The minimum length of the input for the autocomplete to start. Default: 1.
-                on
             });
-
             stationsString = JSON.stringify(stations);
         });
+    });
+
+    $('input.autocomplete').change(function() {
+        alert(Object.keys(stations));
+        $("input.autocomplete").val(stations[0]);
     });
 });
