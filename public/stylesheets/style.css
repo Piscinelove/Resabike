@@ -55,6 +55,10 @@ main {
  width:100%;
 }
 
+.img-zone{
+  width:30%;
+}
+
 .textarea-contact{
   max-height: 11em;
 }
@@ -79,4 +83,31 @@ main {
 
 .front{
    position: relative;
+}
+
+#slogan-top{
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: white;
+  margin-top: -7em;
+  margin-left: 3em;
+}
+
+
+#slogan-bottom{
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: white;
+  margin-left: 2.7em;
+
+}
+
+.row .row-book{
+  margin-bottom: 0px !important;
+}
+
+.section.section-no-padding{
+  padding-top:0 !important;
 }

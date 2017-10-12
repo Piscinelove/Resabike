@@ -5,8 +5,9 @@ block content
   div.parallax-container.parallax-container1
     div.parallax
       img(src="images/background-bike.jpg")
-      a(href="#book").waves-effect.waves-light.btn-large.home-button Je reserve !
-      h3.center-align.front Arriver au départ sans se fatiguer...
+      a(href="#book").waves-effect.waves-light.btn.btn-large.home-button Je reserve !
+      h3#slogan-top.center-align.front.valign-wrapper Arriver au départ
+      h3#slogan-bottom.center-align.front.valign-wrapper  sans se fatiguer...
 
 
   div#home.section.white.container.full-section
@@ -61,10 +62,10 @@ block content
       img(src="images/background-bike3.jpg")
 
   div#book.section.white.container.full-section
-    h2.header Reservation
+    h2.header Réservation
     div.row
       form.col.s12
-        div.row
+        div.row.row-book
             div.input-field.col.s3
                 input(id="prenom", placeholder=" ", type="text").validate
                 label(for="prenom",data-error="Veuillez saisir un prénom valide.") Prénom
@@ -77,24 +78,24 @@ block content
             div.input-field.col.s3
                 input(id="mail", placeholder=" ", type="email" ).validate
                 label(for="mail", data-error="Veuillez saisir un email valide.") E-mail
-        div.row
+        div.row.row-book
             div.input-field.col.s6
                 input(type="text", placeholder=" ").datepicker
                 label Date
             div.input-field.col.s6
                 input(type="text", placeholder=" ").timepicker
                 label Heure de départ
-        div.row
+        div.row.row-book
             div.input-field.col.s6
                 input(id="depart", placeholder=" ", type="text").validate
                 label(for="depart") Station de départ
             div.input-field.col.s6
                 input(id="arrive",placeholder=" ", type="text").validate
                 label(for="arrive") Station d'arrivée
-        div.row
+        div.row.row-book
             div.input-field.col.s6
                 select
-                    option(value="", disabled selected) Nombre de vélo
+                    option(value="", disabled="disabled", selected="selected") Nombre de vélo
                     option(value="1") 1 vélo
                     option(value="2") 2 vélos
                     option(value="3") 3 vélos
@@ -111,13 +112,12 @@ block content
                 textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
                 label(for="taRemarque") Remarque
 
-        div.row
-            div.input-field.col.s6
+        div.row.row-book
+            div.col.s6
                 p Conditions Générales
                 form(action="#")
-                    p
-                    input(type="checkbox", id="test5").filled-in
-                    label(for="test5") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
+                    input(type="checkbox", id="filled-in-box").filled-in
+                    label(for="filled-in-box") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
             div.input-field.col.s6
                 button(id="btBook",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
                     i.material-icons.right send
@@ -129,7 +129,10 @@ block content
 
   div#where.section.white.container.full-section
     h2.header Où aller ?
-    p différente zone ici
+        h3 Zones de bus
+            div.row.center-align
+                div.col.s12
+                img(src="images/buses.jpg").img-zone
 
   div.parallax-container
     div.parallax

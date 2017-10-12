@@ -1,0 +1,17 @@
+extends layout_admin
+
+block content
+
+    div#user.section.full-section.section-no-padding
+        div.row.grey.lighten-3.background-filter
+            div.container
+                div.col.s2
+                    h3 Filtres
+                div.input-field.col.s4
+                    input(type="text").datepicker
+                    label Date
+                div.input-field.col.s4
+                    input(type="text").timepicker
+                    label Heure
+                div.col.s2.input-field
+                    a.waves-effect.waves-light.btn.right Chercher
