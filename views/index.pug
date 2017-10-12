@@ -5,7 +5,8 @@ block content
   div.parallax-container.parallax-container1
     div.parallax
       img(src="images/background-bike.jpg")
-      a.waves-effect.waves-light.btn-large.home-button Je reserve !
+      a(href="#book").waves-effect.waves-light.btn-large.home-button Je reserve !
+      h3.center-align.front Arriver au départ sans se fatiguer...
 
 
   div#home.section.white.container.full-section
@@ -57,15 +58,74 @@ block content
 
   div.parallax-container
     div.parallax
-      img(src="images/background-bike2.jpg")
+      img(src="images/background-bike3.jpg")
 
   div#book.section.white.container.full-section
     h2.header Reservation
-    p je reserve ici
+    div.row
+      form.col.s12
+        div.row
+            div.input-field.col.s3
+                input(id="prenom", placeholder=" ", type="text").validate
+                label(for="prenom",data-error="Veuillez saisir un prénom valide.") Prénom
+            div.input-field.col.s3
+                input(id="nom", placeholder=" ", type="text").validate
+                label(for="nom", data-error="Veuillez saisir un nom valide.") Nom
+            div.input-field.col.s3
+                input(id="tel", placeholder=" ", type="tel").validate
+                label(for="tel", data-error="Veuillez saisir un téléphone valide.") Téléphone
+            div.input-field.col.s3
+                input(id="mail", placeholder=" ", type="email" ).validate
+                label(for="mail", data-error="Veuillez saisir un email valide.") E-mail
+        div.row
+            div.input-field.col.s6
+                input(type="text", placeholder=" ").datepicker
+                label Date
+            div.input-field.col.s6
+                input(type="text", placeholder=" ").timepicker
+                label Heure de départ
+        div.row
+            div.input-field.col.s6
+                input(id="depart", placeholder=" ", type="text").validate
+                label(for="depart") Station de départ
+            div.input-field.col.s6
+                input(id="arrive",placeholder=" ", type="text").validate
+                label(for="arrive") Station d'arrivée
+        div.row
+            div.input-field.col.s6
+                select
+                    option(value="", disabled selected) Nombre de vélo
+                    option(value="1") 1 vélo
+                    option(value="2") 2 vélos
+                    option(value="3") 3 vélos
+                    option(value="4") 4 vélos
+                    option(value="5") 5 vélos
+                    option(value="6") 6 vélos
+                    option(value="7") 7 vélos
+                    option(value="8") 8 vélos
+                    option(value="9") 9 vélos
+                    option(value="10") 10 vélos
+                    option(value="11") plus de 10 vélos
+                label Nombre de vélo
+            div.input-field.col.s6
+                textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
+                label(for="taRemarque") Remarque
+
+        div.row
+            div.input-field.col.s6
+                p Conditions Générales
+                form(action="#")
+                    p
+                    input(type="checkbox", id="test5").filled-in
+                    label(for="test5") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
+            div.input-field.col.s6
+                button(id="btBook",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
+                    i.material-icons.right send
+
 
   div.parallax-container
     div.parallax
-      img(src="images/background-bike2.jpg")
+      img(src="images/background-bike4.jpg")
 
   div#where.section.white.container.full-section
     h2.header Où aller ?
@@ -73,7 +133,7 @@ block content
 
   div.parallax-container
     div.parallax
-      img(src="images/background-bike2.jpg")
+      img(src="images/background-bike5.jpg")
 
   div#contact.section.white.container.full-section
     h2.header Contact
@@ -96,5 +156,5 @@ block content
               i.material-icons.prefix mode_edit
               textarea(id="taContact", data-length="500", maxlength="500").materialize-textarea.textarea-contact
               label(for="taContact") Formulaire de contact
-      button(type="submit" name="action").btn.waves-effect.waves-light.right Envoyer
+      button(id="btContact",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
         i.material-icons.right send

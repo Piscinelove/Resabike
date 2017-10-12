@@ -59,6 +59,9 @@ main {
   max-height: 11em;
 }
 
+.textarea-remarque{
+    max-height: 2em;
+}
 .margin-partenaire{
   margin-bottom: 5em ;
 }
@@ -72,4 +75,8 @@ main {
   margin-bottom: 10em;
   margin-right: 10em;
   margin-left: 60em;
+}
+
+.front{
+   position: relative;
 }
