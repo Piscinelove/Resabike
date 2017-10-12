@@ -34,11 +34,23 @@ function insertLine(number, zone, departure, arrival)
         promises.push(dbStation.getStationIdByName(departure));
         promises.push(dbStation.getStationIdByName(arrival));
 
+        // promises.push(dbStation.getStationIdByNameFromAPI(departure));
+        // promises.push(dbStation.getStationIdByNameFromAPI(arrival));
+
         return Promise.all(promises).then(function (results) {
-            console.log("fdp6 : "+number);
-            console.log("Line has been inserted ! Very important");
-            console.log("fdp5 : "+results[0].id);
-            return createLine(number, zone, results[0].id, results[1].id);
+
+            // Test if the arrival don't exist yet in db
+            if(results[1] === null)
+                return dbStation.getStationIdByNameFromAPI(arrival).then(function (id) {
+                    return createLine(number, zone, results[0].id, id);
+                })
+            else
+            // if(results[1] === null)
+            //     Promise.all(getStationIdByNameFromAPI(arrival)).then(function () {
+            //
+            //     })
+            // return Promise.all()
+                return createLine(number, zone, results[0].id, results[1].id);
         })
     })
 }

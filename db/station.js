@@ -1,4 +1,5 @@
 var models = require('../models');
+var axios = require("axios");
 var dbLine = require('../db/line');
 var dbZone = require('../db/zone');
 
@@ -60,6 +61,24 @@ function insertStation(id, name)
 //     })
 // }
 
+function  getStationIdByNameFromAPI(name) {
+    var url = "https://timetable.search.ch/api/stationboard.en.json?show_subsequent_stops=1&stop="
+
+    return Promise.resolve
+    (
+        axios.get(url+name).then(function (response) {
+            var id = response.data.stop.id;
+            console.log(response.data.stop.id+"apiidstation");
+            return id;
+        }).then(function (id) {
+            insertStation(id, name);
+            return id;
+        }).catch(function (error) {
+            console.log(error);
+        })
+    )
+}
+
 function insertStationInDatabase(stationsToAdd)
 {
     return Promise.resolve().then(function () {
@@ -70,11 +89,12 @@ function insertStationInDatabase(stationsToAdd)
         for (let i = 0; i < stops.length; i++)
         {
             var stop = stops[i];
-            promises.push(insertStation(stop.stopid, stop.name));
+                promises.push(insertStation(stop.stopid, stop.name));
         }
 
+
         //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
-        promises.push(insertStation(8583435,"Zinal, village de vacances"));
+        //promises.push(insertStation(8583435,"Zinal, village de vacances"));
         promises.push(dbZone.createZone("Anniviers"));
         //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
 
@@ -90,3 +110,4 @@ function insertStationInDatabase(stationsToAdd)
 module.exports.insertStation = insertStation;
 module.exports.insertStationInDatabase = insertStationInDatabase;
 module.exports.getStationIdByName = getStationIdByName;
+module.exports.getStationIdByNameFromAPI = getStationIdByNameFromAPI;
