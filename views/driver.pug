@@ -15,3 +15,25 @@ block content
                     label Heure
                 div.col.s2.input-field
                     a.waves-effect.waves-light.btn.right Chercher
+        div.row.full-section.container
+            ul
+                div.col.s3(data-collapsible="accordion").collapsible
+                    li
+                       div.collapsible-header Date
+                            input(type="text").datepicker
+                       div.collapsible-body Lorem ipsum dolor sit amet
+                div.col.s3(data-collapsible="accordion").collapsible
+                    li
+                        div.collapsible-header Heure
+                            input(type="text").timepicker
+                        div.collapsible-body Lorem ipsum dolor sit amet
+                div.col.s3(data-collapsible="accordion").collapsible
+                    li
+                        div.collapsible-header Ligne bus
+                            select
+                                option(value="", disabled="disabled", selected="selected")
+                                option(value="1") 450
+                                option(value="2") 451
+                                option(value="3") 452
+                        div.collapsible-body Lorem ipsum dolor sit amet
+                div.col.s3(data-collapsible="accordion").collapsible
