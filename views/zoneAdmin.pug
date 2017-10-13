@@ -1,0 +1,76 @@
+extends layout_admin
+
+block content
+
+    div#user.section.full-section.container
+        h2 Zones
+        div.row.center-align
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalAdd") Ajouter
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalModify") Modifier
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalDelete") Supprimer
+        div.row
+            div.col.s12
+
+
+
+
+
+
+    //ADD MODAL
+    div(id="modalAdd").modal.modal-fixed-footer
+        div.modal-content
+            h4 Ajouter
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="addStart", type="text").validate
+                            label(for="addStart") Lieu de départ
+                    div.row
+                        div.input-field.col.s12
+                            input(id="addEnd", type="text").validate
+                            label(for="addEnd") Lieu d'arrivée
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
+
+    //MODIFY MODAL
+    div(id="modalModify").modal.modal-fixed-footer
+        div.modal-content
+            h4 Modifier
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="modStart", type="text").validate
+                            label(for="modStart") Lieu de départ
+                    div.row
+                        div.input-field.col.s12
+                            input(id="modEnd", type="text").validate
+                            label(for="modEnd") Lieu d'arrivée
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
+
+    //DELETE MODAL
+    div(id="modalDelete").modal.modal-fixed-footer
+        div.modal-content
+            h4 Supprimer
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="delStart", type="text").validate
+                            label(for="delStart") Lieu de départ
+                    div.row
+                        div.input-field.col.s12
+                            input(id="delEnd", type="text").validate
+                            label(for="delEnd") Lieu d'arrivée
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
+
+

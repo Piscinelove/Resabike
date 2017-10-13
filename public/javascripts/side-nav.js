@@ -17,7 +17,7 @@ $('.datepicker').pickadate({
     today: 'Aujourd\'hui',
     clear: 'Annuler',
     close: 'Ok',
-    closeOnSelect: false ,// Close upon selecting a date,
+    closeOnSelect: true ,// Close upon selecting a date,
     formatSubmit: 'yyyy/mm/dd'
 
 });

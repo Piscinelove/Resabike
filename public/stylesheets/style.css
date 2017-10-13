@@ -111,3 +111,9 @@ main {
 .section.section-no-padding{
   padding-top:0 !important;
 }
+
+td, th {
+
+  text-align: left;
+
+}

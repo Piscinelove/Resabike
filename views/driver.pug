@@ -15,25 +15,44 @@ block content
                     label Heure
                 div.col.s2.input-field
                     a.waves-effect.waves-light.btn.right Chercher
-        div.row.full-section.container
+        div.row.full-section
             ul
-                div.col.s3(data-collapsible="accordion").collapsible
+                div(data-collapsible="accordion").collapsible
                     li
-                       div.collapsible-header Date
-                            input(type="text").datepicker
-                       div.collapsible-body Lorem ipsum dolor sit amet
-                div.col.s3(data-collapsible="accordion").collapsible
-                    li
-                        div.collapsible-header Heure
-                            input(type="text").timepicker
-                        div.collapsible-body Lorem ipsum dolor sit amet
-                div.col.s3(data-collapsible="accordion").collapsible
-                    li
-                        div.collapsible-header Ligne bus
-                            select
-                                option(value="", disabled="disabled", selected="selected")
-                                option(value="1") 450
-                                option(value="2") 451
-                                option(value="3") 452
-                        div.collapsible-body Lorem ipsum dolor sit amet
-                div.col.s3(data-collapsible="accordion").collapsible
+                        div.collapsible-header
+                            table
+                                thead.highlight.responsive-table
+                                    tr
+                                        th Date
+                                        th Heure
+                                        th Bus
+                                        th Station de départ
+                                        th Station d'arrivée
+                                        th Quantité
+                                        th Nom & Prénom
+                                        th Remarque
+
+                        div.collapsible-body
+                            table
+                                tbody
+                                    tr
+                                        td 12.11.17
+                                        td 13:00
+                                        td 450
+                                        td Sierre
+                                        td Zinal
+                                        td 4
+                                        td Michel Audrey
+                        div.collapsible-body
+                            table
+                                tbody
+                                    tr
+                                        td 12.11.17
+                                        td 14:00
+                                        td 450
+                                        td Sierre
+                                        td Zinal
+                                        td 4
+                                        td Peixoto Rafael
+                                        td lol
+
