@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var driver = require('./routes/driver');
 var zoneAdmin = require('./routes/zoneAdmin');
+var regionAdmin = require('./routes/regionAdmin');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/driver', driver);
 app.use('/zoneAdmin', zoneAdmin);
+app.use('/regionAdmin', regionAdmin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

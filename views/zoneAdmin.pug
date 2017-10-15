@@ -1,9 +1,9 @@
-extends layout_admin
+extends layout_zoneAdmin
 
 block content
 
     div#user.section.full-section.container
-        h2 Zones
+        h2 Zones X
         div.row.center-align
             div.col.s4
                 a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalAdd") Ajouter
@@ -14,7 +14,48 @@ block content
         div.row
             div.col.s12
 
-
+    div#historic.section.container.full-section
+        h2 Historique
+        div.row
+            table.striped
+                thead
+                    tr
+                        th Date
+                        th Heure
+                        th Bus
+                        th Station de départ
+                        th Station d'arrivée
+                        th Quantité
+                        th Nom & Prénom
+                        th Remarque
+                tbody
+                    tr
+                        td 12.11.17
+                        td 13:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Michel Audrey
+                        td yes
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                        td lol
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                        td lol
 
 
 

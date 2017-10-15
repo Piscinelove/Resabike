@@ -41,6 +41,7 @@ h2{
   text-align: center;
 }
 
+/*Footer*/
 body {
   display: flex;
   min-height: 100vh;
@@ -50,6 +51,8 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+
 
 .img-partenaire{
  width:100%;
@@ -117,3 +120,4 @@ td, th {
   text-align: left;
 
 }
+
