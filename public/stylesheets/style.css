@@ -88,6 +88,7 @@ main {
    position: relative;
 }
 
+/*SLOGAN*/
 #slogan-top{
   font-weight: bold;
   font-style: italic;
@@ -96,7 +97,6 @@ main {
   margin-top: -7em;
   margin-left: 3em;
 }
-
 
 #slogan-bottom{
   font-weight: bold;
@@ -116,8 +116,12 @@ main {
 }
 
 td, th {
-
   text-align: left;
+}
 
+#icon-add-user{
+  margin-top: 1.8em;
+  margin-left: 8em;
+  padding-left: 20em;
 }
 

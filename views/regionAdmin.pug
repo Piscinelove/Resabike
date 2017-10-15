@@ -1,76 +1,336 @@
-extends layout_driver
+extends layout_regoinAdmin
 
 block content
 
-    div#user.section.full-section.container
-        h2 Zones
-        div.row.center-align
+    div#historic.section.full-section
+        h2.container Historique
+        div.row.container
+            table.bordered.centered
+                thead
+                    tr
+                        th Date
+                        th Heure
+                        th Bus
+                        th Station de départ
+                        th Station d'arrivée
+                        th Quantité
+                        th Nom & Prénom
+                        th Remarque
+                tbody
+                    tr
+                        td 12.11.17
+                        td 13:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Michel Audrey
+                        td yes
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                        td lol
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                        td lol
+
+
+    div#userList.section.full-section.grey.lighten-4
+        div.row.container
             div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalAdd") Ajouter
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalModify") Modifier
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalDelete") Supprimer
+                h2 Utilisateurs
+            div#icon-add-user.col.s4.right
+                a(href="#addUser").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
+                    i.material-icons add
+        div.row.container
+            table.bordered.centered
+                thead
+                    thead
+                        tr
+                            th Nom
+                            th Prénom
+                            th Ligne
+                            th Zone
+                            th Utilisateur
+                            th Mot de passe
+                            th Modifier
+                    tbody
+                        tr
+                            td Michel
+                            td Audrey
+                            td 450
+                            td Val d'Annivers
+                            td odry
+                            td pi
+                            td
+                                i(href="#editUser").material-icons.tiny.modal-trigger edit
+                                i(href="#deleteUser").material-icons.tiny.modal-trigger delete
+                        tr
+                            td Peixoto
+                            td Audrey
+                            td 450
+                            td Val d'Annivers
+                            td peixotte
+                            td pi
+                            td
+                                i(href="#editUser").material-icons.tiny.modal-trigger edit
+                                i(href="#deleteUser").material-icons.tiny.modal-trigger delete
+
+    div#bus.section.full-section
+        h2.container Ligne de bus
         div.row
             div.col.s12
+        div.row.center-align.container
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalAddBus") Ajouter
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalModifyBus") Modifier
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalDeleteBus") Supprimer
+        div.row
+            div.col.s12
+        div.row
+            div.col.s12
+        div.row.container
+            table.bordered.centered
+                thead
+                    tr
+                        th Bus
+                        th Zone
+                        th Station de départ
+                        th Station d'arrivée
+                        th Conducteur
+                tbody
+                    tr
+                        td Val d'Anniviers
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td Rafael Peixoto
+
+    div#zone.section.full-section.grey.lighten-4
+        h2.container Zones
+        div.row
+            div.col.s12
+        div.row.center-align.container
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalAddZone") Ajouter
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalModifyZone") Modifier
+            div.col.s4
+                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalDeleteZone") Supprimer
+        div.row
+            div.col.s12
+        div.row
+            div.col.s12
+        div.row.container
+            table.bordered.centered
+                thead
+                    tr
+                        th Zone
+                        th Bus
+                        th Station de départ
+                        th Station d'arrivée
+                tbody
+                    tr
+                        td Val d'Anniviers
+                        td 450
+                        td Sierre
+                        td Zinal
 
 
 
 
 
+    //ADD USER
+    div#addUser.modal
+       div.modal-content
+           h4 Ajouter utilisateur
+           div.row
+               form.col.s12
+                   div.row
+                       div.col.s4.input-field
+                           input(id="addLastname" type="text").validate
+                           label(for="addLastname") Nom
+                       div.col.s4.input-field
+                           input(id="addFirstname" type="text").validate
+                           label(for="addFirstname") Prénom
+                       div.col.s4.input-field
+                           input(id="addBus" type="text").validate
+                           label(for="addBus") Ligne
+                   div.row
+                       div.col.s4.input-field
+                           input(id="addZone" type="text").validate
+                           label(for="addZone") Zone
+                       div.col.s4.input-field
+                           input(id="addUtilisateur" type="text").validate
+                           label(for="addUtilisateur") Utilisateur
+                       div.col.s4.input-field
+                           input(id="addPsw" type="text").validate
+                           label(for="addPsw") Mot de passe
 
-    //ADD MODAL
-    div(id="modalAdd").modal.modal-fixed-footer
+               div.modal-footer
+                   a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text Annuler
+                   a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text Valider
+
+    //EDIT USER
+    div#editUser.modal
+        div.modal-content
+            h4 Modifier utilisateur
+            div.row
+                form.col.s12
+                    div.row
+                        div.col.s4.input-field
+                            input(id="editLastname" type="text").validate
+                            label(for="editLastname") Nom
+                        div.col.s4.input-field
+                            input(id="editFirstname" type="text").validate
+                            label(for="editFirstname") Prénom
+                        div.col.s4.input-field
+                            input(id="editBus" type="text").validate
+                            label(for="editBus") Ligne
+                    div.row
+                        div.col.s4.input-field
+                            input(id="editZone" type="text").validate
+                            label(for="editZone") Zone
+                        div.col.s4.input-field
+                            input(id="editUtilisateur" type="text").validate
+                            label(for="editUtilisateur") Utilisateur
+                        div.col.s4.input-field
+                            input(id="editPsw" type="text").validate
+                            label(for="editPsw") Mot de passe
+                div.modal-footer
+                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text Annuler
+                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text Valider
+
+
+    //DELETE USER
+    div#deleteUser.modal
+        div.modal-content
+            h4 Supprimer utilisateur
+                div.modal-footer
+                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text Annuler
+                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text Valider
+
+
+
+    //ADD MODAL BUS
+    div(id="modalAddBus").modal.modal-fixed-footer
         div.modal-content
             h4 Ajouter
             div.row
                 form.col.s12
                     div.row
                         div.input-field.col.s12
-                            input(id="addStart", type="text").validate
-                            label(for="addStart") Lieu de départ
+                            input(id="addStartBus", type="text").validate
+                            label(for="addStartBus") Lieu de départ
                     div.row
                         div.input-field.col.s12
-                            input(id="addEnd", type="text").validate
-                            label(for="addEnd") Lieu d'arrivée
+                            input(id="addEndBus", type="text").validate
+                            label(for="addEndBus") Lieu d'arrivée
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
 
-    //MODIFY MODAL
-    div(id="modalModify").modal.modal-fixed-footer
+    //MODIFY MODAL BUS
+    div(id="modalModifyBus").modal.modal-fixed-footer
         div.modal-content
             h4 Modifier
             div.row
                 form.col.s12
                     div.row
                         div.input-field.col.s12
-                            input(id="modStart", type="text").validate
-                            label(for="modStart") Lieu de départ
+                            input(id="modStartBus", type="text").validate
+                            label(for="modStartBus") Lieu de départ
                     div.row
                         div.input-field.col.s12
-                            input(id="modEnd", type="text").validate
-                            label(for="modEnd") Lieu d'arrivée
+                            input(id="modEndBus", type="text").validate
+                            label(for="modEndBus") Lieu d'arrivée
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
 
-    //DELETE MODAL
-    div(id="modalDelete").modal.modal-fixed-footer
+    //DELETE MODAL BUS
+    div(id="modalDeleteBus").modal.modal-fixed-footer
         div.modal-content
             h4 Supprimer
             div.row
                 form.col.s12
                     div.row
                         div.input-field.col.s12
-                            input(id="delStart", type="text").validate
-                            label(for="delStart") Lieu de départ
+                            input(id="delStartBus", type="text").validate
+                            label(for="delStartBus") Lieu de départ
                     div.row
                         div.input-field.col.s12
-                            input(id="delEnd", type="text").validate
-                            label(for="delEnd") Lieu d'arrivée
+                            input(id="delEndBus", type="text").validate
+                            label(for="delEndBus") Lieu d'arrivée
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
 
+
+    //ADD MODAL ZONE
+    div(id="modalAddZone").modal.modal-fixed-footer
+        div.modal-content
+            h4 Ajouter
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="addStartZone", type="text").validate
+                            label(for="addStartZone") Lieu de départ
+                    div.row
+                        div.input-field.col.s12
+                            input(id="addEndZone", type="text").validate
+                            label(for="addEndZone") Lieu d'arrivée
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
+
+    //MODIFY MODAL ZONE
+    div(id="modalModifyZone").modal.modal-fixed-footer
+        div.modal-content
+            h4 Modifier
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="modStartZone", type="text").validate
+                            label(for="modStartZone") Lieu de départ
+                    div.row
+                        div.input-field.col.s12
+                            input(id="modEndZone", type="text").validate
+                            label(for="modEndZone") Lieu d'arrivée
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
+
+    //DELETE MODAL ZONE
+    div(id="modalDeleteZone").modal.modal-fixed-footer
+        div.modal-content
+            h4 Supprimer
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="delStartZone", type="text").validate
+                            label(for="delStartZone") Lieu de départ
+                    div.row
+                        div.input-field.col.s12
+                            input(id="delEndZone", type="text").validate
+                            label(for="delEndZone") Lieu d'arrivée
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
 
