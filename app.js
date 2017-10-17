@@ -10,8 +10,8 @@ var users = require('./routes/users');
 //only for test
 var login = require('./routes/login');
 var driver = require('./routes/driver');
-var zoneAdmin = require('./routes/zoneAdmin');
-var regionAdmin = require('./routes/regionAdmin');
+var zoneadmin = require('./routes/zoneadmin');
+var regionadmin = require('./routes/regionadmin');
 
 var app = express();
 
@@ -31,8 +31,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/driver', driver);
-app.use('/zoneAdmin', zoneAdmin);
-app.use('/regionAdmin', regionAdmin);
+app.use('/zoneadmin', zoneadmin);
+app.use('/regionadmin', regionadmin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

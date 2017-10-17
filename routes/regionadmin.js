@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('zoneAdmin');
+    res.render('regionadmin');
     // res.render('login');
 });
 

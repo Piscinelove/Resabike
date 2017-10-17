@@ -1,11 +1,11 @@
-extends layout_regoinAdmin
+extends layout_region_admin
 
 block content
 
-    div#historic.section.full-section
-        h2.container Historique
-        div.row.container
-            table.bordered.centered
+    div#historic.section.full-section.container
+        h2 Historique
+        div.row
+            table.highlight.tab-scroll
                 thead
                     tr
                         th Date
@@ -15,7 +15,6 @@ block content
                         th Station d'arrivée
                         th Quantité
                         th Nom & Prénom
-                        th Remarque
                 tbody
                     tr
                         td 12.11.17
@@ -25,7 +24,6 @@ block content
                         td Zinal
                         td 4
                         td Michel Audrey
-                        td yes
                     tr
                         td 12.11.17
                         td 14:00
@@ -34,7 +32,6 @@ block content
                         td Zinal
                         td 4
                         td Peixoto Rafael
-                        td lol
                     tr
                         td 12.11.17
                         td 14:00
@@ -43,19 +40,54 @@ block content
                         td Zinal
                         td 4
                         td Peixoto Rafael
-                        td lol
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
+                    tr
+                        td 12.11.17
+                        td 14:00
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td 4
+                        td Peixoto Rafael
 
 
-    div#userList.section.full-section.grey.lighten-4
-        div.row.container
-            div.col.s4
-                h2 Utilisateurs
-            div#icon-add-user.col.s4.right
-                a(href="#addUser").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
-                    i.material-icons add
-        div.row.container
-            table.bordered.centered
-                thead
+    div#userList.section.full-section.container
+        h2 Utilisateurs
+            a(href="#addUser").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
+                i.material-icons add
+        div.row
+            table.centered.highlight.tab-scroll
                     thead
                         tr
                             th Nom
@@ -64,7 +96,8 @@ block content
                             th Zone
                             th Utilisateur
                             th Mot de passe
-                            th Modifier
+                            th
+                            th
                     tbody
                         tr
                             td Michel
@@ -74,8 +107,11 @@ block content
                             td odry
                             td pi
                             td
-                                i(href="#editUser").material-icons.tiny.modal-trigger edit
-                                i(href="#deleteUser").material-icons.tiny.modal-trigger delete
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#editUser")
+                                    i.material-icons edit
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#deleteUser")
+                                    i.material-icons delete
                         tr
                             td Peixoto
                             td Audrey
@@ -84,26 +120,72 @@ block content
                             td peixotte
                             td pi
                             td
-                                i(href="#editUser").material-icons.tiny.modal-trigger edit
-                                i(href="#deleteUser").material-icons.tiny.modal-trigger delete
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#editUser")
+                                    i.material-icons edit
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#deleteUser")
+                                    i.material-icons delete
+                        tr
+                            td Peixoto
+                            td Audrey
+                            td 450
+                            td Val d'Annivers
+                            td peixotte
+                            td pi
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#editUser")
+                                    i.material-icons edit
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#deleteUser")
+                                    i.material-icons delete
+                        tr
+                            td Peixoto
+                            td Audrey
+                            td 450
+                            td Val d'Annivers
+                            td peixotte
+                            td pi
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#editUser")
+                                    i.material-icons edit
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#deleteUser")
+                                    i.material-icons delete
+                        tr
+                            td Peixoto
+                            td Audrey
+                            td 450
+                            td Val d'Annivers
+                            td peixotte
+                            td pi
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#editUser")
+                                    i.material-icons edit
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#deleteUser")
+                                    i.material-icons delete
+                        tr
+                            td Peixoto
+                            td Audrey
+                            td 450
+                            td Val d'Annivers
+                            td peixotte
+                            td pi
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#editUser")
+                                    i.material-icons edit
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#deleteUser")
+                                    i.material-icons delete
 
-    div#bus.section.full-section
-        h2.container Ligne de bus
+    div#bus.section.full-section.container
+        h2 Ligne de bus
+        div.row.center-align
+            div.col.s4.right
+                a(href="#modalAddBus").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
+                    i.material-icons add
         div.row
-            div.col.s12
-        div.row.center-align.container
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalAddBus") Ajouter
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalModifyBus") Modifier
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalDeleteBus") Supprimer
-        div.row
-            div.col.s12
-        div.row
-            div.col.s12
-        div.row.container
-            table.bordered.centered
+            table.centered.highlight.tab-scroll
                 thead
                     tr
                         th Bus

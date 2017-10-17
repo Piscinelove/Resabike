@@ -115,13 +115,29 @@ main {
   padding-top:0 !important;
 }
 
-td, th {
-  text-align: left;
-}
+
 
 #icon-add-user{
   margin-top: 1.8em;
   margin-left: 8em;
   padding-left: 20em;
 }
+
+
+.tab-scroll tbody {
+  display:block;
+  height:300px;
+  overflow:auto;
+}
+
+.tab-scroll thead, .tab-scroll tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+
+.tab-scroll thead {
+  width: calc( 100% - 1em )
+}
+
 
