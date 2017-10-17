@@ -68,7 +68,7 @@ function getLinesFromAPI(from, to) {
 
 function getAutocompleteFromAPI(input) {
 
-    let url = "https://timetable.search.ch/api/completion.en.json?show_ids=1&nofavorites=1&";
+    let url = "https://timetable.search.ch/api/completion.en.json?show_ids=1&nofavorites=0&";
 
     return Promise.resolve
     (
