@@ -84,8 +84,10 @@ block content
 
     div#userList.section.full-section.container
         h2 Utilisateurs
-            a(href="#addUser").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
-                i.material-icons add
+        div.row.center-align
+            div.col.s4.right
+                a(href="#addUser").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
+                    i.material-icons add
         div.row
             table.centered.highlight.tab-scroll
                     thead
@@ -201,35 +203,78 @@ block content
                         td Zinal
                         td Rafael Peixoto
 
-    div#zone.section.full-section.grey.lighten-4
-        h2.container Zones
+    div#zone.section.full-section.container
+        h2 Zones
+            div.row.center-align
+                div.col.s4.right
+                    a(href="#modalAddZone").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
+                        i.material-icons add
         div.row
-            div.col.s12
-        div.row.center-align.container
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalAddZone") Ajouter
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalModifyZone") Modifier
-            div.col.s4
-                a.waves-effect.waves-light.btn-large.modal-trigger(href="#modalDeleteZone") Supprimer
-        div.row
-            div.col.s12
-        div.row
-            div.col.s12
-        div.row.container
-            table.bordered.centered
+            table.centered.highlight.tab-scroll
                 thead
                     tr
                         th Zone
                         th Bus
                         th Station de départ
                         th Station d'arrivée
+                        th
+                        th
                 tbody
                     tr
                         td Val d'Anniviers
                         td 450
                         td Sierre
                         td Zinal
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
+                                i.material-icons edit
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
+                                i.material-icons delete
+                    tr
+                        td Val d'Anniviers
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
+                                i.material-icons edit
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
+                                i.material-icons delete
+                    tr
+                        td Val d'Anniviers
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
+                                i.material-icons edit
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
+                                i.material-icons delete
+                    tr
+                        td Val d'Anniviers
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
+                                i.material-icons edit
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
+                                i.material-icons delete
+                    tr
+                        td Val d'Anniviers
+                        td 450
+                        td Sierre
+                        td Zinal
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
+                                i.material-icons edit
+                        td
+                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
+                                i.material-icons delete
 
 
 
