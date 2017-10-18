@@ -5,39 +5,31 @@ html
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css')
         link(rel='stylesheet', href="https://fonts.googleapis.com/icon?family=Material+Icons")
         link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/administration.css')
     body
+        header
+            ul.side-nav.fixed.ebony-clay
+                    li
+                        a(href="#historic").white-text.scroll-to Historique
+                    li
+                        a(href="#userList").white-text.scroll-to  Utilisateurs
+                    li
+                        a(href="#bus").white-text.scroll-to  Ligne
+                    li
+                        a(href="#zone").white-text.scroll-to  Zone
+                    li
+                        a(href="#user").white-text.scroll-to  User
+
         nav.amber.lighten-2
             div.nav-wrapper
                 div.container
-                    a(href="#").brand-logo
+                    a(href="#").brand-logo.center
                         span.resabike res
                         | abike
                     a(href="#", data-activates="mobile-demo").button-collapse
                         i.material-icons menu
-                    ul#nav-mobile.right.hide-on-med-and-down
-                        li
-                            a(href="#historic") Historique
-                        li
-                            a(href="#userList") Utilisateurs
-                        li
-                            a(href="#bus") Ligne
-                        li
-                            a(href="#zone") Zone
-                        li
-                            a(href="#user") User
-                    ul.side-nav#mobile-demo
-                        li
-                            a(href="#historic") Historique
-                        li
-                            a(href="#userList") Utilisateurs
-                        li
-                            a(href="#bus") Ligne
-                        li
-                            a(href="#zone") Zone
-                        li
-                            a(href="#user") User
-
-        block content
+        main
+            block content
 
         footer.page-footer.amber.lighten-2
             div.container
@@ -51,4 +43,5 @@ html
         script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js', type="text/javascript")
         script(src='/javascripts/side-nav.js', type="text/javascript")
         script(src='/javascripts/autocomplete.js', type="text/javascript")
+        script(src='/javascripts/administration.js', type="text/javascript")
 

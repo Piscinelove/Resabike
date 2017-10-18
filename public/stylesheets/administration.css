@@ -1,0 +1,13 @@
+.ebony-clay{
+    background-color: #2a2d3e;
+}
+main, footer
+{
+    padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+    main, footer {
+        padding-left: 0;
+    }
+}

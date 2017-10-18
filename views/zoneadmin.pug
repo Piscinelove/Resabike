@@ -1,4 +1,4 @@
-extends layout_region_admin
+extends layout_zone_admin
 
 block content
 
@@ -223,7 +223,7 @@ block content
                             td= zone.id
                             td= zone.name
                             td
-                                a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone", data-id=zone.id, data-name=zone.name)
                                     i.material-icons edit
                             td
                                 a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
@@ -380,19 +380,19 @@ block content
                 i.material-icons.right send
 
     //MODIFY MODAL ZONE
-    div(id="modalModifyZone").modal.modal-fixed-footer
+    div(id="modalModifyZone").modal.modal-fixed-footer.modal-edit-zone
         div.modal-content
             h4 Modifier
             div.row
                 form.col.s12
                     div.row
                         div.input-field.col.s12
-                            input(id="modStartZone", type="text").validate
-                            label(for="modStartZone") Lieu de départ
+                            input(id="zone-edit-id", name="zone-edit-id", type="text", disabled="disabled").validate
+                            label(for="zone-edit-id", id="zone-edit-id-label", disabled="disabled") Id
                     div.row
                         div.input-field.col.s12
-                            input(id="modEndZone", type="text").validate
-                            label(for="modEndZone") Lieu d'arrivée
+                            input(id="zone-edit-name", name="zone-edit-name", type="text").validate
+                            label(for="zone-edit-name", id="zone-edit-name-label") Nom
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
@@ -412,4 +412,3 @@ block content
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
-
