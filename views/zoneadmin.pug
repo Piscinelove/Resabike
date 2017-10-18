@@ -213,72 +213,21 @@ block content
             table.centered.highlight.tab-scroll
                 thead
                     tr
-                        th Zone
-                        th Bus
-                        th Station de départ
-                        th Station d'arrivée
-                        th
-                        th
+                        th ID
+                        th ZONE
+                        th MODIFIER
+                        th SUPPRIMER
                 tbody
-                    tr
-                        td Val d'Anniviers
-                        td 450
-                        td Sierre
-                        td Zinal
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
-                                i.material-icons edit
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
-                                i.material-icons delete
-                    tr
-                        td Val d'Anniviers
-                        td 450
-                        td Sierre
-                        td Zinal
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
-                                i.material-icons edit
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
-                                i.material-icons delete
-                    tr
-                        td Val d'Anniviers
-                        td 450
-                        td Sierre
-                        td Zinal
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
-                                i.material-icons edit
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
-                                i.material-icons delete
-                    tr
-                        td Val d'Anniviers
-                        td 450
-                        td Sierre
-                        td Zinal
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
-                                i.material-icons edit
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
-                                i.material-icons delete
-                    tr
-                        td Val d'Anniviers
-                        td 450
-                        td Sierre
-                        td Zinal
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
-                                i.material-icons edit
-                        td
-                            a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
-                                i.material-icons delete
-
-
-
-
+                    each zone in zones
+                        tr
+                            td= zone.id
+                            td= zone.name
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#modalModifyZone")
+                                    i.material-icons edit
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
+                                    i.material-icons delete
 
     //ADD USER
     div#addUser.modal
@@ -412,18 +361,23 @@ block content
         div.modal-content
             h4 Ajouter
             div.row
-                form.col.s12
+                form(method='POST', action='/zoneadmin')#add-zone-form.col.s12
                     div.row
                         div.input-field.col.s12
-                            input(id="addStartZone", type="text").validate
-                            label(for="addStartZone") Lieu de départ
-                    div.row
-                        div.input-field.col.s12
-                            input(id="addEndZone", type="text").validate
-                            label(for="addEndZone") Lieu d'arrivée
+                            input(id="zone-name", name="zone_name", type="text").validate
+                            label(for="zone-name") Nom
+                    //div.row
+                    //    div.input-field.col.s12
+                    //        select
+                    //            option(value="", disabled="disabled", selected="selected") Choisir un responsable
+                    //            option(value="1") Utilisateur 1
+                    //            option(value="2") Utilisateur 2
+                    //            option(value="3") Utilisateur 3
+                    //        label Responsable de zone
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
+            button(type="submit", name="add", form="add-zone-form").btn.waves-effect.waves-light.modal-action.modal-close valider
+                i.material-icons.right send
 
     //MODIFY MODAL ZONE
     div(id="modalModifyZone").modal.modal-fixed-footer
@@ -450,9 +404,7 @@ block content
             div.row
                 form.col.s12
                     div.row
-                        div.input-field.col.s12
-                            input(id="delStartZone", type="text").validate
-                            label(for="delStartZone") Lieu de départ
+                        div.input-field.col.s12 Êtes-vous sûr de vouloir supprimer la zone ?
                     div.row
                         div.input-field.col.s12
                             input(id="delEndZone", type="text").validate

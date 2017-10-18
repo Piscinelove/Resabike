@@ -3,6 +3,7 @@ var async = require("async");
 var dbStation = require('../db/station');
 var dbLine = require('../db/line');
 var dbLineStation = require('../db/linestation');
+var dbRole = require('../db/role');
 
 var line = require('../db/line');
 var url = "https://timetable.search.ch/api/route.en.json?from=sierre&to=zinal";
@@ -123,7 +124,7 @@ getLinesFromAPI(from,to)
     }).then(function (stationsAndLinesArray) {
         return dbLineStation.insertLineStationInDatabase(stationsAndLinesArray);
     }).then(function (lineStation) {
-        return getAutocompleteFromAPI("sierre");
+        return Promise.all(dbRole.createRole("admin"),dbRole.createRole("zoneadmin"),dbRole.createRole("driver"));
     }).catch(function (error) {
         console.error(error);
     })

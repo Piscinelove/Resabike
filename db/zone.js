@@ -12,4 +12,12 @@ function createZone(name)
     )
 }
 
+function getAllZones()
+{
+    return Promise.resolve(
+        models.Zone.findAll()
+    )
+}
+
 module.exports.createZone = createZone;
+module.exports.getAllZones = getAllZones;
