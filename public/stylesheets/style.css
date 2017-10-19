@@ -141,3 +141,25 @@ main {
 }
 
 
+.modal-size{
+  width: 30%;
+}
+
+.icon-margin{
+  margin-right: 20px;
+  margin-top: 100px;
+}
+
+.login-background{
+  border-bottom:none;
+  text-align:center;
+  background-color: #26a69a;
+  height: 70px;
+  color: white;
+  padding-top: 15px;
+
+}
+
+.login-no-padding{
+  padding:0px !important;
+}

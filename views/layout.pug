@@ -39,18 +39,28 @@ html
 
     block content
 
-    div#loginPop.modal
-      div.modal-content
-        h4 Login
-          div.input-field
-              input(id="utilisateur" type="text").validate
-              label(for="utilisateur") Utilisateur
-          div.input-field
-              input(id="psw" type="text").validate
-              label(for="psw") Mot de passe
-        div.modal-footer
-          a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat Annuler
-          a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat Se connecter
+    div#loginPop.modal.modal-size
+      div.modal-content.login-no-padding
+        div.login-background
+          h4 Login
+        div.row
+          form.col.s12
+            div.row
+              div.input-field.col.s12
+                i.material-icons.prefix person
+                input(id="utilisateurLogin" type="text").validate
+                label(for="utilisateurLogin") Utilisateur
+        div.row
+          form.col.s12
+            div.row
+              div.input-field.col.s12
+                i.material-icons.prefix lock
+                input(id="psw" type="text").validate
+                label(for="psw") Mot de passe
+      div.row
+        div.col.s12.center-align
+          a(href="#loginBtt").modal-action.modal-close.waves-effect.waves-light.btn-large Se connecter
+
 
 
 
