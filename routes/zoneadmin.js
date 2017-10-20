@@ -21,8 +21,31 @@ router.post('/', function(req, res){
 
         }
     )
+});
 
+router.put('/', function(req, res){
 
+    let id = req.body.id;
+    let name = req.body.name;
+    console.log(id +" "+name+" heeeeeeeeee");
+
+    dbZone.updateZone(id, name).then(
+        function () {
+            res.send(JSON.stringify("Success update"));
+
+        }
+    )
+});
+
+router.delete('/', function(req, res){
+
+    let zoneName = req.body.zone_name;
+    dbZone.createZone(zoneName).then(
+        function () {
+            res.redirect('/zoneadmin');
+
+        }
+    )
 });
 
 module.exports = router;

@@ -1,9 +1,9 @@
 var models = require('../models');
 
-function createZone(name)
+function createUser(pseudo, password, email, idRole, idZone)
 {
     return Promise.resolve(
-        models.Zone.findOrCreate({
+        models.User.findOrCreate({
             where:{
                 name:name
             }

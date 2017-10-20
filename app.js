@@ -12,6 +12,7 @@ var login = require('./routes/login');
 var driver = require('./routes/driver');
 var zoneadmin = require('./routes/zoneadmin');
 var regionadmin = require('./routes/regionadmin');
+var administration = require('./routes/administration');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/login', login);
 app.use('/driver', driver);
 app.use('/zoneadmin', zoneadmin);
 app.use('/regionadmin', regionadmin);
+app.use('/administration', administration);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

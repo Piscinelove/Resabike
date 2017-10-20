@@ -126,8 +126,8 @@ getLinesFromAPI(from,to)
     }).then(function (lineStation) {
         return Promise.all(dbRole.createRole("admin"),dbRole.createRole("zoneadmin"),dbRole.createRole("driver"));
     }).catch(function (error) {
-        console.error(error);
-    })
+            console.error(error);
+        })
 
 
 

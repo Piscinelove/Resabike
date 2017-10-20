@@ -1,0 +1,72 @@
+extends layout_admin
+
+block content
+
+    div#zone.section.full-section.container
+        h2 Zones
+            div.row.center-align
+                div.col.s4.right
+                    a(href="#modal-add-zone").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
+                        i.material-icons add
+        div.row
+            table.centered.highlight.tab-scroll#tab-zones
+                thead
+                    tr
+                        th ID
+                        th ZONE
+                        th MODIFIER
+                        th SUPPRIMER
+                tbody
+                    each zone in zones
+                        tr
+                            td= zone.id
+                            td= zone.name
+                            td
+                                a.waves-effect.waves-light.btn.modal-trigger(href="#modal-edit-zone", data-id=zone.id, data-name=zone.name)
+                                    i.material-icons edit
+                            td
+                                button.waves-effect.waves-light.btn(onclick=`deleteZone(${zone.id})`)
+                                    i.material-icons delete
+
+    //ADD MODAL ZONE
+    div(id="modal-add-zone").modal.modal-fixed-footer
+        div.modal-content
+            h4 Ajouter
+            div.row
+                form#add-zone-form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="zone-add-name", name="zone-add-name", type="text").validate
+                            label(for="zone-add-name") Nom
+                    //div.row
+                    //    div.input-field.col.s12
+                    //        select
+                    //            option(value="", disabled="disabled", selected="selected") Choisir un responsable
+                    //            option(value="1") Utilisateur 1
+                    //            option(value="2") Utilisateur 2
+                    //            option(value="3") Utilisateur 3
+                    //        label Responsable de zone
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            button(onclick="createZone()").btn.waves-effect.waves-light.modal-action valider
+                i.material-icons.right send
+
+    //MODIFY MODAL ZONE
+    div(id="modal-edit-zone").modal.modal-fixed-footer.modal-edit-zone
+        div.modal-content
+            h4 Modifier
+            div.row
+                form#edit-zone-form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="zone-edit-id", name="zone-edit-id", type="text", disabled="disabled").validate
+                            label(for="zone-edit-id", id="zone-edit-id-label", disabled="disabled") Id
+                    div.row
+                        div.input-field.col.s12
+                            input(id="zone-edit-name", name="zone-edit-name", type="text").validate
+                            label(for="zone-edit-name", id="zone-edit-name-label") Nom
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            button(onclick="updateZone()").btn.waves-effect.waves-light.modal-action.modal-close sauvegarder
+                i.material-icons.right done
+

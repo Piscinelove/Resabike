@@ -1,4 +1,4 @@
-extends layout_zone_admin
+extends administration/admin/layout_admin
 
 block content
 
@@ -229,151 +229,24 @@ block content
                                 a.waves-effect.waves-light.btn.modal-trigger(href="#modalDeleteZone")
                                     i.material-icons delete
 
-    //ADD USER
-    div#addUser.modal
-       div.modal-content
-           h4 Ajouter utilisateur
-           div.row
-               form.col.s12
-                   div.row
-                       div.col.s4.input-field
-                           input(id="addLastname" type="text").validate
-                           label(for="addLastname") Nom
-                       div.col.s4.input-field
-                           input(id="addFirstname" type="text").validate
-                           label(for="addFirstname") Prénom
-                       div.col.s4.input-field
-                           input(id="addBus" type="text").validate
-                           label(for="addBus") Ligne
-                   div.row
-                       div.col.s4.input-field
-                           input(id="addZone" type="text").validate
-                           label(for="addZone") Zone
-                       div.col.s4.input-field
-                           input(id="addUtilisateur" type="text").validate
-                           label(for="addUtilisateur") Utilisateur
-                       div.col.s4.input-field
-                           input(id="addPsw" type="text").validate
-                           label(for="addPsw") Mot de passe
-
-               div.modal-footer
-                   a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text Annuler
-                   a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text Valider
-
-    //EDIT USER
-    div#editUser.modal
-        div.modal-content
-            h4 Modifier utilisateur
-            div.row
-                form.col.s12
-                    div.row
-                        div.col.s4.input-field
-                            input(id="editLastname" type="text").validate
-                            label(for="editLastname") Nom
-                        div.col.s4.input-field
-                            input(id="editFirstname" type="text").validate
-                            label(for="editFirstname") Prénom
-                        div.col.s4.input-field
-                            input(id="editBus" type="text").validate
-                            label(for="editBus") Ligne
-                    div.row
-                        div.col.s4.input-field
-                            input(id="editZone" type="text").validate
-                            label(for="editZone") Zone
-                        div.col.s4.input-field
-                            input(id="editUtilisateur" type="text").validate
-                            label(for="editUtilisateur") Utilisateur
-                        div.col.s4.input-field
-                            input(id="editPsw" type="text").validate
-                            label(for="editPsw") Mot de passe
-                div.modal-footer
-                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text Annuler
-                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text Valider
-
-
-    //DELETE USER
-    div#deleteUser.modal
-        div.modal-content
-            h4 Supprimer utilisateur
-                div.modal-footer
-                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text Annuler
-                    a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text Valider
-
-
-
-    //ADD MODAL BUS
-    div(id="modalAddBus").modal.modal-fixed-footer
-        div.modal-content
-            h4 Ajouter
-            div.row
-                form.col.s12
-                    div.row
-                        div.input-field.col.s12
-                            input(id="addStartBus", type="text").validate
-                            label(for="addStartBus") Lieu de départ
-                    div.row
-                        div.input-field.col.s12
-                            input(id="addEndBus", type="text").validate
-                            label(for="addEndBus") Lieu d'arrivée
-        div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
-
-    //MODIFY MODAL BUS
-    div(id="modalModifyBus").modal.modal-fixed-footer
-        div.modal-content
-            h4 Modifier
-            div.row
-                form.col.s12
-                    div.row
-                        div.input-field.col.s12
-                            input(id="modStartBus", type="text").validate
-                            label(for="modStartBus") Lieu de départ
-                    div.row
-                        div.input-field.col.s12
-                            input(id="modEndBus", type="text").validate
-                            label(for="modEndBus") Lieu d'arrivée
-        div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
-
-    //DELETE MODAL BUS
-    div(id="modalDeleteBus").modal.modal-fixed-footer
-        div.modal-content
-            h4 Supprimer
-            div.row
-                form.col.s12
-                    div.row
-                        div.input-field.col.s12
-                            input(id="delStartBus", type="text").validate
-                            label(for="delStartBus") Lieu de départ
-                    div.row
-                        div.input-field.col.s12
-                            input(id="delEndBus", type="text").validate
-                            label(for="delEndBus") Lieu d'arrivée
-        div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
-
-
     //ADD MODAL ZONE
     div(id="modalAddZone").modal.modal-fixed-footer
         div.modal-content
             h4 Ajouter
             div.row
-                form(method='POST', action='/zoneadmin')#add-zone-form.col.s12
+                form(method='POST', action='/administration/admin')#add-zone-form.col.s12
                     div.row
                         div.input-field.col.s12
                             input(id="zone-name", name="zone_name", type="text").validate
                             label(for="zone-name") Nom
-                    //div.row
-                    //    div.input-field.col.s12
-                    //        select
-                    //            option(value="", disabled="disabled", selected="selected") Choisir un responsable
-                    //            option(value="1") Utilisateur 1
-                    //            option(value="2") Utilisateur 2
-                    //            option(value="3") Utilisateur 3
-                    //        label Responsable de zone
+                    div.row
+                        div.input-field.col.s12
+                            select
+                                option(value="", disabled="disabled", selected="selected") Choisir un responsable
+                                option(value="1") Utilisateur 1
+                                option(value="2") Utilisateur 2
+                                option(value="3") Utilisateur 3
+                            label Responsable de zone
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             button(type="submit", name="add", form="add-zone-form").btn.waves-effect.waves-light.modal-action.modal-close valider
@@ -384,7 +257,7 @@ block content
         div.modal-content
             h4 Modifier
             div.row
-                form.col.s12
+                form#edit-zone-form.col.s12
                     div.row
                         div.input-field.col.s12
                             input(id="zone-edit-id", name="zone-edit-id", type="text", disabled="disabled").validate
@@ -395,20 +268,6 @@ block content
                             label(for="zone-edit-name", id="zone-edit-name-label") Nom
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider
+            button(onclick=`updateZone(document.getElementById('zone-edit-id').value,document.getElementById('zone-edit-name').value)`).btn.waves-effect.waves-light.modal-action.modal-close sauvegarder
+                i.material-icons.right done
 
-    //DELETE MODAL ZONE
-    div(id="modalDeleteZone").modal.modal-fixed-footer
-        div.modal-content
-            h4 Supprimer
-            div.row
-                form.col.s12
-                    div.row
-                        div.input-field.col.s12 Êtes-vous sûr de vouloir supprimer la zone ?
-                    div.row
-                        div.input-field.col.s12
-                            input(id="delEndZone", type="text").validate
-                            label(for="delEndZone") Lieu d'arrivée
-        div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.green-text valider

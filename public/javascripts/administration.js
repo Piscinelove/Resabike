@@ -11,7 +11,9 @@ $(document).ready(function(){
             modal.find('input[name="zone-edit-id"]').val(trigger.data('id'));
             modal.find('input[name="zone-edit-name"]').val(trigger.data('name'));
             Materialize.updateTextFields();
+
         }
     });
 
 });
+

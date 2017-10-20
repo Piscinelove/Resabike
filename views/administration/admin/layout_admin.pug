@@ -12,11 +12,11 @@ html
                     li
                         a(href="#historic").white-text.scroll-to Historique
                     li
-                        a(href="#userList").white-text.scroll-to  Utilisateurs
+                        a(href="/administration/admin/users").white-text.scroll-to  Utilisateurs
                     li
                         a(href="#bus").white-text.scroll-to  Ligne
                     li
-                        a(href="#zone").white-text.scroll-to  Zone
+                        a(href="/administration/admin/zone").white-text.scroll-to  Zone
                     li
                         a(href="#user").white-text.scroll-to  User
 
@@ -41,7 +41,9 @@ html
 
         script(src='https://code.jquery.com/jquery-3.2.1.min.js', type="text/javascript")
         script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js', type="text/javascript")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.6.0/superagent.min.js", type="text/javascript")
         script(src='/javascripts/side-nav.js', type="text/javascript")
         script(src='/javascripts/autocomplete.js', type="text/javascript")
         script(src='/javascripts/administration.js', type="text/javascript")
+        script(src='/javascripts/administration/zone-rest.js', type="text/javascript")
 

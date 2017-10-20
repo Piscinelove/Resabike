@@ -26,12 +26,11 @@ $(document).ready(function(){
                 },
                 minLength: 2, // The minimum length of the input for the autocomplete to start. Default: 1.
             });
-            stationsString = JSON.stringify(stations);
 
         });
     });
 
-    $('input.autocomplete').change(function() {
-        $(this).val(Object.keys(stations)[0]);
-    });
+    // $('input.autocomplete').change(function() {
+    //     $(this).val(Object.keys(stations)[0]);
+    // });
 });
