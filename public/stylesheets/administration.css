@@ -6,6 +6,15 @@ main, footer
     padding-left: 300px;
 }
 
+/*select[required] {*/
+    /*opacity: 0;*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*height: 0;*/
+    /*border: none;*/
+    /*margin-top: -50px;*/
+/*}*/
+
 @media only screen and (max-width: 992px) {
     main, footer {
         padding-left: 0;

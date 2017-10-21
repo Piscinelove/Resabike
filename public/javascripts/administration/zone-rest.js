@@ -1,3 +1,14 @@
+$(document).ready(function(){
+    $('.modal.modal-edit-zone').modal({
+        ready: function(modal, trigger) {
+            modal.find('input[name="zone-edit-id"]').val(trigger.data('id'));
+            modal.find('input[name="zone-edit-name"]').val(trigger.data('name'));
+            Materialize.updateTextFields();
+
+        }
+    });
+});
+
 function updateZone(){
     var id = $("#zone-edit-id").val();
     var name = $("#zone-edit-name").val();
@@ -47,8 +58,9 @@ function createZone(){
             }
             else
             {
-                refresh();
+                alert("putain");
                 $("#modal-add-zone").modal('close');
+                refreshZones();
                 resetForm("#add-zone-form");
                 successToast("Zone ajoutée");
             }
@@ -73,7 +85,8 @@ function deleteZone(id){
         });
 }
 
-function refresh() {
+function refreshZones() {
+    alert("putain");
     $("#tab-zones").load(" #tab-zones");
 }
 

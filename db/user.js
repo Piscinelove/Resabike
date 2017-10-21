@@ -1,11 +1,11 @@
 var models = require('../models');
 
-function createUser(pseudo, password, email, idRole, idZone)
+function createUser(username, email, password, idRole, idZone)
 {
     return Promise.resolve(
         models.User.findOrCreate({
             where:{
-                pseudo:pseudo,
+                username:username,
                 email:email
             },
             defaults:{
@@ -17,20 +17,20 @@ function createUser(pseudo, password, email, idRole, idZone)
     )
 }
 
-function getZoneByName(name)
+function getUserByEmail(email)
 {
     return Promise.resolve(
-        models.Zone.findOne
+        models.User.findOne
         ({
-            where: {name: name}
+            where: {email: email}
         })
     )
 }
 
-function deleteZone(id)
+function deleteUser(id)
 {
     return Promise.resolve(
-        models.Zone.destroy
+        models.User.destroy
         ({
             where:{
                 id:id
@@ -39,12 +39,17 @@ function deleteZone(id)
     )
 }
 
-function updateZone(id, name)
+function updateUser(id, email, password, idRole, idZone)
 {
     return Promise.resolve(
-        models.Zone.update
+        models.User.update
         (
-            { name : name},
+            {
+              email:email,
+              password:password,
+              idRole:idRole,
+              idZone:idZone
+            },
             {where:{id:id}}
         )
     )
@@ -59,6 +64,6 @@ function getAllUsers()
 
 module.exports.createUser = createUser;
 module.exports.getAllUsers = getAllUsers;
-module.exports.updateZone = updateZone;
-module.exports.deleteZone = deleteZone;
-module.exports.getZoneByName = getZoneByName;
+module.exports.updateUser = updateUser;
+module.exports.deleteUser = deleteUser;
+module.exports.getUserByEmail = getUserByEmail;
