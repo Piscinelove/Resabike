@@ -38,14 +38,6 @@ block content
                         div.input-field.col.s12
                             input(id="zone-add-name", name="zone-add-name", type="text").validate
                             label(for="zone-add-name") Nom
-                    //div.row
-                    //    div.input-field.col.s12
-                    //        select
-                    //            option(value="", disabled="disabled", selected="selected") Choisir un responsable
-                    //            option(value="1") Utilisateur 1
-                    //            option(value="2") Utilisateur 2
-                    //            option(value="3") Utilisateur 3
-                    //        label Responsable de zone
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             button(onclick="createZone()").btn.waves-effect.waves-light.modal-action valider
@@ -67,6 +59,6 @@ block content
                             label(for="zone-edit-name", id="zone-edit-name-label") Nom
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="updateZone()").btn.waves-effect.waves-light.modal-action.modal-close sauvegarder
+            button(onclick="updateZone()").btn.waves-effect.waves-light.modal-action sauvegarder
                 i.material-icons.right done
 

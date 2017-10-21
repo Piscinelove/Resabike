@@ -5,7 +5,13 @@ function createUser(pseudo, password, email, idRole, idZone)
     return Promise.resolve(
         models.User.findOrCreate({
             where:{
-                name:name
+                pseudo:pseudo,
+                email:email
+            },
+            defaults:{
+                password:password,
+                idRole:idRole,
+                idZone:idZone
             }
         })
     )
@@ -44,15 +50,15 @@ function updateZone(id, name)
     )
 }
 
-function getAllZones()
+function getAllUsers()
 {
     return Promise.resolve(
-        models.Zone.findAll()
+        models.User.findAll()
     )
 }
 
-module.exports.createZone = createZone;
-module.exports.getAllZones = getAllZones;
+module.exports.createUser = createUser;
+module.exports.getAllUsers = getAllUsers;
 module.exports.updateZone = updateZone;
 module.exports.deleteZone = deleteZone;
 module.exports.getZoneByName = getZoneByName;

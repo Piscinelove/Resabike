@@ -2,6 +2,12 @@ function updateZone(){
     var id = $("#zone-edit-id").val();
     var name = $("#zone-edit-name").val();
 
+    if(name === "" || name === null)
+    {
+        errorToast("Veuillez saisir un nom de zone");
+        return;
+    }
+
     superagent
         .put("/administration/admin/zone")
         .send({id: id, name: name})
@@ -9,15 +15,14 @@ function updateZone(){
         {
             if (err || !res.ok)
             {
-                Materialize.toast("Cette zone existe déjà", 4000);
+                errorToast("Cette zone existe déjà");
             }
             else
             {
+                refresh();
                 $("#modal-edit-zone").modal('close');
-                Materialize.toast("Zone mise à jour", 500,'',function()
-                {
-                    location.reload();
-                });
+                resetForm("#edit-zone-form");
+                successToast("Zone mise à jour");
             }
         });
 }
@@ -25,11 +30,11 @@ function updateZone(){
 function createZone(){
     var name = $("#zone-add-name").val();
 
-    // if(name === "" || name === null)
-    // {
-    //     Materialize.toast("Veuillez saisir un nom de zone", 4000);
-    //     return;
-    // }
+    if(name === "" || name === null)
+    {
+        errorToast("Veuillez saisir un nom de zone");
+        return;
+    }
 
     superagent
         .post("/administration/admin/zone")
@@ -38,29 +43,32 @@ function createZone(){
         {
             if (err || !res.ok)
             {
-                Materialize.toast("Cette zone existe déjà", 4000);
+                errorToast("Cette zone existe déjà");
             }
             else
             {
                 refresh();
                 $("#modal-add-zone").modal('close');
                 resetForm("#add-zone-form");
-                Materialize.toast("Zone ajoutée", 4000);
+                successToast("Zone ajoutée");
             }
         });
 }
 
 function deleteZone(id){
 
-    superagent.delete("/administration/admin/zone/"+id)
-        .end(function(err, res){
-            if (err || !res.ok) {
-                Materialize.toast("Erreur interne", 4000);
-            } else {
-                Materialize.toast("Zone supprimée", 500,'',function()
-                {
-                    window.location.href="/administration/admin/zone";
-                });
+    superagent
+        .delete("/administration/admin/zone/"+id)
+        .end(function(err, res)
+        {
+            if (err || !res.ok)
+            {
+                errorToast("Erreur interne");
+                Materialize.toast("Erreur interne", 2000);
+            } else
+            {
+                refresh();
+                successToast("Zone supprimée");
             }
         });
 }

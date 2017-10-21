@@ -21,6 +21,16 @@ function getZoneByName(name)
     )
 }
 
+function getZoneById(id)
+{
+    return Promise.resolve(
+        models.Zone.findOne
+        ({
+            where: {id: id}
+        })
+    )
+}
+
 function deleteZone(id)
 {
     return Promise.resolve(
@@ -56,3 +66,4 @@ module.exports.getAllZones = getAllZones;
 module.exports.updateZone = updateZone;
 module.exports.deleteZone = deleteZone;
 module.exports.getZoneByName = getZoneByName;
+module.exports.getZoneById = getZoneById;

@@ -12,4 +12,23 @@ function createRole(name)
     )
 }
 
+function getAllRoles()
+{
+    return Promise.resolve(
+        models.Role.findAll()
+    )
+}
+
+function getRoleById(id)
+{
+    return Promise.resolve(
+        models.Role.findOne
+        ({
+            where: {id: id}
+        })
+    )
+}
+
 module.exports.createRole = createRole;
+module.exports.getAllRoles = getAllRoles;
+module.exports.getRoleById = getRoleById;
