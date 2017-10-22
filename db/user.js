@@ -5,10 +5,10 @@ function createUser(username, email, password, idRole, idZone)
     return Promise.resolve(
         models.User.findOrCreate({
             where:{
-                username:username,
-                email:email
+                username:username
             },
             defaults:{
+                email:email,
                 password:password,
                 idRole:idRole,
                 idZone:idZone
@@ -39,16 +39,31 @@ function deleteUser(id)
     )
 }
 
-function updateUser(id, email, password, idRole, idZone)
+function updateUser(id, email, idRole, idZone)
 {
     return Promise.resolve(
         models.User.update
         (
             {
               email:email,
-              password:password,
               idRole:idRole,
               idZone:idZone
+            },
+            {where:{id:id}}
+        )
+    )
+}
+
+function updateUserPassword(id, email, password, idRole, idZone)
+{
+    return Promise.resolve(
+        models.User.update
+        (
+            {
+                email:email,
+                password:password,
+                idRole:idRole,
+                idZone:idZone
             },
             {where:{id:id}}
         )
@@ -67,3 +82,4 @@ module.exports.getAllUsers = getAllUsers;
 module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
 module.exports.getUserByEmail = getUserByEmail;
+module.exports.updateUserPassword = updateUserPassword;

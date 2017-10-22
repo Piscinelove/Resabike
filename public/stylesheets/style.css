@@ -123,24 +123,6 @@ main {
   padding-left: 20em;
 }
 
-
-.tab-scroll tbody {
-  display:block;
-  height:300px;
-  overflow:auto;
-}
-
-.tab-scroll thead, .tab-scroll tbody tr {
-  display:table;
-  width:100%;
-  table-layout:fixed;
-}
-
-.tab-scroll thead {
-  width: calc( 100% - 1em )
-}
-
-
 .modal-size{
   width: 30%;
 }

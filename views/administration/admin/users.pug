@@ -95,7 +95,7 @@ block content
                             option(value="", disabled="disabled", selected="selected") Choisir un rôle
                             each role in roles
                                 option(value=`${role.id}`)=role.name
-                        label(for="user-add-role") Rôle
+                        label(for="user-edit-role") Rôle
                     div.input-field.col.s12
                         select(name="zone", required="required")#user-edit-zone.validate
                             option(value="", disabled="disabled", selected="selected") Choisir une zone

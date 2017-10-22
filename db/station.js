@@ -15,18 +15,15 @@ function getStationIdByName(name)
     )
 }
 
-
-// function insertStation(id, name)
-// {
-//     models.Station.create({
-//         id:id,
-//         name: name
-//     }).then(function() {
-//         console.error(`${name} station saved successfully in database`);
-//     }).catch(function(err) {
-//         console.log(`${err}`);
-//     });
-// }
+function getStationById(id)
+{
+    return Promise.resolve(
+        models.Station.findOne
+        ({
+            where: {id: id}
+        })
+    )
+}
 
 function insertStation(id, name)
 {
@@ -38,28 +35,6 @@ function insertStation(id, name)
         })
     )
 }
-
-// function insertStationInDatabase(stationsArray)
-// {
-//     var stops = stationsArray;
-//
-//     return new Promise(function (resolve, reject) {
-//         var promises = [];
-//
-//         for (let i = 0; i < stops.length; i++)
-//         {
-//             var stop = stops[i];
-//             console.log(stop.line+"line ici");
-//             promises.push(insertStation(stop.stopid, stop.name));
-//         }
-//
-//         Promise.all(promises).then(function () {
-//             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");
-//             //dbLine.insertLineInDatabase(stationsArray, 1);
-//         })
-//
-//     })
-// }
 
 function  getStationIdByNameFromAPI(name) {
     var url = "https://timetable.search.ch/api/stationboard.en.json?show_subsequent_stops=1&stop="
@@ -111,3 +86,4 @@ module.exports.insertStation = insertStation;
 module.exports.insertStationInDatabase = insertStationInDatabase;
 module.exports.getStationIdByName = getStationIdByName;
 module.exports.getStationIdByNameFromAPI = getStationIdByNameFromAPI;
+module.exports.getStationById = getStationById;

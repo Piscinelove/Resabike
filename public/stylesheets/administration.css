@@ -15,6 +15,33 @@ main, footer
     /*margin-top: -50px;*/
 /*}*/
 
+.select-wrapper label.invalid {
+    margin-top: 62px;
+    margin-left: -11px;
+    color: #F44336;
+}
+
+.add-lines{
+    margin-left: auto;
+}
+
+
+/*.tab-scroll tbody {*/
+    /*display:block;*/
+    /*height:300px;*/
+    /*overflow:auto;*/
+/*}*/
+
+/*.tab-scroll thead, .tab-scroll tbody tr {*/
+    /*display:table;*/
+    /*width:100%;*/
+    /*table-layout:fixed;*/
+/*}*/
+
+/*.tab-scroll thead {*/
+    /*width: calc( 100% - 1em )*/
+/*}*/
+
 @media only screen and (max-width: 992px) {
     main, footer {
         padding-left: 0;

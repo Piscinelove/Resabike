@@ -4,6 +4,7 @@ var dbZone = require('../db/zone');
 var dbUser = require('../db/user');
 var dbRole = require('../db/role');
 var userManagement = require('../module/user-management');
+var lineManagement = require('../module/line-management');
 
 /* GET home page. */
 router.get('/admin/zone', function(req, res, next) {
@@ -20,6 +21,16 @@ router.get('/admin/users', function(req, res, next) {
             res.render('administration/admin/users',{zones:result[0], roles:result[1], users:result[2]});
         })
 });
+
+router.get('/admin/lines', function(req, res, next) {
+
+    lineManagement.getZonesAndLines()
+        .then(function (result) {
+            res.render('administration/admin/lines',{zones:result[0], lines:result[1]});
+        })
+});
+
+
 
 router.post('/admin/zone', function(req, res){
 
@@ -75,21 +86,20 @@ router.put('/admin/users', function(req, res){
     let id = req.body.id;
     let email = req.body.email;
     let chpassword = req.body.chpassword;
+    let chpassword2 = req.body.chpassword2;
     let idRole = req.body.idRole;
     let idZone = req.body.idZone;
 
-    dbUser.getUserByEmail(email).then(function (userFounded) {
-        if(userFounded === null)
-            return dbUser.updateUser(id, email, chpassword, idRole, idZone).then(
-                function () {
-                    res.status(200).send("User updated");
+    if((chpassword === null || chpassword === "")&&(chpassword2 === null || chpassword === ""))
+        dbUser.updateUser(id, email, idRole, idZone).then(function () {
+                res.status(200).send("User updated");
+            }
+        );
+    else
+        dbUser.updateUserPassword(id,email,chpassword,idRole,idZone).then(function () {
+                res.status(200).send("User updated");
+        })
 
-                }
-            )
-        else
-            res.status(500).send("User with same email already exist");
-
-    })
 
 });
 

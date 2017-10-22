@@ -1,0 +1,144 @@
+extends layout_admin
+
+block content
+    div#zone.section.full-section.container
+        h2 Lignes
+            div.row.center-align
+                div.col.s4.right
+                    a(href="#modal-add-line").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
+                        i.material-icons add
+        div.row
+            ul(data-collapsible="accordion").collapsible.popout
+                each zone in zones
+                    li
+                        div.collapsible-header
+                            div
+                                i.material-icons landscape
+                                = zone.name
+                            a.waves-effect.waves-light.btn.add-lines ligne
+                                i.material-icons.left plus_one
+
+                        div.collapsible-body
+                            span
+                                table.centered.highlight.tab-scroll#tab-lines
+                                    thead
+                                        tr
+                                            th ID
+                                            th DEPARTURE
+                                            th TERMINAL
+                                            th MODIFIER
+                                            th SUPPRIMER
+                                    tbody
+                                        each line in lines
+                                            if zone.id == line.idZone
+                                                tr
+                                                    td= line.id
+                                                    td= line.departure
+                                                    td= line.arrival
+                                                    td
+                                                        a.waves-effect.waves-light.btn.modal-trigger(href="#modal-edit-line", data-id=line.id)
+                                                            i.material-icons edit
+                                                    td
+                                                        button.waves-effect.waves-light.btn(onclick=`deleteUser(${line.id})`)
+                                                            i.material-icons delete
+
+
+
+            //table.centered.highlight.tab-scroll#tab-lines
+            //    thead
+            //        tr
+            //            th ID
+            //            th USERNAME
+            //            th EMAIL
+            //            th ROLE
+            //            th ZONE
+            //            th MODIFIER
+            //            th SUPPRIMER
+            //    tbody
+            //        each user in users
+            //            tr
+            //                td= user.id
+            //                td= user.username
+            //                td= user.email
+            //                td= user.role
+            //                td= user.zone
+            //                td
+            //                    a.waves-effect.waves-light.btn.modal-trigger(href="#modal-edit-line", data-id=user.id, data-username=user.username, data-email=user.email, data-idrole=user.idRole, data-idzone=user.idZone)
+            //                        i.material-icons edit
+            //                td
+            //                    button.waves-effect.waves-light.btn(onclick=`deleteUser(${user.id})`)
+            //                        i.material-icons delete
+
+    //ADD MODAL
+    div(id="modal-add-line").modal.modal-fixed-footer
+        div.modal-content
+            h4 Ajouter un utilisateur
+            div.row
+                form#add-line-form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="line-add-username", name="username", type="text", required="required", aria-required="true").validate
+                            label(for="line-add-username") Username
+                        div.input-field.col.s12
+                            input(id="line-add-email", name="email", type="email", required="required", aria-required="true").validate
+                            label(for="line-add-email") Email
+                        div.input-field.col.s6
+                            input(id="line-add-password", name="password", type="password", required="required", aria-required="true").validate
+                            label(for="line-add-password") Mot de passe
+                        div.input-field.col.s6
+                            input(id="line-add-password2", name="password2", type="password", required="required", aria-required="true").validate
+                            label(for="line-add-password2") Confirmer le mot de passe
+                        //div.input-field.col.s12
+                        //    select(name="role", required="required")#line-add-role.validate
+                        //        option(value="", disabled="disabled", selected="selected") Choisir un rôle
+                        //        each role in roles
+                        //            option(value=`${role.id}`)=role.name
+                        //    label(for="line-add-role") Rôle
+                        //div.input-field.col.s12
+                        //    select(name="zone", required="required")#line-add-zone.validate
+                        //        option(value="", disabled="disabled", selected="selected") Choisir une zone
+                        //        each zone in zones
+                        //            option(value=`${zone.id}`)=zone.name
+                        //    label Zone
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            button(onclick="createUser()", type="submit", for="#add-line-form").btn.waves-effect.waves-light.modal-action valider
+                i.material-icons.right send
+
+    //MODIFY MODAL
+    div(id="modal-edit-line").modal.modal-fixed-footer.modal-edit-line
+        div.modal-content
+            h4 Modifier
+            div.row
+                form#edit-line-form.col.s12
+                    div.input-field.col.s12
+                        input(id="line-edit-id", name="id", type="text", disabled="disabled").validate
+                        label(for="line-edit-id", disabled="disabled") Id
+                    div.input-field.col.s12
+                        input(id="line-edit-username", name="username", type="text", disabled="disabled").validate
+                        label(for="line-edit-username", disabled="disabled") Username
+                    div.input-field.col.s12
+                        input(id="line-edit-email", name="email", type="email", required="required", aria-required="true").validate
+                        label(for="line-edit-email") Email
+                    div.input-field.col.s6
+                        input(id="line-edit-chpassword", name="chpassword", type="password").validate
+                        label(for="line-edit-chpassword") Change votre mot de passe
+                    div.input-field.col.s6
+                        input(id="line-edit-chpassword2", name="chpassword2", type="password").validate
+                        label(for="line-edit-chpassword2") Confirmer le mot de passe
+                    //div.input-field.col.s12
+                    //    select(name="role", required="required")#line-edit-role.validate
+                    //        option(value="", disabled="disabled", selected="selected") Choisir un rôle
+                    //        each role in roles
+                    //            option(value=`${role.id}`)=role.name
+                    //    label(for="line-edit-role") Rôle
+                    //div.input-field.col.s12
+                    //    select(name="zone", required="required")#line-edit-zone.validate
+                    //        option(value="", disabled="disabled", selected="selected") Choisir une zone
+                    //        each zone in zones
+                    //            option(value=`${zone.id}`)=zone.name
+                    //    label Zone
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            button(onclick="updateUser()", type="submit", for="#edit-line-form").btn.waves-effect.waves-light.modal-action sauvegarder
+                i.material-icons.right done

@@ -10,6 +10,7 @@ $(document).ready(function(){
             $('select[id="user-edit-zone"]').material_select();
             Materialize.updateTextFields();
 
+
         }
     });
 });

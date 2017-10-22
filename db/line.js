@@ -182,7 +182,15 @@ function insertLineInDatabase(stationsArray, idZone)
     })
 }
 
+function getAllLines()
+{
+    return Promise.resolve(
+        models.Line.findAll()
+    )
+}
+
 module.exports.insertLine = insertLine;
 module.exports.createLine = createLine;
 module.exports.insertLineInDatabase = insertLineInDatabase;
+module.exports.getAllLines = getAllLines;
 
