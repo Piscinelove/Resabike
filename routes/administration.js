@@ -61,6 +61,18 @@ router.post('/admin/users', function(req, res){
     })
 });
 
+router.post('/admin/lines', function(req, res){
+
+    let idZone = req.body.idZone;
+    let departure = req.body.departure;
+    let terminal = req.body.terminal;
+
+    lineManagement.createLine(departure,terminal,idZone).then(function (result) {
+            res.status(200).send("Success");
+            console.log(result);
+    })
+});
+
 router.put('/admin/zone', function(req, res){
 
     let id = req.body.id;

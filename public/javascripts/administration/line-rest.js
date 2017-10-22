@@ -1,4 +1,10 @@
 $(document).ready(function(){
+    // $('.add-lines').click(function(e){
+    //     e.stopPropagation();
+    //
+    //     $(".modal#modal-add-line").modal("open");
+    // });
+
     $('.modal#modal-edit-user').modal({
         ready: function(modal, trigger) {
             modal.find('input[id="user-edit-id"]').val(trigger.data('id'));
@@ -8,6 +14,16 @@ $(document).ready(function(){
             $('select[id="user-edit-role"]').material_select();
             modal.find('select[id="user-edit-zone"]').val(trigger.data('idzone'));
             $('select[id="user-edit-zone"]').material_select();
+            Materialize.updateTextFields();
+
+
+        }
+    });
+
+    $('.modal#modal-add-line').modal({
+        ready: function(modal, trigger) {
+            modal.find('input[id="line-add-idZone"]').val(trigger.data('id'));
+            alert(modal.find('input[id="line-add-idZone"]').val(trigger.data('id')));
             Materialize.updateTextFields();
 
 
@@ -44,35 +60,28 @@ function updateUser(){
             });
 }
 
-function createUser(){
-    var username = $("#user-add-username").val();
-    var email = $("#user-add-email").val();
-    var password = $("#user-add-password").val();
-    var password2 = $("#user-add-password2").val();
-    var idRole = $("#user-add-role").val();
-    var idZone = $("#user-add-zone").val();
+function createLine(){
+    var idZone = $("#line-add-idZone").val();
+    var departure = $("#line-add-departure").val();
+    var terminal = $("#line-add-terminal").val();
 
-
-    if($("#add-user-form").valid())
+    if($("#add-line-form").valid())
         superagent
-            .post("/administration/admin/users")
+            .post("/administration/admin/lines")
             .send({
-                username: username,
-                email: email,
-                password: password,
-                password2: password2,
-                idRole: idRole,
-                idZone: idZone
+                idZone: idZone,
+                departure: departure,
+                terminal: terminal
             })
             .end(function (err, res) {
                 if (err || !res.ok) {
-                    errorToast("Cet utilisateur existe déjà");
+                    errorToast("Cette ligne existe déjà");
                 }
                 else {
                     refreshUsers();
                     $("#modal-add-user").modal('close');
                     resetForm("#add-user-form");
-                    successToast("User ajoutée");
+                    successToast("Ligne ajoutée");
                 }
             });
     else

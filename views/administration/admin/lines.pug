@@ -3,10 +3,7 @@ extends layout_admin
 block content
     div#zone.section.full-section.container
         h2 Lignes
-            div.row.center-align
-                div.col.s4.right
-                    a(href="#modal-add-line").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
-                        i.material-icons add
+
         div.row
             ul(data-collapsible="accordion").collapsible.popout
                 each zone in zones
@@ -15,7 +12,7 @@ block content
                             div
                                 i.material-icons landscape
                                 = zone.name
-                            a.waves-effect.waves-light.btn.add-lines ligne
+                            a(href="#modal-add-line", data-id=zone.id, data-zone=zone.name).waves-effect.waves-light.btn.modal-trigger.add-lines ligne
                                 i.material-icons.left plus_one
 
                         div.collapsible-body
@@ -36,7 +33,7 @@ block content
                                                     td= line.departure
                                                     td= line.arrival
                                                     td
-                                                        a.waves-effect.waves-light.btn.modal-trigger(href="#modal-edit-line", data-id=line.id)
+                                                        a.waves-effect.waves-light.btn.modal-trigger(href="#modal-edit-line")
                                                             i.material-icons edit
                                                     td
                                                         button.waves-effect.waves-light.btn(onclick=`deleteUser(${line.id})`)
@@ -70,39 +67,24 @@ block content
             //                        i.material-icons delete
 
     //ADD MODAL
-    div(id="modal-add-line").modal.modal-fixed-footer
+    div(id="modal-add-line").modal.modal-fixed-footer.modal-add-line
         div.modal-content
-            h4 Ajouter un utilisateur
+            h4 Ajouter une ligne à la zone
             div.row
                 form#add-line-form.col.s12
                     div.row
                         div.input-field.col.s12
-                            input(id="line-add-username", name="username", type="text", required="required", aria-required="true").validate
-                            label(for="line-add-username") Username
+                            input(id="line-add-idZone", name="id", type="text", disabled="disabled").validate
+                            label(for="line-add-idZone", disabled="disabled") Id
                         div.input-field.col.s12
-                            input(id="line-add-email", name="email", type="email", required="required", aria-required="true").validate
-                            label(for="line-add-email") Email
-                        div.input-field.col.s6
-                            input(id="line-add-password", name="password", type="password", required="required", aria-required="true").validate
-                            label(for="line-add-password") Mot de passe
-                        div.input-field.col.s6
-                            input(id="line-add-password2", name="password2", type="password", required="required", aria-required="true").validate
-                            label(for="line-add-password2") Confirmer le mot de passe
-                        //div.input-field.col.s12
-                        //    select(name="role", required="required")#line-add-role.validate
-                        //        option(value="", disabled="disabled", selected="selected") Choisir un rôle
-                        //        each role in roles
-                        //            option(value=`${role.id}`)=role.name
-                        //    label(for="line-add-role") Rôle
-                        //div.input-field.col.s12
-                        //    select(name="zone", required="required")#line-add-zone.validate
-                        //        option(value="", disabled="disabled", selected="selected") Choisir une zone
-                        //        each zone in zones
-                        //            option(value=`${zone.id}`)=zone.name
-                        //    label Zone
+                            input(id="line-add-departure", name="departure", type="text", required="required", aria-required="true").validate.autocomplete
+                            label(for="line-add-departure") départ
+                        div.input-field.col.s12
+                            input(id="line-add-terminal", name="terminal", type="text", required="required", aria-required="true").validate.autocomplete
+                            label(for="line-add-terminal") arrivée
         div.modal-footer
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="createUser()", type="submit", for="#add-line-form").btn.waves-effect.waves-light.modal-action valider
+            button(onclick="createLine()", type="submit", for="#add-line-form").btn.waves-effect.waves-light.modal-action valider
                 i.material-icons.right send
 
     //MODIFY MODAL

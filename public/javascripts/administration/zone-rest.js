@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.modal.modal-edit-zone').modal({
+    $('.modal#modal-edit-zone').modal({
         ready: function(modal, trigger) {
             modal.find('input[id="zone-edit-id"]').val(trigger.data('id'));
             modal.find('input[id="zone-edit-name"]').val(trigger.data('name'));
