@@ -20,6 +20,7 @@ $(document).ready(function(){
         }
     });
 
+
     $('.modal#modal-add-line').modal({
         ready: function(modal, trigger) {
             modal.find('input[id="line-add-idZone"]').val(trigger.data('id'));

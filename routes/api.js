@@ -7,8 +7,8 @@ var dbRole = require('../db/role');
 
 var line = require('../db/line');
 var url = "https://timetable.search.ch/api/route.en.json?from=sierre&to=zinal";
-var from = "Sierre, poste/gare";
-var to = "Vissoie, poste";
+var from = "Sierre/Siders";
+var to = "Mollens VS";
 
 
 
@@ -59,7 +59,7 @@ function findCorrectLine(from, to) {
     return new Promise(function (resolve, reject) {
             let url = "https://timetable.search.ch/api/route.en.json?";
             var stationsToAdd = [];
-            var idLine;
+
 
             axios.get(url+"from="+from+"&to="+to).then(function (response) {
                 console.log("API QUERRY : https://timetable.search.ch/api/route.en.json?from="+from+"&to="+to);
@@ -102,7 +102,12 @@ getLinesFromAPI(from,to)
     }).then(function (stationsAndLinesArray) {
         return dbLineStation.insertLineStationInDatabase(stationsAndLinesArray);
     }).then(function (lineStation) {
-        return Promise.all(dbRole.createRole("admin"),dbRole.createRole("zoneadmin"),dbRole.createRole("driver"));
+        var promises = [];
+        promises.push(dbRole.createRole("admin"));
+        promises.push(dbRole.createRole("zoneadmin"));
+        promises.push(dbRole.createRole("driver"));
+
+        return Promise.all(promises);
     }).catch(function (error) {
         console.error(error+"youlou");
 

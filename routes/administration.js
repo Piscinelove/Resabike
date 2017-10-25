@@ -67,10 +67,14 @@ router.post('/admin/lines', function(req, res){
     let departure = req.body.departure;
     let terminal = req.body.terminal;
 
-    lineManagement.createLine(departure,terminal,idZone).then(function (result) {
+    lineManagement.createLine(departure,terminal,idZone)
+        .then(function (success) {
             res.status(200).send("Success");
-            console.log(result);
-    })
+            console.log(success+"allez");
+        }).catch(function (error) {
+            console.log()
+            console.log(error+" testing");
+        })
 });
 
 router.put('/admin/zone', function(req, res){

@@ -56,9 +56,10 @@ function getLinesFromAPI(from, to) {
             var linesArray = response.data.connections[0].legs;
 
             if (linesArray.length <= 2) {
-                from = response.data.connections[0].legs[0].name;
+                var idLine = response.data.connections[0].legs[0].idLine;
+                //from = response.data.connections[0].legs[0].name;
                 to = response.data.connections[0].legs[0].terminal;
-                findCorrectLine(from, to).then(function (stationsToAdd) {
+                findDepartureFromLineAndTerminal(idLine, to).then(function (stationsToAdd) {
                     resolve(stationsToAdd);
                 }).catch(function (error) {
                     reject(error);
@@ -67,19 +68,56 @@ function getLinesFromAPI(from, to) {
             else {
                 var error = '';
                 var errorArray = [];
+                var promises = [];
+
                 for (var i = 0; i < response.data.connections[0].legs.length - 1; i++) {
 
                     var type = response.data.connections[0].legs[i].type;
-                    if (type == 'bus' || type == 'post') {
-                        error += response.data.connections[0].legs[i].name + ' | '
-                            + response.data.connections[0].legs[i].terminal + '\n';
-                        errorArray.push([response.data.connections[0].legs[i].name, response.data.connections[0].legs[i].terminal]);
+                    if (type == 'bus' || type == 'post')
+                    {
+                        var idLine = response.data.connections[0].legs[i].line;
+                        var correctTo = response.data.connections[0].legs[i].terminal;
+                        promises.push(findDepartureFromLineAndTerminal(idLine, correctTo));
                     }
                 }
+                Promise.all(promises).then(function (response) {
+                    for(var i = 0; i < response.length; i++)
+                    {
+                        error += response[i][0][0].name + ' | '
+                            + response[i][0][1].name + '\n';
+                        errorArray.push([response[i][0][0].name, response[i][0][response[i][0].length-1].name]);
+                        console.log("putain : "+[response[i][0][0].name, response[i][0][response[i][0].length-1].name])
+                    }
+                })
                 reject([error,errorArray]);
             }
         }).catch(function (error) {
             console.log(error);
+            reject(error);
+        })
+    })
+}
+
+function findDepartureFromLineAndTerminal(idLine, to) {
+    return new Promise(function (resolve, reject) {
+        let url = "https://timetable.search.ch/api/stationboard.en.json?stop=";
+
+        axios.get(url+to).then(function (response) {
+            console.log("API QUERRY :"+url+to);
+            var data = response.data.connections;
+            var from;
+
+            for(var i = 0; i < data.length; i++)
+            {
+                if(data[i].line == idLine){
+                    from = data[i].terminal.name;
+                    i = data.length;
+                }
+            }
+
+            findCorrectLine(from, to).then(function (response) {
+                resolve(response);
+            })
         })
     })
 }
@@ -124,22 +162,30 @@ function findCorrectLine(from, to) {
 }
 
 function createLine(from, to, idZone) {
-    return Promise.resolve(
-        getLinesFromAPI(from,to)
+    return new Promise(function (resolve, reject) {
+        getLinesFromAPI(from, to)
             .then(function (stationsToAdd) {
-                console.log("Success  : "+stationsToAdd);
+                console.log("Success  : " + stationsToAdd);
                 return dbStation.insertStationInDatabase(stationsToAdd);
             }).then(function (stationsAdded) {
-            return dbLine.insertLineInDatabase(stationsAdded, idZone);
-        }).then(function (stationsAndLinesArray) {
-            return dbLineStation.insertLineStationInDatabase(stationsAndLinesArray);
-        }).then(function (lineStation) {
-            return Promise.all(dbRole.createRole("admin"),dbRole.createRole("zoneadmin"),dbRole.createRole("driver"));
-        }).catch(function (error) {
-            console.error(error+"youlou");
+                return dbLine.insertLineInDatabase(stationsAdded, idZone);
+            }).then(function (stationsAndLinesArray) {
+                return dbLineStation.insertLineStationInDatabase(stationsAndLinesArray);
+            }).then(function (lineStation) {
+                var promises = [];
+                promises.push(dbRole.createRole("admin"));
+                promises.push(dbRole.createRole("zoneadmin"));
+                promises.push(dbRole.createRole("driver"));
 
-        })
-    )
+                return Promise.all(promises)
+
+            }).then(function () {
+                resolve("Success");
+            }).catch(function (error) {
+                console.error(error + "youlou");
+                reject(error);
+            })
+    })
 }
 
 
