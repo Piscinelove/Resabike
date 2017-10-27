@@ -28,6 +28,17 @@ $(document).ready(function(){
         }
     });
 
+    $('#collapsible-list-zones-lines').searchIt({
+        useMaterializeCollapsible:true,
+        headerIdentifier: '.collapsible-header',
+        itemSelector:'tbody tr',
+        searchTemplate: '<div class="input-field">' +
+        '<input id="navbar-search" type="text">' +
+        '<label for="navbar-search"><i class="material-icons small">search</i> Search</label>' +
+        '</div>'
+
+    })
+
 
 
 
