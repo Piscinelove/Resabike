@@ -17,7 +17,7 @@ block content
 
                         div.collapsible-body
                             span
-                                table.centered.highlight.tab-scroll#tab-lines
+                                table.centered.highlight.tab-scroll&attributes({'id': 'tab-zone-line-'+zone.id})
                                     thead
                                         tr
                                             th ID
@@ -124,3 +124,9 @@ block content
             a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
             button(onclick="updateUser()", type="submit", for="#edit-line-form").btn.waves-effect.waves-light.modal-action sauvegarder
                 i.material-icons.right done
+
+    div(id="modal-suggestions-line").modal.bottom-sheet.suggestions
+        div.modal-content
+            h3 Nous n'avons malheureusement pas trouvé de ligne
+            h5 Voici quelques suggestions :
+            ul#suggestions-lines.collection

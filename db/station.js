@@ -70,7 +70,7 @@ function insertStationInDatabase(stationsToAdd)
 
         //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
         //promises.push(insertStation(8583435,"Zinal, village de vacances"));
-        promises.push(dbZone.createZone("Anniviers"));
+        //promises.push(dbZone.createZone("Anniviers"));
         //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
 
 

@@ -1,9 +1,17 @@
 $(document).ready(function(){
-    // $('.add-lines').click(function(e){
-    //     e.stopPropagation();
-    //
-    //     $(".modal#modal-add-line").modal("open");
-    // });
+    $('.add-lines').on("click", function(e){
+        var id = $(this).data('id');
+        e.stopPropagation();
+
+
+        $('.modal#modal-add-line').modal({
+            ready: function(modal, trigger) {
+                modal.find('input[id="line-add-idZone"]').val(id);
+                Materialize.updateTextFields();
+            }
+        });
+        $('.modal#modal-add-line').modal('open');
+    });
 
     $('.modal#modal-edit-user').modal({
         ready: function(modal, trigger) {
@@ -21,15 +29,9 @@ $(document).ready(function(){
     });
 
 
-    $('.modal#modal-add-line').modal({
-        ready: function(modal, trigger) {
-            modal.find('input[id="line-add-idZone"]').val(trigger.data('id'));
-            alert(modal.find('input[id="line-add-idZone"]').val(trigger.data('id')));
-            Materialize.updateTextFields();
 
 
-        }
-    });
+
 });
 
 function updateUser(){
@@ -76,13 +78,31 @@ function createLine(){
             })
             .end(function (err, res) {
                 if (err || !res.ok) {
-                    errorToast("Cette ligne existe déjà");
+                    if(err.status === 503)
+                    {
+                        var li = "";
+                        for(var i = 0; i < res.body.length; i++)
+                        {
+                            li += "<li class='collection-item'>"+res.body[i][0]+" "+res.body[i][1]+"</li>";
+
+                        }
+                        $("#modal-add-line").modal('close');
+                        $('#suggestions-lines').empty();
+                        $('#suggestions-lines').append(li);
+                        $('#modal-suggestions-line').modal("open");
+                        console.log(res.body);
+                        successToast("yeah");
+                    }
+                    else
+                        errorToast("Cette ligne appartient déjà à une autre zone");
                 }
                 else {
-                    refreshUsers();
-                    $("#modal-add-user").modal('close');
-                    resetForm("#add-user-form");
+                    refreshZoneLine(idZone);
+                    $('.collapsible').collapsible('open', idZone-1);
+                    $("#modal-add-line").modal('close');
+                    resetForm("#add-line-form");
                     successToast("Ligne ajoutée");
+
                 }
             });
     else
@@ -107,8 +127,8 @@ function deleteUser(id){
         });
 }
 
-function refreshUsers() {
-    $("#tab-users").load(" #tab-users");
+function refreshZoneLine(idZone) {
+    $("#tab-zone-line-"+idZone).load(" #tab-zone-line-"+idZone);
 }
 
 function resetForm(selector) {

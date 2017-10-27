@@ -70,10 +70,11 @@ router.post('/admin/lines', function(req, res){
     lineManagement.createLine(departure,terminal,idZone)
         .then(function (success) {
             res.status(200).send("Success");
-            console.log(success+"allez");
         }).catch(function (error) {
-            console.log()
-            console.log(error+" testing");
+            if(Array.isArray(error))
+                res.status(503).send(error);
+            else
+                res.status(500).send(error);
         })
 });
 
