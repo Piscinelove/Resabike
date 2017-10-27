@@ -23,7 +23,6 @@ block content
                                             th ID
                                             th DEPARTURE
                                             th TERMINAL
-                                            th MODIFIER
                                             th SUPPRIMER
                                     tbody
                                         each line in lines
@@ -33,10 +32,7 @@ block content
                                                     td= line.departure
                                                     td= line.arrival
                                                     td
-                                                        a.waves-effect.waves-light.btn.modal-trigger(href="#modal-edit-line")
-                                                            i.material-icons edit
-                                                    td
-                                                        button.waves-effect.waves-light.btn(onclick=`deleteUser(${line.id})`)
+                                                        button.waves-effect.waves-light.btn(onclick=`deleteLine(${line.id}, ${line.idZone})`)
                                                             i.material-icons delete
 
 

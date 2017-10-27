@@ -109,10 +109,10 @@ function createLine(){
         errorToast("Veuillez bien à remplir le formulaire");
 }
 
-function deleteUser(id){
+function deleteLine(id, idZone){
 
     superagent
-        .delete("/administration/admin/users/"+id)
+        .delete("/administration/admin/lines/"+id)
         .end(function(err, res)
         {
             if (err || !res.ok)
@@ -121,8 +121,8 @@ function deleteUser(id){
                 Materialize.toast("Erreur interne", 2000);
             } else
             {
-                refreshUsers();
-                successToast("User supprimé");
+                refreshZoneLine(idZone);
+                successToast("Line supprimée");
             }
         });
 }

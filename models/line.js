@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Line.hasMany(models.Booking, {foreignKey: 'idLine'});
 
       //Line.belongsToMany(models.Station, {through: 'lineStation',foreignKey: 'idLine'});
-      Line.hasMany(models.LineStation, {foreignKey: 'idLine'});
+      Line.hasMany(models.LineStation, {onDelete: 'CASCADE',foreignKey: 'idLine'});
 
       Line.hasMany(models.Trip, {foreignKey: 'idLine'});
   }

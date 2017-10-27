@@ -3,6 +3,7 @@ var router = express.Router();
 var dbZone = require('../db/zone');
 var dbUser = require('../db/user');
 var dbRole = require('../db/role');
+var dbLine = require('../db/line');
 var userManagement = require('../module/user-management');
 var lineManagement = require('../module/line-management');
 
@@ -138,6 +139,18 @@ router.delete("/admin/users/:id", function(req,res){
     dbUser.deleteUser(id).then(
         function () {
             res.status(200).send("Zone deleted");
+
+        }
+    )
+
+});
+
+router.delete("/admin/lines/:id", function(req,res){
+    let id = req.params.id;
+
+    dbLine.deleteLine(id).then(
+        function () {
+            res.status(200).send("Line deleted");
 
         }
     )

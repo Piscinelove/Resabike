@@ -48,6 +48,7 @@ function getLinesFromAPI(from, to) {
 
         axios.get(url).then(function (response) {
             console.log(url);
+            var promises = [];
             var stationsToAdd = [];
 
             //cleanAPI(response).then(function (response) {
@@ -58,19 +59,31 @@ function getLinesFromAPI(from, to) {
                     {
                         var idLine = linesArray[i].line;
                         to = linesArray[i].terminal;
+                        promises.push(findDepartureFromLineAndTerminal(idLine, to));
 
-                        findDepartureFromLineAndTerminal(idLine, to).then(function (response) {
-                            stationsToAdd.push(response);
-                            //resolve(response);
-                        }).catch(function (error) {
-                            reject(error);
-                        })
+                        // findDepartureFromLineAndTerminal(idLine, to).then(function (response) {
+                        //     stationsToAdd.push(response);
+                        //     //resolve(response);
+                        // }).catch(function (error) {
+                        //     reject(error);
+                        // })
                         console.log("Enough lines");
                     }
 
                 }
+                Promise.all(promises).then(function (response) {
+                    for (var i = 0; i < response.length; i++) {
+                        for(var j = 0; j < response[i].length; j++)
+                        {
+                            stationsToAdd.push(response[i][j]);
+                            console.log("putain : " + JSON.stringify([response[i][0].name, response[i][response[i].length - 1].name]));
+                        }
 
-                resolve(stationsToAdd);
+                    }
+                    resolve(stationsToAdd);
+                })
+
+
                 // if (linesArray.length == 1) {
                 //     var idLine = linesArray[0].line;
                 //     to = linesArray[0].terminal;

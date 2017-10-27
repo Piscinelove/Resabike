@@ -25,6 +25,18 @@ var dbStation = require('../db/station');
 //     })
 // }
 
+function deleteLine(id)
+{
+    return Promise.resolve(
+        models.Line.destroy
+        ({
+            where:{
+                id:id
+            }
+        })
+    )
+}
+
 function insertLine(number, zone, departure, arrival)
 {
     return Promise.resolve().then(function () {
@@ -193,4 +205,6 @@ module.exports.insertLine = insertLine;
 module.exports.createLine = createLine;
 module.exports.insertLineInDatabase = insertLineInDatabase;
 module.exports.getAllLines = getAllLines;
+module.exports.deleteLine = deleteLine;
+
 
