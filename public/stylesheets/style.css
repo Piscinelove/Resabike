@@ -145,3 +145,7 @@ main {
 .login-no-padding{
   padding:0px !important;
 }
+
+ul.stepper.horizontal {
+  min-height: 80vh !important;
+}

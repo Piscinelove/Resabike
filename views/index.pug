@@ -2,162 +2,253 @@ extends layout
 
 block content
 
-  div.parallax-container.parallax-container1
-    div.parallax
-      img(src="images/background-bike.jpg")
-      a(href="#book").waves-effect.waves-light.btn.btn-large.home-button Je reserve !
-      h3#slogan-top.center-align.front.valign-wrapper Arriver au départ
-      h3#slogan-bottom.center-align.front.valign-wrapper  sans se fatiguer...
+    div.parallax-container.parallax-container1
+        div.parallax
+            img(src="images/background-bike.jpg")
+            a(href="#book").waves-effect.waves-light.btn.btn-large.home-button Je reserve !
+            h3#slogan-top.center-align.front.valign-wrapper Arriver au départ
+            h3#slogan-bottom.center-align.front.valign-wrapper  sans se fatiguer...
 
 
-  div#home.section.white.container.full-section
-    h2.header Home
-    div.margin-partenaire.row
-      div.col.s12
-        p RESABIKE.CH est un projet visant à faciliter la vie des cyclistes voyageant en transports publics sur les lignes régionales. Nous parlons donc principalement des bus et autres cars postaux, et surtout dans les régions touristiques ! L’idée étant qu’il est plus agréable pour tout le monde (exploitant, conducteur, voyageur…) de savoir combien de cyclistes souhaitent voyager avec leur monture. Cela permet de prévoir au mieux les éventuelles remorques à atteler, ou d’annoncer aux voyageurs que le porte-vélos est déjà bien rempli.
-        br
-        h5 Partenaires
-        p Le projet RESABIKE peut compter sur le soutien de plusieurs transporteurs valaisans, ainsi que sur les connaissances des professeurs et étudiants de la filière informatique de la HES-SO de Sierre.
-    div.row
-      div.col.s4
-        img(src="images/hes-so.png").img-partenaire
-      div.col.s4
-        img(src="images/poste.jpg").img-partenaire
-      div.col.s4
-        img(src="images/logo.jpg").img-partenaire
+    div#home.section.white.container.full-section
+        h2.header Home
+        div.margin-partenaire.row
+            div.col.s12
+                p RESABIKE.CH est un projet visant à faciliter la vie des cyclistes voyageant en transports publics sur les lignes régionales. Nous parlons donc principalement des bus et autres cars postaux, et surtout dans les régions touristiques ! L’idée étant qu’il est plus agréable pour tout le monde (exploitant, conducteur, voyageur…) de savoir combien de cyclistes souhaitent voyager avec leur monture. Cela permet de prévoir au mieux les éventuelles remorques à atteler, ou d’annoncer aux voyageurs que le porte-vélos est déjà bien rempli.
+                br
+                h5 Partenaires
+                p Le projet RESABIKE peut compter sur le soutien de plusieurs transporteurs valaisans, ainsi que sur les connaissances des professeurs et étudiants de la filière informatique de la HES-SO de Sierre.
+        div.row
+            div.col.s4
+                img(src="images/hes-so.png").img-partenaire
+            div.col.s4
+                img(src="images/poste.jpg").img-partenaire
+            div.col.s4
+                img(src="images/logo.jpg").img-partenaire
 
-  div.parallax-container
-      div.parallax
-        img(src="images/background-bike2.jpg")
+    div.parallax-container
+        div.parallax
+            img(src="images/background-bike2.jpg")
 
-  div#about.section.white.container.full-section
-    div.row
-      div.col.s4
-        h2.header Histoire
-      div.col.s8
-        i(id="icone-bike").material-icons.prefix.medium.right-align directions_bike
-    div.row
-      div.col.s4
-        h3.center-align 2014
-        p Face au succès grandissant du transport de vélos sur les lignes des cars postaux du Val d’Anniviers, nous trouvions dommage que certains cyclistes ne puissent pas profiter de leur journée car toutes les places étaient occupées sur le porte-vélos. Nous avons donc conçu un petit formulaire de réservations «online»…
-      div.col.s4
-        h3.center-align 2015
-        p Les remorques spécialement conçues pour le transport des vélos, combinées au système de réservation, permettent de satisfaire au mieux les besoins des bikers…
-      div.col.s4
-        h3.center-align 2016
-        p De plus en plus de réservations nous arrivent pour d’autres lignes que celles du Val d’Anniviers. C’est alors que germe l’idée de créer un site internet permettant de réserver ses courses pour d’autres régions que le Valais central. Des statistiques de fréquentation pourront ainsi être facilement établies…
-    div.row
-      div.col.s4
-        h4.date-color 876
-        h5.center-align vélos annoncés en 2014..
-      div.col.s4
-        h4.date-color  1624
-        h5.center-align vélos annoncés en 2015...
-      div.col.s4
-        h4.date-color  1727
-        h5.center-align vélos annoncés en 2016 !
+    div#about.section.white.container.full-section
+        div.row
+            div.col.s4
+                h2.header Histoire
+            div.col.s8
+                i(id="icone-bike").material-icons.prefix.medium.right-align directions_bike
+        div.row
+            div.col.s4
+                h3.center-align 2014
+                p Face au succès grandissant du transport de vélos sur les lignes des cars postaux du Val d’Anniviers, nous trouvions dommage que certains cyclistes ne puissent pas profiter de leur journée car toutes les places étaient occupées sur le porte-vélos. Nous avons donc conçu un petit formulaire de réservations «online»…
+            div.col.s4
+                h3.center-align 2015
+                p Les remorques spécialement conçues pour le transport des vélos, combinées au système de réservation, permettent de satisfaire au mieux les besoins des bikers…
+            div.col.s4
+                h3.center-align 2016
+                p De plus en plus de réservations nous arrivent pour d’autres lignes que celles du Val d’Anniviers. C’est alors que germe l’idée de créer un site internet permettant de réserver ses courses pour d’autres régions que le Valais central. Des statistiques de fréquentation pourront ainsi être facilement établies…
+        div.row
+            div.col.s4
+                h4.date-color 876
+                h5.center-align vélos annoncés en 2014..
+            div.col.s4
+                h4.date-color  1624
+                h5.center-align vélos annoncés en 2015...
+            div.col.s4
+                h4.date-color  1727
+                h5.center-align vélos annoncés en 2016 !
 
-  div.parallax-container
-    div.parallax
-      img(src="images/background-bike3.jpg")
+    div.parallax-container
+        div.parallax
+            img(src="images/background-bike3.jpg")
 
-  div#book.section.white.container.full-section
-    h2.header Réservation
-    div.row
-      form.col.s12
-        div.row.row-book
-            div.input-field.col.s3
-                input(id="prenom", placeholder=" ", type="text").validate
-                label(for="prenom",data-error="Veuillez saisir un prénom valide.") Prénom
-            div.input-field.col.s3
-                input(id="nom", placeholder=" ", type="text").validate
-                label(for="nom", data-error="Veuillez saisir un nom valide.") Nom
-            div.input-field.col.s3
-                input(id="tel", placeholder=" ", type="tel").validate
-                label(for="tel", data-error="Veuillez saisir un téléphone valide.") Téléphone
-            div.input-field.col.s3
-                input(id="mail", placeholder=" ", type="email" ).validate
-                label(for="mail", data-error="Veuillez saisir un email valide.") E-mail
-        div.row.row-book
-            div.input-field.col.s6
-                input(type="text", placeholder=" ").datepicker
-                label Date
-            div.input-field.col.s6
-                input(type="text", placeholder=" ").timepicker
-                label Heure de départ
-        div.row.row-book
-            div.input-field.col.s6
-                input(id="depart", placeholder=" ", type="text").autocomplete-db.validate
-                label(for="depart") Station de départ
-            div.input-field.col.s6
-                input(id="arrive",placeholder=" ", type="text").autocomplete-db.validate
-                label(for="arrive") Station d'arrivée
-        div.row.row-book
-            div.input-field.col.s6
-                select
-                    option(value="", disabled="disabled", selected="selected") Nombre de vélo
-                    option(value="1") 1 vélo
-                    option(value="2") 2 vélos
-                    option(value="3") 3 vélos
-                    option(value="4") 4 vélos
-                    option(value="5") 5 vélos
-                    option(value="6") 6 vélos
-                    option(value="7") 7 vélos
-                    option(value="8") 8 vélos
-                    option(value="9") 9 vélos
-                    option(value="10") 10 vélos
-                    option(value="11") plus de 10 vélos
-                label Nombre de vélo
-            div.input-field.col.s6
-                textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
-                label(for="taRemarque") Remarque
-
-        div.row.row-book
-            div.col.s6
-                p Conditions Générales
-                form(action="#")
-                    input(type="checkbox", id="filled-in-box").filled-in
-                    label(for="filled-in-box") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
-            div.input-field.col.s6
-                button(id="btBook",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
-                    i.material-icons.right send
+    div#book.section.white.container.full-section
+        form#booking-register-form.col.s12
+            ul.stepper.horizontal
+                li.step.active
+                    div.step-title.waves-effect Coordonnées
+                    div.step-content
+                        h2.header Qui êtes-vous ?
+                            div.row
+                                div.input-field.col.s6
+                                    input(id="booking-register-firstname", name="firstname", type="text", required="required", aria-required="true").validate
+                                    label(for="booking-register-firstname") Prénom
+                                div.input-field.col.s6
+                                    input(id="booking-register-lastname", name="lastname", type="text", required="required", aria-required="true").validate
+                                    label(for="booking-register-lastname") Nom
+                                div.input-field.col.s6
+                                    input(id="booking-register-phone", name="phone", type="tel", required="required", aria-required="true").validate
+                                    label(for="booking-register-phone") Téléphone
+                                div.input-field.col.s6
+                                    input(id="booking-register-email", name="email", type="email", required="required", aria-required="true").validate
+                                    label(for="booking-register-email") E-mail
+                                div.step-actions
+                                    button.waves-effect.btn.next-step Continuer
 
 
-  div.parallax-container
-    div.parallax
-      img(src="images/background-bike4.jpg")
+                    //div.row
+                    //    form.col.s12
+                    //        div.row.row-book
+                    //            div.input-field.col.s3
+                    //                input(id="prenom", placeholder=" ", type="text").validate
+                    //                label(for="prenom",data-error="Veuillez saisir un prénom valide.") Prénom
+                    //            div.input-field.col.s3
+                    //                input(id="nom", placeholder=" ", type="text").validate
+                    //                label(for="nom", data-error="Veuillez saisir un nom valide.") Nom
+                    //            div.input-field.col.s3
+                    //                input(id="tel", placeholder=" ", type="tel").validate
+                    //                label(for="tel", data-error="Veuillez saisir un téléphone valide.") Téléphone
+                    //            div.input-field.col.s3
+                    //                input(id="mail", placeholder=" ", type="email" ).validate
+                    //                label(for="mail", data-error="Veuillez saisir un email valide.") E-mail
+                    //        div.row.row-book
+                    //            div.input-field.col.s6
+                    //                input(type="text", placeholder=" ").datepicker
+                    //                label Date
+                    //            div.input-field.col.s6
+                    //                input(type="text", placeholder=" ").timepicker
+                    //                label Heure de départ
+                    //        div.row.row-book
+                    //            div.input-field.col.s6
+                    //                input(id="depart", placeholder=" ", type="text").autocomplete-db.validate
+                    //                label(for="depart") Station de départ
+                    //            div.input-field.col.s6
+                    //                input(id="arrive",placeholder=" ", type="text").autocomplete-db.validate
+                    //                label(for="arrive") Station d'arrivée
+                    //        div.row.row-book
+                    //            div.input-field.col.s6
+                    //                select
+                    //                    option(value="", disabled="disabled", selected="selected") Nombre de vélo
+                    //                    option(value="1") 1 vélo
+                    //                    option(value="2") 2 vélos
+                    //                    option(value="3") 3 vélos
+                    //                    option(value="4") 4 vélos
+                    //                    option(value="5") 5 vélos
+                    //                    option(value="6") 6 vélos
+                    //                    option(value="7") 7 vélos
+                    //                    option(value="8") 8 vélos
+                    //                    option(value="9") 9 vélos
+                    //                    option(value="10") 10 vélos
+                    //                    option(value="11") plus de 10 vélos
+                    //                label Nombre de vélo
+                    //            div.input-field.col.s6
+                    //                textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
+                    //                label(for="taRemarque") Remarque
+                    //
+                    //        div.row.row-book
+                    //            div.col.s6
+                    //                p Conditions Générales
+                    //                form(action="#")
+                    //                    input(type="checkbox", id="filled-in-box").filled-in
+                    //                    label(for="filled-in-box") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
+                                div.step-actions
+                                    div.input-field.col.s6
+                                        a(href="#modal-book-trip").waves-effect.waves-light.btn.modal-trigger.next-step  ligne
+                                            i.material-icons.left send
+                li.step
+                    div.step-title.waves-effect.waves-light Réservez !
+                    div.step-content
+                        h2.header Faites votre réservation dès maintenant
+                        div.row
+                            div.input-field.col.s6
+                                input(type="text", placeholder=" ").datepicker
+                                label Date
+                            div.input-field.col.s6
+                                input(type="text", placeholder=" ").timepicker
+                                label Heure de départ
+                            div.input-field.col.s6
+                                input(id="depart", placeholder=" ", type="text").autocomplete-db.validate
+                                label(for="depart") Station de départ
+                            div.input-field.col.s6
+                                input(id="arrive",placeholder=" ", type="text").autocomplete-db.validate
+                                label(for="arrive") Station d'arrivée
+                            div.input-field.col.s6
+                                select
+                                    option(value="", disabled="disabled", selected="selected") Nombre de vélo
+                                    option(value="1") 1 vélo
+                                    option(value="2") 2 vélos
+                                    option(value="3") 3 vélos
+                                    option(value="4") 4 vélos
+                                    option(value="5") 5 vélos
+                                    option(value="6") 6 vélos
+                                    option(value="7") 7 vélos
+                                    option(value="8") 8 vélos
+                                    option(value="9") 9 vélos
+                                    option(value="10") 10 vélos
+                                    option(value="11") plus de 10 vélos
+                                label Nombre de vélo
+                            div.input-field.col.s6
+                                textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
+                                label(for="taRemarque") Remarque
+                        div.col.s6
+                            p Conditions Générales
+                            input(type="checkbox", id="filled-in-box").filled-in
+                            label(for="filled-in-box") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
+                        div.step-actions
+                            button.waves-effect.btn.previous-step Retour
+                            button(data-feedback="getBookingSuggestions").waves-effect.btn.next-step Planifiez
+                li.step
+                    div.step-title.waves-effect.waves-light Planfiiez
+                    div.step-content
+                        h2.header Planifiez votre voyage !
+                        ul(data-collapsible="accordion").collapsible.suggestions
 
-  div#where.section.white.container.full-section
-    h2.header Où aller ?
-        h3 Zones de bus
-            div.row.center-align
-                div.col.s12
-                img(src="images/buses.jpg").img-zone
+    div.parallax-container
+        div.parallax
+            img(src="images/background-bike4.jpg")
 
-  div.parallax-container
-    div.parallax
-      img(src="images/background-bike5.jpg")
+    div#where.section.white.container.full-section
+        h2.header Où aller ?
+            h3 Zones de bus
+                div.row.center-align
+                    div.col.s12
+                    img(src="images/buses.jpg").img-zone
 
-  div#contact.section.white.container.full-section
-    h2.header Contact
-    p Pour toutes questions ou complément d'informations veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
-      div.row
-        form.col.s12
-          div.row
-            div.input-field.col.s6
-              i.material-icons.prefix person
-              input(id="icon_nom" ,type="text").validate
-              label(for="icon_nom" ,data-error="Veuillez saisir un nom valide.") nom
-            div.input-field.col.s6
-              i.material-icons.prefix email
-              input(id="icon_email", type="email").validate
-              label(for="icon_email", data-error="Veuillez saisir un email valide.") email
-      div.row
-        form.col.s12
-          div.row
-            div.input-field.col.s12
-              i.material-icons.prefix mode_edit
-              textarea(id="taContact", data-length="500", maxlength="500").materialize-textarea.textarea-contact
-              label(for="taContact") Formulaire de contact
-      button(id="btContact",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
-        i.material-icons.right send
+    div.parallax-container
+        div.parallax
+            img(src="images/background-bike5.jpg")
+
+    div#contact.section.white.container.full-section
+        h2.header Contact
+        p Pour toutes questions ou complément d'informations veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s6
+                            i.material-icons.prefix person
+                            input(id="icon_nom" ,type="text").validate
+                            label(for="icon_nom" ,data-error="Veuillez saisir un nom valide.") nom
+                        div.input-field.col.s6
+                            i.material-icons.prefix email
+                            input(id="icon_email", type="email").validate
+                            label(for="icon_email", data-error="Veuillez saisir un email valide.") email
+            div.row
+                form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            i.material-icons.prefix mode_edit
+                            textarea(id="taContact", data-length="500", maxlength="500").materialize-textarea.textarea-contact
+                            label(for="taContact") Formulaire de contact
+            button(id="btContact",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
+                i.material-icons.right send
+
+    div(id="modal-book-trip").modal.modal-fixed-footer.modal-book-trip
+        div.modal-content
+            h4 Confirmation de votre réservation
+            div.row
+                form#add-line-form.col.s12
+                    div.row
+                        div.input-field.col.s12
+                            input(id="line-add-idZone", name="id", type="text", disabled="disabled").validate
+                            label(for="line-add-idZone", disabled="disabled") Id
+                        div.input-field.col.s12
+                            input(id="line-add-departure", name="departure", type="text", required="required", aria-required="true").validate.autocomplete
+                            label(for="line-add-departure") départ
+                        div.input-field.col.s12
+                            input(id="line-add-terminal", name="terminal", type="text", required="required", aria-required="true").validate.autocomplete
+                            label(for="line-add-terminal") arrivée
+        div.modal-footer
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
+            button(onclick="createLine()", type="submit", for="#add-line-form").btn.waves-effect.waves-light.modal-action valider
+                i.material-icons.right send
+
+

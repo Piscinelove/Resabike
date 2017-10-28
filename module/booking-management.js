@@ -8,7 +8,7 @@ var axios = require("axios");
 
 const MAXIMUMBIKES = 6;
 var departureStation = "sierre";
-var arrivalStation = "zinal";
+var arrivalStation = "Niouc, village";
 var date = new Date();
 var time = "16:25";
 
@@ -33,10 +33,14 @@ function getTripFromClientBooking(connection) {
         var trip = [];
         var idLine = -1;
 
+
+        var legDetails = {};
+
         for(var i = 0; i < legs.length; i++)
         {
             var leg = legs[i];
-            if(leg.type == "bus" || leg.type == "post"){
+            if(leg.type == "bus" || leg.type == "post")
+            {
                 var legDetails = {
                     idLine : leg.line,
                     departureStation : leg.name,
@@ -48,7 +52,8 @@ function getTripFromClientBooking(connection) {
                 trip.push(legDetails);
             }
         }
-        console.log(JSON.stringify(trip));
+
+        //console.log(JSON.stringify(trip));
         resolve(trip);
     })
 
@@ -70,13 +75,33 @@ function getTrip(departureStation, arrivalStation, date, time) {
 
             Promise.all(promises).then(function(connections)
             {
-                var timetablesAvailable = [];
-                for(var i = 0; i < connections.length; i++)
-                {
-                    timetablesAvailable.push(connections[i]);
-                }
+                // var timetablesAvailable = [];
+                // for(var i = 0; i < connections.length; i++)
+                // {
+                //     timetablesAvailable.push(connections[i]);
+                // }
+                //
+                // console.log(connections);
+                connections = connections.reduce(function(a, b) {
+                    return a.concat(b);
+                }, []);
+                console.log(connections);
+                resolve(connections);
 
-                console.log(timetablesAvailable);
+                // Array.prototype.groupBy = function (prop) {
+                //     return this.reduce(function (groups, item) {
+                //         var val = item[prop];
+                //         groups[val] = groups[val] || [];
+                //         groups[val].push(item);
+                //         return groups;
+                //     },{});
+                // }
+                //
+                // var test = connections.reduce(function(a, b) {
+                //     return a.concat(b);
+                // }, []);
+                // console.log(test);
+                // var groups = test.groupBy('idLine');
             })
 
 
@@ -85,4 +110,4 @@ function getTrip(departureStation, arrivalStation, date, time) {
     
 }
 
-getTrip(departureStation, arrivalStation, "10/28/2017", time);
+module.exports.getTrip = getTrip;
