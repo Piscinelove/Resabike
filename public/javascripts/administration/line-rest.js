@@ -33,11 +33,19 @@ $(document).ready(function(){
         headerIdentifier: '.collapsible-header',
         itemSelector:'tbody tr',
         searchTemplate: '<div class="input-field">' +
-        '<input id="navbar-search" type="text">' +
-        '<label for="navbar-search"><i class="material-icons small">search</i> Search</label>' +
+        '<input id="search" type="search">' +
+        '<label for="search" class="label-icon"><i class="material-icons">search</i></label>' +
+        '<i class="material-icons close-search" data-target="search">close</i>'+
         '</div>'
 
     })
+
+    $('.input-field i.close-search').click(function () {
+        $(this).parent(".input-field").children("input[type=search]").val('');
+    });
+
+    $('.tap-target').tapTarget('open');
+
 
 
 
@@ -88,7 +96,8 @@ function createLine(){
                 terminal: terminal
             })
             .end(function (err, res) {
-                if (err || !res.ok) {
+                if (err || !res.ok)
+                {
                     if(err.status === 503)
                     {
                         var li = "";
@@ -104,12 +113,14 @@ function createLine(){
                         console.log(res.body);
                         successToast("yeah");
                     }
-                    else
+                    else if(res.body == false)
                         errorToast("Cette ligne appartient déjà à une autre zone");
+                    else
+                        errorToast("Ligne introuvable");
                 }
-                else {
+                else
+                {
                     refreshZoneLine(idZone);
-                    $('.collapsible').collapsible('open', idZone-1);
                     $("#modal-add-line").modal('close');
                     resetForm("#add-line-form");
                     successToast("Ligne ajoutée");

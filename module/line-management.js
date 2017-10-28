@@ -48,6 +48,10 @@ function getLinesFromAPI(from, to) {
 
         axios.get(url).then(function (response) {
             console.log(url);
+
+            if(response.data.count == 0 || response.data.messages != null)
+                reject("Ligne(s) introuvable(s) entre "+from+" et "+to);
+
             var promises = [];
             var stationsToAdd = [];
 
