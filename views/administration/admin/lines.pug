@@ -40,7 +40,7 @@ block content
                                                             button.waves-effect.waves-light.btn(onclick=`deleteLine(${line.id}, ${line.idZone})`)
                                                                 i.material-icons delete
                                 else
-                                    | Nous n'avons trouvé aucune ligne dans cette zone
+                                    p&attributes({'id': 'tab-zone-line-'+zone.id}) Nous n'avons trouvé aucune ligne dans cette zone
 
 
 

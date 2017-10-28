@@ -13,6 +13,7 @@ var driver = require('./routes/driver');
 var zoneadmin = require('./routes/zoneadmin');
 var regionadmin = require('./routes/regionadmin');
 var administration = require('./routes/administration');
+var autocomplete = require('./routes/autocomplete');
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use('/driver', driver);
 app.use('/zoneadmin', zoneadmin);
 app.use('/regionadmin', regionadmin);
 app.use('/administration', administration);
+app.use('/autocomplete', autocomplete);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

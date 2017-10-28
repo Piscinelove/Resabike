@@ -82,8 +82,30 @@ function insertStationInDatabase(stationsToAdd)
     })
 }
 
+function getAllStationsByTerm(term)
+{
+    return Promise.resolve(
+        models.Station.findAll(
+            {
+                where:{
+                    name : {$like:'%'+term+'%'}
+                }
+            }
+        )
+    )
+}
+
+function getAllStations()
+{
+    return Promise.resolve(
+        models.Station.findAll()
+    )
+}
+
 module.exports.insertStation = insertStation;
 module.exports.insertStationInDatabase = insertStationInDatabase;
 module.exports.getStationIdByName = getStationIdByName;
 module.exports.getStationIdByNameFromAPI = getStationIdByNameFromAPI;
 module.exports.getStationById = getStationById;
+module.exports.getAllStations = getAllStations;
+module.exports.getAllStationsByTerm = getAllStationsByTerm;

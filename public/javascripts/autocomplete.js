@@ -9,6 +9,12 @@ $(document).ready(function(){
 
     });
 
+    $('input.autocomplete-db').on('input',function(e){
+        var input = $(this).val();
+        getAutocompleteStationsFromDB(input);
+
+    });
+
     // $('input.autocomplete').change(function() {
     //     $(this).val(Object.keys(stations)[0]);
     // });
@@ -31,6 +37,31 @@ function getAutocompleteStationsFromAPI(input) {
         });
 
         $('input.autocomplete').autocomplete({
+            data: stations,
+            limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+            onAutocomplete: function(val) {
+                // Callback function when value is autcompleted.
+            },
+            minLength: 2, // The minimum length of the input for the autocomplete to start. Default: 1.
+        });
+    });
+}
+
+function getAutocompleteStationsFromDB(input) {
+    var stations = {};
+
+    $.getJSON( "/autocomplete/search="+input, function( data ) {
+
+    }).done(function (data) {
+        $.each(data, function( id, val ) {
+            //if (val.iconclass.toLowerCase().indexOf("bus") >= 0)
+            //{
+            stations[val.name] = null;
+            //a tester
+            //stations[val.id] = null;
+            //}
+        });
+        $('input.autocomplete-db').autocomplete({
             data: stations,
             limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
             onAutocomplete: function(val) {
