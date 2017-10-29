@@ -1,9 +1,18 @@
 $(document).ready(function(){
     $('.stepper').activateStepper();
-    
-    $('.choice').on('click', function (e) {
-        alert("yes");
-    })
+
+    $('.collapsible.suggestions').collapsible({
+        onOpen: function(el) {
+            var id = $(el).data('id');
+            $('#booking-register-trip'+id).attr('checked', 'checked');
+
+
+        }, // Callback for Collapsible open
+        onClose: function(el) {
+            var id = $(el).data('id');
+            $('#booking-register-trip'+id).removeAttr('checked', 'checked');
+        } // Callback for Collapsible close
+    });
 })
 
 function getBookingSuggestions()
@@ -32,6 +41,8 @@ function getBookingSuggestions()
 
 function createBooking() {
 
+    var trip = $('ul.collapsible.suggestions .collapsible-header.active').data("trip");
+    console.log(JSON.stringify(trip));
 }
 
 function buildSuggestions(res) {
@@ -41,7 +52,8 @@ function buildSuggestions(res) {
     {
         var stops = "";
         var suggestion = res.body[i];
-        suggestions += '<li><div class="collapsible-header valign-wrapper"><div class="choice"><input name="trips" required="required" aria-required="true" type="radio" id="test'+i+'"/><label class="black-text" for="test'+i+'"><i class="material-icons" style="vertical-align: middle">directions_bus</i>';
+        var data = JSON.stringify(suggestion).replace(/'/g, "\\'");
+        suggestions += '<li data-id="'+i+'"><div class="collapsible-header" data-trip=\''+data+'\'><div class="choice"><input name="trips" required="required" aria-required="true" type="radio" id="booking-register-trip'+i+'"/><label class="black-text" for="test'+i+'"></label><i class="material-icons" style="vertical-align: middle">directions_bus</i>';
 
         console.log(suggestion);
         if(suggestion.changes.length > 1)
@@ -69,7 +81,7 @@ function buildSuggestions(res) {
         }
 
         var duration = suggestion.duration / 60;
-        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span></label></div></div>' +
+        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span></div></div>' +
             '<div class="collapsible-body"><span><ol class="line-stops">'+stops+'</ol></span></div></li>';
 
 

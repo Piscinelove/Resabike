@@ -6,7 +6,7 @@
     box-shadow: none;
 }
 ul.stepper.horizontal {
-    min-height: 80vh !important;
+    min-height: 90vh !important;
 }
 
 .autocomplete-db{
@@ -66,7 +66,7 @@ ol.line-stops li:before {
     color: white;
 }
 
-ul.collapsible.suggestions label {
+.choice {
     font-weight: bold;
 }
 
@@ -82,4 +82,26 @@ ul.collapsible.suggestions label {
     padding-left: 1em;
 }
 
+.collapsible.suggestions .collapsible-header.active{
+    -webkit-animation-name: selection-animation;
+    animation-name: selection-animation;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes selection-animation {
+    100%{
+        background-color: #2a2d3e;
+        color:white;
+    }
+}
+
+.collapsible.suggestions .collapsible-header input[type="radio"]:checked+label{
+    display: none;
+}
+.collapsible.suggestions .collapsible-header input[type="radio"]:not(:checked)+label{
+    display: none;
+}
 
