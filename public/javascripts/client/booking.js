@@ -1,5 +1,9 @@
 $(document).ready(function(){
     $('.stepper').activateStepper();
+    
+    $('.choice').on('click', function (e) {
+        alert("yes");
+    })
 })
 
 function getBookingSuggestions()
@@ -37,7 +41,7 @@ function buildSuggestions(res) {
     {
         var stops = "";
         var suggestion = res.body[i];
-        suggestions += '<li><div class="collapsible-header valign-wrapper"><input name="trips" required="required" aria-required="true" type="radio" id="test'+i+'"/><label class="black-text" for="test'+i+'"><i class="material-icons" style="vertical-align: middle">directions_bus</i>';
+        suggestions += '<li><div class="collapsible-header valign-wrapper"><div class="choice"><input name="trips" required="required" aria-required="true" type="radio" id="test'+i+'"/><label class="black-text" for="test'+i+'"><i class="material-icons" style="vertical-align: middle">directions_bus</i>';
 
         console.log(suggestion);
         if(suggestion.changes.length > 1)
@@ -58,13 +62,14 @@ function buildSuggestions(res) {
             }
         else
         {
+            suggestions += ' <span class="highlight-line">'+suggestion.changes[0].idLine+'</span>';
             var startTime = suggestion.changes[0].departureTime.split(' ')[1].split(':')[0]+":"+suggestion.changes[0].departureTime.split(' ')[1].split(':')[1];
             var exitTime = suggestion.changes[0].exitTime.split(' ')[1].split(':')[0]+":"+suggestion.changes[0].exitTime.split(' ')[1].split(':')[1];
             stops += '<li>'+suggestion.changes[0].departureStation+'</br><span class="light-hour"> '+ startTime +' </span></li><li>'+suggestion.changes[0].exitStation+'</br><span class="light-hour"> '+exitTime+' </span></li>';
         }
 
         var duration = suggestion.duration / 60;
-        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span></label></div>' +
+        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span></label></div></div>' +
             '<div class="collapsible-body"><span><ol class="line-stops">'+stops+'</ol></span></div></li>';
 
 
