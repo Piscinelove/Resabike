@@ -14,7 +14,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/booking', function (req, res, next) {
 
-    bookingManagement.getTrip(departureStation, arrivalStation, date, time).then(function (response) {
+    let departure = req.body.departure;
+    let terminal = req.body.terminal;
+
+    bookingManagement.getTrip(departure, terminal, date, time).then(function (response) {
         res.status(200).send(response);
     })
 })

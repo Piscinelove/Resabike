@@ -75,18 +75,29 @@ function getTrip(departureStation, arrivalStation, date, time) {
 
             Promise.all(promises).then(function(connections)
             {
-                // var timetablesAvailable = [];
-                // for(var i = 0; i < connections.length; i++)
-                // {
-                //     timetablesAvailable.push(connections[i]);
-                // }
+                var trips = [];
+                var trip = null;
+                for(var i = 0; i < connections.length; i++)
+                {
+                    var datetime = response[2].data.connections[i].departure;
+                    var duration = response[2].data.connections[i].duration;
+
+                    trip = {
+                        departure : departureStation,
+                        arrival : arrivalStation,
+                        datetime : datetime,
+                        duration : duration,
+                        changes : connections[i]
+                    };
+                    trips.push(trip);
+                }
                 //
                 // console.log(connections);
-                connections = connections.reduce(function(a, b) {
-                    return a.concat(b);
-                }, []);
-                console.log(connections);
-                resolve(connections);
+                // connections = connections.reduce(function(a, b) {
+                //     return a.concat(b);
+                // }, []);
+                console.log(trips);
+                resolve(trips);
 
                 // Array.prototype.groupBy = function (prop) {
                 //     return this.reduce(function (groups, item) {

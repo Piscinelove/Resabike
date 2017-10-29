@@ -18,7 +18,7 @@ $('.datepicker').pickadate({
     clear: 'Annuler',
     close: 'Ok',
     closeOnSelect: true ,// Close upon selecting a date,
-    formatSubmit: 'yyyy/mm/dd'
+    formatSubmit: 'dd/mm/yyyy',
 
 });
 
@@ -32,7 +32,9 @@ $('.timepicker').pickatime({
     canceltext: 'Fermer', // Text for cancel-button
     autoclose: false, // automatic close timepicker
     ampmclickable: true, // make AM PM clickable
-    aftershow: function(){} //Function for after opening timepicker
+    aftershow: function(){
+        Materialize.updateTextFields();
+    } //Function for after opening timepicker
 });
 
 

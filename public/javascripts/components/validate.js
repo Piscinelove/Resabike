@@ -63,6 +63,10 @@ function validateForms() {
                 error.appendTo( element.parent() );
                 error.addClass('active');
             }
+            else if(element.prop('name') == 'trips')
+            {
+                error.insertAfter($('ul.collapsible.suggestions'));
+            }
             else {
                 $(element)
                     .closest("form")
@@ -123,6 +127,9 @@ function validateForms() {
                 required:true,
                 minlength:2,
             },
+            trips:{
+                required:true,
+            },
             // term:{
             //     remote:{
             //         url:"https://timetable.search.ch/api/completion.en.json?",
@@ -178,6 +185,9 @@ function validateForms() {
             },
             departure:{
                 required:"Veuillez saisir un nom de zone"
+            },
+            trips:{
+                required:"Veuillez choisir un voyage",
             }
         }
     });

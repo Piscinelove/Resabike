@@ -5,3 +5,81 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+ul.stepper.horizontal {
+    min-height: 80vh !important;
+}
+
+.autocomplete-db{
+    position: relative;
+}
+#booking-register-form .autocomplete-content {
+    position: absolute;
+    width: calc(100% - 0.75rem);
+}
+
+
+
+ol.line-stops {
+    position: relative;
+    display: block;
+    padding-left: 4px;
+    padding-top: 1.5em;
+    /*padding-bottom: 2em;*/
+    width: 0px;
+    background: #26a69a;
+}
+
+ol.line-stops li {
+    position: relative;
+    /*top: 2.5em;*/
+
+    display: inline-block;
+    left: 1em;
+    height: 3em;
+    width: 20em;
+    font-weight: bold;
+}
+
+ol.line-stops li:before {
+     content: "";
+     position: absolute;
+     /*top: -0.2em;*/
+     left: -1.8em;
+     display: block;
+     width: 20px;
+     height: 20px;
+     border: 4px solid #26a69a;
+     border-radius: 16px;
+     background-color: white;
+
+}
+
+.light-hour{
+    font-weight: lighter;
+}
+
+.highlight-line
+{
+    background-color: #26a69a;
+    padding: 2px;
+    margin-right: 0.5em;
+    color: white;
+}
+
+ul.collapsible.suggestions label {
+    font-weight: bold;
+}
+
+.direction{
+    color : #26a69a;
+    vertical-align: middle;
+    margin-right: 0 !important;
+}
+
+.not-highlight{
+    font-weight: lighter;
+    color:#9e9e9e !important;
+    padding-left: 1em;
+}
+
+

@@ -76,6 +76,9 @@ block content
                                     input(id="booking-register-lastname", name="lastname", type="text", required="required", aria-required="true").validate
                                     label(for="booking-register-lastname") Nom
                                 div.input-field.col.s6
+                                    input(id="booking-register-group", name="group", type="text").validate
+                                    label(for="booking-register-group") Groupe
+                                div.input-field.col.s6
                                     input(id="booking-register-phone", name="phone", type="tel", required="required", aria-required="true").validate
                                     label(for="booking-register-phone") Téléphone
                                 div.input-field.col.s6
@@ -150,38 +153,26 @@ block content
                         h2.header Faites votre réservation dès maintenant
                         div.row
                             div.input-field.col.s6
-                                input(type="text", placeholder=" ").datepicker
+                                input(id="booking-register-departure", placeholder=" ", type="text").autocomplete-db.validate
+                                label(for="booking-register-departure") Station de départ
+                            div.input-field.col.s6
+                                input(id="booking-register-terminal",placeholder=" ", type="text").autocomplete-db.validate
+                                label(for="booking-register-terminal") Station d'arrivée
+                            div.input-field.col.s6
+                                input(type="text",placeholder=" ").datepicker
                                 label Date
                             div.input-field.col.s6
-                                input(type="text", placeholder=" ").timepicker
+                                input(type="text",placeholder=" ").timepicker
                                 label Heure de départ
                             div.input-field.col.s6
-                                input(id="depart", placeholder=" ", type="text").autocomplete-db.validate
-                                label(for="depart") Station de départ
-                            div.input-field.col.s6
-                                input(id="arrive",placeholder=" ", type="text").autocomplete-db.validate
-                                label(for="arrive") Station d'arrivée
-                            div.input-field.col.s6
-                                select
-                                    option(value="", disabled="disabled", selected="selected") Nombre de vélo
-                                    option(value="1") 1 vélo
-                                    option(value="2") 2 vélos
-                                    option(value="3") 3 vélos
-                                    option(value="4") 4 vélos
-                                    option(value="5") 5 vélos
-                                    option(value="6") 6 vélos
-                                    option(value="7") 7 vélos
-                                    option(value="8") 8 vélos
-                                    option(value="9") 9 vélos
-                                    option(value="10") 10 vélos
-                                    option(value="11") plus de 10 vélos
-                                label Nombre de vélo
+                                input(type="number", max=10, min=1)
+                                label Nombre de vélos
                             div.input-field.col.s6
                                 textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
                                 label(for="taRemarque") Remarque
                         div.col.s6
                             p Conditions Générales
-                            input(type="checkbox", id="filled-in-box").filled-in
+                            input(type="checkbox", id="filled-in-box", required="required").filled-in
                             label(for="filled-in-box") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
                         div.step-actions
                             button.waves-effect.btn.previous-step Retour
@@ -190,7 +181,11 @@ block content
                     div.step-title.waves-effect.waves-light Planfiiez
                     div.step-content
                         h2.header Planifiez votre voyage !
-                        ul(data-collapsible="accordion").collapsible.suggestions
+                        form(action="#")
+                            ul(data-collapsible="accordion").collapsible.suggestions
+                        div.step-actions
+                            button.waves-effect.btn.previous-step Retour
+                            button(data-feedback="createBooking").waves-effect.btn.next-step Réservez mes places
 
     div.parallax-container
         div.parallax
