@@ -18,7 +18,10 @@ router.post('/booking', function (req, res, next) {
     let terminal = req.body.terminal;
 
     bookingManagement.getTrip(departure, terminal, date, time).then(function (response) {
+
         res.status(200).send(response);
+    }).catch(function (error) {
+        res.status(500).send("Erreur interne");
     })
 })
 

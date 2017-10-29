@@ -22,7 +22,10 @@ function getTripHourAndDateFromAPI(departureStation, arrivalStation, date, time)
 
         axios.get(url).then(function (response) {
             console.log("BOOKING API QUERRY 1 : "+url);
-            resolve([departureStation, arrivalStation, response]);
+            if(response.data.count == 0 && response.data.messages != null)
+                reject(response);
+            else
+                resolve([departureStation, arrivalStation, response]);
         })
     })
 }
@@ -116,6 +119,8 @@ function getTrip(departureStation, arrivalStation, date, time) {
             })
 
 
+        }).catch(function (error) {
+            reject(error);
         })
     })
     

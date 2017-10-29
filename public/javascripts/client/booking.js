@@ -27,7 +27,8 @@ function getBookingSuggestions()
         {
             if (err || !res.ok)
             {
-                errorToast("Cet user existe déjà");
+                $('.stepper').destroyFeedback();
+                errorToast('Une erreur interne est survenu.'+'</br>'+'Veillez bien à choisir un arrêt de départ et de destination valide');
             }
             else
             {
