@@ -5,7 +5,10 @@ var dbLine = require('../db/line');
 var dbLineStation = require('../db/linestation');
 var dbStation = require('../db/station');
 var dbTrip = require('../db/trip');
+var dbBooking = require('../db/booking');
 var axios = require("axios");
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const MAXIMUMBIKES = 6;
 var departureStation = "sierre";
@@ -146,8 +149,38 @@ function getTrip(departureStation, arrivalStation, date, time) {
 
 function createBooking(body) {
     return new Promise(function (resolve, reject) {
+        var trip = body.trip;
+        var personaldata = body.personaldata;
         console.log("salut : " + JSON.stringify(body.trip));
         console.log("salut : " + JSON.stringify(body.personaldata));
+        var token = personaldata.firstname + personaldata.date + Math.random();
+
+        bcrypt.hash(token, saltRounds, function (err, hash) {
+            console.log(hash);
+
+            var validated = false;
+
+            if(personaldata.nbBikes <= trip.nbBikes)
+                validated = true;
+
+            var promises = [];
+
+            promises.push(dbStation.getStationIdByName(personaldata.departure).then(function (station) {
+                personaldata.idStartStation = station.id;
+            }));
+            promises.push(dbStation.getStationIdByName(personaldata.arrival).then(function (station) {
+                personaldata.idEndStation = station.id;
+            }));
+
+            Promise.all(promises).then(function () {
+                dbBooking.createBooking(personaldata.firstname, personaldata.lastname, personaldata.group, personaldata.email, personaldata.phone, 
+                    personaldata.remark, personaldata.datetime, personaldata.nbBikes, hash, validated,
+                    personaldata.idStartStation, personaldata.idEndStation).then(function (booking) {
+                    console.log(booking);
+                    resolve(booking);
+                })
+            })
+        })
     })
 }
 

@@ -29,6 +29,7 @@ $(document).ready(function(){
             Materialize.updateTextFields();
         } //Function for after opening timepicker
     });
+
 })
 
 function getBookingSuggestions()
@@ -58,10 +59,12 @@ function getBookingSuggestions()
         });
 }
 
-function createBooking(id) {
+function createBooking() {
 
-    var trip = $('ul.collapsible.suggestions .collapsible-header #booking-button-'+id).data("trip");
-    var date = $('#booking-register-date').val();
+    var trip = $("#"+event.target.id).data("trip");
+    event.stopPropagation();
+
+
 
     var personaldata = {
         firstname : $('#booking-register-firstname').val(),
@@ -69,7 +72,7 @@ function createBooking(id) {
         group : $('#booking-register-group').val(),
         phone : $('#booking-register-phone').val(),
         email : $('#booking-register-email').val(),
-        date : trip.datetime,
+        datetime : trip.datetime,
         nbBikes: $('#booking-register-bikes').val(),
         remark : $('#booking-register-email').val(),
         departure: trip.departure,
@@ -133,7 +136,7 @@ function buildSuggestions(res) {
 
         var duration = suggestion.duration / 60;
         suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+suggestion.nbBikes+' place(s)</span></div>' +
-            '<a class="waves-effect waves-light btn booking-button next-step" data-feedback="createBooking" onclick="createBooking('+i+')" id="booking-button-'+i+'" data-trip=\''+data+'\'>réserver<i class="material-icons left">timeline</i></a></div>' +
+            '<a class="waves-effect waves-light btn booking-button next-step" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">réserver<i class="material-icons left">timeline</i></a></div>' +
             '<div class="collapsible-body"><span><ol class="line-stops">'+stops+'</ol></span></div></li>';
 
 
