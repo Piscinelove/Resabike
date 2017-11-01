@@ -63,7 +63,7 @@ block content
 
     div#book.section.white.container.full-section
         form#booking-register-form.col.s12
-            ul.stepper.horizontal
+            ul.stepper.linear
                 li.step.active
                     div.step-title.waves-effect Coordonnées
                     div.step-content
@@ -86,67 +86,6 @@ block content
                                     label(for="booking-register-email") E-mail
                                 div.step-actions.col.s12
                                     button.waves-effect.btn.next-step Continuer
-
-
-                    //div.row
-                    //    form.col.s12
-                    //        div.row.row-book
-                    //            div.input-field.col.s3
-                    //                input(id="prenom", placeholder=" ", type="text").validate
-                    //                label(for="prenom",data-error="Veuillez saisir un prénom valide.") Prénom
-                    //            div.input-field.col.s3
-                    //                input(id="nom", placeholder=" ", type="text").validate
-                    //                label(for="nom", data-error="Veuillez saisir un nom valide.") Nom
-                    //            div.input-field.col.s3
-                    //                input(id="tel", placeholder=" ", type="tel").validate
-                    //                label(for="tel", data-error="Veuillez saisir un téléphone valide.") Téléphone
-                    //            div.input-field.col.s3
-                    //                input(id="mail", placeholder=" ", type="email" ).validate
-                    //                label(for="mail", data-error="Veuillez saisir un email valide.") E-mail
-                    //        div.row.row-book
-                    //            div.input-field.col.s6
-                    //                input(type="text", placeholder=" ").datepicker
-                    //                label Date
-                    //            div.input-field.col.s6
-                    //                input(type="text", placeholder=" ").timepicker
-                    //                label Heure de départ
-                    //        div.row.row-book
-                    //            div.input-field.col.s6
-                    //                input(id="depart", placeholder=" ", type="text").autocomplete-db.validate
-                    //                label(for="depart") Station de départ
-                    //            div.input-field.col.s6
-                    //                input(id="arrive",placeholder=" ", type="text").autocomplete-db.validate
-                    //                label(for="arrive") Station d'arrivée
-                    //        div.row.row-book
-                    //            div.input-field.col.s6
-                    //                select
-                    //                    option(value="", disabled="disabled", selected="selected") Nombre de vélo
-                    //                    option(value="1") 1 vélo
-                    //                    option(value="2") 2 vélos
-                    //                    option(value="3") 3 vélos
-                    //                    option(value="4") 4 vélos
-                    //                    option(value="5") 5 vélos
-                    //                    option(value="6") 6 vélos
-                    //                    option(value="7") 7 vélos
-                    //                    option(value="8") 8 vélos
-                    //                    option(value="9") 9 vélos
-                    //                    option(value="10") 10 vélos
-                    //                    option(value="11") plus de 10 vélos
-                    //                label Nombre de vélo
-                    //            div.input-field.col.s6
-                    //                textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
-                    //                label(for="taRemarque") Remarque
-                    //
-                    //        div.row.row-book
-                    //            div.col.s6
-                    //                p Conditions Générales
-                    //                form(action="#")
-                    //                    input(type="checkbox", id="filled-in-box").filled-in
-                    //                    label(for="filled-in-box") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
-                                div.step-actions
-                                    div.input-field.col.s6
-                                        a(href="#modal-book-trip").waves-effect.waves-light.btn.modal-trigger.next-step  ligne
-                                            i.material-icons.left send
                 li.step
                     div.step-title.waves-effect.waves-light Réservez !
                     div.step-content
@@ -159,17 +98,17 @@ block content
                                 input(id="booking-register-terminal",placeholder=" ", type="text").autocomplete-db.validate
                                 label(for="booking-register-terminal") Station d'arrivée
                             div.input-field.col.s6
-                                input(type="text",placeholder=" ").datepicker
-                                label Date
+                                input(type="text",placeholder=" ", id="booking-register-date").datepicker
+                                label(for="booking-register-date") Date
                             div.input-field.col.s6
-                                input(type="text",placeholder=" ").timepicker
-                                label Heure de départ
+                                input(type="text",placeholder=" ", id="booking-register-time").timepicker
+                                label(for="booking-register-time") Heure de départ
                             div.input-field.col.s6
-                                input(type="number", max=10, min=1)
-                                label Nombre de vélos
+                                input(type="number", max=10, min=1, id="booking-register-bikes")
+                                label(for="booking-register-bikes") Nombre de vélos
                             div.input-field.col.s6
-                                textarea(id="taRemarque", placeholder=" ", data-length="100", maxlength="100").materialize-textarea.textarea-remarque
-                                label(for="taRemarque") Remarque
+                                textarea(placeholder=" ", data-length="100", maxlength="100", id="booking-register-remark").materialize-textarea.textarea-remarque
+                                label(for="booking-register-remark") Remarque
                         div.col.s6
                             p Conditions Générales
                             input(type="checkbox", id="filled-in-box", required="required").filled-in
@@ -185,7 +124,6 @@ block content
                             ul(data-collapsible="accordion").collapsible.suggestions
                         div.step-actions
                             button.waves-effect.btn.previous-step Retour
-                            button(data-feedback="createBooking").waves-effect.btn.next-step Réservez mes places
 
     div.parallax-container
         div.parallax

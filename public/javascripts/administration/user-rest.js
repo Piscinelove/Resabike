@@ -85,6 +85,7 @@ function deleteUser(id){
         .delete("/administration/admin/users/"+id)
         .end(function(err, res)
         {
+            $('#select').val();
             if (err || !res.ok)
             {
                 errorToast("Erreur interne");

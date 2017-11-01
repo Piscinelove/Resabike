@@ -16,6 +16,7 @@ $(document).ready(function(){
     $('.modal#modal-edit-user').modal({
         ready: function(modal, trigger) {
             modal.find('input[id="user-edit-id"]').val(trigger.data('id'));
+
             modal.find('input[id="user-edit-username"]').val(trigger.data('username'));
             modal.find('input[id="user-edit-email"]').val(trigger.data('email'));
             modal.find('select[id="user-edit-role"]').val(trigger.data('idrole'));
@@ -34,7 +35,7 @@ $(document).ready(function(){
         itemSelector:'tbody tr',
         searchTemplate: '<div class="input-field">' +
         '<input id="search" type="search">' +
-        '<label for="search" class="label-icon"><i class="material-icons">search</i></label>' +
+            '<label for="search" class="label-icon"><i class="material-icons">search</i></label>' +
         '<i class="material-icons close-search" data-target="search">close</i>'+
         '</div>'
 
@@ -68,6 +69,7 @@ function updateUser(){
             .send({id: id, email: email, chpassword:chpassword,idRole:idRole,idZone:idZone})
             .end(function(err, res)
             {
+
                 if (err || !res.ok)
                 {
                     errorToast("Cet user existe déjà");

@@ -4,6 +4,7 @@ var dbZone = require('../db/zone');
 var dbLine = require('../db/line');
 var dbLineStation = require('../db/linestation');
 var dbStation = require('../db/station');
+var dbTrip = require('../db/trip');
 var axios = require("axios");
 
 const MAXIMUMBIKES = 6;
@@ -49,15 +50,23 @@ function getTripFromClientBooking(connection) {
                     departureStation : leg.name,
                     exitStation : leg.exit.name,
                     departureTime : leg.departure,
+                    nbBikes : MAXIMUMBIKES,
                     exitTime : leg.exit.arrival,
                 }
 
-                trip.push(legDetails);
+                trip.push(dbTrip.getNumberOfBikes(legDetails));
             }
         }
-
+        Promise.all(trip).then(function (lines) {
+            var trip = [];
+            for(var i = 0; i < lines.length; i++)
+            {
+                trip.push(lines[i]);
+            }
+            resolve(trip);
+        })
         //console.log(JSON.stringify(trip));
-        resolve(trip);
+
     })
 
 }
@@ -85,12 +94,21 @@ function getTrip(departureStation, arrivalStation, date, time) {
                     var datetime = response[2].data.connections[i].departure;
                     var duration = response[2].data.connections[i].duration;
 
+                    var totalBikes = [];
+                    for(var j = 0; j < connections[i].length; j++)
+                    {
+                        totalBikes.push(connections[i][j].nbBikes);
+                    }
+
+                    var nbBikes = Math.min(...totalBikes);
+
                     trip = {
                         departure : departureStation,
                         arrival : arrivalStation,
                         datetime : datetime,
                         duration : duration,
-                        changes : connections[i]
+                        changes : connections[i],
+                        nbBikes : nbBikes
                     };
                     trips.push(trip);
                 }
@@ -126,4 +144,12 @@ function getTrip(departureStation, arrivalStation, date, time) {
     
 }
 
+function createBooking(body) {
+    return new Promise(function (resolve, reject) {
+        console.log("salut : " + JSON.stringify(body.trip));
+        console.log("salut : " + JSON.stringify(body.personaldata));
+    })
+}
+
 module.exports.getTrip = getTrip;
+module.exports.createBooking = createBooking;

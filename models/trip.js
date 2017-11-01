@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Trip = sequelize.define('Trip', {
-    startHour: DataTypes.DATE
+    startHour: DataTypes.STRING
   });
   Trip.associate = function(models)
   {

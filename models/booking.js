@@ -7,9 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
     remark: DataTypes.STRING,
-    date: DataTypes.DATE,
+    date: DataTypes.STRING,
     nbBikes : DataTypes.INTEGER,
-    token : DataTypes.TEXT
+    token : DataTypes.TEXT,
+    validated : { type: DataTypes.BOOLEAN, defaultValue: false }
   });
   Booking.associate = function(models){
 
