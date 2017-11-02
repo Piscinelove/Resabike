@@ -179,22 +179,22 @@ function createLine(from, to, idZone) {
             .then(function (stationsToAdd) {
                 return dbStation.insertStationInDatabase(stationsToAdd);
             }).then(function (stationsAdded) {
-            return dbLine.insertLineInDatabase(stationsAdded, idZone);
-        }).then(function (stationsAndLinesArray) {
-            return dbLineStation.insertLineStationInDatabase(stationsAndLinesArray);
-        }).then(function (lineStation) {
-            var promises = [];
-            promises.push(dbRole.createRole("admin"));
-            promises.push(dbRole.createRole("zoneadmin"));
-            promises.push(dbRole.createRole("driver"));
-            return Promise.all(promises)
-        }).then(function () {
-            resolve("Success");
-        }).catch(function (error) {
-            console.log(error);
-            console.log("youlu");
-            reject(error);
-        })
+                return dbLine.insertLineInDatabase(stationsAdded, idZone);
+            }).then(function (stationsAndLinesArray) {
+                return dbLineStation.insertLineStationInDatabase(stationsAndLinesArray);
+            }).then(function (lineStation) {
+                var promises = [];
+                promises.push(dbRole.createRole("admin"));
+                promises.push(dbRole.createRole("zoneadmin"));
+                promises.push(dbRole.createRole("driver"));
+                return Promise.all(promises)
+            }).then(function () {
+                resolve("Success");
+            }).catch(function (error) {
+                console.log(error);
+                console.log("youlu");
+                reject(error);
+            })
     })
 }
 

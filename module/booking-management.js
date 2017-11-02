@@ -149,7 +149,7 @@ function getTrip(departureStation, arrivalStation, date, time) {
 
 function createBooking(body) {
     return new Promise(function (resolve, reject) {
-        var trip = body.trip;
+        var trips = body.trip;
         var personaldata = body.personaldata;
         console.log("salut : " + JSON.stringify(body.trip));
         console.log("salut : " + JSON.stringify(body.personaldata));
@@ -160,7 +160,7 @@ function createBooking(body) {
 
             var validated = false;
 
-            if(personaldata.nbBikes <= trip.nbBikes)
+            if(personaldata.nbBikes <= trips.nbBikes)
                 validated = true;
 
             var promises = [];
@@ -177,12 +177,70 @@ function createBooking(body) {
                     personaldata.remark, personaldata.datetime, personaldata.nbBikes, hash, validated,
                     personaldata.idStartStation, personaldata.idEndStation).then(function (booking) {
                     console.log(booking);
-                    resolve(booking);
+
+                    var promises = [];
+
+                    for(let i = 0; i < trips.changes.length; i++)
+                    {
+                        var trip = {
+                            startHour : trips.datetime,
+                            idBooking : booking.id,
+                            idLine: trips.changes[i].idLine,
+                        }
+
+                        promises.push(getStartStationEndStationId(trip, trips.changes[i].departureStation, trips.changes[i].exitStation));
+                    }
+                    
+                    Promise.all(promises).then(function (trips) {
+
+                        var promises = [];
+
+                        for(let i = 0; i < trips.length; i++)
+                        {
+                            console.log("luca : "+JSON.stringify(trips[i]));
+                            console.log("pd : "+trips[i].idEndStation);
+                            promises.push(dbTrip.createTrip(trips[i].startHour, trips[i].idBooking, trips[i].idLine, trips[i].idStartStation, trips[i].idEndStation));
+                        }
+                        
+                        Promise.all(promises).then(function () {
+                            resolve("Booking(s) création success");
+                        })
+
+                    })
+
                 })
             })
         })
     })
 }
+
+function getStartStationEndStationId(trip, departureStation, exitStation) {
+    return new Promise(function (resolve, reject) {
+        var promises = [];
+        promises.push(dbStation.getStationIdByName(departureStation).then(function (station) {
+            trip.idStartStation = station.id;
+        }));
+
+        promises.push(dbStation.getStationIdByName(exitStation).then(function (station) {
+            trip.idEndStation = station.id;
+        }));
+        
+        Promise.all(promises).then(function () {
+            resolve(trip);
+        })
+    })
+}
+
+function getWaitingBookings()
+{
+    return new Promise(function (resolve, reject) {
+        dbTrip.getAllTripForWaitingBookings().then(function (result) {
+            console.log("waiting : "+JSON.stringify(result));
+        })
+    })
+}
+
+getWaitingBookings();
 
 module.exports.getTrip = getTrip;
 module.exports.createBooking = createBooking;

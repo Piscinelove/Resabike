@@ -31,6 +31,14 @@ router.get('/admin/lines', function(req, res, next) {
         })
 });
 
+router.get('/admin/waiting', function(req, res, next) {
+
+    lineManagement.getZonesAndLines()
+        .then(function (result) {
+            res.render('administration/admin/lines',{zones:result[0], lines:result[1]});
+        })
+});
+
 
 
 router.post('/admin/zone', function(req, res){

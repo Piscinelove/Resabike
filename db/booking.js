@@ -20,4 +20,6 @@ function createBooking(firstname, lastname, group, email, phone, remark, date, n
     )
 }
 
+
+
 module.exports.createBooking = createBooking;

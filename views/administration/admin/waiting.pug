@@ -1,0 +1,42 @@
+extends layout_admin
+
+block content
+    div#waiting.section.full-section.container
+        h2 Réservations en attente
+        div.row
+            ul(data-collapsible="expandable").collapsible.popout#collapsible-list-zones-lines
+                each zone in zones
+                    - var count = 0
+                    each line in lines
+                        if zone.id == line.idZone
+                            - count++;
+                    li
+                        div.collapsible-header.ebony-clay.white-text
+                            div
+                                i.material-icons landscape
+                                = zone.name
+                            a(href="#modal-add-line", data-id=zone.id, data-zone=zone.name).waves-effect.waves-light.btn.modal-trigger.add-lines#add-lines ligne
+                                i.material-icons.left plus_one
+
+                        div.collapsible-body
+                            span
+                                if count != 0
+                                    table.centered.highlight.tab-scroll&attributes({'id': 'tab-zone-line-' + zone.id})
+                                        thead
+                                            tr
+                                                th ID
+                                                th DEPARTURE
+                                                th TERMINAL
+                                                th SUPPRIMER
+                                        tbody
+                                            each line in lines
+                                                if zone.id == line.idZone
+                                                    tr
+                                                        td= line.id
+                                                        td= line.departure
+                                                        td= line.arrival
+                                                        td
+                                                            button.waves-effect.waves-light.btn(onclick=`deleteLine(${line.id}, ${line.idZone})`)
+                                                                i.material-icons delete
+                                else
+                                    p&attributes({'id': 'tab-zone-line-' + zone.id}) Nous n'avons trouvé aucune ligne dans cette zone
