@@ -1,32 +1,29 @@
-extends layout
+extends layout_login
 
 block content
-    div.parallax-container.parallax-container1
-        div.parallax
-            img(src="images/background-bike.jpg")
-    div.section.white.container
-        h2.header Welcome to login page
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vulputate, magna vel interdum auctor, felis velit efficitur lacus, vitae lobortis sapien urna quis arcu. Morbi viverra nec leo at ultricies. Cras et ligula risus. Nullam ac nisl ante. Sed eu hendrerit arcu. Nunc consequat quam vel purus pulvinar dictum. Morbi malesuada neque nisl, at varius metus lacinia in. Maecenas euismod elit in eros viverra, ac pellentesque lectus luctus. Duis tincidunt quam ac mattis consequat.
-        p In tempus sapien diam, at convallis turpis egestas id. Praesent mattis sem sapien, a elementum tortor ultrices sed. Phasellus ligula elit, malesuada eu pharetra ac, egestas vel erat. Ut ut imperdiet turpis, sit amet lacinia neque. Donec aliquam iaculis odio, eget malesuada tortor pretium vel. Ut pellentesque finibus nibh eget consequat. Mauris feugiat tortor augue, ac viverra lorem ullamcorper ac. Integer blandit ex at velit posuere, et tempus nulla ullamcorper. Ut nec odio ullamcorper, viverra lorem egestas, fringilla quam. Vivamus placerat ipsum tortor, ac molestie risus sollicitudin at.
-        p Morbi sit amet ante lorem. Curabitur volutpat non erat vel pellentesque. Etiam tincidunt semper purus egestas gravida. Integer scelerisque, urna venenatis euismod consequat, enim turpis volutpat erat, quis mattis sem justo elementum massa. Mauris nibh erat, mollis et feugiat vel, lacinia sed ex. In rhoncus eget eros in ullamcorper. Nunc fermentum mi purus, non interdum purus viverra nec. Vestibulum placerat mauris massa, at venenatis velit interdum et. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus risus leo, gravida id mauris in, imperdiet scelerisque neque. Cras at felis a sapien ultrices luctus. Sed at elit facilisis, pellentesque sem et, mollis libero.
-        p Duis aliquam neque quis purus congue, non scelerisque erat auctor. Quisque blandit nulla ut ante posuere, id lacinia nulla hendrerit. Nulla eget tortor ut velit tincidunt egestas ut et metus. Nulla non tempus mauris. Aliquam vehicula magna eu lectus ultrices dictum. Pellentesque nunc arcu, vulputate quis ex eu, pretium tempus sapien. Maecenas lobortis facilisis turpis at fringilla. Vivamus molestie sollicitudin sem, et sollicitudin diam tincidunt nec. Donec semper molestie arcu, at condimentum nibh posuere sed. Nam ipsum ligula, ullamcorper a cursus nec, interdum sed elit. Curabitur in semper urna, a condimentum leo. Nulla facilisi. Duis in metus tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed convallis nisl id nisi porttitor tincidunt id non justo.
-        div.row
-            div.col.s12
-                div.input-field.col.s12
-                    i.material-icons.prefix add_location
-                    input(type="text")#departure.autocomplete
-                    label(for="departure") départ
-                div.input-field.col.s12
-                    i.material-icons.prefix add_location
-                    input(type="text")#arrival.autocomplete
-                    label(for="arrival") arrivée
 
-    div.parallax-container
-        div.parallax
-            img(src="images/background-bike2.jpg")
-    div.section.white.container
-        h2.header Welcome to login page
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vulputate, magna vel interdum auctor, felis velit efficitur lacus, vitae lobortis sapien urna quis arcu. Morbi viverra nec leo at ultricies. Cras et ligula risus. Nullam ac nisl ante. Sed eu hendrerit arcu. Nunc consequat quam vel purus pulvinar dictum. Morbi malesuada neque nisl, at varius metus lacinia in. Maecenas euismod elit in eros viverra, ac pellentesque lectus luctus. Duis tincidunt quam ac mattis consequat.
-        p In tempus sapien diam, at convallis turpis egestas id. Praesent mattis sem sapien, a elementum tortor ultrices sed. Phasellus ligula elit, malesuada eu pharetra ac, egestas vel erat. Ut ut imperdiet turpis, sit amet lacinia neque. Donec aliquam iaculis odio, eget malesuada tortor pretium vel. Ut pellentesque finibus nibh eget consequat. Mauris feugiat tortor augue, ac viverra lorem ullamcorper ac. Integer blandit ex at velit posuere, et tempus nulla ullamcorper. Ut nec odio ullamcorper, viverra lorem egestas, fringilla quam. Vivamus placerat ipsum tortor, ac molestie risus sollicitudin at.
-        p Morbi sit amet ante lorem. Curabitur volutpat non erat vel pellentesque. Etiam tincidunt semper purus egestas gravida. Integer scelerisque, urna venenatis euismod consequat, enim turpis volutpat erat, quis mattis sem justo elementum massa. Mauris nibh erat, mollis et feugiat vel, lacinia sed ex. In rhoncus eget eros in ullamcorper. Nunc fermentum mi purus, non interdum purus viverra nec. Vestibulum placerat mauris massa, at venenatis velit interdum et. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus risus leo, gravida id mauris in, imperdiet scelerisque neque. Cras at felis a sapien ultrices luctus. Sed at elit facilisis, pellentesque sem et, mollis libero.
-        p Duis aliquam neque quis purus congue, non scelerisque erat auctor. Quisque blandit nulla ut ante posuere, id la
+    div.section.container
+        div.row
+            div.col.s12.center-align
+                i.material-icons.login-bt person_pin
+        div.row
+            form.col.s12
+                div.row
+                    div.col.s4
+                    div.input-field.col.s4
+                        i.material-icons.prefix person
+                        input(id="utilisateurLogin" type="text").validate
+                        label(for="utilisateurLogin") Utilisateur
+                    div.col.s4
+        div.row
+            form.col.s12
+                div.row
+                    div.col.s4
+                    div.input-field.col.s4
+                        i.material-icons.prefix lock
+                        input(id="psw" type="text").validate
+                        label(for="psw") Mot de passe
+                    div.col.s4
+        div.row
+            div.col.s12.center-align
+                a(href="#loginBtt").modal-action.modal-close.waves-effect.waves-light.btn-large Se connecter

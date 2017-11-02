@@ -27,7 +27,7 @@ html
             li
               a(href="#contact") Contact
             li
-              a(href="#loginPop").modal-trigger Login
+              a(href="/login").modal-trigger Login
           ul.side-nav#mobile-demo
             li
               a(href="#home") Home
@@ -38,34 +38,9 @@ html
             li
               a(href="#contact") Contact
             li
-              a(href="#loginPop").modal-trigger Login
+              a(href="/login").modal-trigger Login
 
     block content
-
-    div#loginPop.modal.modal-size
-      div.modal-content.login-no-padding
-        div.login-background
-          h4 Login
-        div.row
-          form.col.s12
-            div.row
-              div.input-field.col.s12
-                i.material-icons.prefix person
-                input(id="utilisateurLogin" type="text").validate
-                label(for="utilisateurLogin") Utilisateur
-        div.row
-          form.col.s12
-            div.row
-              div.input-field.col.s12
-                i.material-icons.prefix lock
-                input(id="psw" type="text").validate
-                label(for="psw") Mot de passe
-      div.row
-        div.col.s12.center-align
-          a(href="#loginBtt").modal-action.modal-close.waves-effect.waves-light.btn-large Se connecter
-
-
-
 
 
     footer.page-footer.amber.lighten-2

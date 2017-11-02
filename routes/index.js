@@ -22,7 +22,7 @@ router.post('/booking', function (req, res, next) {
     }).catch(function (error) {
         res.status(500).send("Erreur interne");
     })
-})
+});
 
 router.post('/booking/add', function (req, res, next) {
 
@@ -32,6 +32,21 @@ router.post('/booking/add', function (req, res, next) {
     }).catch(function (error) {
         res.status(500).send("Erreur interne");
     })
-})
+});
+
+router.post('/contact', function (req, res, next) {
+
+    let departure = req.body.departure;
+    let terminal = req.body.terminal;
+    let time = req.body.time;
+    let date = req.body.date;
+
+    bookingManagement.getTrip(departure, terminal, date, time).then(function (response) {
+
+        res.status(200).send(response);
+    }).catch(function (error) {
+        res.status(500).send("Erreur interne");
+    })
+});
 
 module.exports = router;
