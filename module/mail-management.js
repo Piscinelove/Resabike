@@ -34,3 +34,5 @@ function sendContactEmail(name, email, message) {
         });
     })
 }
+
+module.exports.sendContactEmail = sendContactEmail;

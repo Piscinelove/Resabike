@@ -144,24 +144,24 @@ block content
         h2.header Contact
         p Pour toutes questions ou complément d'informations veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
             div.row
-                form.col.s12
+                form(action="/contact", method="POST", id="contact-form").col.s12
                     div.row
                         div.input-field.col.s6
                             i.material-icons.prefix person
-                            input(id="icon_nom" ,type="text").validate
-                            label(for="icon_nom" ,data-error="Veuillez saisir un nom valide.") nom
+                            input(id="contact-name", name="contactname" ,type="text").validate
+                            label(for="contact-name" ,data-error="Veuillez saisir un nom valide.") nom
                         div.input-field.col.s6
                             i.material-icons.prefix email
-                            input(id="icon_email", type="email").validate
-                            label(for="icon_email", data-error="Veuillez saisir un email valide.") email
+                            input(id="contact-email", name="contactemail", type="email").validate
+                            label(for="contact-email", data-error="Veuillez saisir un email valide.") email
             div.row
                 form.col.s12
                     div.row
                         div.input-field.col.s12
                             i.material-icons.prefix mode_edit
-                            textarea(id="taContact", data-length="500", maxlength="500").materialize-textarea.textarea-contact
-                            label(for="taContact") Formulaire de contact
-            button(id="btContact",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
+                            textarea(id="contact-message", name="contactmessage", data-length="500", maxlength="500").materialize-textarea.textarea-contact
+                            label(for="contact-message") Formulaire de contact
+            button(id="contact-button", form="contact-form",type="submit", name="action").btn.waves-effect.waves-light.right Envoyer
                 i.material-icons.right send
 
     div(id="modal-book-trip").modal.modal-fixed-footer.modal-book-trip
