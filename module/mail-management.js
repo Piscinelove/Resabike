@@ -16,8 +16,8 @@ function sendContactEmail(name, email, message) {
     return new Promise(function (resolve, reject) {
 
         var mailOptions = {
-            from: 'jesuisuneputaindepoubelle@gmail.com',
-            to: email,
+            from: email,
+            to: 'jesuisuneputaindepoubelle@gmail.com',
             subject: 'Sending Email using Node.js',
             text: message
         };

@@ -37,9 +37,9 @@ router.post('/booking/add', function (req, res, next) {
 
 router.post('/contact', function (req, res, next) {
 
-    let name = req.body.contactname;
-    let email = req.body.contactemail;
-    let message = req.body.contactmessage;
+    let name = req.body.name;
+    let email = req.body.email;
+    let message = req.body.message;
 
     mailManagement.sendContactEmail(name, email, message).then(function (response) {
 
