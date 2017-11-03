@@ -6,6 +6,7 @@ var dbRole = require('../db/role');
 var dbLine = require('../db/line');
 var userManagement = require('../module/user-management');
 var lineManagement = require('../module/line-management');
+var bookingManagement = require('../module/booking-management');
 
 /* GET home page. */
 router.get('/admin/zone', function(req, res, next) {
@@ -31,11 +32,11 @@ router.get('/admin/lines', function(req, res, next) {
         })
 });
 
-router.get('/admin/waiting', function(req, res, next) {
+router.get('/admin/waitings', function(req, res, next) {
 
-    lineManagement.getZonesAndLines()
-        .then(function (result) {
-            res.render('administration/admin/lines',{zones:result[0], lines:result[1]});
+    bookingManagement.getWaitingBookings()
+        .then(function (waitinglist) {
+            res.render('administration/admin/waiting',{waitinglist:waitinglist});
         })
 });
 
@@ -88,6 +89,26 @@ router.post('/admin/lines', function(req, res){
 });
 
 router.put('/admin/zone', function(req, res){
+
+    let id = req.body.id;
+    let name = req.body.name;
+
+    dbZone.getZoneByName(name).then(function (zoneFounded) {
+        if(zoneFounded === null)
+            dbZone.updateZone(id, name).then(
+                function () {
+                    res.status(200).send("Zone updated");
+
+                }
+            )
+        else
+            res.status(500).send("Zone with same already exist");
+
+    })
+
+});
+
+router.put('/admin/waitings', function(req, res){
 
     let id = req.body.id;
     let name = req.body.name;

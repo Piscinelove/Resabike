@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
 
       Trip.belongsTo(models.Booking, {foreignKey: 'idBooking'});
 
-      Trip.belongsTo(models.Station, {foreignKey: 'idStartStation'});
-      Trip.belongsTo(models.Station, {foreignKey: 'idEndStation'});
+      Trip.belongsTo(models.Station, {foreignKey: 'idStartStation',as: 'departureStationTrip'});
+      Trip.belongsTo(models.Station, {foreignKey: 'idEndStation',as: 'terminalStationTrip'});
   }
   return Trip;
 };

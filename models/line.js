@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
 
       Line.belongsTo(models.Zone, {foreignKey: 'idZone'});
 
-      Line.belongsTo(models.Station, {foreignKey: 'idStartStation'});
-      Line.belongsTo(models.Station, {foreignKey: 'idEndStation'});
+      Line.belongsTo(models.Station, {foreignKey: 'idStartStation', as: 'departureStationLine'});
+      Line.belongsTo(models.Station, {foreignKey: 'idEndStation',as: 'terminalStationLine'});
 
       //Line.hasMany(models.Booking, {foreignKey: 'idLine'});
 

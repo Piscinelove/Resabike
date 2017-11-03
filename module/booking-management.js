@@ -234,8 +234,41 @@ function getStartStationEndStationId(trip, departureStation, exitStation) {
 function getWaitingBookings()
 {
     return new Promise(function (resolve, reject) {
-        dbTrip.getAllTripForWaitingBookings().then(function (result) {
-            console.log("waiting : "+JSON.stringify(result));
+        dbTrip.getAllTripForWaitingBookings().then(function (waitinglist) {
+            waitinglist = JSON.parse(JSON.stringify(waitinglist));
+            Array.prototype.groupBy = function (prop) {
+                return this.reduce(function (groups, item) {
+                    var val = item[prop];
+                    groups[val] = groups[val] || [];
+                    groups[val].push(item);
+                    return groups;
+                },{});
+            }
+
+            for(var i = 0; i < waitinglist.length; i++)
+            {
+
+                for(var j = 0; j < waitinglist[i].Lines.length; j++)
+                {
+                    var tripsToGroup = JSON.parse(JSON.stringify(waitinglist[i].Lines[j].Trips));
+                    var tripsGrouped = tripsToGroup.groupBy('startHour')
+                    waitinglist[i].Lines[j].Trips = [];
+                    waitinglist[i].Lines[j].Trips.push(tripsGrouped);
+                    //console.log(JSON.stringify(waitinglist[i].Lines[j].Trips))
+                    //console.log(JSON.stringify(waitinglist[i].Lines[j].Trips));
+                    //console.log(JSON.stringify(waitinglist[i].Lines[j].Trips))
+                    //console.log(JSON.stringify(lines.Trips.groupBy('startHour')));
+
+                }
+            }
+
+            console.log(JSON.stringify(waitinglist));
+            //console.log(JSON.stringify(waitinglist));
+
+            //var groups = waitinglist.groupBy('startHour');
+            //console.log("waiting : "+JSON.stringify(waitinglist));
+
+            resolve(JSON.parse(JSON.stringify(waitinglist)));
         })
     })
 }
@@ -244,3 +277,4 @@ getWaitingBookings();
 
 module.exports.getTrip = getTrip;
 module.exports.createBooking = createBooking;
+module.exports.getWaitingBookings = getWaitingBookings;

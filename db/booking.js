@@ -20,6 +20,18 @@ function createBooking(firstname, lastname, group, email, phone, remark, date, n
     )
 }
 
+function acceptBooking(id)
+{
+    return Promise.resolve(
+        models.Booking.update
+        (
+            { validated : 1},
+            {where:{id:id}}
+        )
+    )
+}
+
 
 
 module.exports.createBooking = createBooking;
+module.exports.acceptBooking = acceptBooking;

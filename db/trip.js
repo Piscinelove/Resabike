@@ -31,15 +31,62 @@ function createTrip(startHour, idBooking, idLine, idStartStation, idEndstation)
     )
 }
 
+// function getAllTripForWaitingBookings()
+// {
+//     return Promise.resolve(
+//         models.Trip.findAll
+//         ({
+//             where : {
+//
+//                 '$Booking.validated$' : 0
+//             },
+//             include :
+//                 [
+//                     {model : models.Booking},
+//                     {model : models.Line, include : [{model : models.Station},{model : models.Zone}]}
+//                 ]
+//         })
+//     )
+// }
+
+// function getAllTripForWaitingBookings()
+// {
+//     return Promise.resolve(
+//         models.Zone.findAll
+//         ({
+//             include :
+//                 [
+//                     {
+//                         model : models.Line,
+//                         include :
+//                             [
+//                                 {model : models.Station, as : 'departureStationLine'},
+//                                 {model : models.Station, as : 'terminalStationLine'},
+//                                 {model : models.Trip, include : [{model : models.Booking, where:{validated:0}},{model : models.Station, as : 'departureStationTrip'},{model : models.Station, as : 'terminalStationTrip'}]}
+//                             ]
+//                     }
+//                 ]
+//         })
+//     )
+// }
+
 function getAllTripForWaitingBookings()
 {
     return Promise.resolve(
-        models.Trip.findAll
+        models.Zone.findAll
         ({
-            where : {
-                "$WaitingBooking.validated$" : 1
-            },
-            include : [{model : models.Booking, as : "WaitingBooking"},{model : models.Line, as : "WaitingBookingLine"},{model : models.Station, as : "WaitingBookingStation"}]
+            include :
+                [
+                    {
+                        model : models.Line,
+                        include :
+                            [
+                                {model : models.Station, as : 'departureStationLine'},
+                                {model : models.Station, as : 'terminalStationLine'},
+                                {model : models.Trip, include : [{model : models.Booking},{model : models.Station, as : 'departureStationTrip'},{model : models.Station, as : 'terminalStationTrip'}]}
+                            ]
+                    }
+                ]
         })
     )
 }
