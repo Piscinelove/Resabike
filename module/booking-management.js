@@ -269,6 +269,7 @@ function getWaitingBookings()
             //console.log("waiting : "+JSON.stringify(waitinglist));
 
             resolve(JSON.parse(JSON.stringify(waitinglist)));
+
         })
     })
 }
