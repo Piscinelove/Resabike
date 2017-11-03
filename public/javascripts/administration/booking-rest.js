@@ -1,3 +1,12 @@
+$(document).ready(function(){
+    $('.tab-waiting-bookings').DataTable({
+        rowGroup: {
+            dataSrc: 0
+        }
+    });
+});
+
+
 function acceptBooking(bookingId){
 
     superagent

@@ -3,48 +3,91 @@ extends layout_admin
 block content
     div#waiting.section.full-section.container
         h2 Réservations en attente
+        //div.row
+        //    ul(data-collapsible="expandable").collapsible.popout#collapsible-list-bookings
+        //        each zone in waitinglist
+        //            li
+        //                div.collapsible-header.ebony-clay.white-text
+        //                    div
+        //                        i.material-icons landscape
+        //                        | #{zone.name}
+        //                div.collapsible-body
+        //                    span
+        //                        table.tab-waiting-bookings.centered.highlight.tab-scroll&attributes({'id': 'tab-waiting-bookings-'})
+        //                            thead
+        //                                tr
+        //                                    th HEURE
+        //                                    th LIGNE
+        //                                    th BOOKING
+        //                                    th PERSONNE
+        //                                    th EMAIL
+        //                                    th TELEPHONE
+        //                                    th VELOS
+        //                                    th DEPART
+        //                                    th ARRIVEE
+        //                                    th CONFIRMÉ
+        //                                tbody
+        //                                    each line in zone.Lines
+        //                                        each group in line.Trips
+        //                                            each trips, starthour in group
+        //                                                each trip in trips
+        //                                                    tr
+        //                                                        td= trip.startHour
+        //                                                        td= line.id
+        //                                                        td= trip.Booking.id
+        //                                                        td= trip.Booking.lastname + " " + trip.Booking.firstname
+        //                                                        td= trip.Booking.email
+        //                                                        td= trip.Booking.phone
+        //                                                        td= trip.Booking.nbBikes
+        //                                                        td= trip.departureStationTrip.name
+        //                                                        td= trip.terminalStationTrip.name
+        //                                                        if(trip.Booking.validated == false)
+        //                                                            td
+        //                                                                button.waves-effect.waves-light.btn(onclick=`acceptBooking(${trip.Booking.id})`)
+        //                                                                    i.material-icons check
+        //
+        //                                                                button.waves-effect.waves-light.btn(onclick=`refuseBooking(${trip.Booking.id})`)
+        //                                                                    i.material-icons clear
+        //                                                        else
+        //                                                            td
+        //                                                                | accepté
         div.row
-            each zone in waitinglist
-                h3=zone.name
-                ul(data-collapsible="expandable").collapsible.popout#collapsible-list-zones-lines
-                    each line in zone.Lines
-                        each group in line.Trips
-                            each trips, starthour in group
-                                li
-                                    div.collapsible-header.ebony-clay.white-text
-                                        div
-                                            i.material-icons landscape
-                                            | #{line.id} #{line.departureStationLine.name}
-                                            i.material-icons.direction keyboard_arrow_right
-                                            | #{line.terminalStationLine.name} #{starthour}
-                                    div.collapsible-body
-                                        span
-                                            table.centered.highlight.tab-scroll&attributes({'id': 'tab-zone-line-'})
-                                                thead
-                                                    tr
-                                                        th PERSONNE
-                                                        th EMAIL
-                                                        th TELEPHONE
-                                                        th VELOS
-                                                        th DEPART
-                                                        th ARRIVEE
-                                                        th CONFIRMÉ
-                                                each trip in trips
-                                                    tbody
-                                                        tr
-                                                            td= trip.Booking.lastname +" "+trip.Booking.firstname
-                                                            td= trip.Booking.email
-                                                            td= trip.Booking.phone
-                                                            td= trip.Booking.nbBikes
-                                                            td= trip.departureStationTrip.name
-                                                            td= trip.terminalStationTrip.name
-                                                            if(trip.Booking.validated == false)
-                                                                td
-                                                                    button.waves-effect.waves-light.btn(onclick=`acceptBooking(${trip.Booking.id})`)
-                                                                        i.material-icons check
+            table.tab-waiting-bookings.centered.highlight&attributes({'id': 'tab-waiting-bookings-'})
+                thead
+                    tr
+                        th HEURE
+                        th ZONE
+                        th LIGNE
+                        th PERSONNE
+                        th EMAIL
+                        th TELEPHONE
+                        th VELOS
+                        th DEPART
+                        th ARRIVEE
+                        th CONFIRMÉ
+                    tbody
+                        each zone in waitinglist
+                            each line in zone.Lines
+                                each group in line.Trips
+                                    each trips, starthour in group
+                                        each trip in trips
+                                            tr
+                                                td= trip.startHour
+                                                td= zone.name
+                                                td= line.id
+                                                td= trip.Booking.lastname + " " + trip.Booking.firstname
+                                                td= trip.Booking.email
+                                                td= trip.Booking.phone
+                                                td= trip.Booking.nbBikes
+                                                td= trip.departureStationTrip.name
+                                                td= trip.terminalStationTrip.name
+                                                if(trip.Booking.validated == false)
+                                                    td
+                                                        button.waves-effect.waves-light.btn(onclick=`acceptBooking(${trip.Booking.id})`)
+                                                            i.material-icons check
 
-                                                                    button.waves-effect.waves-light.btn(onclick=`refuseBooking(${trip.Booking.id})`)
-                                                                        i.material-icons clear
-                                                            else
-                                                                td
-                                                                    | accepté
+                                                        button.waves-effect.waves-light.btn(onclick=`refuseBooking(${trip.Booking.id})`)
+                                                            i.material-icons clear
+                                                else
+                                                    td
+                                                        | accepté
