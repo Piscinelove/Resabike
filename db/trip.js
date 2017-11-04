@@ -70,7 +70,7 @@ function createTrip(startHour, idBooking, idLine, idStartStation, idEndstation)
 //     )
 // }
 
-function getAllTripForWaitingBookings()
+function getAllBookings()
 {
     return Promise.resolve(
         models.Zone.findAll
@@ -91,6 +91,31 @@ function getAllTripForWaitingBookings()
     )
 }
 
+function getAllBookingsByZoneId(idZone)
+{
+    return Promise.resolve(
+        models.Zone.findAll
+        ({
+            where:{
+                id:idZone
+            },
+            include :
+                [
+                    {
+                        model : models.Line,
+                        include :
+                            [
+                                {model : models.Station, as : 'departureStationLine'},
+                                {model : models.Station, as : 'terminalStationLine'},
+                                {model : models.Trip, include : [{model : models.Booking},{model : models.Station, as : 'departureStationTrip'},{model : models.Station, as : 'terminalStationTrip'}]}
+                            ]
+                    }
+                ]
+        })
+    )
+}
+
 module.exports.getNumberOfBikes = getNumberOfBikes;
 module.exports.createTrip = createTrip;
-module.exports.getAllTripForWaitingBookings = getAllTripForWaitingBookings;
+module.exports.getAllBookings = getAllBookings;
+module.exports.getAllBookingsByZoneId = getAllBookingsByZoneId;

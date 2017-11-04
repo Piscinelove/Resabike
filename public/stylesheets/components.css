@@ -119,10 +119,53 @@ ol.line-stops li:before {
     }
 }
 
-.collapsible.suggestions .collapsible-header input[type="radio"]:checked+label{
-    display: none;
+/*.collapsible.suggestions .collapsible-header input[type="radio"]:checked+label{*/
+    /*display: none;*/
+/*}*/
+/*.collapsible.suggestions .collapsible-header input[type="radio"]:not(:checked)+label{*/
+    /*display: none;*/
+/*}*/
+table.dataTable thead {
+    /*background-color: #2a2d3e;*/
+    border-bottom: 1px solid #d0d0d0;
 }
-.collapsible.suggestions .collapsible-header input[type="radio"]:not(:checked)+label{
-    display: none;
+
+
+table.dataTable thead th {
+    border-radius: 0;
 }
+
+table.dataTable tbody tr.group.group-start td {
+    background-color: #2a2d3e;
+    color:white;
+    border-bottom: 1px solid #d0d0d0;
+
+}
+
+table.dataTable.no-footer{
+    border-bottom: none !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 1px solid #d0d0d0 !important;
+}
+
+table.dataTable thead .sorting_asc {
+    background-image: url("../images/up.png") !important;
+}
+
+table.dataTable thead .sorting {
+    /*background-image: url("../images/sort.png") !important;*/
+    background-image: none !important;
+}
+
+table.dataTable thead .sorting_desc {
+    background-image: url("../images/down.png") !important;
+}
+
+.table-group-icon{
+    vertical-align: middle;
+    padding:0 10px;
+}
+
 

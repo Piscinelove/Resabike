@@ -27,6 +27,16 @@ function getUserByEmail(email)
     )
 }
 
+function getUserByUsername(username)
+{
+    return Promise.resolve(
+        models.User.findOne
+        ({
+            where: {username: username}
+        })
+    )
+}
+
 function deleteUser(id)
 {
     return Promise.resolve(
@@ -83,3 +93,4 @@ module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
 module.exports.getUserByEmail = getUserByEmail;
 module.exports.updateUserPassword = updateUserPassword;
+module.exports.getUserByUsername = getUserByUsername;

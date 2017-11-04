@@ -4,10 +4,10 @@ block content
 
     div.parallax-container.parallax-container1
         div.parallax
-            img(src="images/background-bike.jpg")
-            a(href="#book").waves-effect.waves-light.btn-large.home-button Je reserve !
-            h3#slogan-top.center-align.front.valign-wrapper Arriver au départ
-            h3#slogan-bottom.center-align.front.valign-wrapper  sans se fatiguer...
+            img(src="images/background-bike2.jpg")
+            h3#slogan-top.center-align.front
+                span Arriver au depart <br /> sans se fatiguer...
+            //a(href="#book").waves-effect.waves-light.btn-large.home-button Je reserve !
 
 
     div#home.section.white.container.full-section
@@ -28,7 +28,7 @@ block content
 
     div.parallax-container
         div.parallax
-            img(src="images/background-bike2.jpg")
+            img(src="images/background-bike.jpg")
 
     div#about.section.white.container.full-section
         div.row
@@ -149,7 +149,7 @@ block content
                         div.input-field.col.s6
                             i.material-icons.prefix person
                             input(id="contact-name", name="contactname" ,type="text").validate
-                            label(for="contact-name" ,data-error="Veuillez saisir un nom valide.") nom
+                            label(for="contact-name",data-error="Veuillez saisir un nom valide.") nom
                         div.input-field.col.s6
                             i.material-icons.prefix email
                             input(id="contact-email", name="contactemail", type="email").validate

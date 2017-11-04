@@ -231,11 +231,11 @@ function getStartStationEndStationId(trip, departureStation, exitStation) {
     })
 }
 
-function getWaitingBookings()
+function getBookings()
 {
     return new Promise(function (resolve, reject) {
-        dbTrip.getAllTripForWaitingBookings().then(function (waitinglist) {
-            waitinglist = JSON.parse(JSON.stringify(waitinglist));
+        dbTrip.getAllBookings().then(function (bookinglist) {
+            bookinglist = JSON.parse(JSON.stringify(bookinglist));
             Array.prototype.groupBy = function (prop) {
                 return this.reduce(function (groups, item) {
                     var val = item[prop];
@@ -245,37 +245,80 @@ function getWaitingBookings()
                 },{});
             }
 
-            for(var i = 0; i < waitinglist.length; i++)
+            for(var i = 0; i < bookinglist.length; i++)
             {
 
-                for(var j = 0; j < waitinglist[i].Lines.length; j++)
+                for(var j = 0; j < bookinglist[i].Lines.length; j++)
                 {
-                    var tripsToGroup = JSON.parse(JSON.stringify(waitinglist[i].Lines[j].Trips));
+                    var tripsToGroup = JSON.parse(JSON.stringify(bookinglist[i].Lines[j].Trips));
                     var tripsGrouped = tripsToGroup.groupBy('startHour')
-                    waitinglist[i].Lines[j].Trips = [];
-                    waitinglist[i].Lines[j].Trips.push(tripsGrouped);
-                    //console.log(JSON.stringify(waitinglist[i].Lines[j].Trips))
-                    //console.log(JSON.stringify(waitinglist[i].Lines[j].Trips));
-                    //console.log(JSON.stringify(waitinglist[i].Lines[j].Trips))
+                    bookinglist[i].Lines[j].Trips = [];
+                    bookinglist[i].Lines[j].Trips.push(tripsGrouped);
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips));
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
                     //console.log(JSON.stringify(lines.Trips.groupBy('startHour')));
 
                 }
             }
 
-            console.log(JSON.stringify(waitinglist));
-            //console.log(JSON.stringify(waitinglist));
+            console.log(JSON.stringify(bookinglist));
+            //console.log(JSON.stringify(bookinglist));
 
-            //var groups = waitinglist.groupBy('startHour');
-            //console.log("waiting : "+JSON.stringify(waitinglist));
+            //var groups = bookinglist.groupBy('startHour');
+            //console.log("waiting : "+JSON.stringify(bookinglist));
 
-            resolve(JSON.parse(JSON.stringify(waitinglist)));
+            resolve(JSON.parse(JSON.stringify(bookinglist)));
 
         })
     })
 }
 
-getWaitingBookings();
+function getBookingsByZoneId(idZone)
+{
+    return new Promise(function (resolve, reject) {
+        dbTrip.getAllBookingsByZoneId(idZone).then(function (bookinglist) {
+            bookinglist = JSON.parse(JSON.stringify(bookinglist));
+            Array.prototype.groupBy = function (prop) {
+                return this.reduce(function (groups, item) {
+                    var val = item[prop];
+                    groups[val] = groups[val] || [];
+                    groups[val].push(item);
+                    return groups;
+                },{});
+            }
+
+            for(var i = 0; i < bookinglist.length; i++)
+            {
+
+                for(var j = 0; j < bookinglist[i].Lines.length; j++)
+                {
+                    var tripsToGroup = JSON.parse(JSON.stringify(bookinglist[i].Lines[j].Trips));
+                    var tripsGrouped = tripsToGroup.groupBy('startHour')
+                    bookinglist[i].Lines[j].Trips = [];
+                    bookinglist[i].Lines[j].Trips.push(tripsGrouped);
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips));
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
+                    //console.log(JSON.stringify(lines.Trips.groupBy('startHour')));
+
+                }
+            }
+
+            console.log(JSON.stringify(bookinglist));
+            //console.log(JSON.stringify(bookinglist));
+
+            //var groups = bookinglist.groupBy('startHour');
+            //console.log("waiting : "+JSON.stringify(bookinglist));
+
+            resolve(JSON.parse(JSON.stringify(bookinglist)));
+
+        })
+    })
+}
+
 
 module.exports.getTrip = getTrip;
 module.exports.createBooking = createBooking;
-module.exports.getWaitingBookings = getWaitingBookings;
+module.exports.getBookings = getBookings;
+module.exports.getBookingsByZoneId = getBookingsByZoneId;

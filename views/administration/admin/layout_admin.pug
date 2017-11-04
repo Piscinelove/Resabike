@@ -12,15 +12,38 @@ html
         header
             ul.side-nav.fixed.ebony-clay#mobile-demo
                     li
-                        a(href="/administration/admin/zone").white-text.scroll-to  Zones
+                        div.user-view
+                            div.background
+                            a
+                                img.circle(src="../../images/user.png")
+                            a
+                                span.white-text.username #{session.username}
+                            a
+                                span.white-text.email #{session.email}
+
+                    if(session.idRole == 1)
+                        li
+                            a(href="/administration/admin/zone").white-text.scroll-to  Zones
+                                i.material-icons.white-text landscape
+                    if(session.idRole == 1 || session.idRole == 2)
+                        li
+                            a(href="/administration/admin/lines").white-text.scroll-to  Lignes
+                                i.material-icons.white-text timeline
+                    if(session.idRole == 1)
+                        li
+                            a(href="/administration/admin/users").white-text.scroll-to  Utilisateurs
+                                i.material-icons.white-text people
+                    if(session.idRole == 1 || session.idRole == 2)
+                        li
+                            a(href="/administration/admin/bookings").white-text.scroll-to  Réservations
+                                i.material-icons.white-text view_list
+                    if(session.idRole == 1 || session.idRole == 2)
+                        li
+                            a(href="/administration/admin/statistics").white-text.scroll-to  Statistiques
+                                i.material-icons.white-text multiline_chart
                     li
-                        a(href="/administration/admin/lines").white-text.scroll-to  Lignes
-                    li
-                        a(href="/administration/admin/users").white-text.scroll-to  Utilisateurs
-                    li
-                        a(href="/administration/admin/waitings").white-text.scroll-to  Liste d'attente
-                    li
-                        a(href="#historic").white-text.scroll-to Historique
+                        a(href="/login/logout").white-text.scroll-to.red-text Se déconnecter
+                            i.material-icons.red-text power_settings_new
 
         nav.amber.lighten-2
             div.nav-wrapper

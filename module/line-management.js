@@ -41,6 +41,42 @@ function getZonesAndLines() {
     )
 }
 
+function getZoneAndLines(idZone) {
+    // List of zones, list of and lines available
+    var result = [];
+
+    return Promise.resolve(
+        dbZone.getZoneById(idZone)
+            .then(function (zone) {
+                console.log(JSON.parse(JSON.stringify(zone)) + " tididid");
+                result.push(zone);
+                return dbLine.getAllLines();
+            }).then(function (lines) {
+
+            var promises = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                promises.push(dbStation.getStationById(lines[i].idStartStation).then(function (station) {
+                    lines[i].departure = station.name;
+                }));
+                promises.push(dbStation.getStationById(lines[i].idEndStation).then(function (station) {
+                    lines[i].arrival = station.name;
+                }));
+                promises.push(dbZone.getZoneById(lines[i].idZone).then(function (zone) {
+                    lines[i].zone = zone.name;
+                }));
+            }
+
+            return Promise.all(promises).then(function () {
+                result.push(lines);
+                //usersDetails = users;
+            })
+        }).then(function () {
+            return result;
+        })
+    )
+}
+
 function getLinesFromAPI(from, to) {
     return new Promise(function (resolve, reject) {
 
@@ -236,4 +272,6 @@ function cleanAPI(response) {
 
 
 module.exports.getZonesAndLines = getZonesAndLines;
+module.exports.getZoneAndLines = getZoneAndLines;
 module.exports.createLine = createLine;
+

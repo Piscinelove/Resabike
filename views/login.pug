@@ -2,28 +2,28 @@ extends layout_login
 
 block content
 
-    div.section.container
+    div.section.container.full-section
         div.row
             div.col.s12.center-align
                 i.material-icons.login-bt person_pin
-        div.row
-            form.col.s12
-                div.row
-                    div.col.s4
-                    div.input-field.col.s4
-                        i.material-icons.prefix person
-                        input(id="utilisateurLogin" type="text").validate
-                        label(for="utilisateurLogin") Utilisateur
-                    div.col.s4
-        div.row
-            form.col.s12
-                div.row
-                    div.col.s4
-                    div.input-field.col.s4
-                        i.material-icons.prefix lock
-                        input(id="psw" type="text").validate
-                        label(for="psw") Mot de passe
-                    div.col.s4
-        div.row
-            div.col.s12.center-align
-                a(href="#loginBtt").modal-action.modal-close.waves-effect.waves-light.btn-large Se connecter
+        form#login-signin-form.col.s12
+            ul.stepper.linear
+                li.step.active
+                    div.step-title.waves-effect Login
+                    div.step-content
+                        div.row
+                            div.col.s4
+                            div.input-field.col.s4
+                                i.material-icons.prefix person
+                                input(id="login-username",type="text", name="username", required="required", aria-required="true").validate
+                                label(for="login-username") Utilisateur
+                        div.row
+                            div.col.s4
+                            div.input-field.col.s4
+                                i.material-icons.prefix lock
+                                input(id="login-password",type="password", name="password", required="required", aria-required="true").validate
+                                label(for="login-password") Mot de passe
+                            div.col.s4
+                        div.row
+                            div.col.s12.center-align
+                                button(data-feedback="login").waves-effect.btn.next-step SE CONNECTER

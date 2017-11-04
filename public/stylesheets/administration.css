@@ -48,3 +48,31 @@ main, footer
         padding-left: 0;
     }
 }
+
+.side-nav li a.red-text{
+    color : #F44336 !important;
+}
+
+.side-nav .user-view {
+    height: 200px;
+}
+
+.side-nav .user-view .background {
+    background-image: url("../images/preview.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.side-nav .user-view .username {
+    margin-top: 16px;
+    font-weight: 500;
+    display: block;
+    line-height: 16px;
+}
+
+.side-nav .user-view .email {
+    margin-top: 16px;
+    font-weight: 400;
+    display: block;
+    line-height: 16px;
+}

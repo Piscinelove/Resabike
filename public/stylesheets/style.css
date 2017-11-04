@@ -7,6 +7,11 @@ a {
   color: #00B7FF;
 }*/
 
+@font-face {
+  font-family: CaroselloTitle;
+  src: url("../fonts/Carosello-Regular.ttf");
+}
+
 .resabike
 {
   color:#1E1E1E;
@@ -90,12 +95,14 @@ main {
 
 /*SLOGAN*/
 #slogan-top{
-  font-weight: bold;
-  font-style: italic;
-  letter-spacing: 3px;
+  font-size: 5em;
+  font-family: CaroselloTitle;
+  letter-spacing: 1px;
+  top:0;
+  left:0;
+  margin: 0 auto;
+  margin-top: 10%;
   color: white;
-  margin-top: -7em;
-  margin-left: 3em;
 }
 
 #slogan-bottom{

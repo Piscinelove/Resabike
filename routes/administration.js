@@ -26,18 +26,32 @@ router.get('/admin/users', function(req, res, next) {
 
 router.get('/admin/lines', function(req, res, next) {
 
-    lineManagement.getZonesAndLines()
-        .then(function (result) {
-            res.render('administration/admin/lines',{zones:result[0], lines:result[1]});
-        })
+    if(req.session.idRole == 2)
+        lineManagement.getZoneAndLines(req.session.idZone)
+            .then(function (result) {
+                var zone  = [];
+                zone.push(result[0]);
+                res.render('administration/admin/lines',{zones:zone, lines:result[1]});
+            })
+    else
+        lineManagement.getZonesAndLines()
+            .then(function (result) {
+                res.render('administration/admin/lines',{zones:result[0], lines:result[1]});
+            })
 });
 
-router.get('/admin/waitings', function(req, res, next) {
+router.get('/admin/bookings', function(req, res, next) {
 
-    bookingManagement.getWaitingBookings()
-        .then(function (waitinglist) {
-            res.render('administration/admin/waiting',{waitinglist:waitinglist});
-        })
+    if(req.session.idRole == 2)
+        bookingManagement.getBookingsByZoneId(req.session.idZone)
+            .then(function (bookinglist) {
+                res.render('administration/admin/bookings',{bookinglist:bookinglist});
+            })
+    else
+        bookingManagement.getBookings()
+            .then(function (bookinglist) {
+                res.render('administration/admin/bookings',{bookinglist:bookinglist});
+            })
 });
 
 
