@@ -13,6 +13,8 @@ function getNumberOfBikes(trip)
             }).then(function (totalBikes) {
                 totalBikes = totalBikes || 0;
                 trip.nbBikes -= totalBikes;
+                if(trip.nbBikes < 0)
+                    trip.nbBikes = 0;
                 resolve(trip);
             })
     })

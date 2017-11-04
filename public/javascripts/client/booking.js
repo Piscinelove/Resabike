@@ -84,18 +84,29 @@ function createBooking() {
         .send({personaldata: personaldata, trip:trip})
         .end(function(err, res)
         {
-            // if (err || !res.ok)
-            // {
-            //     $('.stepper').destroyFeedback();
-            //     errorToast('Une erreur interne est survenu.'+'</br>'+'Veillez bien à choisir un arrêt de départ et de destination valide');
-            // }
-            // else
-            // {
-            //     console.log(res.body);
-            //     buildSuggestions(res);
-            //     successToast("User mise à jour");
-            //     $('.stepper').nextStep();
-            // }
+            if (err || !res.ok)
+            {
+                $('.stepper').destroyFeedback();
+                errorToast('Une erreur interne est survenu.'+'</br>'+'Veillez bien à choisir un arrêt de départ et de destination valide');
+            }
+            else
+            {
+                if(personaldata.nbBikes > trip.nbBikes)
+                {
+                    successToast("Succès de la réservation !");
+                    $('.confirmation-message').text("Votre réservation a bien été placée en file d'attente." +
+                        "Le nombre de vélos réservés étant supérieur aux nombres de places  disponibles, la confirmation " +
+                        "d'un administrateur est nécessaire. Vous serez contacté par e-mail dans les plus brefs délais.")
+                }
+                else
+                {
+                    successToast("Succès de la réservation !");
+                    $('.confirmation-message').text("Nous vous confirmons la réussite de votre réservation !" +
+                        " Un email de confirmation de réservation a été envoyée à l'adresse suivante : " + personaldata.email);
+                }
+
+                $('.stepper').nextStep();
+            }
         });
 }
 
@@ -136,7 +147,7 @@ function buildSuggestions(res) {
 
         var duration = suggestion.duration / 60;
         suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+suggestion.nbBikes+' place(s)</span></div>' +
-            '<a class="waves-effect waves-light btn booking-button next-step" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">réserver<i class="material-icons left">timeline</i></a></div>' +
+            '<button class="waves-effect waves-light btn booking-button next-step" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">réserver<i class="material-icons left">timeline</i></button></div>' +
             '<div class="collapsible-body"><span><ol class="line-stops">'+stops+'</ol></span></div></li>';
 
 

@@ -19,6 +19,7 @@ router.post('/booking', function (req, res, next) {
 
     bookingManagement.getTrip(departure, terminal, date, time).then(function (response) {
 
+        console.log("bah oui");
         res.status(200).send(response);
     }).catch(function (error) {
         res.status(500).send("Erreur interne");
@@ -28,8 +29,7 @@ router.post('/booking', function (req, res, next) {
 router.post('/booking/add', function (req, res, next) {
 
     bookingManagement.createBooking(req.body).then(function (response) {
-
-        res.status(200).send(response);
+        res.status(200).send("Réservation créee");
     }).catch(function (error) {
         res.status(500).send("Erreur interne");
     })
