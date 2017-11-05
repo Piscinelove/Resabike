@@ -320,8 +320,52 @@ function getBookingsByZoneId(idZone)
     })
 }
 
+function getAcceptedBookingsByZoneId(idZone)
+{
+    return new Promise(function (resolve, reject) {
+        dbTrip.getAllAcceptedBookingsByZoneId(idZone).then(function (bookinglist) {
+            bookinglist = JSON.parse(JSON.stringify(bookinglist));
+            Array.prototype.groupBy = function (prop) {
+                return this.reduce(function (groups, item) {
+                    var val = item[prop];
+                    groups[val] = groups[val] || [];
+                    groups[val].push(item);
+                    return groups;
+                },{});
+            }
+
+            for(var i = 0; i < bookinglist.length; i++)
+            {
+
+                for(var j = 0; j < bookinglist[i].Lines.length; j++)
+                {
+                    var tripsToGroup = JSON.parse(JSON.stringify(bookinglist[i].Lines[j].Trips));
+                    var tripsGrouped = tripsToGroup.groupBy('startHour')
+                    bookinglist[i].Lines[j].Trips = [];
+                    bookinglist[i].Lines[j].Trips.push(tripsGrouped);
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips));
+                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
+                    //console.log(JSON.stringify(lines.Trips.groupBy('startHour')));
+
+                }
+            }
+
+            console.log(JSON.stringify(bookinglist));
+            //console.log(JSON.stringify(bookinglist));
+
+            //var groups = bookinglist.groupBy('startHour');
+            //console.log("waiting : "+JSON.stringify(bookinglist));
+
+            resolve(JSON.parse(JSON.stringify(bookinglist)));
+
+        })
+    })
+}
+
 
 module.exports.getTrip = getTrip;
 module.exports.createBooking = createBooking;
 module.exports.getBookings = getBookings;
 module.exports.getBookingsByZoneId = getBookingsByZoneId;
+module.exports.getAcceptedBookingsByZoneId = getAcceptedBookingsByZoneId;

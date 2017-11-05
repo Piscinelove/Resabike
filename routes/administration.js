@@ -48,6 +48,11 @@ router.get('/admin/bookings', function(req, res, next) {
             .then(function (bookinglist) {
                 res.render('administration/admin/bookings',{bookinglist:bookinglist});
             })
+    else if(req.session.idRole == 3)
+        bookingManagement.getAcceptedBookingsByZoneId(req.session.idZone)
+            .then(function (bookinglist) {
+                res.render('administration/admin/bookings',{bookinglist:bookinglist});
+            })
     else
         bookingManagement.getBookings()
             .then(function (bookinglist) {

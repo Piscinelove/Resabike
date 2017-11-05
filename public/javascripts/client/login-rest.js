@@ -22,7 +22,7 @@ function login() {
                 else
                 {
                     successToast("Connecté");
-                    window.location.href = '/administration/admin/lines';
+                    window.location.href = '/administration/admin/bookings';
                 }
             });
 }

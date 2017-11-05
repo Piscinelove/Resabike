@@ -79,7 +79,7 @@ var isAuthorized = function (req, res, next) {
     }
     else if(url == "/admin/bookings")
     {
-        if(idRole == 1 || idRole == 2)
+        if(idRole == 1 || idRole == 2 || idRole == 3)
             next();
         else
             res.status(500).send("Unauthorized access");

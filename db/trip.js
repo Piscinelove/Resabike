@@ -117,7 +117,32 @@ function getAllBookingsByZoneId(idZone)
     )
 }
 
+function getAllAcceptedBookingsByZoneId(idZone)
+{
+    return Promise.resolve(
+        models.Zone.findAll
+        ({
+            where:{
+                id:idZone
+            },
+            include :
+                [
+                    {
+                        model : models.Line,
+                        include :
+                            [
+                                {model : models.Station, as : 'departureStationLine'},
+                                {model : models.Station, as : 'terminalStationLine'},
+                                {model : models.Trip, include : [{model : models.Booking, where:{validated:1}},{model : models.Station, as : 'departureStationTrip'},{model : models.Station, as : 'terminalStationTrip'}]}
+                            ]
+                    }
+                ]
+        })
+    )
+}
+
 module.exports.getNumberOfBikes = getNumberOfBikes;
 module.exports.createTrip = createTrip;
 module.exports.getAllBookings = getAllBookings;
 module.exports.getAllBookingsByZoneId = getAllBookingsByZoneId;
+module.exports.getAllAcceptedBookingsByZoneId = getAllAcceptedBookingsByZoneId;
