@@ -16,6 +16,10 @@ a {
   background-color: #2a2d3e !important;
 }
 
+.froly-text{
+  color: #ee6e73;
+}
+
 
 .resabike
 {
@@ -199,4 +203,8 @@ main {
   60% {
     transform: translateY(-15px);
   }
+}
+
+div.step-actions button:first-of-type{
+  margin-left: auto;
 }

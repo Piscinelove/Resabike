@@ -72,45 +72,57 @@ block content
                     div.step-title.waves-effect Coordonnées
                     div.step-content
                         h2.header Qui êtes-vous ?
-                            div.row
-                                div.input-field.col.s6
-                                    input(id="booking-register-firstname", name="firstname", type="text", required="required", aria-required="true").validate
-                                    label(for="booking-register-firstname") Prénom
-                                div.input-field.col.s6
-                                    input(id="booking-register-lastname", name="lastname", type="text", required="required", aria-required="true").validate
-                                    label(for="booking-register-lastname") Nom
-                                div.input-field.col.s6
-                                    input(id="booking-register-group", name="group", type="text").validate
-                                    label(for="booking-register-group") Groupe
-                                div.input-field.col.s6
-                                    input(id="booking-register-phone", name="phone", type="tel", required="required", aria-required="true").validate
-                                    label(for="booking-register-phone") Téléphone
-                                div.input-field.col.s6
-                                    input(id="booking-register-email", name="email", type="email", required="required", aria-required="true").validate
-                                    label(for="booking-register-email") E-mail
-                                div.step-actions.col.s12
-                                    button.waves-effect.btn.next-step Continuer
+                        div.row
+                            div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 edit
+                                input(id="booking-register-firstname", name="firstname", type="text", required="required", aria-required="true").validate
+                                label(for="booking-register-firstname") Prénom
+                            div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 edit
+                                input(id="booking-register-lastname", name="lastname", type="text", required="required", aria-required="true").validate
+                                label(for="booking-register-lastname") Nom
+                            div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 group
+                                input(id="booking-register-group", name="group", type="text").validate
+                                label(for="booking-register-group") Groupe
+                            div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 local_phone
+                                input(id="booking-register-phone", name="phone", type="tel", required="required", aria-required="true").validate
+                                label(for="booking-register-phone") Téléphone
+                            div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 email
+                                input(id="booking-register-email", name="email", type="email", required="required", aria-required="true").validate
+                                label(for="booking-register-email") E-mail
+                            div.step-actions.col.s12
+                                button.waves-effect.btn.next-step Continuer
+                                    i.material-icons.left send
                 li.step
                     div.step-title.waves-effect.waves-light Réservez !
                     div.step-content
                         h2.header Faites votre réservation dès maintenant
                         div.row
                             div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 location_on
                                 input(id="booking-register-departure", name="departureBooking",type="text").autocomplete-db.validate
                                 label(for="booking-register-departure") Station de départ
                             div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 location_on
                                 input(id="booking-register-terminal", name="terminalBooking",type="text").autocomplete-db.validate
                                 label(for="booking-register-terminal") Station d'arrivée
                             div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 date_range
                                 input(type="text",id="booking-register-date", placeholder="", name="dateBooking").datepicker
                                 label(for="booking-register-date") Date
                             div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 access_time
                                 input(type="text",id="booking-register-time", placeholder="", name="timeBooking").timepicker
                                 label(for="booking-register-time") Heure de départ
                             div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 directions_bike
                                 input(type="number",name="bikesBooking", id="booking-register-bikes")
                                 label(for="booking-register-bikes") Nombre de vélos
                             div.input-field.col.s6
+                                i.material-icons.prefix.teal-text.text-lighten-1 message
                                 textarea(data-length="100", maxlength="100", id="booking-register-remark").materialize-textarea.textarea-remarque
                                 label(for="booking-register-remark") Remarque
                         div.col.s12
@@ -119,7 +131,9 @@ block content
                             label(for="filled-in-box", id="conditions-booking") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
                         div.step-actions
                             button.waves-effect.btn.previous-step Retour
+                                i.material-icons.left arrow_back
                             button(data-feedback="getBookingSuggestions").waves-effect.btn.next-step Planifiez
+                                i.material-icons.left map
                 li.step
                     div.step-title.waves-effect.waves-light Planifiez
                     div.step-content
@@ -128,6 +142,7 @@ block content
                             ul(data-collapsible="accordion").collapsible.suggestions
                         div.step-actions
                             button.waves-effect.btn.previous-step Retour
+                                i.material-icons.left arrow_back
                 li.step
                     div.step-title.waves-effect.waves-light Confirmation
                     div.step-content
@@ -137,6 +152,7 @@ block content
                         div.resume
                         div.step-actions
                             button(data-feedback="newBooking").waves-effect.btn.next-step Faire une nouvelle réservation
+                                i.material-icons.left refresh
 
     div.parallax-container
         div.parallax

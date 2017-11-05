@@ -169,7 +169,12 @@ function buildSuggestions(res) {
         }
 
         var duration = suggestion.duration / 60;
-        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+suggestion.nbBikes+' place(s)</span></div>' +
+        var available = "";
+
+        if(suggestion.nbBikes == 0)
+            available = "red-text";
+
+        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span><span class="register-bikes-available '+available+'"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+suggestion.nbBikes+' place(s)</span></div>' +
             '<button class="waves-effect waves-light btn booking-button" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">réserver<i class="material-icons left">timeline</i></button></div>' +
             '<div class="collapsible-body"><span><ol class="line-stops">'+stops+'</ol></span></div></li>';
 
