@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    $('.stepper').activateStepper();
+    $('.stepper').activateStepper({
+        linearStepsNavigation: false,
+    });
 
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
@@ -29,6 +31,10 @@ $(document).ready(function(){
             Materialize.updateTextFields();
         } //Function for after opening timepicker
     });
+
+    $('.booking-button').on('click', function (e) {
+        e.stopPropagation();
+    })
 
 })
 
@@ -91,6 +97,14 @@ function createBooking() {
             }
             else
             {
+                var resume = '<ul class="collection"><li class="collection-item ebony-clay white-text"><div class="choice"><i class="material-icons" style="vertical-align: middle">directions_bus</i>';
+
+                for(var i = 0; i < trip.changes.length; i++)
+                {
+                    resume +=
+                        '<span class="highlight-line">'+trip.changes[i].idLine+'</span>';
+                }
+                resume += ' ' + trip.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + trip.arrival + ' <span class="not-highlight">' + trip.datetime + ' ' + trip.duration/60 + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+personaldata.nbBikes+' vélo(s)</span></div></ul></li> ';
                 if(personaldata.nbBikes > trip.nbBikes)
                 {
                     successToast("Succès de la réservation !");
@@ -101,8 +115,14 @@ function createBooking() {
                 else
                 {
                     successToast("Succès de la réservation !");
-                    $('.confirmation-message').text("Nous vous confirmons la réussite de votre réservation !" +
-                        " Un email de confirmation de réservation a été envoyée à l'adresse suivante : " + personaldata.email);
+                    // $('.confirmation-message').text("Nous vous confirmons la réussite de votre réservation !" +
+                    //     " Un email de confirmation de réservation a été envoyée à l'adresse suivante : " + personaldata.email);
+                    $('.confirmation-message').empty();
+                    $('.confirmation-message').append("<p>Bonjour "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
+                        '<p>Un email de confirmation a été envoyée à l\'adresse ' +
+                        'suivante : '+personaldata.email+'</p><p>La réservation suivante a bien été traitée : </p>')
+                    $('.resume').empty();
+                    $('.resume').append(resume);
                 }
 
                 setTimeout("$('.stepper').nextStep();", 2000);
@@ -148,7 +168,7 @@ function buildSuggestions(res) {
 
         var duration = suggestion.duration / 60;
         suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+suggestion.nbBikes+' place(s)</span></div>' +
-            '<button class="waves-effect waves-light btn booking-button next-step" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">réserver<i class="material-icons left">timeline</i></button></div>' +
+            '<button class="waves-effect waves-light btn booking-button" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">réserver<i class="material-icons left">timeline</i></button></div>' +
             '<div class="collapsible-body"><span><ol class="line-stops">'+stops+'</ol></span></div></li>';
 
 
