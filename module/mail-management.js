@@ -35,4 +35,28 @@ function sendContactEmail(name, email, message) {
     })
 }
 
+function sendConfirmationEmail(firstname, lastname, email, message) {
+    return new Promise(function (resolve, reject) {
+
+        var mailOptions = {
+            from: 'jesuisuneputaindepoubelle@gmail.com',
+            to: email,
+            subject: 'Confirmation',
+            text: message
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+                reject(error);
+
+            } else {
+                console.log('Email sent: ' + info.response);
+                resolve("Confirmation mail sent");
+            }
+        });
+    })
+}
+
 module.exports.sendContactEmail = sendContactEmail;
+module.exports.sendConfirmationEmail = sendConfirmationEmail;

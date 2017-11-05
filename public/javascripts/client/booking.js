@@ -108,15 +108,14 @@ function createBooking() {
                 if(personaldata.nbBikes > trip.nbBikes)
                 {
                     successToast("Succès de la réservation !");
-                    $('.confirmation-message').text("Votre réservation a bien été placée en file d'attente." +
-                        "Le nombre de vélos réservés étant supérieur aux nombres de places  disponibles, la confirmation " +
-                        "d'un administrateur est nécessaire. Vous serez contacté par e-mail dans les plus brefs délais.")
+                    $('.confirmation-message').empty();
+                    $('.confirmation-message').append("<p>Votre réservation a bien été placée en file d'attente.</p>" +
+                        "<p>Le nombre de vélos réservés étant supérieur aux nombres de places  disponibles, la confirmation " +
+                        "d'un administrateur est nécessaire.</p><p>Vous serez contacté par e-mail dans les plus brefs délais.</p>")
                 }
                 else
                 {
                     successToast("Succès de la réservation !");
-                    // $('.confirmation-message').text("Nous vous confirmons la réussite de votre réservation !" +
-                    //     " Un email de confirmation de réservation a été envoyée à l'adresse suivante : " + personaldata.email);
                     $('.confirmation-message').empty();
                     $('.confirmation-message').append("<p>Bonjour "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
                         '<p>Un email de confirmation a été envoyée à l\'adresse ' +

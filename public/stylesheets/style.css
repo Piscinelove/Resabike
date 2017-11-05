@@ -39,6 +39,10 @@ a {
 .parallax-container1 .parallax {
   z-index: 1;
 }
+
+.parallax-container{
+  height: 80vh;
+}
 .full-section {
   min-height: 100vh;
 }

@@ -9,6 +9,7 @@ var dbBooking = require('../db/booking');
 var axios = require("axios");
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
+var mailManagement = require('../module/mail-management');
 
 const MAXIMUMBIKES = 6;
 var departureStation = "sierre";
@@ -197,13 +198,23 @@ function createBooking(body) {
 
                         for(let i = 0; i < trips.length; i++)
                         {
-                            console.log("luca : "+JSON.stringify(trips[i]));
-                            console.log("pd : "+trips[i].idEndStation);
                             promises.push(dbTrip.createTrip(trips[i].startHour, trips[i].idBooking, trips[i].idLine, trips[i].idStartStation, trips[i].idEndStation));
                         }
                         
                         Promise.all(promises).then(function () {
-                            resolve("Booking(s) création success");
+
+                            // var resume = '<ul class="collection"><li class="collection-item ebony-clay white-text"><div class="choice"><i class="material-icons" style="vertical-align: middle">directions_bus</i>';
+                            //
+                            // for(var i = 0; i < trips.changes.length; i++)
+                            // {
+                            //     resume +=
+                            //         '<span class="highlight-line">'+trips.changes[i].idLine+'</span>';
+                            // }
+                            // resume += ' ' + trips.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + trips.arrival + ' <span class="not-highlight">' + trips.datetime + ' ' + trips.duration/60 + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+personaldata.nbBikes+' vélo(s)</span></div></ul></li> ';
+
+                            mailManagement.sendConfirmationEmail(personaldata.firstname, personaldata.lastname, personaldata.email, "Votre réservation a bien été effectuée").then(function () {
+                                resolve("Booking(s) création success");
+                            })
                         })
 
                     })
