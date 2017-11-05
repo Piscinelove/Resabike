@@ -107,11 +107,14 @@ function createBooking() {
                 resume += ' ' + trip.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + trip.arrival + ' <span class="not-highlight">' + trip.datetime + ' ' + trip.duration/60 + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+personaldata.nbBikes+' vélo(s)</span></div></ul></li> ';
                 if(personaldata.nbBikes > trip.nbBikes)
                 {
-                    successToast("Succès de la réservation !");
+                    successToast("Réservation en file d'attente !");
                     $('.confirmation-message').empty();
-                    $('.confirmation-message').append("<p>Votre réservation a bien été placée en file d'attente.</p>" +
+                    $('.confirmation-message').append("<p>Bonjour "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
+                        "<p>Votre réservation a bien été placée en file d'attente.</p>" +
                         "<p>Le nombre de vélos réservés étant supérieur aux nombres de places  disponibles, la confirmation " +
-                        "d'un administrateur est nécessaire.</p><p>Vous serez contacté par e-mail dans les plus brefs délais.</p>")
+                        "d'un administrateur est nécessaire.</p><p>Vous serez contacté par e-mail dans les plus brefs délais.</p>");
+                    $('.resume').empty();
+                    $('.resume').append(resume);
                 }
                 else
                 {
@@ -119,7 +122,7 @@ function createBooking() {
                     $('.confirmation-message').empty();
                     $('.confirmation-message').append("<p>Bonjour "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
                         '<p>Un email de confirmation a été envoyée à l\'adresse ' +
-                        'suivante : '+personaldata.email+'</p><p>La réservation suivante a bien été traitée : </p>')
+                        'suivante : '+personaldata.email+'</p><p>La réservation suivante a bien été traitée : </p>');
                     $('.resume').empty();
                     $('.resume').append(resume);
                 }

@@ -203,16 +203,8 @@ function createBooking(body) {
                         
                         Promise.all(promises).then(function () {
 
-                            // var resume = '<ul class="collection"><li class="collection-item ebony-clay white-text"><div class="choice"><i class="material-icons" style="vertical-align: middle">directions_bus</i>';
-                            //
-                            // for(var i = 0; i < trips.changes.length; i++)
-                            // {
-                            //     resume +=
-                            //         '<span class="highlight-line">'+trips.changes[i].idLine+'</span>';
-                            // }
-                            // resume += ' ' + trips.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + trips.arrival + ' <span class="not-highlight">' + trips.datetime + ' ' + trips.duration/60 + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+personaldata.nbBikes+' vélo(s)</span></div></ul></li> ';
-
-                            mailManagement.sendConfirmationEmail(personaldata.firstname, personaldata.lastname, personaldata.email, "Votre réservation a bien été effectuée").then(function () {
+                            mailManagement.sendConfirmationEmail(personaldata.firstname, personaldata.lastname,
+                                personaldata.group, personaldata.departure, personaldata.arrival, personaldata.datetime, personaldata.nbBikes, hash, personaldata.email, validated).then(function () {
                                 resolve("Booking(s) création success");
                             })
                         })

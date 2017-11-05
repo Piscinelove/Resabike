@@ -52,44 +52,44 @@ block content
         //                                                            td
         //                                                                | accepté
         div.row
-            div.card-panel
-                table.tab-bookings-list.centered.highlight&attributes({'id': 'tab-bookings-list'})
-                    thead
-                        tr
-                            th HEURE
-                            th ZONE
-                            th LIGNE
-                            th PERSONNE
-                            th EMAIL
-                            th TELEPHONE
-                            th VELOS
-                            th DEPART
-                            th ARRIVEE
-                            th CONFIRMÉ
-                        tbody
-                            each zone in bookinglist
-                                each line in zone.Lines
-                                    each group in line.Trips
-                                        each trips, starthour in group
-                                            each trip in trips
-                                                tr
-                                                    td= trip.startHour
-                                                    td= zone.name
+            //div.card-panel
+            table.tab-bookings-list.centered.highlight&attributes({'id': 'tab-bookings-list'})
+                thead
+                    tr
+                        th HEURE
+                        th ZONE
+                        th LIGNE
+                        th PERSONNE
+                        th EMAIL
+                        th TELEPHONE
+                        th VELOS
+                        th DEPART
+                        th ARRIVEE
+                        th CONFIRMÉ
+                    tbody
+                        each zone in bookinglist
+                            each line in zone.Lines
+                                each group in line.Trips
+                                    each trips, starthour in group
+                                        each trip in trips
+                                            tr
+                                                td= trip.startHour
+                                                td= zone.name
+                                                td
+                                                    span.highlight-line=line.id
+                                                td= trip.Booking.lastname + " " + trip.Booking.firstname
+                                                td= trip.Booking.email
+                                                td= trip.Booking.phone
+                                                td= trip.Booking.nbBikes
+                                                td= trip.departureStationTrip.name
+                                                td= trip.terminalStationTrip.name
+                                                if(trip.Booking.validated == false)
                                                     td
-                                                        span.highlight-line=line.id
-                                                    td= trip.Booking.lastname + " " + trip.Booking.firstname
-                                                    td= trip.Booking.email
-                                                    td= trip.Booking.phone
-                                                    td= trip.Booking.nbBikes
-                                                    td= trip.departureStationTrip.name
-                                                    td= trip.terminalStationTrip.name
-                                                    if(trip.Booking.validated == false)
-                                                        td
-                                                            button.waves-effect.waves-light.btn(onclick=`acceptBooking(${trip.Booking.id})`)
-                                                                i.material-icons check
+                                                        button.waves-effect.waves-light.btn(onclick=`acceptBooking(${trip.Booking.id})`)
+                                                            i.material-icons check
 
-                                                            button.waves-effect.waves-light.btn.red(onclick=`refuseBooking(${trip.Booking.id})`)
-                                                                i.material-icons clear
-                                                    else
-                                                        td
-                                                            | accepté
+                                                        button.waves-effect.waves-light.btn.red(onclick=`refuseBooking(${trip.Booking.id})`)
+                                                            i.material-icons clear
+                                                else
+                                                    td
+                                                        | accepté
