@@ -12,6 +12,11 @@ a {
   src: url("../fonts/Carosello-Regular.ttf");
 }
 
+.ebony-clay{
+  background-color: #2a2d3e;
+}
+
+
 .resabike
 {
   color:#1E1E1E;
@@ -28,10 +33,22 @@ a {
 }
 
 .parallax-container1 {
-  height: 100vh;
+  height: 80vh;
+}
+
+.parallax-container1 .parallax {
+  z-index: 1;
 }
 .full-section {
   min-height: 100vh;
+}
+
+.full-section-index {
+  min-height: 100vh;
+  padding-top: 64px;
+}
+.small-section-index{
+  height: 20vh;
 }
 
 p {
@@ -83,10 +100,7 @@ main {
 }
 
 .home-button{
-  margin-top: 20em;
-  margin-bottom: 10em;
-  margin-right: 10em;
-  margin-left: 60em;
+  margin:5rem auto;
 }
 
 .front{
@@ -157,4 +171,28 @@ main {
 .login-bt{
   font-size: 14rem;
   color: #26a69a;
+}
+.scroll-arrow{
+  margin:0 auto;
+  display: block;
+  font-size: 4em;
+  padding-top: 0.5em;
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }

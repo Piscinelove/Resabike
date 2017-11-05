@@ -2,15 +2,19 @@ extends layout
 
 block content
 
-    div.parallax-container.parallax-container1
+    div#home.parallax-container.parallax-container1
         div.parallax
-            img(src="images/background-bike2.jpg")
+            img(src="images/background-bike6.jpg")
             h3#slogan-top.center-align.front
                 span Arriver au depart <br /> sans se fatiguer...
-            //a(href="#book").waves-effect.waves-light.btn-large.home-button Je reserve !
+            div.col.s12.center-align
+                button(href="#book").scroll-to.waves-effect.waves-light.btn-large.home-button.ebony-clay Je reserve !
+                    i.material-icons.left location_on
+    div.section.ebony-clay.small-section-index
+        a(href="#presentation").scroll-to
+            i.material-icons.scroll-arrow.bounce.center-align.white-text keyboard_arrow_down
 
-
-    div#home.section.white.container.full-section
+    div#presentation.section.white.container.full-section-index
         h2.header Home
         div.margin-partenaire.row
             div.col.s12
@@ -30,7 +34,7 @@ block content
         div.parallax
             img(src="images/background-bike.jpg")
 
-    div#about.section.white.container.full-section
+    div#about.section.white.container.full-section-index
         div.row
             div.col.s4
                 h2.header Histoire
@@ -61,7 +65,7 @@ block content
         div.parallax
             img(src="images/background-bike3.jpg")
 
-    div#book.section.white.container.full-section
+    div#book.section.white.container.full-section-index
         form#booking-register-form.col.s12
             ul.stepper.linear
                 li.step.active
@@ -92,27 +96,27 @@ block content
                         h2.header Faites votre réservation dès maintenant
                         div.row
                             div.input-field.col.s6
-                                input(id="booking-register-departure", placeholder=" ", type="text").autocomplete-db.validate
+                                input(id="booking-register-departure", name="departureBooking",type="text").autocomplete-db.validate
                                 label(for="booking-register-departure") Station de départ
                             div.input-field.col.s6
-                                input(id="booking-register-terminal",placeholder=" ", type="text").autocomplete-db.validate
+                                input(id="booking-register-terminal", name="terminalBooking",type="text").autocomplete-db.validate
                                 label(for="booking-register-terminal") Station d'arrivée
                             div.input-field.col.s6
-                                input(type="text",placeholder=" ", id="booking-register-date").datepicker
+                                input(type="text",id="booking-register-date", placeholder="", name="dateBooking").datepicker
                                 label(for="booking-register-date") Date
                             div.input-field.col.s6
-                                input(type="text",placeholder=" ", id="booking-register-time").timepicker
+                                input(type="text",id="booking-register-time", placeholder="", name="timeBooking").timepicker
                                 label(for="booking-register-time") Heure de départ
                             div.input-field.col.s6
-                                input(type="number", max=10, min=1, id="booking-register-bikes")
+                                input(type="number",name="bikesBooking", id="booking-register-bikes")
                                 label(for="booking-register-bikes") Nombre de vélos
                             div.input-field.col.s6
-                                textarea(placeholder=" ", data-length="100", maxlength="100", id="booking-register-remark").materialize-textarea.textarea-remarque
+                                textarea(data-length="100", maxlength="100", id="booking-register-remark").materialize-textarea.textarea-remarque
                                 label(for="booking-register-remark") Remarque
-                        div.col.s6
+                        div.col.s12
                             p Conditions Générales
-                            input(type="checkbox", id="filled-in-box", required="required").filled-in
-                            label(for="filled-in-box") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
+                            input(type="checkbox", id="filled-in-box", name="conditions", required="required").filled-in
+                            label(for="filled-in-box", id="conditions-booking") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
                         div.step-actions
                             button.waves-effect.btn.previous-step Retour
                             button(data-feedback="getBookingSuggestions").waves-effect.btn.next-step Planifiez
@@ -130,13 +134,13 @@ block content
                         h2.header.confirmation-title Confirmation de votre réservation
                         p.confirmation-message Message
                         div.step-actions
-                            button.waves-effect.btn.next-step Retour
+                            button(data-feedback="newBooking").waves-effect.btn.next-step Faire une nouvelle réservation
 
     div.parallax-container
         div.parallax
             img(src="images/background-bike4.jpg")
 
-    div#where.section.white.container.full-section
+    div#where.section.white.container.full-section-index
         h2.header Où aller ?
             h3 Zones de bus
                 div.row.center-align
@@ -147,7 +151,7 @@ block content
         div.parallax
             img(src="images/background-bike5.jpg")
 
-    div#contact.section.white.container.full-section
+    div#contact.section.white.container.full-section-index
         h2.header Contact
         p Pour toutes questions ou complément d'informations veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
             div.row
@@ -169,26 +173,6 @@ block content
                             textarea(id="contact-message", name="contactmessage", data-length="500", maxlength="500").materialize-textarea.textarea-contact
                             label(for="contact-message") Formulaire de contact
             button(id="contact-button", form="contact-form", name="action" , onclick="sendContactEmail()").btn.waves-effect.waves-light.right Envoyer
-                i.material-icons.right send
-
-    div(id="modal-book-trip").modal.modal-fixed-footer.modal-book-trip
-        div.modal-content
-            h4 Confirmation de votre réservation
-            div.row
-                form#add-line-form.col.s12
-                    div.row
-                        div.input-field.col.s12
-                            input(id="line-add-idZone", name="id", type="text", disabled="disabled").validate
-                            label(for="line-add-idZone", disabled="disabled") Id
-                        div.input-field.col.s12
-                            input(id="line-add-departure", name="departure", type="text", required="required", aria-required="true").validate.autocomplete
-                            label(for="line-add-departure") départ
-                        div.input-field.col.s12
-                            input(id="line-add-terminal", name="terminal", type="text", required="required", aria-required="true").validate.autocomplete
-                            label(for="line-add-terminal") arrivée
-        div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="createLine()", type="submit", for="#add-line-form").btn.waves-effect.waves-light.modal-action valider
                 i.material-icons.right send
 
 

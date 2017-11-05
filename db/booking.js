@@ -31,7 +31,20 @@ function acceptBooking(id)
     )
 }
 
+function refuseBooking(id)
+{
+    return Promise.resolve(
+        models.Booking.destroy
+        ({
+            where:{
+                id:id
+            }
+        })
+    )
+}
+
 
 
 module.exports.createBooking = createBooking;
 module.exports.acceptBooking = acceptBooking;
+module.exports.refuseBooking = refuseBooking;

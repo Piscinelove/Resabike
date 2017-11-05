@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 
       //Booking.belongsTo(models.Line, {foreignKey: 'idLine'});
 
-      Booking.hasMany(models.Trip, {foreignKey: 'idBooking'});
+      Booking.hasMany(models.Trip, {onDelete: 'CASCADE',foreignKey: 'idBooking'});
   }
   return Booking;
 };

@@ -105,7 +105,8 @@ function createBooking() {
                         " Un email de confirmation de réservation a été envoyée à l'adresse suivante : " + personaldata.email);
                 }
 
-                $('.stepper').nextStep();
+                setTimeout("$('.stepper').nextStep();", 2000);
+
             }
         });
 }
@@ -157,4 +158,9 @@ function buildSuggestions(res) {
     $('ul.collapsible.suggestions').empty();
     $('ul.collapsible.suggestions').append(suggestions);
 
+}
+
+function newBooking() {
+    $('.stepper').destroyFeedback();
+    $('.stepper').resetStepper();
 }

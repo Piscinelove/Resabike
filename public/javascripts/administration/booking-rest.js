@@ -1,6 +1,7 @@
 $(document).ready(function(){
-    $('.tab-waiting-bookings').DataTable({
+    var table = $('.tab-bookings-list').DataTable({
         "autoWidth": false,
+        "iDisplayLength": 5,
         responsive:true,
         rowGroup: {
             // endRender: function ( rows, group ) {
@@ -52,21 +53,43 @@ $(document).ready(function(){
 function acceptBooking(bookingId){
 
     superagent
-        .put("/administration/admin/waitings")
+        .put("/administration/admin/bookings")
         .send({id: bookingId})
         .end(function(err, res)
         {
 
             if (err || !res.ok)
             {
-                errorToast("Cet user existe déjà");
+                errorToast("Erreur interne");
             }
             else
             {
-                refreshUsers();
-                $("#modal-edit-user").modal('close');
-                resetForm("#edit-user-form");
-                successToast("User mise à jour");
+                refreshBookingsList();
+                successToast("Réservation confirmée");
             }
         });
+}
+
+function refuseBooking(bookingId){
+
+    superagent
+        .delete("/administration/admin/bookings/"+bookingId)
+        .end(function(err, res)
+        {
+
+            if (err || !res.ok)
+            {
+                errorToast("Erreur interne");
+            }
+            else
+            {
+                refreshBookingsList();
+                successToast("Réservation annulée");
+            }
+        });
+}
+
+function refreshBookingsList() {
+    //$("#tab-bookings-list").load(" #tab-bookings-list");
+    window.location.href = '/administration/admin/bookings';
 }

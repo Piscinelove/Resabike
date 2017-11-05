@@ -53,6 +53,27 @@ function validateForms() {
     // }, "Veuillez saisir un arrêt valide");
 
 
+    $.validator.addMethod("isSwissPhoneNumber", function(value, element) {
+        return /^(0041|041|\+41|\+\+41|41)?(0|\(0\))?([1-9]\d{1})(\d{3})(\d{2})(\d{2})$/.test($(element).val().replace(/\s+/g, '')); // return true if field is ok or should be ignored
+    });
+
+    $.validator.addMethod("isValidStation", function(value, element) {
+        var stations = [];
+        
+        $.ajax({
+            type: "GET",
+            url: "/autocomplete/search="+$(element).val().replace('/', '%2F'),
+            async:false,
+            success:function (data) {
+                $.each(data, function( id, val ) {
+                    stations.push(val.name);
+                });
+            }
+        })
+        console.log(stations.indexOf($(element).val()) !== -1);
+        return stations.indexOf($(element).val()) !== -1;
+    });
+
     $.validator.setDefaults({
         //ignore: [],
         errorClass: 'invalid',
@@ -66,6 +87,10 @@ function validateForms() {
             else if(element.prop('name') == 'trips')
             {
                 error.insertAfter($('ul.collapsible.suggestions'));
+            }
+            else if(element.prop('name') == 'conditions')
+            {
+                error.appendTo($('#conditions-booking'));
             }
             else {
                 $(element)
@@ -94,6 +119,12 @@ function validateForms() {
             username: {
                 required: true,
                 minlength:2
+            },
+            firstname: {
+                required: true
+            },
+            lastname: {
+                required: true
             },
             email:{
                 required:true,
@@ -130,6 +161,32 @@ function validateForms() {
             trips:{
                 required:true,
             },
+            phone:{
+                required:true,
+                isSwissPhoneNumber:true
+            },
+            departureBooking:{
+                required:true,
+                isValidStation:true
+            },
+            terminalBooking:{
+                required:true,
+                isValidStation:true
+            },
+            dateBooking:{
+                required:true,
+            },
+            timeBooking:{
+                required:true
+            },
+            bikesBooking:{
+                required:true,
+                min:1,
+                max:6
+            },
+            conditions:{
+                required:true
+            }
             // term:{
             //     remote:{
             //         url:"https://timetable.search.ch/api/completion.en.json?",
@@ -150,6 +207,12 @@ function validateForms() {
             username:{
                 required:"Veuillez saisir un nom d'utilisateur",
                 minlength:"Veuillez saisir un nom d'utilisateur de 2 caractères minimum"
+            },
+            firstname: {
+                required: "Veuillez saisir votre prénom"
+            },
+            lastname: {
+                required: "Veuillez saisir votre nom"
             },
             email:{
                 required:"Veuillez saisir un email valide",
@@ -188,6 +251,32 @@ function validateForms() {
             },
             trips:{
                 required:"Veuillez choisir un voyage",
+            },
+            phone:{
+                required:"Veuillez saisir un numéro de téléphone",
+                isSwissPhoneNumber:"Veuillez saisir un numéro de téléphone valide"
+            },
+            departureBooking:{
+                required:"Veuillez saisir une station de départ",
+                isValidStation:"Veuillez saisir une station de départ valide"
+            },
+            terminalBooking:{
+                required:"Veuillez saisir une station d'arrivée",
+                isValidStation:"Veuillez saisir une station d'arrivée valide"
+            },
+            dateBooking:{
+                required:"",
+            },
+            timeBooking:{
+                required:""
+            },
+            bikesBooking:{
+                required:"Veuillez saisir le nombre de vélos",
+                min:"Un vélo minimum est requis",
+                max:"Le nombre de vélos de peut être supérieur à 6"
+            },
+            conditions:{
+                required:"<br />Veuillez accépter les conditions générales"
             }
         }
     });

@@ -3,6 +3,7 @@ var router = express.Router();
 var dbZone = require('../db/zone');
 var dbUser = require('../db/user');
 var dbRole = require('../db/role');
+var dbBooking = require('../db/booking');
 var dbLine = require('../db/line');
 var userManagement = require('../module/user-management');
 var lineManagement = require('../module/line-management');
@@ -122,22 +123,12 @@ router.put('/admin/zone', function(req, res){
 
 });
 
-router.put('/admin/waitings', function(req, res){
+router.put('/admin/bookings', function(req, res){
 
     let id = req.body.id;
-    let name = req.body.name;
 
-    dbZone.getZoneByName(name).then(function (zoneFounded) {
-        if(zoneFounded === null)
-            dbZone.updateZone(id, name).then(
-                function () {
-                    res.status(200).send("Zone updated");
-
-                }
-            )
-        else
-            res.status(500).send("Zone with same already exist");
-
+    dbBooking.acceptBooking(id).then(function () {
+        res.status(200).send("Booking confirmed");
     })
 
 });
@@ -194,6 +185,18 @@ router.delete("/admin/lines/:id", function(req,res){
     dbLine.deleteLine(id).then(
         function () {
             res.status(200).send("Line deleted");
+
+        }
+    )
+
+});
+
+router.delete("/admin/bookings/:id", function(req,res){
+    let id = req.params.id;
+
+    dbBooking.refuseBooking(id).then(
+        function () {
+            res.status(200).send("Booking refused");
 
         }
     )

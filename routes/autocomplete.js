@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 router.get('/search=:input', function(req, res, next) {
 
     var input = req.params.input;
+    console.log(input);
     dbStation.getAllStationsByTerm(input).then(function (stations) {
         res.json(stations);
     })

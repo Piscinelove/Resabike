@@ -9,41 +9,48 @@ html
     link(rel='stylesheet', href='/stylesheets/components.css')
 
   body
-    nav.amber.lighten-2
-      div.nav-wrapper
-        div.container
-          a(href="#").brand-logo
-            span.resabike res
-            | abike
-          a(href="#", data-activates="mobile-demo").button-collapse
-            i.material-icons menu
-          ul#nav-mobile.right.hide-on-med-and-down
-            li
-              a(href="#home") Home
-            li
-              a(href="#about") Histoire
-            li
-              a(href="#book") Réservation
-            li
-              a(href="#contact") Contact
-            li
-              a(href="/login").modal-trigger Login
-          ul.side-nav#mobile-demo
-            li
-              a(href="#home") Home
-            li
-              a(href="#about") Histoire
-            li
-              a(href="#book") Réservation
-            li
-              a(href="#contact") Contact
-            li
-              a(href="/login").modal-trigger Login
+    div.navbar-fixed
+      nav.amber.lighten-3
+        div.nav-wrapper
+          div.container
+            a(href="#").brand-logo
+              span.resabike res
+              | abike
+            a(href="#", data-activates="mobile-demo").button-collapse
+              i.material-icons menu
+            ul#nav-mobile.right.hide-on-med-and-down
+              li
+                a(href="#home").scroll-to
+                  i.material-icons.left home
+              li
+                a(href="#presentation").scroll-to Présentation
+              li
+                a(href="#about").scroll-to Histoire
+              li
+                a(href="#book").scroll-to Réservation
+              li
+                a(href="#contact").scroll-to Contact
+              li
+                a(href="/login").modal-trigger Login
+            ul.side-nav#mobile-demo
+              li
+                a(href="#home").scroll-to Home
+                  i.material-icons.left home
+              li
+                a(href="#presentation").scroll-to Présentation
+              li
+                a(href="#about").scroll-to Histoire
+              li
+                a(href="#book").scroll-to Réservation
+              li
+                a(href="#contact").scroll-to Contact
+              li
+                a(href="/login").modal-trigger Login
 
     block content
 
 
-    footer.page-footer.amber.lighten-2
+    footer.page-footer.ebony-clay
       div.container
         div.row
           div.col.s6
@@ -64,3 +71,4 @@ html
     script(src='/javascripts/components/toast.js', type="text/javascript")
     script(src='/javascripts/components/validate.js', type="text/javascript")
     script(src='/javascripts/components/mustache.js', type="text/javascript")
+    script(src='/javascripts/components/scrollto.js', type="text/javascript")
