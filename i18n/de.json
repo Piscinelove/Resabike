@@ -2,8 +2,62 @@
   "TEST" : "Scheisse",
   "SLOGAN1" : " Um zur Abfahrt zu gelangen",
   "SLOGAN2" : "ohne mude zu werden ...",
-  "BTNBOOK" : "Ich reserviere !"
+  "BTNBOOK" : "Ich reserviere !",
 
+
+  "HOMEHEAD" : "Willkommen",
+  "HOMEMAIN1" : "RESABIKE.CH ist ein Projekt, das Radfahrern, die mit öffentlichen Verkehrsmitteln unterwegs sind, das Leben erleichtern soll. Wir sprechen also hauptsächlich über Busse und andere Postbusse, besonders in touristischen Gebieten! Die Idee ist, dass es für jeden (Fahrer, Fahrer, Reisender ...) angenehmer ist zu wissen, wie viele Radfahrer mit ihren Pferden reisen möchten. Dies ermöglicht es, die zu kuppelnden Anhänger so weit wie möglich vorherzusehen oder den Reisenden mitzuteilen, dass der Träger bereits gut gefüllt ist.",
+  "HOMEPARTENAIRE" : "Partner",
+  "HOMEMAIN2" : "Das RESABIKE-Projekt kann auf die Unterstutzung mehrerer Walliser Transporteure sowie auf das Wissen der Professoren und Studenten der Informatikabteilung der HES-SO in Siders zurückgreifen.",
+
+
+  "ABOUTHEAD" : "Geschichte",
+  "MAINABOUT1" : "Angesichts des wachsenden Erfolges des Fahrradtransports auf den Postautolinien des Val d'Anniviers fanden wir es unglücklich, dass einige Radfahrer ihren Tag nicht genießen konnten, weil alle Sitze auf dem Fahrradständer besetzt waren. Wir haben deshalb ein kleines Online-Buchungsformular entworfen ...",
+  "MAINABOUT2" : "Die speziell für den Transport der Fahrräder entwickelten Anhänger, kombiniert mit dem Reservierungssystem, machen es möglich, die Bedürfnisse der Radfahrer ...",
+  "MAINABOUT3" : "Immer mehr Buchungen kommen für andere Linien als die des Val d'Anniviers an. Zu diesem Zeitpunkt entstand die Idee, eine Website für die Buchung von Rennen für andere Regionen als das zentrale Wallis zu schaffen. Die Anwesenheitsstatistik kann leicht festgelegt werden ...",
+  "BIKE2014" : "Fahrräder im Jahr 2014 angekündigt...",
+  "BIKE2015" : "Fahrräder im Jahr 2015 angekündigt...",
+  "BIKE2016" : "Fahrräder im Jahr 2016 angekündigt !",
+
+  "BOOKINGCONTACT" : "Kontakt",
+  "BOOKING1HEAD1" : "Wer bist du?",
+  "BOOKINGFIRSTNAME" : "Vorname",
+  "BOOKINGLASTNAME" : "Name",
+  "BOOKINGGROUP" : "Group",
+  "BOOKINGPHONE" : "Telefon",
+  "BOOKINGMAIL" : "E-mail",
+  "BOOKINGNEXT" : "Fortsetzen",
+  "BOOKINGBOOK" : "Buch !",
+  "BOOKINGHEAD2" : "Machen Sie jetzt Ihre Reservierung",
+  "BOOKINGSTARTSTOP" : "Abfahrtsbahnhof",
+  "BOOKINGENDSTOP" : "Ankunftsstation",
+  "BOOKINGDATE" : "Datum",
+  "BOOKINGSTARTTIME" : "Abfahrtszeit",
+  "BOOKINGNBBIKE" : "Anzahl der Fahrräder",
+  "BOOKINGNOTE" : "Bemerkungen",
+  "BOOKINGTERM1" : "Allgemeine Bedingungen",
+  "BOOKINGTERM2" : "Ich habe die allgemeinen Bedingungen für den Fahrradtransport auf www.ts-ar.ch/bike gelesen",
+  "BOOKINGBACK" : "Rückkehr",
+  "BTNPLAN" : "Plan !",
+  "BOOKINGPLAN" : "Plan",
+  "BOOKINGPLANTRIP" : "Planen Sie Ihre Reise !",
+  "BOOKINGPLANBACK" : "Rückkehr",
+  "BOOKINGCONFIRM" : "Bestätigung",
+  "BOOKINGCONFIRMBOOK" : "Bestätigung Ihrer Reservierung",
+  "BOOKINGMESSAGE" : "Nachricht",
+  "BOOKINGNEWBOOK" : "Machen Sie eine neue Reservierung",
+
+
+  "WHEREHEAD" : "Wohin gehen ?",
+  "WHEREZONE" : "Buszonen",
+
+
+  "CONTACTHEAD" : "Kontakt",
+  "CONTACTMAIN" : "Für Fragen oder zusätzliche Informationen füllen Sie bitte das untenstehende Formular aus und wir werden Ihnen so schnell wie möglich antworten.",
+  "CONTACTNAME" : "name",
+  "CONTACTMAIL" : "email",
+  "CONTACTFORM" : "Kontaktformular",
+  "CONTACTSEND" : "Senden"
 
 
 }

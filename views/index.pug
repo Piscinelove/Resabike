@@ -15,13 +15,14 @@ block content
             i.material-icons.scroll-arrow.bounce.center-align.white-text keyboard_arrow_down
 
     div#presentation.section.white.container.full-section-index
-        h2.header Home
+        h2.header #{translation.HOMEHEAD}
         div.margin-partenaire.row
             div.col.s12
-                p RESABIKE.CH est un projet visant à faciliter la vie des cyclistes voyageant en transports publics sur les lignes régionales. Nous parlons donc principalement des bus et autres cars postaux, et surtout dans les régions touristiques ! L’idée étant qu’il est plus agréable pour tout le monde (exploitant, conducteur, voyageur…) de savoir combien de cyclistes souhaitent voyager avec leur monture. Cela permet de prévoir au mieux les éventuelles remorques à atteler, ou d’annoncer aux voyageurs que le porte-vélos est déjà bien rempli.
+                p #{translation.HOMEMAIN1}
                 br
-                h5 Partenaires
-                p Le projet RESABIKE peut compter sur le soutien de plusieurs transporteurs valaisans, ainsi que sur les connaissances des professeurs et étudiants de la filière informatique de la HES-SO de Sierre.
+                h5 #{translation.HOMEPARTENAIRE}
+                p #{translation.HOMEMAIN2}
+
         div.row
             div.col.s4
                 img(src="images/hes-so.png").img-partenaire
@@ -37,29 +38,29 @@ block content
     div#about.section.white.container.full-section-index
         div.row
             div.col.s4
-                h2.header Histoire
+                h2.header #{translation.ABOUTHEAD}
             div.col.s8
                 i(id="icone-bike").material-icons.prefix.medium.right-align directions_bike
         div.row
             div.col.s4
                 h3.center-align 2014
-                p Face au succès grandissant du transport de vélos sur les lignes des cars postaux du Val d’Anniviers, nous trouvions dommage que certains cyclistes ne puissent pas profiter de leur journée car toutes les places étaient occupées sur le porte-vélos. Nous avons donc conçu un petit formulaire de réservations «online»…
+                p #{translation.MAINABOUT1}
             div.col.s4
                 h3.center-align 2015
-                p Les remorques spécialement conçues pour le transport des vélos, combinées au système de réservation, permettent de satisfaire au mieux les besoins des bikers…
+                p #{translation.MAINABOUT2}
             div.col.s4
                 h3.center-align 2016
-                p De plus en plus de réservations nous arrivent pour d’autres lignes que celles du Val d’Anniviers. C’est alors que germe l’idée de créer un site internet permettant de réserver ses courses pour d’autres régions que le Valais central. Des statistiques de fréquentation pourront ainsi être facilement établies…
+                p #{translation.MAINABOUT3}
         div.row
             div.col.s4
                 h4.date-color 876
-                h5.center-align vélos annoncés en 2014..
+                h5.center-align #{translation.BIKE2014}
             div.col.s4
                 h4.date-color  1624
-                h5.center-align vélos annoncés en 2015...
+                h5.center-align #{translation.BIKE2015}
             div.col.s4
                 h4.date-color  1727
-                h5.center-align vélos annoncés en 2016 !
+                h5.center-align #{translation.BIKE2016}
 
     div.parallax-container
         div.parallax
@@ -69,90 +70,90 @@ block content
         form#booking-register-form.col.s12
             ul.stepper.linear
                 li.step.active
-                    div.step-title.waves-effect Coordonnées
+                    div.step-title.waves-effect #{translation.BOOKINGCONTACT}
                     div.step-content
-                        h2.header Qui êtes-vous ?
+                        h2.header #{translation.BOOKINGHEAD1}
                         div.row
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 edit
                                 input(id="booking-register-firstname", name="firstname", type="text", required="required", aria-required="true").validate
-                                label(for="booking-register-firstname") Prénom
+                                label(for="booking-register-firstname") #{translation.BOOKINGFIRSTNAME}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 edit
                                 input(id="booking-register-lastname", name="lastname", type="text", required="required", aria-required="true").validate
-                                label(for="booking-register-lastname") Nom
+                                label(for="booking-register-lastname") #{translation.BOOKINGLASTNAME}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 group
                                 input(id="booking-register-group", name="group", type="text").validate
-                                label(for="booking-register-group") Groupe
+                                label(for="booking-register-group") #{translation.BOOKINGGROUP}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 local_phone
                                 input(id="booking-register-phone", name="phone", type="tel", required="required", aria-required="true").validate
-                                label(for="booking-register-phone") Téléphone
+                                label(for="booking-register-phone") #{translation.BOOKINGPHONE}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 email
                                 input(id="booking-register-email", name="email", type="email", required="required", aria-required="true").validate
-                                label(for="booking-register-email") E-mail
+                                label(for="booking-register-email") #{translation.BOOKINGMAIL}
                             div.step-actions.col.s12
-                                button.waves-effect.btn.next-step Continuer
+                                button.waves-effect.btn.next-step #{translation.BOOKINGNEXT}
                                     i.material-icons.left send
                 li.step
-                    div.step-title.waves-effect.waves-light Réservez !
+                    div.step-title.waves-effect.waves-light #{translation.BOOKINGBOOK}
                     div.step-content
-                        h2.header Faites votre réservation dès maintenant
+                        h2.header #{translation.BOOKINGHEAD2}
                         div.row
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 location_on
                                 input(id="booking-register-departure", name="departureBooking",type="text").autocomplete-db.validate
-                                label(for="booking-register-departure") Station de départ
+                                label(for="booking-register-departure") #{translation.BOOKINGSTARTSTOP}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 location_on
                                 input(id="booking-register-terminal", name="terminalBooking",type="text").autocomplete-db.validate
-                                label(for="booking-register-terminal") Station d'arrivée
+                                label(for="booking-register-terminal") #{translation.BOOKINGENDSTOP}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 date_range
                                 input(type="text",id="booking-register-date", placeholder="", name="dateBooking").datepicker
-                                label(for="booking-register-date") Date
+                                label(for="booking-register-date") #{translation.BOOKINGDATE}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 access_time
                                 input(type="text",id="booking-register-time", placeholder="", name="timeBooking").timepicker
-                                label(for="booking-register-time") Heure de départ
+                                label(for="booking-register-time") #{translation.BOOKINGSTARTTIME}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 directions_bike
                                 input(type="number",name="bikesBooking", id="booking-register-bikes")
-                                label(for="booking-register-bikes") Nombre de vélos
+                                label(for="booking-register-bikes") #{translation.BOOKINGNBBIKE}
                             div.input-field.col.s6
                                 i.material-icons.prefix.teal-text.text-lighten-1 message
                                 textarea(data-length="100", maxlength="100", id="booking-register-remark").materialize-textarea.textarea-remarque
-                                label(for="booking-register-remark") Remarque
+                                label(for="booking-register-remark") #{translation.BOOKINGNOTE}
                         div.col.s12
-                            p Conditions Générales
+                            p #{translation.BOOKINGTERM1}
                             input(type="checkbox", id="filled-in-box", name="conditions", required="required").filled-in
-                            label(for="filled-in-box", id="conditions-booking") J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike
+                            label(for="filled-in-box", id="conditions-booking") #{translation.BOOKINGTERM2}
                         div.step-actions
-                            button.waves-effect.btn.previous-step Retour
+                            button.waves-effect.btn.previous-step #{translation.BOOKINGBACK}
                                 i.material-icons.left arrow_back
 
-                            button(data-feedback="getBookingSuggestions").waves-effect.btn.next-step Planifiez
+                            button(data-feedback="getBookingSuggestions").waves-effect.btn.next-step #{translation.BTNPLAN}
                                 i.material-icons.left map
                 li.step
-                    div.step-title.waves-effect.waves-light Planifiez
+                    div.step-title.waves-effect.waves-light #{translation.BOOKINGPLAN}
                     div.step-content
-                        h2.header Planifiez votre voyage !
+                        h2.header #{translation.BOOKINGPLANTRIP}
                         form(action="#")
                             ul(data-collapsible="accordion").collapsible.suggestions
                         div.step-actions
-                            button.waves-effect.btn.previous-step Retour
+                            button.waves-effect.btn.previous-step #{translation.BOOKINGPLANBACK}
                                 i.material-icons.left arrow_back
                 li.step
-                    div.step-title.waves-effect.waves-light Confirmation
+                    div.step-title.waves-effect.waves-light #{translation.BOOKINGCONFIRM}
                     div.step-content
-                        h2.header.confirmation-title Confirmation de votre réservation
+                        h2.header.confirmation-title #{translation.BOOKINGCONFIRMBOOK}
                         div
-                            p.confirmation-message Message
+                            p.confirmation-message #{translation.BOOKINGMESSAGE}
                         div.resume
                         div.step-actions
-                            button(data-feedback="newBooking").waves-effect.btn.next-step Faire une nouvelle réservation
+                            button(data-feedback="newBooking").waves-effect.btn.next-step #{translation.BOOKINGNEWBOOK}
                                 i.material-icons.left refresh
 
     div.parallax-container
@@ -160,8 +161,8 @@ block content
             img(src="images/background-bike8.jpg")
 
     div#where.section.white.container.full-section-index
-        h2.header Où aller ?
-            h3 Zones de bus
+        h2.header #{translation.WHEREHEAD}
+            h3 #{translation.WHEREZONE}
                 div.row.center-align
                     div.col.s12
                     img(src="images/buses.jpg").img-zone
@@ -171,27 +172,27 @@ block content
             img(src="images/background-bike9.jpg")
 
     div#contact.section.white.container.full-section-index
-        h2.header Contact
-        p Pour toutes questions ou complément d'informations veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+        h2.header #{translation.CONTACTHEAD}
+        p #{translation.CONTACTMAIN}
             div.row
                 form(id="contact-form").col.s12
                     div.row
                         div.input-field.col.s6
                             i.material-icons.prefix person
                             input(id="contact-name", name="contactname" ,type="text").validate
-                            label(for="contact-name",data-error="Veuillez saisir un nom valide.") nom
+                            label(for="contact-name") #{translation.CONTACTNAME}
                         div.input-field.col.s6
                             i.material-icons.prefix email
                             input(id="contact-email", name="contactemail", type="email").validate
-                            label(for="contact-email", data-error="Veuillez saisir un email valide.") email
+                            label(for="contact-email") #{translation.CONTACTMAIL}
             div.row
                 form.col.s12
                     div.row
                         div.input-field.col.s12
                             i.material-icons.prefix mode_edit
                             textarea(id="contact-message", name="contactmessage", data-length="500", maxlength="500").materialize-textarea.textarea-contact
-                            label(for="contact-message") Formulaire de contact
-            button(id="contact-button", form="contact-form", name="action" , onclick="sendContactEmail()").btn.waves-effect.waves-light.right Envoyer
+                            label(for="contact-message") #{translation.CONTACTFORM}
+            button(id="contact-button", form="contact-form", name="action" , onclick="sendContactEmail()").btn.waves-effect.waves-light.right #{translation.CONTACTSEND}
                 i.material-icons.right send
 
 

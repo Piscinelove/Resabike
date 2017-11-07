@@ -2,8 +2,63 @@
   "TEST" : "Trop bien",
   "SLOGAN1" : "Arriver au depart",
   "SLOGAN2" : "sans se fatiguer...",
-  "BTNBOOK" : " Je reserve !"
+  "BTNBOOK" : " Je reserve !",
 
+
+  "HOMEHEAD" : "Accueil",
+  "HOMEMAIN1" : "RESABIKE.CH est un projet visant à faciliter la vie des cyclistes voyageant en transports publics sur les lignes régionales. Nous parlons donc principalement des bus et autres cars postaux, et surtout dans les régions touristiques ! L’idée étant qu’il est plus agréable pour tout le monde (exploitant, conducteur, voyageur…) de savoir combien de cyclistes souhaitent voyager avec leur monture. Cela permet de prévoir au mieux les éventuelles remorques à atteler, ou d’annoncer aux voyageurs que le porte-vélos est déjà bien rempli.",
+  "HOMEPARTENAIRE" : "Partenaires",
+  "HOMEMAIN2" : "Le projet RESABIKE peut compter sur le soutien de plusieurs transporteurs valaisans, ainsi que sur les connaissances des professeurs et étudiants de la filière informatique de la HES-SO de Sierre.",
+
+
+  "ABOUTHEAD" : "Histoire",
+  "MAINABOUT1" : "Face au succès grandissant du transport de vélos sur les lignes des cars postaux du Val d’Anniviers, nous trouvions dommage que certains cyclistes ne puissent pas profiter de leur journée car toutes les places étaient occupées sur le porte-vélos. Nous avons donc conçu un petit formulaire de réservations «online»…",
+  "MAINABOUT2" : "Les remorques spécialement conçues pour le transport des vélos, combinées au système de réservation, permettent de satisfaire au mieux les besoins des bikers…",
+  "MAINABOUT3" : "De plus en plus de réservations nous arrivent pour d’autres lignes que celles du Val d’Anniviers. C’est alors que germe l’idée de créer un site internet permettant de réserver ses courses pour d’autres régions que le Valais central. Des statistiques de fréquentation pourront ainsi être facilement établies…",
+  "BIKE2014" : "vélos annoncés en 2014...",
+  "BIKE2015" : "vélos annoncés en 2015...",
+  "BIKE2016" : "vélos annoncés en 2016 !",
+
+
+  "BOOKINGCONTACT" : "Coordonnées",
+  "BOOKING1HEAD1" : "Qui êtes-vous ?",
+  "BOOKINGFIRSTNAME" : "Prénom",
+  "BOOKINGLASTNAME" : "Nom",
+  "BOOKINGGROUP" : "Groupe",
+  "BOOKINGPHONE" : "Téléphone",
+  "BOOKINGMAIL" : "E-mail",
+  "BOOKINGNEXT" : "Continuer",
+  "BOOKINGBOOK" : "Réservez !",
+  "BOOKINGHEAD2" : "Faites votre réservation dès maintenant",
+  "BOOKINGSTARTSTOP" : "Station de départ",
+  "BOOKINGENDSTOP" : "Station d'arrivée",
+  "BOOKINGDATE" : "Date",
+  "BOOKINGSTARTTIME" : "Heure de départ",
+  "BOOKINGNBBIKE" : "Nombre de vélos",
+  "BOOKINGNOTE" : "Remarques",
+  "BOOKINGTERM1" : "Conditions Générales",
+  "BOOKINGTERM2" : "J'ai pris connaissance des conditions générales concernant le transport de vélos sur www.ts-ar.ch/bike",
+  "BOOKINGBACK" : "Retour",
+  "BTNPLAN" : "Planifiez !",
+  "BOOKINGPLAN" : "Planifiez",
+  "BOOKINGPLANTRIP" : "Planifiez votre voyage !",
+  "BOOKINGPLANBACK" : "Retour",
+  "BOOKINGCONFIRM" : "Confirmation",
+  "BOOKINGCONFIRMBOOK" : "Confirmation de votre réservation",
+  "BOOKINGMESSAGE" : "Message",
+  "BOOKINGNEWBOOK" : "Faire une nouvelle réservation",
+
+
+  "WHEREHEAD" : "Où aller ?",
+  "WHEREZONE" : "Zones de bus",
+
+
+  "CONTACTHEAD" : "Contact",
+  "CONTACTMAIN" : "Pour toutes questions ou complément d'informations veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.",
+  "CONTACTNAME" : "nom",
+  "CONTACTMAIL" : "email",
+  "CONTACTFORM" : "Formulaire de contact",
+  "CONTACTSEND" : "Envoyer"
 
 
 }

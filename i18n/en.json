@@ -2,5 +2,62 @@
   "TEST" : "So cool",
   "SLOGAN1" : "To arrive at the departure",
   "SLOGAN2" : "without getting tired ...",
-  "BTNBOOK" : "I reserve !"
+  "BTNBOOK" : "I book !",
+
+
+  "HOMEHEAD" : "Home",
+  "HOMEMAIN1" : "RESABIKE.CH is a project aimed at making life easier for cyclists traveling by public transport on regional lines. So we are mainly talking about buses and other postal buses, especially in tourist areas! The idea being that it is more pleasant for everyone (operator, driver, traveler ...) to know how many cyclists wish to travel with their horses. This makes it possible to foresee as much as possible the trailers to be coupled, or to announce to the travelers that the carrier is already well filled.",
+  "HOMEPARTENAIRE" : "Partners",
+  "HOMEMAIN2" : "The RESABIKE project can count on the support of several Valais transporters, as well as on the knowledge of the professors and students of the computer science department of the HES-SO in Sierre.",
+
+
+  "ABOUTHEAD" : "History",
+  "MAINABOUT1" : "Faced with the growing success of bicycle transport on the Val d'Anniviers postbus lines, we found it unfortunate that some cyclists could not enjoy their day because all the seats were occupied on the bike rack. We have therefore designed a small online booking form ...",
+  "MAINABOUT2" : "The trailers specially designed for the transport of the bicycles, combined with the reservation system, make it possible to best satisfy the needs of the bikers ...",
+  "MAINABOUT3" : "More and more bookings are arriving for other lines than those of the Val d'Anniviers. It was then that the idea of ​​creating a website to book races for regions other than central Valais sprang up. Statistics of attendance can be easily established ...",
+  "BIKE2014" : "bicycles announced in 2014 ...",
+  "BIKE2015" : "bicycles announced in 2015 ...",
+  "BIKE2016" : "bikes announced in 2016 !",
+
+  "BOOKINGCONTACT" : "Contact information",
+  "BOOKING1HEAD1" : "Who are you ?",
+  "BOOKINGFIRSTNAME" : "Firstname",
+  "BOOKINGLASTNAME" : "Lastname",
+  "BOOKINGGROUP" : "Group",
+  "BOOKINGPHONE" : "Phone number",
+  "BOOKINGMAIL" : "E-mail",
+  "BOOKINGNEXT" : "Next",
+  "BOOKINGBOOK" : "Book !",
+  "BOOKINGHEAD2" : "Make your reservation now",
+  "BOOKINGSTARTSTOP" : "Departure station",
+  "BOOKINGENDSTOP" : "Arrival station",
+  "BOOKINGDATE" : "Date",
+  "BOOKINGSTARTTIME" : "Departure time",
+  "BOOKINGNBBIKE" : "Nomber of bike",
+  "BOOKINGNOTE" : "Note",
+  "BOOKINGTERM1" : "Terms and conditions",
+  "BOOKINGTERM2" : "I have read the general conditions for the transport of bicycles on www.ts-ar.ch/bike",
+  "BOOKINGBACK" : "Back",
+  "BTNPLAN" : "Plan !",
+  "BOOKINGPLAN" : "Plan",
+  "BOOKINGPLANTRIP" : "Plan your trip !",
+  "BOOKINGPLANBACK" : "Back",
+  "BOOKINGCONFIRM" : "Confirmation",
+  "BOOKINGCONFIRMBOOK" : "Confirmation of your reservation",
+  "BOOKINGMESSAGE" : "Message",
+  "BOOKINGNEWBOOK" : "Make a new reservation",
+
+
+  "WHEREHEAD" : "Where to go ?",
+  "WHEREZONE" : "Bus zones",
+
+
+  "CONTACTHEAD" : "Contact",
+  "CONTACTMAIN" : "For any questions or additional information please fill out the form below and we will answer you as soon as possible.",
+  "CONTACTNAME" : "name",
+  "CONTACTMAIL" : "email",
+  "CONTACTFORM" : "Contact form",
+  "CONTACTSEND" : "Send"
+
+
 }
