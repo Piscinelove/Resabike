@@ -1,3 +1,15 @@
+/*@font-face {*/
+    /*font-family: 'Material Iconsf';*/
+    /*font-style: normal;*/
+    /*font-weight: 400;*/
+    /*src: url('../fonts/MaterialIcons-Regular.eot'); !* For IE6-8 *!*/
+    /*src: local('Material Icons'),*/
+    /*local('MaterialIcons-Regular'),*/
+    /*url('../fonts/MaterialIcons-Regular.woff2') format('woff2'),*/
+    /*url('../fonts/MaterialIcons-Regular.woff') format('woff'),*/
+    /*url('../fonts/MaterialIcons-Regular.ttf') format('truetype');*/
+/*}*/
+
 .input-field input[type=search] {
     padding-left: 4rem;
     width: calc(100% - 4rem);
@@ -166,6 +178,26 @@ table.dataTable thead .sorting_desc {
 .table-group-icon{
     vertical-align: middle;
     padding:0 10px;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    font-family: 'Material Icons' !important;
+    content: '\e145' !important;
+    color:black !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    font-size: 1.2em;
+    top:50% !important;
+
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    content: '\e15b' !important;
+}
+
+.dropdown-content{
+    display:block;
 }
 
 

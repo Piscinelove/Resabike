@@ -31,7 +31,7 @@ $(document).ready(function(){
 
                 var sumBikes = rows
                     .data()
-                    .pluck(6)
+                    .pluck(4)
                     .reduce( function (a, b) {
                         return a + b.replace(/[^\d]/g, '')*1;
                     }, 0);
@@ -50,11 +50,11 @@ $(document).ready(function(){
 
 
 
-function acceptBooking(bookingId){
+function acceptBooking(bookingId, firstname, lastname, group, departure, exit, date, bikes, token, email){
 
     superagent
         .put("/administration/admin/bookings")
-        .send({id: bookingId})
+        .send({id: bookingId, firstname: firstname, lastname:lastname, group:group, departure: departure, exit:exit, date:date, bikes:bikes, token:token, email:email})
         .end(function(err, res)
         {
 
@@ -70,10 +70,11 @@ function acceptBooking(bookingId){
         });
 }
 
-function refuseBooking(bookingId){
+function refuseBooking(bookingId, firstname, lastname, group, departure, exit, date, bikes, token, email){
 
     superagent
         .delete("/administration/admin/bookings/"+bookingId)
+        .send({firstname: firstname, lastname:lastname, group:group, departure: departure, exit:exit, date:date, bikes:bikes, token:token, email:email})
         .end(function(err, res)
         {
 

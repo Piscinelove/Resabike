@@ -38,6 +38,8 @@ function sendContactEmail(name, email, message) {
 function sendConfirmationEmail(firstname, lastname, group, departure, exit, date, bikes, token, email, valid) {
     return new Promise(function (resolve, reject) {
 
+        console.log(firstname+" "+lastname+" "+group+" "+departure+" "+exit+" "+date+" "+token+" "+email);
+
         var table = '<p><b>Firstname : </b>'+firstname+'</p>' +
                     '<p><b>Lastname : </b>'+lastname+'</p>' +
                     '<p><b>Group : </b>'+group+'</p>' +

@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var i18n=require("i18n-express");
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -38,11 +39,22 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false }
 }));
+
+app.use(i18n({
+    translationsPath: path.join(__dirname, 'i18n'), // <--- use here. Specify translations files path.
+    siteLangs: ["fr","en", "de"],
+    textsVarName: 'translation',
+}));
+
 //test
 app.use(function(req,res,next){
     res.locals.session = req.session;
     next();
 });
+
+var loadLangs = function (req, res, next) {
+    
+}
 
 var isAuthenticated = function(req, res, next) {
 

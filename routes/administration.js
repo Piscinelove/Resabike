@@ -8,6 +8,7 @@ var dbLine = require('../db/line');
 var userManagement = require('../module/user-management');
 var lineManagement = require('../module/line-management');
 var bookingManagement = require('../module/booking-management');
+var mailManagement = require('../module/mail-management');
 
 /* GET home page. */
 router.get('/admin/zone', function(req, res, next) {
@@ -131,9 +132,20 @@ router.put('/admin/zone', function(req, res){
 router.put('/admin/bookings', function(req, res){
 
     let id = req.body.id;
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let group = req.body.group;
+    let departure = req.body.departure;
+    let exit = req.body.exit;
+    let date = req.body.date;
+    let bikes = req.body.bikes;
+    let token = req.body.token;
+    let email = req.body.email;
 
+    console.log(firstname+" "+lastname+" "+group+" "+departure+" "+exit+" "+date+" "+token+" "+email);
     dbBooking.acceptBooking(id).then(function () {
         res.status(200).send("Booking confirmed");
+        mailManagement.sendConfirmationEmail(firstname, lastname, group, departure, exit, date, bikes, token, email, true)
     })
 
 });
@@ -198,6 +210,14 @@ router.delete("/admin/lines/:id", function(req,res){
 
 router.delete("/admin/bookings/:id", function(req,res){
     let id = req.params.id;
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let group = req.body.group;
+    let departure = req.body.departure;
+    let exit = req.body.exit;
+    let date = req.body.date;
+    let token = req.body.token;
+    let email = req.body.email;
 
     dbBooking.refuseBooking(id).then(
         function () {
