@@ -117,6 +117,8 @@ function getAllBookingsByZoneId(idZone)
     )
 }
 
+
+
 function getAllAcceptedBookingsByZoneId(idZone)
 {
     return Promise.resolve(

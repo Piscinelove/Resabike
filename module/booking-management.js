@@ -157,6 +157,8 @@ function createBooking(body) {
         var token = personaldata.firstname + personaldata.date + Math.random();
 
         bcrypt.hash(token, saltRounds, function (err, hash) {
+            hash = hash.replace('/', '1');
+            hash = hash.replace('\\', '2');
             console.log(hash);
 
             var validated = false;

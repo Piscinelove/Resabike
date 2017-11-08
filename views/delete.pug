@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div.section.container.full-section
+        h2 Suppression de votre réservation
+        div#booking-client.row
+            button.waves-effect.waves-light.btn.red.right(onclick=`refuseBookingFromClient(${JSON.stringify(booking.token)})`) supprimer
+                i.material-icons.left clear
+            table.centered.highlight.responsive-table
+                thead
+                    tr
+                        th Nom & Prénom
+                        th Email
+                        th Téléphone
+                        th Date
+                        th Vélos
+                        th Départ
+                        th Arrivée
+                tbody
+                    tr
+                        td #{booking.lastname} #{booking.firstname} #{booking.group}
+                        td #{booking.email}
+                        td #{booking.phone}
+                        td #{booking.date}
+                        td #{booking.nbBikes}
+                        td #{booking.departureStationBooking.name}
+                        td #{booking.terminalStationBooking.name}
+

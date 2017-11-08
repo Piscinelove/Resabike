@@ -43,8 +43,39 @@ function refuseBooking(id)
     )
 }
 
+function refuseBookingFromClient(token)
+{
+    return Promise.resolve(
+        models.Booking.destroy
+        ({
+            where:{
+                token:token
+            }
+        })
+    )
+}
+
+function getBookingByToken(token)
+{
+    return Promise.resolve(
+        models.Booking.findOne
+        ({
+            where:{
+                token:token
+            },
+            include :
+                [
+                    {model : models.Station, as : 'departureStationBooking'},
+                    {model : models.Station, as : 'terminalStationBooking'}
+                ]
+        })
+    )
+}
+
 
 
 module.exports.createBooking = createBooking;
 module.exports.acceptBooking = acceptBooking;
 module.exports.refuseBooking = refuseBooking;
+module.exports.getBookingByToken = getBookingByToken;
+module.exports.refuseBookingFromClient = refuseBookingFromClient;

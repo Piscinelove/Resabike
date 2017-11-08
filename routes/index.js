@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bookingManagement = require('../module/booking-management');
 var mailManagement = require('../module/mail-management');
+var dbBooking = require('../db/booking');
 
 
 /* GET home page. */
@@ -12,7 +13,26 @@ router.get('/', function(req, res, next) {
 
 router.get('/delete=:token', function(req, res, next) {
 
-    res.render('delete');
+    let token = req.params.token;
+
+    dbBooking.getBookingByToken(token).then(function (booking) {
+        console.log(JSON.stringify(booking));
+        if(booking != null)
+            res.render('delete', {booking:booking});
+        else
+            res.redirect('/');
+    })
+
+});
+
+router.post('/delete', function(req, res, next) {
+
+    let token = req.body.token;
+
+    dbBooking.refuseBookingFromClient(token).then(function () {
+        res.status(200).send("Successfull");
+    })
+
 });
 
 router.post('/booking', function (req, res, next) {

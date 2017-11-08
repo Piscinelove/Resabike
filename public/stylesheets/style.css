@@ -208,3 +208,8 @@ main {
 div.step-actions button:first-of-type{
   margin-left: auto;
 }
+
+.vertical-align-icon{
+  vertical-align: middle;
+  padding: 0.5em;
+}
