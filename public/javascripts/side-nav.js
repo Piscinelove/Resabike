@@ -5,6 +5,7 @@ $(document).ready(function(){
     $('textarea#taContact').characterCounter();
     $('select').material_select();
     $(".dropdown-button").dropdown();
+    $(".button-collapse").sideNav();
 
 
     //alert(translation[$_GET('clang')].TEST);
@@ -13,6 +14,6 @@ $(document).ready(function(){
 
 });
 
-$(".button-collapse").sideNav();
+
 
 

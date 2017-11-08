@@ -9,6 +9,38 @@ html
     link(rel='stylesheet', href='/stylesheets/components.css')
 
   body
+    ul.side-nav#mobile-demo
+      li
+        if(isHomePage)
+          a(href="#home").scroll-to Home
+            i.material-icons.left home
+        else
+          a(href="/").scroll-to Home
+            i.material-icons.left home
+      if(isHomePage)
+        li
+          a(href="#presentation").scroll-to Présentation
+        li
+          a(href="#about").scroll-to Histoire
+        li
+          a(href="#book").scroll-to Réservation
+        li
+          a(href="#contact").scroll-to Contact
+        li
+          a(href="/login").modal-trigger #{translation.TEST}
+        li
+          a(href="/?clang=fr") FR
+        li
+          a(href="/?clang=en") EN
+        li
+          a(href="/?clang=de") DE
+      else
+        li
+          a(href="/login?clang=fr") FR
+        li
+          a(href="/login?clang=en") EN
+        li
+          a(href="/login?clang=de") DE
     div.navbar-fixed
       nav.amber.lighten-3
         div.nav-wrapper
@@ -20,9 +52,13 @@ html
               i.material-icons menu
             ul#nav-mobile.right.hide-on-med-and-down
               li
-                a(href="#home").scroll-to
-                  i.material-icons.left home
-              if(isLoginPage)
+                if(isHomePage)
+                  a(href="#home").scroll-to Home
+                    i.material-icons.left home
+                else
+                  a(href="/").scroll-to Home
+                    i.material-icons.left home
+              if(isHomePage)
                 li
                   a(href="#presentation").scroll-to Présentation
                 li
@@ -33,34 +69,19 @@ html
                   a(href="#contact").scroll-to Contact
                 li
                   a(href="/login").modal-trigger #{translation.TEST}
-              li
-                a(href="/?clang=fr") FR
-              li
-                a(href="/?clang=en") EN
-              li
-                a(href="/?clang=de") DE
-
-            ul.side-nav#mobile-demo
-              li
-                a(href="#home").scroll-to Home
-                  i.material-icons.left home
-              li
-                a(href="#presentation").scroll-to Présentation
-              li
-                a(href="#about").scroll-to Histoire
-              li
-                a(href="#book").scroll-to Réservation
-              li
-                a(href="#contact").scroll-to Contact
-              li
-                a(href="/login").modal-trigger #{translation.TEST}
-              li
-                a(href="/?clang=fr") FR
-              li
-                a(href="/?clang=en") EN
-              li
-                a(href="/?clang=de") DE
-
+                li
+                  a(href="/?clang=fr") FR
+                li
+                  a(href="/?clang=en") EN
+                li
+                  a(href="/?clang=de") DE
+              else
+                li
+                  a(href="/login?clang=fr") FR
+                li
+                  a(href="/login?clang=en") EN
+                li
+                  a(href="/login?clang=de") DE
     block content
 
 

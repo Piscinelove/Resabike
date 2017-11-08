@@ -98,6 +98,7 @@ var translation = {
         CLEAR:'Auslöschen'
     }
 }
+var defaultLang = 'fr';
 
 var $_LANG = function() {
     var vars = {};
@@ -109,7 +110,12 @@ var $_LANG = function() {
     );
 
     if ( 'clang' ) {
-        return vars['clang'] ? vars['clang'] : null;
+        //return vars['clang'] ? vars['clang'] : null;
+        if(vars['clang'] != null)
+            defaultLang = vars['clang'];
+
+        return vars['clang'] ? vars['clang'] : defaultLang;
+
     }
     return vars;
 }

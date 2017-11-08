@@ -40,21 +40,17 @@ app.use(session({
     cookie: { secure: false }
 }));
 
-app.use(i18n({
-    translationsPath: path.join(__dirname, 'i18n'), // <--- use here. Specify translations files path.
-    siteLangs: ["fr","en", "de"],
-    textsVarName: 'translation',
-}));
-
 //test
 app.use(function(req,res,next){
     res.locals.session = req.session;
     next();
 });
 
-var loadLangs = function (req, res, next) {
-    
-}
+app.use(i18n({
+    translationsPath: path.join(__dirname, 'i18n'), // <--- use here. Specify translations files path.
+    siteLangs: ["fr","en", "de"],
+    textsVarName: 'translation',
+}));
 
 var isAuthenticated = function(req, res, next) {
 
@@ -96,14 +92,22 @@ var isAuthorized = function (req, res, next) {
         else
             res.status(500).send("Unauthorized access");
     }
-    else if(url == "/login")
-    {
-        res.locals.isLoginPage = true;
-        next();
-    }
     else
         next();
 }
+
+app.use(function (req, res, next) {
+    var url = req.path;
+    console.log(url);
+
+    if(url == "/")
+        res.locals.isHomePage = true;
+    else
+        res.locals.isHomePage = false;
+
+    console.log(res.locals.isHomePage);
+    next();
+})
 
 app.use('/', index);
 app.use('/users', users);

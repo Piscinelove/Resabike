@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.stepper').activateStepper();
+    $('#stepper-login.stepper').activateStepper();
 })
 
 function login() {
@@ -16,7 +16,7 @@ function login() {
                 if (err || !res.ok)
                 {
                     errorToast("Cet utilisateur n'existe pas");
-                    $('.stepper').destroyFeedback();
+                    $('#stepper-login.stepper').destroyFeedback();
 
                 }
                 else

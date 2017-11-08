@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/delete=:token', function(req, res, next) {
 
-    res.render('index');
+    res.render('delete');
 });
 
 router.post('/booking', function (req, res, next) {

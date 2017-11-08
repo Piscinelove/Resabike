@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.stepper').activateStepper({
+    $('#stepper-booking.stepper').activateStepper({
         linearStepsNavigation: false,
     });
 
@@ -52,7 +52,7 @@ function getBookingSuggestions()
         {
             if (err || !res.ok)
             {
-                $('.stepper').destroyFeedback();
+                $('#stepper-booking.stepper').destroyFeedback();
                 errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_DEPARTURE);
             }
             else
@@ -60,7 +60,7 @@ function getBookingSuggestions()
                 console.log(res.body);
                 buildSuggestions(res);
                 successToast(translation[$_LANG()].DATA_UPDATE);
-                $('.stepper').nextStep();
+                $('#stepper-booking.stepper').nextStep();
             }
         });
 }
@@ -92,7 +92,7 @@ function createBooking() {
         {
             if (err || !res.ok)
             {
-                $('.stepper').destroyFeedback();
+                $('#stepper-booking.stepper').destroyFeedback();
                 errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_DEPARTURE);
             }
             else
@@ -127,7 +127,7 @@ function createBooking() {
                     $('.resume').append(resume);
                 }
 
-                setTimeout("$('.stepper').nextStep();", 2000);
+                setTimeout("$('#stepper-booking.stepper').nextStep();", 2000);
 
             }
         });
@@ -188,6 +188,6 @@ function buildSuggestions(res) {
 }
 
 function newBooking() {
-    $('.stepper').destroyFeedback();
-    $('.stepper').resetStepper();
+    $('#stepper-booking.stepper').destroyFeedback();
+    $('#stepper-booking.stepper').resetStepper();
 }
