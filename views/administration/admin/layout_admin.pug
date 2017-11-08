@@ -23,26 +23,26 @@ html
 
                     if(session.idRole == 1)
                         li
-                            a(href="/administration/admin/zone").white-text.scroll-to  Zones
+                            a(href="/administration/admin/zone").white-text.scroll-to #{translation.SIDENAVADMINZONE}
                                 i.material-icons.white-text landscape
                     if(session.idRole == 1 || session.idRole == 2)
                         li
-                            a(href="/administration/admin/lines").white-text.scroll-to  Lignes
+                            a(href="/administration/admin/lines").white-text.scroll-to #{translation.SIDENAVADMINLINE}
                                 i.material-icons.white-text timeline
                     if(session.idRole == 1)
                         li
-                            a(href="/administration/admin/users").white-text.scroll-to  Utilisateurs
+                            a(href="/administration/admin/users").white-text.scroll-to  #{translation.SIDENAVADMINUSER}
                                 i.material-icons.white-text people
                     if(session.idRole == 1 || session.idRole == 2 || session.idRole == 3)
                         li
-                            a(href="/administration/admin/bookings").white-text.scroll-to  Réservations
+                            a(href="/administration/admin/bookings").white-text.scroll-to  #{translation.SIDENAVADMINBOOKING}
                                 i.material-icons.white-text view_list
                     if(session.idRole == 1 || session.idRole == 2)
                         li
-                            a(href="/administration/admin/statistics").white-text.scroll-to  Statistiques
+                            a(href="/administration/admin/statistics").white-text.scroll-to  #{translation.SIDENAVADMINSTAT}
                                 i.material-icons.white-text multiline_chart
                     li
-                        a(href="/login/logout").white-text.scroll-to.red-text Se déconnecter
+                        a(href="/login/logout").white-text.scroll-to.red-text #{translation.SIDENAVADMINLOGOUT}
                             i.material-icons.red-text power_settings_new
 
         nav.amber.lighten-3

@@ -2,7 +2,7 @@ extends layout_admin
 
 block content
     div#zone.section.full-section.container
-        h2 Lignes
+        h2 #{translation.LINEHEAD}
 
         div.row
             ul(data-collapsible="expandable").collapsible.popout#collapsible-list-zones-lines
@@ -16,7 +16,7 @@ block content
                             div
                                 i.material-icons landscape
                                 = zone.name
-                            a(href="#modal-add-line", data-id=zone.id, data-zone=zone.name).waves-effect.waves-light.btn.modal-trigger.add-lines#add-lines ligne
+                            a(href="#modal-add-line", data-id=zone.id, data-zone=zone.name).waves-effect.waves-light.btn.modal-trigger.add-lines#add-lines #{translation.LINEBTNLINE}
                                 i.material-icons.left plus_one
 
                         div.collapsible-body
@@ -25,10 +25,10 @@ block content
                                     table.centered.highlight.tab-scroll&attributes({'id': 'tab-zone-line-'+zone.id})
                                         thead
                                             tr
-                                                th ID
-                                                th DEPARTURE
-                                                th TERMINAL
-                                                th SUPPRIMER
+                                                th #{translation.LINETABID}
+                                                th #{translation.LINETABIDDEPART}
+                                                th #{translation.LINETABTERMINAL}
+                                                th #{translation.LINETABDELETE}
                                         tbody
                                             each line in lines
                                                 if zone.id == line.idZone
@@ -40,7 +40,7 @@ block content
                                                             button.waves-effect.waves-light.btn(onclick=`deleteLine(${line.id}, ${line.idZone})`)
                                                                 i.material-icons delete
                                 else
-                                    p&attributes({'id': 'tab-zone-line-'+zone.id}) Nous n'avons trouvé aucune ligne dans cette zone
+                                    p&attributes({'id': 'tab-zone-line-'+zone.id}) #{translation.LINEERROR}
 
 
 
@@ -73,45 +73,45 @@ block content
     //ADD MODAL
     div(id="modal-add-line").modal.modal-fixed-footer.modal-add-line
         div.modal-content
-            h4 Ajouter une ligne à la zone
+            h4 #{translation.LINEEADDHEAD}
             div.row
                 form#add-line-form.col.s12
                     div.row
                         div.input-field.col.s12
                             input(id="line-add-idZone", name="id", type="text", disabled="disabled").validate
-                            label(for="line-add-idZone", disabled="disabled") Id
+                            label(for="line-add-idZone", disabled="disabled") #{translation.LINEEADDID}
                         div.input-field.col.s12
                             input(id="line-add-departure", name="departure", type="text", required="required", aria-required="true").validate.autocomplete
-                            label(for="line-add-departure") départ
+                            label(for="line-add-departure") #{translation.LINEEADDDEPART}
                         div.input-field.col.s12
                             input(id="line-add-terminal", name="terminal", type="text", required="required", aria-required="true").validate.autocomplete
-                            label(for="line-add-terminal") arrivée
+                            label(for="line-add-terminal") #{translation.LINEEADDARRIVE}
         div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="createLine()", type="submit", for="#add-line-form").btn.waves-effect.waves-light.modal-action valider
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text #{translation.LINEEADDBTNCANCEL}
+            button(onclick="createLine()", type="submit", for="#add-line-form").btn.waves-effect.waves-light.modal-action #{translation.LINEEADDBTNVALIDATE}
                 i.material-icons.right send
 
     //MODIFY MODAL
     div(id="modal-edit-line").modal.modal-fixed-footer.modal-edit-line
         div.modal-content
-            h4 Modifier
+            h4 #{translation.LINEEMODIFHEAD}
             div.row
                 form#edit-line-form.col.s12
                     div.input-field.col.s12
                         input(id="line-edit-id", name="id", type="text", disabled="disabled").validate
-                        label(for="line-edit-id", disabled="disabled") Id
+                        label(for="line-edit-id", disabled="disabled") #{translation.LINEEMODIFID}
                     div.input-field.col.s12
                         input(id="line-edit-username", name="username", type="text", disabled="disabled").validate
-                        label(for="line-edit-username", disabled="disabled") Username
+                        label(for="line-edit-username", disabled="disabled") #{translation.LINEEMODIFUSER}
                     div.input-field.col.s12
                         input(id="line-edit-email", name="email", type="email", required="required", aria-required="true").validate
-                        label(for="line-edit-email") Email
+                        label(for="line-edit-email") #{translation.LINEEMODIFEMAIL}
                     div.input-field.col.s6
                         input(id="line-edit-chpassword", name="chpassword", type="password").validate
-                        label(for="line-edit-chpassword") Change votre mot de passe
+                        label(for="line-edit-chpassword") #{translation.LINEEMODIFPSW}
                     div.input-field.col.s6
                         input(id="line-edit-chpassword2", name="chpassword2", type="password").validate
-                        label(for="line-edit-chpassword2") Confirmer le mot de passe
+                        label(for="line-edit-chpassword2") #{translation.LINEEMODIFPSW2}
                     //div.input-field.col.s12
                     //    select(name="role", required="required")#line-edit-role.validate
                     //        option(value="", disabled="disabled", selected="selected") Choisir un rôle
@@ -125,12 +125,12 @@ block content
                     //            option(value=`${zone.id}`)=zone.name
                     //    label Zone
         div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="updateUser()", type="submit", for="#edit-line-form").btn.waves-effect.waves-light.modal-action sauvegarder
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text #{translation.LINEEMODIFBTNCANCEL}
+            button(onclick="updateUser()", type="submit", for="#edit-line-form").btn.waves-effect.waves-light.modal-action #{translation.LINEEMODIFBTNSAVE}
                 i.material-icons.right done
 
     div(id="modal-suggestions-line").modal.bottom-sheet.suggestions
         div.modal-content
-            h3 Nous n'avons malheureusement pas trouvé de ligne
-            h5 Voici quelques suggestions :
+            h3 #{translation.LINENOTFIND}
+            h5 #{translation.LINESUGGEST}
             ul#suggestions-lines.collection

@@ -2,7 +2,7 @@ extends layout_admin
 
 block content
     div#zone.section.full-section.container
-        h2 Utilisateurs
+        h2 #{translation.USERHEAD}
             div.row.center-align
                 div.col.s4.right
                     a(href="#modal-add-user").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
@@ -11,13 +11,13 @@ block content
             table.centered.highlight.tab-scroll#tab-users
                 thead
                     tr
-                        th ID
-                        th USERNAME
-                        th EMAIL
-                        th ROLE
-                        th ZONE
-                        th MODIFIER
-                        th SUPPRIMER
+                        th #{translation.USERTABID}
+                        th #{translation.USERTABUSER}
+                        th #{translation.USERTABMAIL}
+                        th #{translation.USERTABROLE}
+                        th #{translation.USERTABZONE}
+                        th #{translation.USERTABMODIFY}
+                        th #{translation.USERTABDELETE}
                 tbody
                     each user in users
                         tr
@@ -36,37 +36,37 @@ block content
     //ADD MODAL
     div(id="modal-add-user").modal.modal-fixed-footer
         div.modal-content
-            h4 Ajouter un utilisateur
+            h4 #{translation.USERADDHEAD}
             div.row
                 form#add-user-form.col.s12
                     div.row
                         div.input-field.col.s12
                             input(id="user-add-username", name="username", type="text", required="required", aria-required="true").validate
-                            label(for="user-add-username") Username
+                            label(for="user-add-username") #{translation.USERADDUSER}
                         div.input-field.col.s12
                             input(id="user-add-email", name="email", type="email", required="required", aria-required="true").validate
-                            label(for="user-add-email") Email
+                            label(for="user-add-email") #{translation.USERADDMAIL}
                         div.input-field.col.s6
                             input(id="user-add-password", name="password", type="password", required="required", aria-required="true").validate
-                            label(for="user-add-password") Mot de passe
+                            label(for="user-add-password") #{translation.USERADDPSW}
                         div.input-field.col.s6
                             input(id="user-add-password2", name="password2", type="password", required="required", aria-required="true").validate
-                            label(for="user-add-password2") Confirmer le mot de passe
+                            label(for="user-add-password2") #{translation.USERADDPSW2}
                         div.input-field.col.s12
                             select(name="role", required="required")#user-add-role.validate
-                                option(value="", disabled="disabled", selected="selected") Choisir un rôle
+                                option(value="", disabled="disabled", selected="selected") #{translation.USERADDCHOOSEROLE}
                                 each role in roles
                                     option(value=`${role.id}`)=role.name
-                            label(for="user-add-role") Rôle
+                            label(for="user-add-role") #{translation.USERADDROLE}
                         div.input-field.col.s12
                             select(name="zone", required="required")#user-add-zone.validate
-                                option(value="", disabled="disabled", selected="selected") Choisir une zone
+                                option(value="", disabled="disabled", selected="selected") #{translation.USERADDCHOOSEZONE}
                                 each zone in zones
                                     option(value=`${zone.id}`)=zone.name
-                            label Zone
+                            label #{translation.USERADDZONE}
         div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="createUser()", type="submit", for="#add-user-form").btn.waves-effect.waves-light.modal-action valider
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text #{translation.USERADDCANCEL}
+            button(onclick="createUser()", type="submit", for="#add-user-form").btn.waves-effect.waves-light.modal-action #{translation.USERADDVALIDATE}
                 i.material-icons.right send
 
     //MODIFY MODAL

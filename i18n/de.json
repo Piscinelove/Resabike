@@ -1,5 +1,7 @@
 {
   "TEST" : "Scheisse",
+
+
   "SLOGAN1" : " Um zur Abfahrt zu gelangen",
   "SLOGAN2" : "ohne mude zu werden ...",
   "BTNBOOK" : "Ich reserviere !",
@@ -57,7 +59,59 @@
   "CONTACTNAME" : "name",
   "CONTACTMAIL" : "email",
   "CONTACTFORM" : "Kontaktformular",
-  "CONTACTSEND" : "Senden"
+  "CONTACTSEND" : "Senden",
 
+
+
+  "LOGIN" : "Login",
+  "LOGINUSER" : "Benutzer",
+  "LOGINPSW" : "Passwort",
+  "LOGINCONECT" : "VERBINDEN",
+
+
+  "BOOKINGLISTHEAD" : "Ausstehende Reservierungen",
+  "BOOKINGLISTTABTIME" : "ZEIT",
+  "BOOKINGLISTTABZONE" :"ZONE",
+  "BOOKINGLISTTABLINE" : "LINE",
+  "BOOKINGLISTTABPERSON" : "PERSON",
+  "BOOKINGLISTTABBIKE" : "FAHRRÄDER",
+  "BOOKINGLISTTABDEPART" : "ABFAHRT",
+  "BOOKINGLISTTABARRIVE" : "ANREISE",
+  "BOOKINGLISTTABSTATUT" : "STATUS",
+  "BOOKINGLISTTABMAIL" : "EMAIL",
+  "BOOKINGLISTTABPHONE" : "TELEFON",
+  "BOOKINGLISTACCEPT" : "akzeptiert",
+
+  "SIDENAVADMINZONE" : "Zones",
+  "SIDENAVADMINLINE" : "Lines",
+  "SIDENAVADMINUSER" : "Benutzer",
+  "SIDENAVADMINBOOKING" : "Reservierungen",
+  "SIDENAVADMINSTAT" : "Statistiken",
+  "SIDENAVADMINLOGOUT" : "Trennen",
+
+
+  "LINEHEAD" : "Lines",
+  "LINEBTNLINE" : "line",
+  "LINETABID" : "ID",
+  "LINETABIDDEPART" : "IDABGEHEN",
+  "LINETABTERMINAL" : "TERMINAL",
+  "LINETABDELETE" : "ENTFERNEN",
+  "LINEERROR" : "Wir haben keine Zeilen in diesem Bereich gefunden.",
+  "LINEEADDHEAD" : "Fügen Sie der Zone eine Linie hinzu",
+  "LINEEADDID" : "Id",
+  "LINEEADDDEPART" : "Abfahrt",
+  "LINEEADDARRIVE" : "Ankunft",
+  "LINEEADDBTNCANCEL" : "stornieren",
+  "LINEEADDBTNVALIDATE" : "bestätigen",
+  "LINEEMODIFHEAD" : "Veränderung",
+  "LINEEMODIFID" : "Id",
+  "LINEEMODIFUSER" : "Benutzer",
+  "LINEEMODIFEMAIL" : "Email",
+  "LINEEMODIFPSW" : "Ändern Sie Ihr Passwort",
+  "LINEEMODIFPSW2" : "Passwort bestätigen",
+  "LINEEMODIFBTNCANCEL" : "stornieren",
+  "LINEEMODIFBTNSAVE" : "speichern",
+  "LINENOTFIND" : "Wir haben leider keine Zeile gefunden",
+  "LINESUGGEST" : "Hier einige Vorschläge :",
 
 }

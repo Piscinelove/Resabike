@@ -1,5 +1,6 @@
 {
   "TEST" : "Trop bien",
+
   "SLOGAN1" : "Arriver au depart",
   "SLOGAN2" : "sans se fatiguer...",
   "BTNBOOK" : " Je reserve !",
@@ -58,7 +59,83 @@
   "CONTACTNAME" : "nom",
   "CONTACTMAIL" : "email",
   "CONTACTFORM" : "Formulaire de contact",
-  "CONTACTSEND" : "Envoyer"
+  "CONTACTSEND" : "Envoyer",
+
+
+  "LOGIN" : "Login",
+  "LOGINUSER" : "Utilisateur",
+  "LOGINPSW" : "Mot de passe",
+  "LOGINCONECT" : "SE CONNECTER",
+
+  "BOOKINGLISTHEAD" : "Réservations en attente",
+  "BOOKINGLISTTABTIME" : "HEURE",
+  "BOOKINGLISTTABZONE" :"ZONE",
+  "BOOKINGLISTTABLINE" : "LIGNE",
+  "BOOKINGLISTTABPERSON" : "PERSONNE",
+  "BOOKINGLISTTABBIKE" : "VELOS",
+  "BOOKINGLISTTABDEPART" : "DEPART",
+  "BOOKINGLISTTABARRIVE" : "ARRIVEE",
+  "BOOKINGLISTTABSTATUT" : "STATUT",
+  "BOOKINGLISTTABMAIL" : "EMAIL",
+  "BOOKINGLISTTABPHONE" : "TELEPHONE",
+  "BOOKINGLISTACCEPT" : "accepté",
+
+
+  "SIDENAVADMINZONE" : "Zones",
+  "SIDENAVADMINLINE" : "Lignes",
+  "SIDENAVADMINUSER" : "Utilisateurs",
+  "SIDENAVADMINBOOKING" : "Réservations",
+  "SIDENAVADMINSTAT" : "Statistiques",
+  "SIDENAVADMINLOGOUT" : "Se déconnecter",
+
+
+  "LINEHEAD" : "Lignes",
+  "LINEBTNLINE" : "ligne",
+  "LINETABID" : "ID",
+  "LINETABIDDEPART" : "IDDEPART",
+  "LINETABTERMINAL" : "TERMINAL",
+  "LINETABDELETE" : "SUPPRIMER",
+  "LINEERROR" : "Nous n'avons trouvé aucune ligne dans cette zone.",
+  "LINEEADDHEAD" : "Ajouter une ligne à la zone",
+  "LINEEADDID" : "Id",
+  "LINEEADDDEPART" : "départ",
+  "LINEEADDARRIVE" : "arrivée",
+  "LINEEADDBTNCANCEL" : "annuler",
+  "LINEEADDBTNVALIDATE" : "valider",
+  "LINEEMODIFHEAD" : "Modifier",
+  "LINEEMODIFID" : "Id",
+  "LINEEMODIFUSER" : "Utilisateur",
+  "LINEEMODIFEMAIL" : "Email",
+  "LINEEMODIFPSW" : "Changer votre mot de passe",
+  "LINEEMODIFPSW2" : "Confirmer le mot de passe",
+  "LINEEMODIFBTNCANCEL" : "annuler",
+  "LINEEMODIFBTNSAVE" : "sauvegarder",
+  "LINENOTFIND" : "Nous n'avons malheureusement pas trouvé de ligne",
+  "LINESUGGEST" : "Voici quelques suggestions :",
+
+  "USERHEAD" : "Utilisateurs",
+  "USERTABID" : "ID",
+  "USERTABUSER" : "UTILISATEUR",
+  "USERTABMAIL" : "EMAIL",
+  "USERTABROLE" : "ROLE",
+  "USERTABZONE" : "ZONE",
+  "USERTABMODIFY" : "MODIFIER",
+  "USERTABDELETE" : "SUPPRIMER",
+  "USERADDHEAD" : "Ajouter un utilisateur",
+  "USERADDUSER" : "Utilisateur",
+  "USERADDMAIL" : "Email",
+  "USERADDPSW" : "Mot de passe",
+  "USERADDPSW2" : "Confirmer le mot de passe",
+  "USERADDCHOOSEROLE" : "Choisir un rôle",
+  "USERADDROLE" : "Rôle",
+  "USERADDCHOOSEZONE" : "Choisir une zone",
+  "USERADDZONE" : "Zone",
+  "USERADDCANCEL": "annuler",
+  "USERADDVALIDATE" : "valider",
+
+
+
+
 
 
 }

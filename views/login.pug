@@ -9,21 +9,21 @@ block content
         form#login-signin-form.col.s12
             ul.stepper.linear
                 li.step.active
-                    div.step-title.waves-effect Login
+                    div.step-title.waves-effect #{translation.LOGIN}
                     div.step-content
                         div.row
                             div.col.s4
                             div.input-field.col.s4
                                 i.material-icons.prefix person
                                 input(id="login-username",type="text", name="username", required="required", aria-required="true").validate
-                                label(for="login-username") Utilisateur
+                                label(for="login-username") #{translation.LOGINUSER}
                         div.row
                             div.col.s4
                             div.input-field.col.s4
                                 i.material-icons.prefix lock
                                 input(id="login-password",type="password", name="password", required="required", aria-required="true").validate
-                                label(for="login-password") Mot de passe
+                                label(for="login-password") #{translation.LOGINPSW}
                             div.col.s4
                         div.row
                             div.col.s12.center-align
-                                button(data-feedback="login").waves-effect.btn.next-step SE CONNECTER
+                                button(data-feedback="login").waves-effect.btn.next-step #{translation.LOGINCONECT}

@@ -1,5 +1,6 @@
 {
   "TEST" : "So cool",
+
   "SLOGAN1" : "To arrive at the departure",
   "SLOGAN2" : "without getting tired ...",
   "BTNBOOK" : "I book !",
@@ -57,7 +58,58 @@
   "CONTACTNAME" : "name",
   "CONTACTMAIL" : "email",
   "CONTACTFORM" : "Contact form",
-  "CONTACTSEND" : "Send"
+  "CONTACTSEND" : "Send",
+
+
+  "LOGIN" : "Login",
+  "LOGINUSER" : "User",
+  "LOGINPSW" : "Password",
+  "LOGINCONECT" : "CONNECT",
+
+  "BOOKINGLISTHEAD" : "Waiting reservations",
+  "BOOKINGLISTTABTIME" : "TIME",
+  "BOOKINGLISTTABZONE" :"ZONE",
+  "BOOKINGLISTTABLINE" : "LINE",
+  "BOOKINGLISTTABPERSON" : "PERSON",
+  "BOOKINGLISTTABBIKE" : "BIKES",
+  "BOOKINGLISTTABDEPART" : "DEPARTURE",
+  "BOOKINGLISTTABARRIVE" : "ARRIVAL",
+  "BOOKINGLISTTABSTATUT" : "STATUT",
+  "BOOKINGLISTTABMAIL" : "EMAIL",
+  "BOOKINGLISTTABPHONE" : "PHONE",
+  "BOOKINGLISTACCEPT" : "accepted",
+
+  "SIDENAVADMINZONE" : "Zone",
+  "SIDENAVADMINLINE" : "Lines",
+  "SIDENAVADMINUSER" : "Users",
+  "SIDENAVADMINBOOKING" : "Reservations",
+  "SIDENAVADMINSTAT" : "Statistics",
+  "SIDENAVADMINLOGOUT" : "Sign out",
+
+
+  "LINEHEAD" : "Lines",
+  "LINEBTNLINE" : "line",
+  "LINETABID" : "ID",
+  "LINETABIDDEPART" : "IDDEPARTURE",
+  "LINETABTERMINAL" : "TERMINAL",
+  "LINETABDELETE" : "DELETE",
+  "LINEERROR" : "We did not find any lines in this area.",
+  "LINEEADDHEAD" : "Add a line to the zone",
+  "LINEEADDID" : "Id",
+  "LINEEADDDEPART" : "departure",
+  "LINEEADDARRIVE" : "arrival",
+  "LINEEADDBTNCANCEL" : "cancel",
+  "LINEEADDBTNVALIDATE" : "validate",
+  "LINEEMODIFHEAD" : "Modify",
+  "LINEEMODIFID" : "Id",
+  "LINEEMODIFUSER" : "User",
+  "LINEEMODIFEMAIL" : "Email",
+  "LINEEMODIFPSW" : "Change your password",
+  "LINEEMODIFPSW2" : "Confirm the password",
+  "LINEEMODIFBTNCANCEL" : "cancel",
+  "LINEEMODIFBTNSAVE" : "save",
+  "LINENOTFIND" : "Unfortunately we have not found a line",
+  "LINESUGGEST" : "Here some suggestions :",
 
 
 }

@@ -2,22 +2,22 @@ extends layout_admin
 
 block content
     div#waiting.section.full-section.container
-        h2 Réservations en attente
+        h2 #{translation.BOOKINGLISTHEAD}
         div.row
             //div.card-panel
             table.tab-bookings-list.centered.highlight&attributes({'id': 'tab-bookings-list'})
                 thead
                     tr
-                        th HEURE
-                        th ZONE
-                        th LIGNE
-                        th PERSONNE
-                        th VELOS
-                        th DEPART
-                        th ARRIVEE
-                        th CONFIRMÉ
-                        th EMAIL
-                        th TELEPHONE
+                        th #{translation.BOOKINGLISTTABTIME}
+                        th #{translation.BOOKINGLISTTABZONE}
+                        th #{translation.BOOKINGLISTTABLINE}
+                        th #{translation.BOOKINGLISTTABPERSON}
+                        th #{translation.BOOKINGLISTTABBIKE}
+                        th #{translation.BOOKINGLISTTABDEPART}
+                        th #{translation.BOOKINGLISTTABARRIVE}
+                        th #{translation.BOOKINGLISTTABSTATUT}
+                        th #{translation.BOOKINGLISTTABMAIL}
+                        th #{translation.BOOKINGLISTTABPHONE}
                     tbody
                         each zone in bookinglist
                             each line in zone.Lines
@@ -42,6 +42,6 @@ block content
                                                             i.material-icons clear
                                                 else
                                                     td
-                                                        | accepté
+                                                        | #{translation.BOOKINGLISTACCEPT}
                                                 td= trip.Booking.email
                                                 td= trip.Booking.phone
