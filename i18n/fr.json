@@ -132,8 +132,34 @@
   "USERADDZONE" : "Zone",
   "USERADDCANCEL": "annuler",
   "USERADDVALIDATE" : "valider",
+  "USERMODIFYHEAD" : "Modifier",
+  "USERMODIFYID" : "Id",
+  "USERMODIFYUSER" : "Utilisateur",
+  "USERMODIFYMAIL" : "Email",
+  "USERMODIFYPSW" : "Changer votre mot de passe",
+  "USERMODIFYPSW2" : "Confirmer le mot de passe",
+  "USERMODIFYCHOOSEROLE" : "Choisir un rôle",
+  "USERMODIFYROLE" : "Rôle",
+  "USERMODIFYCHOOSEZONE" : "Choisir une zone",
+  "USERMODIFYZONE" : "Zone",
+  "USERMODIFYCANCEL" : "annuler",
+  "USERMODIFYSAVE" : "sauvegarder",
 
 
+  "ZONEHEAD" : "Zones",
+  "ZONETABID" : "ID",
+  "ZONETABZONE" : "ZONE",
+  "ZONETABMODIFY" : "MODIFIER",
+  "ZONETABDELETE" : "SUPPRIMER",
+  "ZONEADDHEAD" : "Ajouter",
+  "ZONEADDNAME" : "Nom",
+  "ZONEADDCANCEL" : "annuler",
+  "ZONEADDSAVE" : "valider",
+  "ZONEMODIFYHEAD" : "Modifier",
+  "ZONEMODIFYID" : "Id",
+  "ZONEMODIFYNAME" : "Nom",
+  "ZONEMODIFYCANCEL" : "annuler",
+  "ZONEMODIFYSAVE" : "valider"
 
 
 

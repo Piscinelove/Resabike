@@ -3,7 +3,7 @@ extends layout_admin
 block content
 
     div#zone.section.full-section.container
-        h2 Zones
+        h2 #{translation.ZONEHEAD}
             div.row.center-align
                 div.col.s4.right
                     a(href="#modal-add-zone").btn-floating.btn-large.waves-effect.waves-light.modal-trigger
@@ -12,10 +12,10 @@ block content
             table.centered.highlight.tab-scroll#tab-zones
                 thead
                     tr
-                        th ID
-                        th ZONE
-                        th MODIFIER
-                        th SUPPRIMER
+                        th #{translation.ZONETABID}
+                        th #{translation.ZONETABZONE}
+                        th #{translation.ZONETABMODIFY}
+                        th #{translation.ZONETABDELETE}
                 tbody
                     each zone in zones
                         tr
@@ -31,34 +31,34 @@ block content
     //ADD MODAL ZONE
     div(id="modal-add-zone").modal.modal-fixed-footer
         div.modal-content
-            h4 Ajouter
+            h4 #{translation.ZONEADDHEAD}
             div.row
                 form#add-zone-form.col.s12
                     div.row
                         div.input-field.col.s12
                             input(id="zone-add-name", name="zonename", type="text").validate
-                            label(for="zone-add-name") Nom
+                            label(for="zone-add-name") #{translation.ZONEADDNAME}
         div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="createZone()").btn.waves-effect.waves-light.modal-action valider
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text #{translation.ZONEADDCANCEL}
+            button(onclick="createZone()").btn.waves-effect.waves-light.modal-action #{translation.ZONEADDSAVE}
                 i.material-icons.right send
 
     //MODIFY MODAL ZONE
     div(id="modal-edit-zone").modal.modal-fixed-footer.modal-edit-zone
         div.modal-content
-            h4 Modifier
+            h4 #{translation.ZONEMODIFYHEAD}
             div.row
                 form#edit-zone-form.col.s12
                     div.row
                         div.input-field.col.s12
                             input(id="zone-edit-id", name="zone-edit-id", type="text", disabled="disabled").validate
-                            label(for="zone-edit-id", id="zone-edit-id-label", disabled="disabled") Id
+                            label(for="zone-edit-id", id="zone-edit-id-label", disabled="disabled") #{translation.ZONEMODIFYID}
                     div.row
                         div.input-field.col.s12
                             input(id="zone-edit-name", name="zonename", type="text").validate
-                            label(for="zone-edit-name", id="zone-edit-name-label") Nom
+                            label(for="zone-edit-name", id="zone-edit-name-label") #{translation.ZONEMODIFYNAME}
         div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="updateZone()").btn.waves-effect.waves-light.modal-action sauvegarder
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text #{translation.ZONEMODIFYCANCEL} annuler
+            button(onclick="updateZone()").btn.waves-effect.waves-light.modal-action #{translation.ZONEMODIFYSAVE}
                 i.material-icons.right done
 

@@ -72,37 +72,37 @@ block content
     //MODIFY MODAL
     div(id="modal-edit-user").modal.modal-fixed-footer.modal-edit-user
         div.modal-content
-            h4 Modifier
+            h4 #{translation.USERMODIFYHEAD}
             div.row
                 form#edit-user-form.col.s12
                     div.input-field.col.s12
                         input(id="user-edit-id", name="id", type="text", disabled="disabled").validate
-                        label(for="user-edit-id", disabled="disabled") Id
+                        label(for="user-edit-id", disabled="disabled") #{translation.USERMODIFYID}
                     div.input-field.col.s12
                         input(id="user-edit-username", name="username", type="text", disabled="disabled").validate
-                        label(for="user-edit-username", disabled="disabled") Username
+                        label(for="user-edit-username", disabled="disabled") #{translation.USERMODIFYUSER}
                     div.input-field.col.s12
                         input(id="user-edit-email", name="email", type="email", required="required", aria-required="true").validate
-                        label(for="user-edit-email") Email
+                        label(for="user-edit-email") #{translation.USERMODIFYMAIL}
                     div.input-field.col.s6
                         input(id="user-edit-chpassword", name="chpassword", type="password").validate
-                        label(for="user-edit-chpassword") Change votre mot de passe
+                        label(for="user-edit-chpassword") #{translation.USERMODIFYPSW}
                     div.input-field.col.s6
                         input(id="user-edit-chpassword2", name="chpassword2", type="password").validate
-                        label(for="user-edit-chpassword2") Confirmer le mot de passe
+                        label(for="user-edit-chpassword2") #{translation.USERMODIFYPSW2} Confirmer le mot de passe
                     div.input-field.col.s12
                         select(name="role", required="required")#user-edit-role.validate
-                            option(value="", disabled="disabled", selected="selected") Choisir un rôle
+                            option(value="", disabled="disabled", selected="selected") #{translation.USERMODIFYCHOOSEROLE}
                             each role in roles
                                 option(value=`${role.id}`)=role.name
-                        label(for="user-edit-role") Rôle
+                        label(for="user-edit-role") #{translation.USERMODIFYROLE}
                     div.input-field.col.s12
                         select(name="zone", required="required")#user-edit-zone.validate
-                            option(value="", disabled="disabled", selected="selected") Choisir une zone
+                            option(value="", disabled="disabled", selected="selected") #{translation.USERMODIFYCHOOSEZONE}
                             each zone in zones
                                 option(value=`${zone.id}`)=zone.name
-                        label Zone
+                        label #{translation.USERMODIFYZONE}
         div.modal-footer
-            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text annuler
-            button(onclick="updateUser()", type="submit", for="#edit-user-form").btn.waves-effect.waves-light.modal-action sauvegarder
+            a(href="#!").modal-action.modal-close.waves-effect.waves-green.btn-flat.red-text #{translation.USERMODIFYCANCEL}
+            button(onclick="updateUser()", type="submit", for="#edit-user-form").btn.waves-effect.waves-light.modal-action #{translation.USERMODIFYSAVE}
                 i.material-icons.right done
