@@ -60,12 +60,12 @@ function acceptBooking(bookingId, firstname, lastname, group, departure, exit, d
 
             if (err || !res.ok)
             {
-                errorToast("Erreur interne");
+                errorToast(translation[$_LANG()].BOOKINGRESTERROR);
             }
             else
             {
                 refreshBookingsList();
-                successToast("Réservation confirmée");
+                successToast(translation[$_LANG()].BOOKINGRESTCONFIRM);
             }
         });
 }
@@ -80,12 +80,12 @@ function refuseBooking(bookingId, firstname, lastname, group, departure, exit, d
 
             if (err || !res.ok)
             {
-                errorToast("Erreur interne");
+                errorToast(translation[$_LANG()].BOOKINGRESTINTERNERROR);
             }
             else
             {
                 refreshBookingsList();
-                successToast("Réservation annulée");
+                successToast(translation[$_LANG()].BOOKINGRESTDELAY);
             }
         });
 }

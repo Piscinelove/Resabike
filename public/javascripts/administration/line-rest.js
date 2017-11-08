@@ -72,14 +72,14 @@ function updateUser(){
 
                 if (err || !res.ok)
                 {
-                    errorToast("Cet user existe déjà");
+                    errorToast(translation[$_LANG()].LINERESTUSEREXIST);
                 }
                 else
                 {
                     refreshUsers();
                     $("#modal-edit-user").modal('close');
                     resetForm("#edit-user-form");
-                    successToast("User mise à jour");
+                    successToast(translation[$_LANG()].LINERESTUSERMAJ);
                 }
             });
 }
@@ -113,24 +113,24 @@ function createLine(){
                         $('#suggestions-lines').append(li);
                         $('#modal-suggestions-line').modal("open");
                         console.log(res.body);
-                        successToast("yeah");
+                        successToast(translation[$_LANG()].LINERESTLINESUCCESS);
                     }
                     else if(res.body == false)
-                        errorToast("Cette ligne appartient déjà à une autre zone");
+                        errorToast(translation[$_LANG()].LINERESTLINEEXIST);
                     else
-                        errorToast("Ligne introuvable");
+                        errorToast(translation[$_LANG()].LINERESTLINENOTFOUND);
                 }
                 else
                 {
                     refreshZoneLine(idZone);
                     $("#modal-add-line").modal('close');
                     resetForm("#add-line-form");
-                    successToast("Ligne ajoutée");
+                    successToast(translation[$_LANG()].LINERESTLINEADD);
 
                 }
             });
     else
-        errorToast("Veuillez bien à remplir le formulaire");
+        errorToast(translation[$_LANG()].LINERESTFILLFORM);
 }
 
 function deleteLine(id, idZone){
@@ -141,12 +141,11 @@ function deleteLine(id, idZone){
         {
             if (err || !res.ok)
             {
-                errorToast("Erreur interne");
-                Materialize.toast("Erreur interne", 2000);
+                errorToast(translation[$_LANG()].LINERESTINTERNERROR);
             } else
             {
                 refreshZoneLine(idZone);
-                successToast("Line supprimée");
+                successToast(translation[$_LANG()].LINERESTDELETE);
             }
         });
 }

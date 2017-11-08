@@ -53,7 +53,7 @@ function getBookingSuggestions()
             if (err || !res.ok)
             {
                 $('#stepper-booking.stepper').destroyFeedback();
-                errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_DEPARTURE);
+                errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_STOP);
             }
             else
             {
@@ -93,7 +93,7 @@ function createBooking() {
             if (err || !res.ok)
             {
                 $('#stepper-booking.stepper').destroyFeedback();
-                errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_DEPARTURE);
+                errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_STOP);
             }
             else
             {
@@ -104,25 +104,25 @@ function createBooking() {
                     resume +=
                         '<span class="highlight-line">'+trip.changes[i].idLine+'</span>';
                 }
-                resume += ' ' + trip.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + trip.arrival + ' <span class="not-highlight">' + trip.datetime + ' ' + trip.duration/60 + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+personaldata.nbBikes+' vélo(s)</span></div></ul></li> ';
+                resume += ' ' + trip.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + trip.arrival + ' <span class="not-highlight">' + trip.datetime + ' ' + trip.duration/60 + '\'</span><span class="register-bikes-available"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+personaldata.nbBikes+' '+ translation[$_LANG()].BIKES+ '</span></div></ul></li> ';
                 if(personaldata.nbBikes > trip.nbBikes)
                 {
-                    successToast("Réservation en file d'attente !");
+                    successToast(translation[$_LANG()].WAITINGBOOKING);
                     $('.confirmation-message').empty();
-                    $('.confirmation-message').append("<p>Bonjour "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
-                        "<p>Votre réservation a bien été placée en file d'attente.</p>" +
-                        "<p>Le nombre de vélos réservés étant supérieur aux nombres de places  disponibles, la confirmation " +
-                        "d'un administrateur est nécessaire.</p><p>Vous serez contacté par e-mail dans les plus brefs délais.</p>");
+                    $('.confirmation-message').append("<p>" +translation[$_LANG()].AFTERBOOKING1 +" "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
+                        "<p>" + translation[$_LANG()].AFTERBOOKING2+ "</p>" +
+                        "<p>" + translation[$_LANG()].AFTERBOOKING3+ " " +
+                        "" +translation[$_LANG()].AFTERBOOKING4 +"</p><p>" +translation[$_LANG()].AFTERBOOKING5 +"</p>");
                     $('.resume').empty();
                     $('.resume').append(resume);
                 }
                 else
                 {
-                    successToast("Succès de la réservation !");
+                    successToast(translation[$_LANG()].BOOKINGSUCCESS);
                     $('.confirmation-message').empty();
-                    $('.confirmation-message').append("<p>Bonjour "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
-                        '<p>Un email de confirmation a été envoyée à l\'adresse ' +
-                        'suivante : '+personaldata.email+'</p><p>La réservation suivante a bien été traitée : </p>');
+                    $('.confirmation-message').append("<p>"+ translation[$_LANG()].BOOKINGSUCCESS1 + " "+personaldata.firstname+" "+personaldata.lastname+",</p>" +
+                        '<p> ' + translation[$_LANG()].BOOKINGSUCCESS2 + ' '  +
+                        ' ' + translation[$_LANG()].BOOKINGSUCCESS3 + ' '+personaldata.email+'</p><p> ' + translation[$_LANG()].BOOKINGSUCCESS4 + ' </p>');
                     $('.resume').empty();
                     $('.resume').append(resume);
                 }
@@ -174,8 +174,8 @@ function buildSuggestions(res) {
         if(suggestion.nbBikes == 0)
             available = "red-text";
 
-        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span><span class="register-bikes-available '+available+'"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+suggestion.nbBikes+' place(s)</span></div>' +
-            '<button class="waves-effect waves-light btn booking-button" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">réserver<i class="material-icons left">timeline</i></button></div>' +
+        suggestions += ' ' + suggestion.departure + '<i class="material-icons direction">keyboard_arrow_right</i> ' + suggestion.arrival + ' <span class="not-highlight">' + suggestion.datetime + ' ' + duration + '\'</span><span class="register-bikes-available '+available+'"><i class="material-icons register-bikes-available-icon">directions_bike</i>'+suggestion.nbBikes+''+ translation[$_LANG()].PLACE +'</span></div>' +
+            '<button class="waves-effect waves-light btn booking-button" id="booking-button-'+i+'" data-trip=\''+data+'\' data-feedback="createBooking">' + translation[$_LANG()].BOOK + '<i class="material-icons left">timeline</i></button></div>' +
             '<div class="collapsible-body"><span><ol class="line-stops">'+stops+'</ol></span></div></li>';
 
 

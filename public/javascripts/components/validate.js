@@ -205,64 +205,64 @@ function validateForms() {
         },
         messages:{
             username:{
-                required:"Veuillez saisir un nom d'utilisateur",
-                minlength:"Veuillez saisir un nom d'utilisateur de 2 caractères minimum"
+                required: translation[$_LANG()].VALIDATEENTERUSER,
+                minlength: translation[$_LANG()].VALIDATEENTERUSER2
             },
             firstname: {
-                required: "Veuillez saisir votre prénom"
+                required: translation[$_LANG()].VALIDATEENTERFIRSTNAME
             },
             lastname: {
-                required: "Veuillez saisir votre nom"
+                required: translation[$_LANG()].VALIDATEENTERLASTNAME
             },
             email:{
-                required:"Veuillez saisir un email valide",
-                minlength:"Veuillez saisir un email valide de 4 caractères minimum"
+                required: translation[$_LANG()].VALIDATEENTERMAIL,
+                minlength: translation[$_LANG()].VALIDATEENTERMAIL2
             },
             password:{
-                required:"Veuillez saisir un mot de passe",
-                minlength:"Veuillez saisir un mot de passe de 2 caractères minimum"
+                required: translation[$_LANG()].VALIDATEENTERPSW ,
+                minlength: translation[$_LANG()].VALIDATEENTERPSW2
             },
             chpassword:{
-                required:"Veuillez saisir un mot de passe identique",
-                minlength:"Veuillez saisir un mot de passe de 2 caractères minimum"
+                required: translation[$_LANG()].VALIDATEENTERCHPSW,
+                minlength: translation[$_LANG()].VALIDATEENTERCHPSW2
             },
             password2:{
-                required:"Veuillez confirmer votre mot de passe",
-                minlength:"Veuillez confirmer votre mot de passe de 2 caractères minimum",
-                equalTo:"Veuillez saisir un mot de passe identique au premier"
+                required: translation[$_LANG()].VALIDATECONFPSW ,
+                minlength: translation[$_LANG()].VALIDATECONFPSW2 ,
+                equalTo: translation[$_LANG()].VALIDATECONFPSW3
             },
             chpassword2:{
-                required:"Veuillez saisir un mot de passe identique",
-                minlength:"Veuillez confirmer votre mot de passe de 2 caractères minimum",
-                equalTo:"Veuillez saisir un mot de passe identique au premier"
+                required: translation[$_LANG()].VALIDATECONFCHPSW  ,
+                minlength: translation[$_LANG()].VALIDATECONFCHPSW2 ,
+                equalTo: translation[$_LANG()].VALIDATECONFCHPSW3
             },
             role:{
-                required:"Veuillez choisir un rôle",
+                required: translation[$_LANG()].VALIDATECHOOSEROLE,
             },
             zone:{
-                required:"Veuillez choisir une zone",
+                required: translation[$_LANG()].VALIDATECHOOSEZONE ,
             },
             zonename:{
-                required:"Veuillez saisir un nom de zone",
-                minlength:"Veuillez sisair un nom de zone de 2 caractères minimum",
+                required: translation[$_LANG()].VALIDATECHOOSENAMEZONE ,
+                minlength: translation[$_LANG()].VALIDATECHOOSENAMEZONE2,
             },
             departure:{
-                required:"Veuillez saisir un nom de zone"
+                required: translation[$_LANG()].VALIDATEENTERNAMEZONE
             },
             trips:{
-                required:"Veuillez choisir un voyage",
+                required: translation[$_LANG()].VALIDATECHOOSETRIP ,
             },
             phone:{
-                required:"Veuillez saisir un numéro de téléphone",
-                isSwissPhoneNumber:"Veuillez saisir un numéro de téléphone valide"
+                required: translation[$_LANG()].VALIDATEENTERPHONE ,
+                isSwissPhoneNumber: translation[$_LANG()].VALIDATEENTERPHONE2
             },
             departureBooking:{
-                required:"Veuillez saisir une station de départ",
-                isValidStation:"Veuillez saisir une station de départ valide"
+                required: translation[$_LANG()].VALIDATEENTERSTART,
+                isValidStation: translation[$_LANG()].VALIDATEENTERSTART2
             },
             terminalBooking:{
-                required:"Veuillez saisir une station d'arrivée",
-                isValidStation:"Veuillez saisir une station d'arrivée valide"
+                required: translation[$_LANG()].VALIDATEENTEREND,
+                isValidStation: translation[$_LANG()].VALIDATEENTEREND2
             },
             dateBooking:{
                 required:"",
@@ -271,12 +271,12 @@ function validateForms() {
                 required:""
             },
             bikesBooking:{
-                required:"Veuillez saisir le nombre de vélos",
-                min:"Un vélo minimum est requis",
-                max:"Le nombre de vélos de peut être supérieur à 6"
+                required: translation[$_LANG()].VALIDATEENTERNBBIKE,
+                min: translation[$_LANG()].VALIDATEMINBIKE,
+                max: translation[$_LANG()].VALIDATEMAXBIKE
             },
             conditions:{
-                required:"<br />Veuillez accépter les conditions générales"
+                required:"<br /> "+translation[$_LANG()].VALIDATETERM +""
             }
         }
     });

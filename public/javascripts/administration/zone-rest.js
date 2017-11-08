@@ -21,14 +21,14 @@ function updateZone(){
             {
                 if (err || !res.ok)
                 {
-                    errorToast("Cette zone existe déjà");
+                    errorToast(translation[$_LANG()].ZONERESTEXIST);
                 }
                 else
                 {
                     refreshZones();
                     $("#modal-edit-zone").modal('close');
                     resetForm("#edit-zone-form");
-                    successToast("Zone mise à jour");
+                    successToast(translation[$_LANG()].ZONERESTMAJ);
                 }
             });
 }
@@ -45,14 +45,14 @@ function createZone(){
             {
                 if (err || !res.ok)
                 {
-                    errorToast("Cette zone existe déjà");
+                    errorToast(translation[$_LANG()].ZONERESTEXIST);
                 }
                 else
                 {
                     $("#modal-add-zone").modal('close');
                     refreshZones();
                     resetForm("#add-zone-form");
-                    successToast("Zone ajoutée");
+                    successToast(translation[$_LANG()].ZONERESTADD);
                 }
             });
 }
@@ -65,12 +65,11 @@ function deleteZone(id){
         {
             if (err || !res.ok)
             {
-                errorToast("Erreur interne");
-                Materialize.toast("Erreur interne", 2000);
+                errorToast(translation[$_LANG()].ZONERESTINTERNERROR);
             } else
             {
                 refreshZones();
-                successToast("Zone supprimée");
+                successToast(translation[$_LANG()].ZONERESTDELETE);
             }
         });
 }

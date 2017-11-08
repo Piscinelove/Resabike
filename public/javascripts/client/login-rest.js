@@ -15,13 +15,13 @@ function login() {
 
                 if (err || !res.ok)
                 {
-                    errorToast("Cet utilisateur n'existe pas");
+                    errorToast(translation[$_LANG()].LOGINRESTUSERDONTEXIST);
                     $('#stepper-login.stepper').destroyFeedback();
 
                 }
                 else
                 {
-                    successToast("Connecté");
+                    successToast(translation[$_LANG()].LOGINRESTCONNECT);
                     window.location.href = '/administration/admin/bookings';
                 }
             });

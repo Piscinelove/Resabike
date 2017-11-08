@@ -11,14 +11,14 @@ function sendContactEmail(){
             {
                 if (err || !res.ok)
                 {
-                    errorToast("Cette zone existe déjà");
+                    errorToast(translation[$_LANG()].MAILRESTZONEEXIST);
                 }
                 else
                 {
                     $("#modal-add-zone").modal('close');
                     refreshZones();
                     resetForm("#add-zone-form");
-                    successToast("Zone ajoutée");
+                    successToast(translation[$_LANG()].MAILRESTZONEADD);
                 }
             });
 }

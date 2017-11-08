@@ -32,14 +32,14 @@ function updateUser(){
             {
                 if (err || !res.ok)
                 {
-                    errorToast("Cet user existe déjà");
+                    errorToast(translation[$_LANG()].USERRESTEXIST);
                 }
                 else
                 {
                     refreshUsers();
                     $("#modal-edit-user").modal('close');
                     resetForm("#edit-user-form");
-                    successToast("User mise à jour");
+                    successToast(translation[$_LANG()].USERRESTMAJ);
                 }
             });
 }
@@ -66,17 +66,17 @@ function createUser(){
             })
             .end(function (err, res) {
                 if (err || !res.ok) {
-                    errorToast("Cet utilisateur existe déjà");
+                    errorToast(translation[$_LANG()].USERRESTEXIST);
                 }
                 else {
                     refreshUsers();
                     $("#modal-add-user").modal('close');
                     resetForm("#add-user-form");
-                    successToast("User ajoutée");
+                    successToast(translation[$_LANG()].USERRESTADD);
                 }
             });
     else
-        errorToast("Veuillez bien à remplir le formulaire");
+        errorToast(translation[$_LANG()].USERRESTFILLFORM);
 }
 
 function deleteUser(id){
@@ -88,12 +88,11 @@ function deleteUser(id){
             $('#select').val();
             if (err || !res.ok)
             {
-                errorToast("Erreur interne");
-                Materialize.toast("Erreur interne", 2000);
+                errorToast(translation[$_LANG()].USERRESTINTERNERROR);
             } else
             {
                 refreshUsers();
-                successToast("User supprimé");
+                successToast(translation[$_LANG()].USERRESTDELETE);
             }
         });
 }
