@@ -6,11 +6,11 @@ $(document).ready(function(){
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15, // Creates a dropdown of 15 years to control year,
-        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-        today: 'Aujourd\'hui',
-        clear: 'Annuler',
-        close: 'Ok',
+        monthsFull: [translation[$_LANG()].JANUARY, translation[$_LANG()].FEBRUARY, translation[$_LANG()].MARS, translation[$_LANG()].APRIL, translation[$_LANG()].MAY, translation[$_LANG()].JUNE, translation[$_LANG()].JULY, translation[$_LANG()].AUGUST, translation[$_LANG()].SEPTEMBER, translation[$_LANG()].OCTOBER, translation[$_LANG()].NOVEMBER, translation[$_LANG()].DECEMBER],
+        weekdaysShort: [translation[$_LANG()].SUN, translation[$_LANG()].MON, translation[$_LANG()].TUES, translation[$_LANG()].WED, translation[$_LANG()].THURS, translation[$_LANG()].FRI, translation[$_LANG()].SAT],
+        today: translation[$_LANG()].TODAY,
+        clear: translation[$_LANG()].CANCEL,
+        close: translation[$_LANG()].OK,
         closeOnSelect: true ,// Close upon selecting a date,
         format: 'mm/dd/yyyy',
         min:true
@@ -22,9 +22,9 @@ $(document).ready(function(){
         default: 'now', // Set default time: 'now', '1:30AM', '16:30'
         fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
         twelvehour: false, // Use AM/PM or 24-hour format
-        donetext: 'OK', // text for done-button
-        cleartext: 'Annuler', // text for clear-button
-        canceltext: 'Fermer', // Text for cancel-button
+        donetext: translation[$_LANG()].OK, // text for done-button
+        cleartext: translation[$_LANG()].CLEAR, // text for clear-button
+        canceltext: translation[$_LANG()].CANCEL, // Text for cancel-button
         autoclose: false, // automatic close timepicker
         ampmclickable: true, // make AM PM clickable
         aftershow: function(){
@@ -53,13 +53,13 @@ function getBookingSuggestions()
             if (err || !res.ok)
             {
                 $('.stepper').destroyFeedback();
-                errorToast('Une erreur interne est survenu.'+'</br>'+'Veillez bien à choisir un arrêt de départ et de destination valide');
+                errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_DEPARTURE);
             }
             else
             {
                 console.log(res.body);
                 buildSuggestions(res);
-                successToast("User mise à jour");
+                successToast(translation[$_LANG()].DATA_UPDATE);
                 $('.stepper').nextStep();
             }
         });
@@ -93,7 +93,7 @@ function createBooking() {
             if (err || !res.ok)
             {
                 $('.stepper').destroyFeedback();
-                errorToast('Une erreur interne est survenu.'+'</br>'+'Veillez bien à choisir un arrêt de départ et de destination valide');
+                errorToast(translation[$_LANG()].INTERNAL_ERROR+'</br>'+translation[$_LANG()].CORRECT_DEPARTURE);
             }
             else
             {

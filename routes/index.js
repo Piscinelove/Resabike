@@ -10,6 +10,11 @@ router.get('/', function(req, res, next) {
       res.render('index');
 });
 
+router.get('/delete=:token', function(req, res, next) {
+
+    res.render('index');
+});
+
 router.post('/booking', function (req, res, next) {
 
     let departure = req.body.departure;

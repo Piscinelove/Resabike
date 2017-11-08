@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $('.parallax').parallax();
     $('.modal').modal();
     $('textarea#taContact').characterCounter();
@@ -6,24 +7,11 @@ $(document).ready(function(){
     $(".dropdown-button").dropdown();
 
 
+    //alert(translation[$_GET('clang')].TEST);
+
 
 
 });
-
-function $_GET(param) {
-    var vars = {};
-    window.location.href.replace( location.hash, '' ).replace(
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function( m, key, value ) { // callback
-            vars[key] = value !== undefined ? value : '';
-        }
-    );
-
-    if ( param ) {
-        return vars[param] ? vars[param] : null;
-    }
-    return vars;
-}
 
 $(".button-collapse").sideNav();
 

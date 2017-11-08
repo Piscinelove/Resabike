@@ -96,6 +96,11 @@ var isAuthorized = function (req, res, next) {
         else
             res.status(500).send("Unauthorized access");
     }
+    else if(url == "/login")
+    {
+        res.locals.isLoginPage = true;
+        next();
+    }
     else
         next();
 }
