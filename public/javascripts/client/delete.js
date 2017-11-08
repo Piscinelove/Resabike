@@ -14,6 +14,8 @@ function refuseBookingFromClient(token){
             {
                 successToast("Réservation annulée");
                 $('#booking-client').empty();
+                setTimeout(1000);
+                window.location.href = '/';
             }
         });
 }

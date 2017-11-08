@@ -44,7 +44,6 @@ router.post('/booking', function (req, res, next) {
 
     bookingManagement.getTrip(departure, terminal, date, time).then(function (response) {
 
-        console.log("bah oui");
         res.status(200).send(response);
     }).catch(function (error) {
         res.status(500).send("Erreur interne");

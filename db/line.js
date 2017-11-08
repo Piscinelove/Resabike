@@ -53,6 +53,8 @@ function createLine(id, idZone, idStartStation, idEndStation)
             //IF LINE ALREAY CREATED REJECT
             if(!line[1])
                 return Promise.reject(line[1]);
+            else
+                return line[0]
         })
     )
 }
@@ -78,7 +80,22 @@ function insertLineInDatabase(stationsArray, idZone)
                         stationsAndLinesArray.push({'idLine':stop.line,'idStop':stops[j].stopid});
                 }
                 console.log(stop.line + " "+ idZone + " "+ stop.name+" "+ stop.terminal+" fdp");
-                promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
+                promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal).then(function (line) {
+                    // console.log("important : "+line.id+" "+line.idEndStation+" "+line.idStartStation);
+                    // console.log("important2 : "+ stopExists(line.id,line.idEndStation, stationsAndLinesArray));
+                    // console.log("important2 : "+ stopExists(line.id,line.idStartStation, stationsAndLinesArray));
+                    // console.log("important3 :"+JSON.stringify(stationsAndLinesArray));
+                    // if(stopExists(line.id,line.idEndStation, stationsAndLinesArray) == false)
+                    // {
+                    //     console.log("important4 : "+line.id+" "+line.idEndStation);
+                    //     stationsAndLinesArray.push({'idLine':line.id,'idStop':line.idEndStation});
+                    // }
+                    // if(!stopExists(line.id,line.idEndStation, stationsAndLinesArray))
+                    //     stationsAndLinesArray.push({'idLine':line.id,'idStop':line.idEndStation});
+                    // if(!stopExists(line.id,line.idStartStation, stationsAndLinesArray))
+                    //     stationsAndLinesArray.push({'idLine':line.id,'idStop':line.idStartStatio});
+
+                }));
 
             }
         }
@@ -89,10 +106,26 @@ function insertLineInDatabase(stationsArray, idZone)
     })
 }
 
+function stopExists(idLine, idStop, array) {
+    return array.some(function (el) {
+        return el.idLine == idLine && el.idStop == idStop;
+    })
+}
+
 function getAllLines()
 {
     return Promise.resolve(
         models.Line.findAll()
+    )
+}
+
+function findLineById(id) {
+    return Promise.resolve(
+        models.Line.findOne({
+            where:{
+                id:id
+            }
+        })
     )
 }
 
@@ -101,5 +134,6 @@ module.exports.createLine = createLine;
 module.exports.insertLineInDatabase = insertLineInDatabase;
 module.exports.getAllLines = getAllLines;
 module.exports.deleteLine = deleteLine;
+module.exports.findLineById = findLineById;
 
 

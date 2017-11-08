@@ -121,6 +121,7 @@ function getAllBookingsByZoneId(idZone)
 
 function getAllAcceptedBookingsByZoneId(idZone)
 {
+    console.log(new Date()+"test");
     return Promise.resolve(
         models.Zone.findAll
         ({
@@ -135,7 +136,7 @@ function getAllAcceptedBookingsByZoneId(idZone)
                             [
                                 {model : models.Station, as : 'departureStationLine'},
                                 {model : models.Station, as : 'terminalStationLine'},
-                                {model : models.Trip, include : [{model : models.Booking, where:{validated:1}},{model : models.Station, as : 'departureStationTrip'},{model : models.Station, as : 'terminalStationTrip'}]}
+                                {model : models.Trip, include : [{model : models.Booking, where:{validated:1,date:{$gte:new Date()}}},{model : models.Station, as : 'departureStationTrip'},{model : models.Station, as : 'terminalStationTrip'}]}
                             ]
                     }
                 ]

@@ -50,13 +50,13 @@ function sendConfirmationEmail(firstname, lastname, group, departure, exit, date
 
         var message = '';
         if(valid)
-            message += '<p>Pour annuler votre réservation, merci de la faire à l\'adresse suivante : http://wwww.localhost:3000/index/delete='+token+'</p>' +
+            message += '<p>Pour annuler votre réservation, merci de la faire à l\'adresse suivante : http://wwww.localhost:3000/delete='+token+'</p>' +
                 '<p>Cordialement RESABIKE</p>';
         else
             message += '<p>Malheureusement le nombre de places maximum pour ce trajet a été atteint.</p>' +
                 '<p>Une validation par un de nos administrateurs est nécessaire. Un email de confirmation ou de refus vous sera envoyé dans les plus brefs délais</p>' +
                 '<p>Nous nous excusons pour le désagrément</p>' +
-                '<p>Si vous désirez annuler votre réservation, merci de la faire à l\'adresse suivante : http://wwww.localhost:3000/index/delete='+token+'</p>' +
+                '<p>Si vous désirez annuler votre réservation, merci de la faire à l\'adresse suivante : http://wwww.localhost:3000/delete='+token+'</p>' +
                 '<p>Cordialement RESABIKE</p>';
 
         var mailOptions = {

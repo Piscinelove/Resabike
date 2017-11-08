@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Line.associate = function(models){
 
-      Line.belongsTo(models.Zone, {foreignKey: 'idZone'});
+      Line.belongsTo(models.Zone, {onDelete: 'CASCADE',foreignKey: 'idZone'});
 
       Line.belongsTo(models.Station, {foreignKey: 'idStartStation', as: 'departureStationLine'});
       Line.belongsTo(models.Station, {foreignKey: 'idEndStation',as: 'terminalStationLine'});
