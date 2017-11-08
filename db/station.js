@@ -74,19 +74,26 @@ function insertStationInDatabase(stationsToAdd)
             //promises.push(insertStation(stop.stopid, stop.name));
             if(stop.line != null)
             {
-                promises.push(insertStation(stop.stopid, stop.name).then(function (station) {
-                    station = JSON.parse(JSON.stringify(station));
-                    console.log(station);
-                    stationsAdded.push({'line':stop.line,'stopid':station.stopid,'name':station.name});
-                }));
+                console.log(stop.name);
+                //stationsAdded.push({'line':stop.line,'stopid':stop.stopid,'name':stop.name});
+                promises.push(insertStation(stop.stopid, stop.name));
 
                 for(let j= 0; j<stop.stops.length;j++)
                 {
                     if(stop.stops[j].stopid != null)
+                    {
+                        console.log(stop.stops[j].name);
+                        //stationsAdded.push({'line':stop.line,'stopid':stop.stops[j].stopid,'name':stop.stops[j].name});
                         promises.push(insertStation(stop.stops[j].stopid, stop.stops[j].name));
+                    }
                 }
                 if(stop.exit.stopid != null)
+                {
+                    console.log(stop.exit.name);
+                    //stationsAdded.push({'line':stop.line,'stopid':stop.exit.stopid,'name':stop.exit.name});
                     promises.push(insertStation(stop.exit.stopid, stop.exit.name));
+                }
+
             }
         }
 
