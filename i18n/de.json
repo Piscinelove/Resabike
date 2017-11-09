@@ -1,6 +1,4 @@
 {
-  "TEST" : "Scheisse",
-
 
   "SLOGAN1" : " Um zur Abfahrt zu gelangen",
   "SLOGAN2" : "ohne mude zu werden ...",
@@ -161,5 +159,12 @@
   "ZONEMODIFYID" : "Id",
   "ZONEMODIFYNAME" : "Name",
   "ZONEMODIFYCANCEL" : "stornieren",
-  "ZONEMODIFYSAVE" : "bestätigen"
+  "ZONEMODIFYSAVE" : "bestätigen",
+
+  "NAVHOME": "Zuhause",
+  "NAVPRESENTATION": "Präsentation",
+  "NAVHORYORY": "Geschichte",
+  "NAVBOOKING": "Buchung",
+  "NAVCONTACT": "Kontakt",
+  "NAVLOGIN": "Anmelden"
 }

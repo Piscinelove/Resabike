@@ -178,18 +178,16 @@ block content
                 form(id="contact-form").col.s12
                     div.row
                         div.input-field.col.s6
-                            i.material-icons.prefix person
+                            i.material-icons.prefix.teal-text.text-lighten-1 person
                             input(id="contact-name", name="contactname" ,type="text").validate
                             label(for="contact-name") #{translation.CONTACTNAME}
                         div.input-field.col.s6
-                            i.material-icons.prefix email
+                            i.material-icons.prefix.teal-text.text-lighten-1 email
                             input(id="contact-email", name="contactemail", type="email").validate
                             label(for="contact-email") #{translation.CONTACTMAIL}
-            div.row
-                form.col.s12
                     div.row
                         div.input-field.col.s12
-                            i.material-icons.prefix mode_edit
+                            i.material-icons.prefix.teal-text.text-lighten-1 mode_edit
                             textarea(id="contact-message", name="contactmessage", data-length="500", maxlength="500").materialize-textarea.textarea-contact
                             label(for="contact-message") #{translation.CONTACTFORM}
             button(id="contact-button", form="contact-form", name="action" , onclick="sendContactEmail()").btn.waves-effect.waves-light.right #{translation.CONTACTSEND}

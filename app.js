@@ -9,11 +9,9 @@ var i18n=require("i18n-express");
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-//only for test
+
 var login = require('./routes/login');
 var driver = require('./routes/driver');
-var zoneadmin = require('./routes/zoneadmin');
-var regionadmin = require('./routes/regionadmin');
 var administration = require('./routes/administration');
 var autocomplete = require('./routes/autocomplete');
 //
@@ -113,8 +111,6 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/driver', driver);
-app.use('/zoneadmin', zoneadmin);
-app.use('/regionadmin', regionadmin);
 app.use('/administration', isAuthenticated, isAuthorized, administration);
 app.use('/autocomplete', autocomplete);
 

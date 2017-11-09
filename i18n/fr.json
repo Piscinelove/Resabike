@@ -1,5 +1,4 @@
 {
-  "TEST" : "Trop bien",
 
   "SLOGAN1" : "Arriver au depart",
   "SLOGAN2" : "sans se fatiguer...",
@@ -159,7 +158,14 @@
   "ZONEMODIFYID" : "Id",
   "ZONEMODIFYNAME" : "Nom",
   "ZONEMODIFYCANCEL" : "annuler",
-  "ZONEMODIFYSAVE" : "valider"
+  "ZONEMODIFYSAVE" : "valider",
+
+  "NAVHOME" : "Accueil",
+  "NAVPRESENTATION": "Présentation",
+  "NAVHISTORY" : "Histoire",
+  "NAVBOOKING" : "Réservation",
+  "NAVCONTACT" : "Contact",
+  "NAVLOGIN" : "Login"
 
 
 

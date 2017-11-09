@@ -16,6 +16,11 @@ a {
   background-color: #2a2d3e !important;
 }
 
+
+.ebony-text{
+  color: #2a2d3e !important;
+}
+
 .froly-text{
   color: #ee6e73;
 }
@@ -212,4 +217,8 @@ div.step-actions button:first-of-type{
 .vertical-align-icon{
   vertical-align: middle;
   padding: 0.5em;
+}
+
+.font-bold{
+  font-weight: bold;
 }

@@ -9,40 +9,40 @@ html
     link(rel='stylesheet', href='/stylesheets/components.css')
 
   body
-    ul.side-nav#mobile-demo
+    ul.side-nav#mobile-demo.font-bold
       li
         if(isHomePage)
-          a(href="#home").scroll-to Home
+          a(href="#home").scroll-to #{translation.NAVHOME}
             i.material-icons.left home
         else
           a(href="/").scroll-to Home
             i.material-icons.left home
       if(isHomePage)
         li
-          a(href="#presentation").scroll-to Présentation
+          a(href="#presentation").scroll-to #{translation.NAVPRESENTATION}
         li
-          a(href="#about").scroll-to Histoire
+          a(href="#about").scroll-to #{translation.NAVHISTORY}
         li
-          a(href="#book").scroll-to Réservation
+          a(href="#book").scroll-to #{translation.NAVBOOKING}
         li
-          a(href="#contact").scroll-to Contact
+          a(href="#contact").scroll-to #{translation.NAVCONTACT}
         li
-          a(href="/login").modal-trigger #{translation.TEST}
+          a(href="/login").modal-trigger #{translation.NAVLOGIN}
         li
-          a(href="/?clang=fr") FR
+          a(href="/?clang=fr").lang-fr.lang-button FR
         li
-          a(href="/?clang=en") EN
+          a(href="/?clang=en").lang-en.lang-button EN
         li
-          a(href="/?clang=de") DE
+          a(href="/?clang=de").lang-de.lang-button DE
       else
         li
-          a(href="/login?clang=fr") FR
+          a(href="/login?clang=fr").lang-fr.lang-button FR
         li
-          a(href="/login?clang=en") EN
+          a(href="/login?clang=en").lang-en.lang-button EN
         li
-          a(href="/login?clang=de") DE
+          a(href="/login?clang=de").lang-de.lang-button DE
     div.navbar-fixed
-      nav.amber.lighten-3
+      nav.amber.lighten-2
         div.nav-wrapper
           div.container
             a(href="#").brand-logo
@@ -50,38 +50,38 @@ html
               | abike
             a(href="#", data-activates="mobile-demo").button-collapse
               i.material-icons menu
-            ul#nav-mobile.right.hide-on-med-and-down
+            ul#nav-mobile.right.hide-on-med-and-down.font-bold
               li
                 if(isHomePage)
-                  a(href="#home").scroll-to Home
+                  a(href="#home").scroll-to #{translation.NAVHOME}
                     i.material-icons.left home
                 else
                   a(href="/").scroll-to Home
                     i.material-icons.left home
               if(isHomePage)
                 li
-                  a(href="#presentation").scroll-to Présentation
+                  a(href="#presentation").scroll-to #{translation.NAVPRESENTATION}
                 li
-                  a(href="#about").scroll-to Histoire
+                  a(href="#about").scroll-to #{translation.NAVHISTORY}
                 li
-                  a(href="#book").scroll-to Réservation
+                  a(href="#book").scroll-to #{translation.NAVBOOKING}
                 li
-                  a(href="#contact").scroll-to Contact
+                  a(href="#contact").scroll-to #{translation.NAVCONTACT}
                 li
-                  a(href="/login").modal-trigger #{translation.TEST}
+                  a(href="/login").modal-trigger #{translation.NAVLOGIN}
                 li
-                  a(href="/?clang=fr") FR
+                  a(href="/?clang=fr").lang-fr.lang-button FR
                 li
-                  a(href="/?clang=en") EN
+                  a(href="/?clang=en").lang-en.lang-button EN
                 li
-                  a(href="/?clang=de") DE
+                  a(href="/?clang=de").lang-de.lang-button DE
               else
                 li
-                  a(href="/login?clang=fr") FR
+                  a(href="/login?clang=fr").lang-fr.lang-button FR
                 li
-                  a(href="/login?clang=en") EN
+                  a(href="/login?clang=en").lang-en.lang-button EN
                 li
-                  a(href="/login?clang=de") DE
+                  a(href="/login?clang=de").lang-de.lang-button DE
     block content
 
 
