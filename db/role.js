@@ -5,12 +5,15 @@ var models = require('../models');
  * @param name
  * @returns {Promise.<Promise.<Model, created>>}
  */
-function createRole(name)
+function createRole(name, id)
 {
     return Promise.resolve(
         models.Role.findCreateFind
         ({
             where:{
+                id:id
+            },
+            defaults:{
                 name:name
             }
         })

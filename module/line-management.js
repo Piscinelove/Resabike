@@ -1,4 +1,3 @@
-var dbUser = require('../db/user');
 var dbRole = require('../db/role');
 var dbZone = require('../db/zone');
 var dbLine = require('../db/line');
@@ -6,6 +5,10 @@ var dbLineStation = require('../db/linestation');
 var dbStation = require('../db/station');
 var axios = require("axios");
 
+/**
+ * Get zones and lines
+ * @returns {Promise.<Promise.<TResult>>}
+ */
 function getZonesAndLines() {
     // List of zones, list of and lines available
     var result = [];
@@ -33,14 +36,17 @@ function getZonesAndLines() {
 
             return Promise.all(promises).then(function () {
                 result.push(lines);
-                //usersDetails = users;
             })
         }).then(function () {
             return result;
         })
     )
 }
-
+/**
+  * Get zone and lines
+  * @param idZone
+  * @returns {Promise.<Promise.<TResult>>}
+  */
 function getZoneAndLines(idZone) {
     // List of zones, list of and lines available
     var result = [];
@@ -48,7 +54,6 @@ function getZoneAndLines(idZone) {
     return Promise.resolve(
         dbZone.getZoneById(idZone)
             .then(function (zone) {
-                console.log(JSON.parse(JSON.stringify(zone)) + " tididid");
                 result.push(zone);
                 return dbLine.getAllLines();
             }).then(function (lines) {
@@ -69,7 +74,6 @@ function getZoneAndLines(idZone) {
 
             return Promise.all(promises).then(function () {
                 result.push(lines);
-                //usersDetails = users;
             })
         }).then(function () {
             return result;
@@ -77,13 +81,19 @@ function getZoneAndLines(idZone) {
     )
 }
 
+
+/**
+ * Get all lines from api
+ * @param from
+ * @param to
+ * @returns {Promise}
+ */
 function getLinesFromAPI(from, to) {
     return new Promise(function (resolve, reject) {
 
         let url = "https://timetable.search.ch/api/route.en.json?from="+from+"&to="+to;
 
         axios.get(url).then(function (response) {
-            console.log(url);
 
             if(response.data.count == 0 || response.data.messages != null)
                 reject("Ligne(s) introuvable(s) entre "+from+" et "+to);
@@ -91,72 +101,39 @@ function getLinesFromAPI(from, to) {
             var promises = [];
             var stationsToAdd = [];
 
-            //cleanAPI(response).then(function (response) {
-                var linesArray = response.data.connections[0].legs;
-                for(var i = 0; i < linesArray.length; i++)
+            var linesArray = response.data.connections[0].legs;
+            for(var i = 0; i < linesArray.length; i++)
+            {
+                if(linesArray[i].type == "post" || linesArray[i].type == "bus")
                 {
-                    if(linesArray[i].type == "post" || linesArray[i].type == "bus")
-                    {
-                        var idLine = linesArray[i].line;
-                        to = linesArray[i].terminal;
-                        promises.push(findDepartureFromLineAndTerminal(idLine, to));
+                    var idLine = linesArray[i].line;
+                    to = linesArray[i].terminal;
+                    promises.push(findDepartureFromLineAndTerminal(idLine, to));
 
-                        // findDepartureFromLineAndTerminal(idLine, to).then(function (response) {
-                        //     stationsToAdd.push(response);
-                        //     //resolve(response);
-                        // }).catch(function (error) {
-                        //     reject(error);
-                        // })
-                        console.log("Enough lines");
+                    console.log("Enough lines");
+                }
+
+            }
+            Promise.all(promises).then(function (response) {
+                for (var i = 0; i < response.length; i++) {
+                    for(var j = 0; j < response[i].length; j++)
+                    {
+                        stationsToAdd.push(response[i][j]);
                     }
 
                 }
-                Promise.all(promises).then(function (response) {
-                    for (var i = 0; i < response.length; i++) {
-                        for(var j = 0; j < response[i].length; j++)
-                        {
-                            stationsToAdd.push(response[i][j]);
-                            console.log("putain : " + JSON.stringify([response[i][0].name, response[i][response[i].length - 1].name]));
-                        }
-
-                    }
-                    resolve(stationsToAdd);
-                })
-
-
-                // if (linesArray.length == 1) {
-                //     var idLine = linesArray[0].line;
-                //     to = linesArray[0].terminal;
-                //     findDepartureFromLineAndTerminal(idLine, to).then(function (response) {
-                //         resolve(response);
-                //     }).catch(function (error) {
-                //         reject(error);
-                //     })
-                //     console.log("Enough lines");
-                // }
-                // else {
-                //     var suggestions = [];
-                //     var promises = [];
-                //     console.log("Too many lines");
-                //     for (var i = 0; i < linesArray.length; i++) {
-                //         var idLine = linesArray[i].line;
-                //         var correctTo = linesArray[i].terminal;
-                //         console.log("aleks : "+JSON.stringify(linesArray[i]));
-                //         promises.push(findDepartureFromLineAndTerminal(idLine, correctTo));
-                //     }
-                //     Promise.all(promises).then(function (response) {
-                //         for (var i = 0; i < response.length; i++) {
-                //             suggestions.push([response[i][0].name, response[i][response[i].length - 1].name]);
-                //             console.log("putain : " + JSON.stringify([response[i][0].name, response[i][response[i].length - 1].name]));
-                //         }
-                //         reject(suggestions);
-                //     })
-                // }
+                resolve(stationsToAdd);
+            })
             })
         })
-    //})
 }
 
+/**
+ * Find departure from line and terminal
+ * @param idLine
+ * @param to
+ * @returns {Promise}
+ */
 function findDepartureFromLineAndTerminal(idLine, to) {
     return new Promise(function (resolve, reject) {
         let url = "https://timetable.search.ch/api/stationboard.en.json?stop=";
@@ -180,6 +157,12 @@ function findDepartureFromLineAndTerminal(idLine, to) {
     })
 }
 
+/**
+ * Find correct line from a departure and a destination
+ * @param from
+ * @param to
+ * @returns {Promise}
+ */
 function findCorrectLine(from, to) {
     return new Promise(function (resolve, reject) {
         let url = "https://timetable.search.ch/api/route.en.json?";
@@ -209,6 +192,13 @@ function findCorrectLine(from, to) {
     })
 }
 
+/**
+ * Create a line with from to and the id of the zone
+ * @param from
+ * @param to
+ * @param idZone
+ * @returns {Promise}
+ */
 function createLine(from, to, idZone) {
     return new Promise(function (resolve, reject) {
         getLinesFromAPI(from, to)
@@ -218,58 +208,14 @@ function createLine(from, to, idZone) {
                 return dbLine.insertLineInDatabase(stationsAdded, idZone);
             }).then(function (stationsAndLinesArray) {
                 return dbLineStation.insertLineStationInDatabase(stationsAndLinesArray);
-            }).then(function (lineStation) {
-                var promises = [];
-                promises.push(dbRole.createRole("admin"));
-                promises.push(dbRole.createRole("zoneadmin"));
-                promises.push(dbRole.createRole("driver"));
-                return Promise.all(promises)
             }).then(function () {
                 resolve("Success");
             }).catch(function (error) {
                 console.log(error);
-                console.log("youlu");
                 reject(error);
             })
     })
 }
-
-// function createLine(from, to, idZone) {
-//     return new Promise(function (resolve, reject) {
-//         getLinesFromAPI(from, to)
-//             .then(function (stationsToAdd) {
-//                 console.log("Success  : " + stationsToAdd);
-//             }).catch(function (error) {
-//                 console.error("youlou");
-//                 console.error(error);
-//                 reject(error);
-//         })
-//     })
-// }
-
-function cleanAPI(response) {
-    // return new Promise(function (resolve, reject) {
-    //     for (var i = 0; i < response.data.connections.length; i++) {
-    //         for (var j = 0; j < response.data.connections[i].legs.length; j++) {
-    //             var type = response.data.connections[i].legs[j].type;
-    //
-    //             if(type == undefined)
-    //                 type = "lol";
-    //
-    //             if(type != "bus" && type != "post")
-    //             {
-    //                 console.log(type);
-    //                 response.data.connections[i].legs.splice(j, 1);
-    //             }
-    //
-    //         }
-    //
-    //     }
-    //
-    //     resolve(response);
-    // })
-}
-
 
 module.exports.getZonesAndLines = getZonesAndLines;
 module.exports.getZoneAndLines = getZoneAndLines;

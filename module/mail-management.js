@@ -5,19 +5,25 @@ const nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'jesuisuneputaindepoubelle@gmail.com',
-        pass: 'groscaca'
+        user: 'inforesabike@gmail.com',
+        pass: 'resabike123'
     }
 });
 
 
-
+/**
+ * Send contact email
+ * @param name
+ * @param email
+ * @param message
+ * @returns {Promise}
+ */
 function sendContactEmail(name, email, message) {
     return new Promise(function (resolve, reject) {
 
         var mailOptions = {
             from: email,
-            to: 'jesuisuneputaindepoubelle@gmail.com',
+            to: 'inforesabike@gmail.com',
             subject: 'Sending Email using Node.js',
             text: message
         };
@@ -35,6 +41,20 @@ function sendContactEmail(name, email, message) {
     })
 }
 
+/**
+ * Send confirmation email
+ * @param firstname
+ * @param lastname
+ * @param group
+ * @param departure
+ * @param exit
+ * @param date
+ * @param bikes
+ * @param token
+ * @param email
+ * @param valid
+ * @returns {Promise}
+ */
 function sendConfirmationEmail(firstname, lastname, group, departure, exit, date, bikes, token, email, valid) {
     return new Promise(function (resolve, reject) {
 
