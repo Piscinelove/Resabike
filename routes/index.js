@@ -67,7 +67,7 @@ router.post('/contact', function (req, res, next) {
 
     mailManagement.sendContactEmail(name, email, message).then(function (response) {
 
-        res.status(200).send(response);
+        res.status(200).send("Email envoyé");
     }).catch(function (error) {
         res.status(500).send("Erreur interne");
     })
