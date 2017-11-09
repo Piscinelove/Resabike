@@ -28,7 +28,7 @@ The system administrator has the option to add new zone administrators.
     ├── package.json
     └── README.md
 
-> `db` directory contains all queries to the tables in the database (CREATE, DELETE, UPDATE)
+> * **`db` directory contains all queries to the tables in the database (CREATE, DELETE, UPDATE)
 > `i18n` directory contains all translations files of views files (fr, en and de translations). Files are in JSON format.
 > `models` directory contains all models of the database tables
 > `module` directory contains all important functionalities of the project (bookings, lines, mails, roles, users management)
