@@ -1,8 +1,3 @@
-var dbUser = require('../db/user');
-var dbRole = require('../db/role');
-var dbZone = require('../db/zone');
-var dbLine = require('../db/line');
-var dbLineStation = require('../db/linestation');
 var dbStation = require('../db/station');
 var dbTrip = require('../db/trip');
 var dbBooking = require('../db/booking');
@@ -12,14 +7,14 @@ const saltRounds = 10;
 var mailManagement = require('../module/mail-management');
 
 const MAXIMUMBIKES = 6;
-var departureStation = "sierre";
-var arrivalStation = "Niouc, village";
-var date = new Date();
-var time = "16:25";
 
-/*
-   date format : 10/28/2017
-   time format : 16:25
+/**
+ * Get trip start hour and the date from the api
+ * @param departureStation
+ * @param arrivalStation
+ * @param date
+ * @param time
+ * @returns {Promise}
  */
 function getTripHourAndDateFromAPI(departureStation, arrivalStation, date, time) {
     let url = "https://timetable.search.ch/api/route.en.json?from="+departureStation+"&to="+arrivalStation+"&date="+date+"&time="+time;
@@ -35,6 +30,11 @@ function getTripHourAndDateFromAPI(departureStation, arrivalStation, date, time)
     })
 }
 
+/**
+ * Get trip from client booking submit (departure and arrival)
+ * @param connection
+ * @returns {Promise}
+ */
 function getTripFromClientBooking(connection) {
     return new Promise(function (resolve, reject) {
         var legs = connection.legs;
@@ -69,12 +69,19 @@ function getTripFromClientBooking(connection) {
             }
             resolve(trip);
         })
-        //console.log(JSON.stringify(trip));
 
     })
 
 }
 
+/**
+ * Get trip from departure and arrival at specific date
+ * @param departureStation
+ * @param arrivalStation
+ * @param date
+ * @param time
+ * @returns {Promise}
+ */
 function getTrip(departureStation, arrivalStation, date, time) {
     return new Promise(function (resolve, reject) {
         getTripHourAndDateFromAPI(departureStation, arrivalStation, date, time).then(function (response) {
@@ -116,30 +123,9 @@ function getTrip(departureStation, arrivalStation, date, time) {
                     };
                     trips.push(trip);
                 }
-                //
-                // console.log(connections);
-                // connections = connections.reduce(function(a, b) {
-                //     return a.concat(b);
-                // }, []);
                 console.log(trips);
                 resolve(trips);
-
-                // Array.prototype.groupBy = function (prop) {
-                //     return this.reduce(function (groups, item) {
-                //         var val = item[prop];
-                //         groups[val] = groups[val] || [];
-                //         groups[val].push(item);
-                //         return groups;
-                //     },{});
-                // }
-                //
-                // var test = connections.reduce(function(a, b) {
-                //     return a.concat(b);
-                // }, []);
-                // console.log(test);
-                // var groups = test.groupBy('idLine');
             })
-
 
         }).catch(function (error) {
             reject(error);
@@ -148,12 +134,15 @@ function getTrip(departureStation, arrivalStation, date, time) {
     
 }
 
+/**
+ * Create booking using form inputs
+ * @param body
+ * @returns {Promise}
+ */
 function createBooking(body) {
     return new Promise(function (resolve, reject) {
         var trips = body.trip;
         var personaldata = body.personaldata;
-        console.log("salut : " + JSON.stringify(body.trip));
-        console.log("salut : " + JSON.stringify(body.personaldata));
         var token = personaldata.firstname + personaldata.date + Math.random();
 
         bcrypt.hash(token, saltRounds, function (err, hash) {
@@ -220,6 +209,13 @@ function createBooking(body) {
     })
 }
 
+/**
+ * Get correct departure station and terminal station ids from a trip, departure station and exit station
+ * @param trip
+ * @param departureStation
+ * @param exitStation
+ * @returns {Promise}
+ */
 function getStartStationEndStationId(trip, departureStation, exitStation) {
     return new Promise(function (resolve, reject) {
         var promises = [];
@@ -237,6 +233,10 @@ function getStartStationEndStationId(trip, departureStation, exitStation) {
     })
 }
 
+/**
+ * Get bookings for display
+ * @returns {Promise}
+ */
 function getBookings()
 {
     return new Promise(function (resolve, reject) {
@@ -260,26 +260,22 @@ function getBookings()
                     var tripsGrouped = tripsToGroup.groupBy('startHour')
                     bookinglist[i].Lines[j].Trips = [];
                     bookinglist[i].Lines[j].Trips.push(tripsGrouped);
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips));
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
-                    //console.log(JSON.stringify(lines.Trips.groupBy('startHour')));
 
                 }
             }
 
             console.log(JSON.stringify(bookinglist));
-            //console.log(JSON.stringify(bookinglist));
-
-            //var groups = bookinglist.groupBy('startHour');
-            //console.log("waiting : "+JSON.stringify(bookinglist));
-
             resolve(JSON.parse(JSON.stringify(bookinglist)));
 
         })
     })
 }
 
+/**
+ * Get bookings by a zone id
+ * @param idZone
+ * @returns {Promise}
+ */
 function getBookingsByZoneId(idZone)
 {
     return new Promise(function (resolve, reject) {
@@ -303,26 +299,21 @@ function getBookingsByZoneId(idZone)
                     var tripsGrouped = tripsToGroup.groupBy('startHour')
                     bookinglist[i].Lines[j].Trips = [];
                     bookinglist[i].Lines[j].Trips.push(tripsGrouped);
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips));
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
-                    //console.log(JSON.stringify(lines.Trips.groupBy('startHour')));
-
                 }
             }
 
             console.log(JSON.stringify(bookinglist));
-            //console.log(JSON.stringify(bookinglist));
-
-            //var groups = bookinglist.groupBy('startHour');
-            //console.log("waiting : "+JSON.stringify(bookinglist));
-
             resolve(JSON.parse(JSON.stringify(bookinglist)));
 
         })
     })
 }
 
+/**
+ * Get all accepted bookings by a zone id
+ * @param idZone
+ * @returns {Promise}
+ */
 function getAcceptedBookingsByZoneId(idZone)
 {
     return new Promise(function (resolve, reject) {
@@ -346,20 +337,10 @@ function getAcceptedBookingsByZoneId(idZone)
                     var tripsGrouped = tripsToGroup.groupBy('startHour')
                     bookinglist[i].Lines[j].Trips = [];
                     bookinglist[i].Lines[j].Trips.push(tripsGrouped);
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips));
-                    //console.log(JSON.stringify(bookinglist[i].Lines[j].Trips))
-                    //console.log(JSON.stringify(lines.Trips.groupBy('startHour')));
-
                 }
             }
 
             console.log(JSON.stringify(bookinglist));
-            //console.log(JSON.stringify(bookinglist));
-
-            //var groups = bookinglist.groupBy('startHour');
-            //console.log("waiting : "+JSON.stringify(bookinglist));
-
             resolve(JSON.parse(JSON.stringify(bookinglist)));
 
         })

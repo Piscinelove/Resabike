@@ -4,6 +4,10 @@ var dbUser = require("../db/user");
 var dbZone = require("../db/zone");
 var lineManagement = require("../module/line-management");
 
+/**
+ * Seed
+ * Fill database for testing purpose
+ */
 models.sequelize.sync({force:true}).then(function () {
     roleManagement.createRoles().then(function (roles) {
         dbZone.createZone("Val d'Anniviers").then(function (zone) {

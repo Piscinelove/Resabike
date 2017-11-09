@@ -1,5 +1,14 @@
 var models = require('../models');
 
+/**
+ * Create a user
+ * @param username
+ * @param email
+ * @param password
+ * @param idRole
+ * @param idZone
+ * @returns {Promise.<Promise.<Model, created>>}
+ */
 function createUser(username, email, password, idRole, idZone)
 {
     return Promise.resolve(
@@ -17,6 +26,11 @@ function createUser(username, email, password, idRole, idZone)
     )
 }
 
+/**
+ * Get user by email
+ * @param email
+ * @returns {Promise.<Promise.<Model>>}
+ */
 function getUserByEmail(email)
 {
     return Promise.resolve(
@@ -27,6 +41,11 @@ function getUserByEmail(email)
     )
 }
 
+/**
+ * Get user by username
+ * @param username
+ * @returns {Promise.<Promise.<Model>>}
+ */
 function getUserByUsername(username)
 {
     return Promise.resolve(
@@ -37,6 +56,11 @@ function getUserByUsername(username)
     )
 }
 
+/**
+ * Delete user by its id
+ * @param id
+ * @returns {Promise.<T>}
+ */
 function deleteUser(id)
 {
     return Promise.resolve(
@@ -49,6 +73,14 @@ function deleteUser(id)
     )
 }
 
+/**
+ * Update user
+ * @param id
+ * @param email
+ * @param idRole
+ * @param idZone
+ * @returns {Promise.<T>}
+ */
 function updateUser(id, email, idRole, idZone)
 {
     return Promise.resolve(
@@ -64,6 +96,15 @@ function updateUser(id, email, idRole, idZone)
     )
 }
 
+/**
+ * Update user and change its password
+ * @param id
+ * @param email
+ * @param password
+ * @param idRole
+ * @param idZone
+ * @returns {Promise.<T>}
+ */
 function updateUserPassword(id, email, password, idRole, idZone)
 {
     return Promise.resolve(
@@ -80,6 +121,10 @@ function updateUserPassword(id, email, password, idRole, idZone)
     )
 }
 
+/**
+ * Get all users
+ * @returns {Promise.<Promise.<Array.<Model>>>}
+ */
 function getAllUsers()
 {
     return Promise.resolve(

@@ -395,6 +395,8 @@ var translation = {
 }
 var defaultLang = 'fr';
 
+console.log(defaultLang);
+
 var $_LANG = function() {
     var vars = {};
     window.location.href.replace( location.hash, '' ).replace(

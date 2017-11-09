@@ -17,8 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       Booking.belongsTo(models.Station, {foreignKey: 'idStartStation', as: 'departureStationBooking'});
       Booking.belongsTo(models.Station, {foreignKey: 'idEndStation', as: 'terminalStationBooking'});
 
-      //Booking.belongsTo(models.Line, {foreignKey: 'idLine'});
-
       Booking.hasMany(models.Trip, {onDelete: 'CASCADE',foreignKey: 'idBooking'});
   }
   return Booking;

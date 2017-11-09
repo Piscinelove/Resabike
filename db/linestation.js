@@ -39,7 +39,6 @@ function insertLineStationInDatabase(stationsAndLinesArray)
         {
             if(lastLine != lineStation[i].idLine)
             {
-                console.log("Putain pourquoi ça marche pas : "+lastLine+" "+lineStation[i].idLine);
                 orderIndex = 0;
             }
 

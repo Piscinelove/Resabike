@@ -94,25 +94,23 @@ function insertLineInDatabase(stationsArray, idZone)
         var stationsAndLinesArray = [];
         var promises = [];
 
-        console.log(JSON.stringify(stationsArray)+"ben");
+
 
         for (let i = 0; i < stops.length; i++)
         {
             var stop = stops[i];
-            console.log(stop.line+"ben2");
+
             if(stop.line != null)
             {
-                console.log(stop.line+" "+stop.name+"dan");
                 stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.stopid});
                 
                 for(let j = 0; j < stop.stops.length; j++)
                 {
-                    console.log(stop.line+" "+stop.stops[j].name+"dan");
+
                     stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.stops[j].stopid});
                 }
 
-                console.log("ped"+stop.line+" "+stop.exit.name);
-                console.log("odry3 : "+stop.line+" "+stop.exit.stopid);
+
                 stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.exit.stopid});
 
                 promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
@@ -121,7 +119,7 @@ function insertLineInDatabase(stationsArray, idZone)
         }
 
         Promise.all(promises).then(function () {
-            console.log(JSON.stringify(stationsAndLinesArray)+"odry5");
+
             resolve(stationsAndLinesArray);
         });
     })

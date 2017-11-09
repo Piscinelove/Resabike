@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       Station.hasMany(models.Booking, {foreignKey: 'idStartStation', as: 'departureStationBooking'});
       Station.hasMany(models.Booking, {foreignKey: 'idEndStation', as: 'terminalStationBooking'});
 
-      //Station.belongsToMany(models.Line, {through: 'lineStation',foreignKey: 'idStation'});
       Station.hasMany(models.LineStation, {foreignKey: 'idStation'});
 
       Station.hasMany(models.Trip, {foreignKey: 'idStartStation', as: 'departureStationTrip'});

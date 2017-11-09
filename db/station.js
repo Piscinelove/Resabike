@@ -4,7 +4,11 @@ var dbLine = require('../db/line');
 var dbZone = require('../db/zone');
 
 
-
+/**
+ * Get station id by his name
+ * @param name
+ * @returns {Promise.<Promise.<Model>>}
+ */
 function getStationIdByName(name)
 {
     return Promise.resolve(
@@ -15,6 +19,11 @@ function getStationIdByName(name)
     )
 }
 
+/**
+ * Get sation by its id
+ * @param id
+ * @returns {Promise.<Promise.<Model>>}
+ */
 function getStationById(id)
 {
     return Promise.resolve(
@@ -25,6 +34,12 @@ function getStationById(id)
     )
 }
 
+/**
+ * Insert station
+ * @param id
+ * @param name
+ * @returns {Promise.<Promise.<created>>}
+ */
 function insertStation(id, name)
 {
     return Promise.resolve(
@@ -36,6 +51,11 @@ function insertStation(id, name)
     )
 }
 
+/**
+ * Get station id from api if the insertion fails
+ * @param name
+ * @returns {Promise.<Promise.<TResult>>}
+ */
 function  getStationIdByNameFromAPI(name) {
     var url = "https://timetable.search.ch/api/stationboard.en.json?show_subsequent_stops=1&stop="
 
@@ -43,7 +63,6 @@ function  getStationIdByNameFromAPI(name) {
     (
         axios.get(url+name).then(function (response) {
             var id = response.data.stop.id;
-            console.log(response.data.stop.id+"apiidstation");
             return id;
         }).then(function (id) {
             insertStation(id, name);
@@ -54,26 +73,23 @@ function  getStationIdByNameFromAPI(name) {
     )
 }
 
+/**
+ * Insert array of stations in database
+ * @param stationsToAdd
+ * @returns {Promise.<TResult>}
+ */
 function insertStationInDatabase(stationsToAdd)
 {
     return Promise.resolve().then(function () {
 
         var promises = [];
         var stops = stationsToAdd;
-        console.log(stationsToAdd);
 
         for (let i = 0; i < stops.length; i++)
         {
             var stop = stops[i];
             promises.push(insertStation(stop.stopid, stop.name));
         }
-
-
-        //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
-        //promises.push(insertStation(8583435,"Zinal, village de vacances"));
-        //promises.push(dbZone.createZone("Anniviers"));
-        //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
-
 
         return Promise.all(promises).then(function () {
             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");
@@ -83,6 +99,11 @@ function insertStationInDatabase(stationsToAdd)
     })
 }
 
+/**
+ * Search stations from client input
+ * @param term
+ * @returns {Promise.<Promise.<Array.<Model>>>}
+ */
 function getAllStationsByTerm(term)
 {
     return Promise.resolve(
@@ -97,6 +118,10 @@ function getAllStationsByTerm(term)
     )
 }
 
+/**
+ * Get all stations from database
+ * @returns {Promise.<Promise.<Array.<Model>>>}
+ */
 function getAllStations()
 {
     return Promise.resolve(

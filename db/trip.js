@@ -1,5 +1,10 @@
 var models = require('../models');
 
+/**
+ * Calculate number of bikes in a trip
+ * @param trip
+ * @returns {Promise}
+ */
 function getNumberOfBikes(trip)
 {
     return new Promise(function (resolve, reject) {
@@ -20,6 +25,15 @@ function getNumberOfBikes(trip)
     })
 }
 
+/**
+ * Create a trip
+ * @param startHour
+ * @param idBooking
+ * @param idLine
+ * @param idStartStation
+ * @param idEndstation
+ * @returns {Promise.<T>}
+ */
 function createTrip(startHour, idBooking, idLine, idStartStation, idEndstation)
 {
     return Promise.resolve(
@@ -33,45 +47,10 @@ function createTrip(startHour, idBooking, idLine, idStartStation, idEndstation)
     )
 }
 
-// function getAllTripForWaitingBookings()
-// {
-//     return Promise.resolve(
-//         models.Trip.findAll
-//         ({
-//             where : {
-//
-//                 '$Booking.validated$' : 0
-//             },
-//             include :
-//                 [
-//                     {model : models.Booking},
-//                     {model : models.Line, include : [{model : models.Station},{model : models.Zone}]}
-//                 ]
-//         })
-//     )
-// }
-
-// function getAllTripForWaitingBookings()
-// {
-//     return Promise.resolve(
-//         models.Zone.findAll
-//         ({
-//             include :
-//                 [
-//                     {
-//                         model : models.Line,
-//                         include :
-//                             [
-//                                 {model : models.Station, as : 'departureStationLine'},
-//                                 {model : models.Station, as : 'terminalStationLine'},
-//                                 {model : models.Trip, include : [{model : models.Booking, where:{validated:0}},{model : models.Station, as : 'departureStationTrip'},{model : models.Station, as : 'terminalStationTrip'}]}
-//                             ]
-//                     }
-//                 ]
-//         })
-//     )
-// }
-
+/**
+ * Get all bookings
+ * @returns {Promise.<Promise.<Array.<Model>>>}
+ */
 function getAllBookings()
 {
     return Promise.resolve(
@@ -93,6 +72,11 @@ function getAllBookings()
     )
 }
 
+/**
+ * Get all bookings from a zone
+ * @param idZone
+ * @returns {Promise.<Promise.<Array.<Model>>>}
+ */
 function getAllBookingsByZoneId(idZone)
 {
     return Promise.resolve(
@@ -118,10 +102,14 @@ function getAllBookingsByZoneId(idZone)
 }
 
 
-
+/**
+ * Get all accepted bookings from a zone
+ * Only where the date is after now
+ * @param idZone
+ * @returns {Promise.<Promise.<Array.<Model>>>}
+ */
 function getAllAcceptedBookingsByZoneId(idZone)
 {
-    console.log(new Date()+"test");
     return Promise.resolve(
         models.Zone.findAll
         ({

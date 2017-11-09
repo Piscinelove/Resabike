@@ -6,6 +6,19 @@ $(document).ready(function(){
     $('select').material_select();
     $(".dropdown-button").dropdown();
     $(".button-collapse").sideNav();
+    
+    // $('.lang-en').on('click', function () {
+    //     alert();
+    //     defaultLang = 'en';
+    // })
+    //
+    // $('.lang-fr').on('click', function () {
+    //     defaultLang = 'fr';
+    // })
+    //
+    // $('.lang-de').on('click', function () {
+    //     defaultLang = 'de';
+    // })
 
     if($_LANG() == 'fr')
     {
