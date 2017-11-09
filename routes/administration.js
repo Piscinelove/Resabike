@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var dbZone = require('../db/zone');
 var dbUser = require('../db/user');
-var dbRole = require('../db/role');
 var dbBooking = require('../db/booking');
 var dbLine = require('../db/line');
 var userManagement = require('../module/user-management');

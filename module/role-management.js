@@ -1,5 +1,9 @@
 var dbRole = require('../db/role');
 
+/**
+ * Create aall needed roles
+ * @returns {Promise}
+ */
 function createRoles() {
     return new Promise(function (resolve, reject) {
         var promises = [];

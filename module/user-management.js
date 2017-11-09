@@ -2,6 +2,10 @@ var dbUser = require('../db/user');
 var dbRole = require('../db/role');
 var dbZone = require('../db/zone');
 
+/**
+ * Get users and role and zone
+ * @returns {Promise.<Promise.<TResult>>}
+ */
 function getUsersAndRoleAndZone(){
     // List of zones, list of roles availables with list of all users
     var result = [];

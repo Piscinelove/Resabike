@@ -54,6 +54,9 @@ $(document).ready(function(){
 
 });
 
+/**
+ * Update user
+ */
 function updateUser(){
     var id = $("#user-edit-id").val();
     var username = $("#user-edit-username").val();
@@ -84,6 +87,9 @@ function updateUser(){
             });
 }
 
+/**
+ * Create line
+ */
 function createLine(){
     var idZone = $("#line-add-idZone").val();
     var departure = $("#line-add-departure").val();
@@ -133,6 +139,11 @@ function createLine(){
         errorToast(translation[$_LANG()].LINERESTFILLFORM);
 }
 
+/**
+ * Delete line
+ * @param id
+ * @param idZone
+ */
 function deleteLine(id, idZone){
 
     superagent
@@ -150,10 +161,18 @@ function deleteLine(id, idZone){
         });
 }
 
+/**
+ * Refresh zone ine
+ * @param idZone
+ */
 function refreshZoneLine(idZone) {
     $("#tab-zone-line-"+idZone).load(" #tab-zone-line-"+idZone);
 }
 
+/**
+ * Reset form
+ * @param selector
+ */
 function resetForm(selector) {
     $(selector)[0].reset();
 }

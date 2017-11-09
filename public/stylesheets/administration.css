@@ -6,15 +6,6 @@ main, footer
     padding-left: 300px;
 }
 
-/*select[required] {*/
-    /*opacity: 0;*/
-    /*display: block;*/
-    /*position: absolute;*/
-    /*height: 0;*/
-    /*border: none;*/
-    /*margin-top: -50px;*/
-/*}*/
-
 .select-wrapper label.invalid {
     margin-top: 62px;
     margin-left: -11px;
@@ -24,24 +15,6 @@ main, footer
 .add-lines{
     margin-left: auto;
 }
-
-
-/*.tab-scroll tbody {*/
-    /*display:block;*/
-    /*height:300px;*/
-    /*overflow:auto;*/
-/*}*/
-
-/*.tab-scroll thead, .tab-scroll tbody tr {*/
-    /*display:table;*/
-    /*width:100%;*/
-    /*table-layout:fixed;*/
-/*}*/
-
-/*.tab-scroll thead {*/
-    /*width: calc( 100% - 1em )*/
-/*}*/
-
 
 @media only screen and (max-width: 992px) {
     main, footer {

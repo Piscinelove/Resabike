@@ -1,3 +1,6 @@
+/**
+ * Send contact email
+ */
 function sendContactEmail(){
     var name = $("#contact-name").val();
     var email = $("#contact-email").val();

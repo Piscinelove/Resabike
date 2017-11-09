@@ -4,6 +4,9 @@ $(document).ready(function(){
     validateForms();
 })
 
+/**
+ * Validation of all the forms
+ */
 function validateForms() {
     $('select').material_select();
 
@@ -21,37 +24,6 @@ function validateForms() {
         opacity: 0,
         pointerEvents: 'none'
     });
-
-
-    // $.validator.addMethod("isStation", function (value, element) {
-    //     var stops = [];
-    //
-    //     var bool = getValidStopsFromAPI(value, function (stations) {
-    //
-    //         Object.keys(stations).forEach(function (key) {
-    //             stops.push(key);
-    //         });
-    //
-    //         // if(stops.indexOf(element) !== -1)
-    //         // {
-    //         //     console.log(stops.indexOf(element)+" "+element);
-    //         //     console.log("yeah");
-    //         //     return true;
-    //         // }
-    //         // else
-    //         // {
-    //         //     console.log(stops.indexOf(element)+" "+element);
-    //         //     return false;
-    //         // }
-    //
-    //         console.log(value);
-    //         console.log(stops.indexOf(value) !== -1);
-    //         return stops.indexOf(value) !== -1;
-    //     });
-    //     return bool;
-    //
-    // }, "Veuillez saisir un arrêt valide");
-
 
     $.validator.addMethod("isSwissPhoneNumber", function(value, element) {
         return /^(0041|041|\+41|\+\+41|41)?(0|\(0\))?([1-9]\d{1})(\d{3})(\d{2})(\d{2})$/.test($(element).val().replace(/\s+/g, '')); // return true if field is ok or should be ignored
@@ -187,21 +159,6 @@ function validateForms() {
             conditions:{
                 required:true
             }
-            // term:{
-            //     remote:{
-            //         url:"https://timetable.search.ch/api/completion.en.json?",
-            //         dataType:'json',
-            //         success:function (data) {
-            //             alert(data);
-            //
-            //             var stops = [];
-            //             $.each(data, function( id, val ) {
-            //                 stops.push(val.label);
-            //             });
-            //             return stops.indexOf($("input[name='term']").val()) !== -1
-            //         }
-            //     }
-            // }
         },
         messages:{
             username:{

@@ -1,7 +1,7 @@
 var models = require('../models');
 
 /**
- * Create a role
+ * Create a role with its id
  * @param name
  * @returns {Promise.<Promise.<Model, created>>}
  */

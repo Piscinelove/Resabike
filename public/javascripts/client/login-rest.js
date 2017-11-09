@@ -2,6 +2,9 @@ $(document).ready(function() {
     $('#stepper-login.stepper').activateStepper();
 })
 
+/**
+ * Login method
+ */
 function login() {
     var username = $("#login-username").val();
     var password = $("#login-password").val();

@@ -1,14 +1,3 @@
-/*@font-face {*/
-    /*font-family: 'Material Iconsf';*/
-    /*font-style: normal;*/
-    /*font-weight: 400;*/
-    /*src: url('../fonts/MaterialIcons-Regular.eot'); !* For IE6-8 *!*/
-    /*src: local('Material Icons'),*/
-    /*local('MaterialIcons-Regular'),*/
-    /*url('../fonts/MaterialIcons-Regular.woff2') format('woff2'),*/
-    /*url('../fonts/MaterialIcons-Regular.woff') format('woff'),*/
-    /*url('../fonts/MaterialIcons-Regular.ttf') format('truetype');*/
-/*}*/
 
 .input-field input[type=search] {
     padding-left: 4rem;
@@ -17,17 +6,7 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-/*ul.stepper.horizontal {*/
-    /*min-height: 90vh !important;*/
-/*}*/
 
-/*@media only screen and (min-width: 993px) {*/
-    /*ul.stepper.horizontal .step-actions{*/
-        /*position: relative;*/
-        /*padding:inherit;*/
-    /*}*/
-
-/*}*/
 
 .autocomplete-db{
     position: relative;
@@ -131,12 +110,6 @@ ol.line-stops li:before {
     }
 }
 
-/*.collapsible.suggestions .collapsible-header input[type="radio"]:checked+label{*/
-    /*display: none;*/
-/*}*/
-/*.collapsible.suggestions .collapsible-header input[type="radio"]:not(:checked)+label{*/
-    /*display: none;*/
-/*}*/
 table.dataTable thead {
     /*background-color: #2a2d3e;*/
     border-bottom: 1px solid #d0d0d0;

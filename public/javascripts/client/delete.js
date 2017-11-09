@@ -1,3 +1,7 @@
+/**
+ * Refuse booking with token
+ * @param token
+ */
 function refuseBookingFromClient(token){
 
     superagent

@@ -9,6 +9,9 @@ $(document).ready(function(){
     });
 });
 
+/**
+ * Update zone
+ */
 function updateZone(){
     var id = $("#zone-edit-id").val();
     var name = $("#zone-edit-name").val();
@@ -33,6 +36,9 @@ function updateZone(){
             });
 }
 
+/**
+ * Create zone
+ */
 function createZone(){
     var name = $("#zone-add-name").val();
 
@@ -57,6 +63,10 @@ function createZone(){
             });
 }
 
+/**
+ * Delete zone
+ * @param id
+ */
 function deleteZone(id){
 
     superagent
@@ -74,10 +84,17 @@ function deleteZone(id){
         });
 }
 
+/**
+ * Refresh zones
+ */
 function refreshZones() {
     $("#tab-zones").load(" #tab-zones");
 }
 
+/**
+ * Reset form
+ * @param selector
+ */
 function resetForm(selector) {
     $(selector)[0].reset();
 }

@@ -4,29 +4,6 @@ $(document).ready(function(){
         "iDisplayLength": 5,
         responsive:true,
         rowGroup: {
-            // endRender: function ( rows, group ) {
-            //     var sumBikes = rows
-            //         .data()
-            //         .pluck(6)
-            //         .reduce( function (a, b) {
-            //             var cell1;
-            //             var cell2;
-            //
-            //             rows.data().pluck(9).reduce(function (c, d) {
-            //                 cell1 = c;
-            //                 cell2 = d;
-            //                 console.log(c+" ........... "+d);
-            //
-            //             })
-            //
-            //             if(cell1 == "accepté" || cell2 == "accepté")
-            //                 return a + b.replace(/[^\d]/g, '')*1;
-            //             else
-            //                 return 6-a;
-            //         }, 0);
-            //
-            //     return $.fn.dataTable.render.number(',', '.', 0).display( sumBikes );
-            // },
             startRender: function ( rows, group ) {
 
                 var sumBikes = rows
@@ -48,8 +25,19 @@ $(document).ready(function(){
 });
 
 
-
-
+/**
+ * Accept booking
+ * @param bookingId
+ * @param firstname
+ * @param lastname
+ * @param group
+ * @param departure
+ * @param exit
+ * @param date
+ * @param bikes
+ * @param token
+ * @param email
+ */
 function acceptBooking(bookingId, firstname, lastname, group, departure, exit, date, bikes, token, email){
 
     superagent
@@ -70,6 +58,19 @@ function acceptBooking(bookingId, firstname, lastname, group, departure, exit, d
         });
 }
 
+/**
+ * Refuse booking
+ * @param bookingId
+ * @param firstname
+ * @param lastname
+ * @param group
+ * @param departure
+ * @param exit
+ * @param date
+ * @param bikes
+ * @param token
+ * @param email
+ */
 function refuseBooking(bookingId, firstname, lastname, group, departure, exit, date, bikes, token, email){
 
     superagent
@@ -90,6 +91,9 @@ function refuseBooking(bookingId, firstname, lastname, group, departure, exit, d
         });
 }
 
+/**
+ * Refresh table of bookings
+ */
 function refreshBookingsList() {
     //$("#tab-bookings-list").load(" #tab-bookings-list");
     window.location.href = '/administration/admin/bookings';

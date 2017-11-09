@@ -15,6 +15,9 @@ $(document).ready(function(){
     });
 });
 
+/**
+ * Update user
+ */
 function updateUser(){
     var id = $("#user-edit-id").val();
     var username = $("#user-edit-username").val();
@@ -44,6 +47,9 @@ function updateUser(){
             });
 }
 
+/**
+ * Create user
+ */
 function createUser(){
     var username = $("#user-add-username").val();
     var email = $("#user-add-email").val();
@@ -79,6 +85,10 @@ function createUser(){
         errorToast(translation[$_LANG()].USERRESTFILLFORM);
 }
 
+/**
+ * Delete user
+ * @param id
+ */
 function deleteUser(id){
 
     superagent
@@ -97,10 +107,17 @@ function deleteUser(id){
         });
 }
 
+/**
+ * Refresh users
+ */
 function refreshUsers() {
     $("#tab-users").load(" #tab-users");
 }
 
+/**
+ * Reset form
+ * @param selector
+ */
 function resetForm(selector) {
     $(selector)[0].reset();
 }

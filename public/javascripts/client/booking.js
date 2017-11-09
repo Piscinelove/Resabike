@@ -38,6 +38,9 @@ $(document).ready(function(){
 
 })
 
+/**
+ * Get booking suggestions
+ */
 function getBookingSuggestions()
 {
     var departure = $('#booking-register-departure').val();
@@ -65,6 +68,9 @@ function getBookingSuggestions()
         });
 }
 
+/**
+ * Create booking
+ */
 function createBooking() {
 
     var trip = $("#"+event.target.id).data("trip");
@@ -133,6 +139,10 @@ function createBooking() {
         });
 }
 
+/**
+ * Build suggestions list
+ * @param res
+ */
 function buildSuggestions(res) {
     var suggestions = "";
 
@@ -190,6 +200,9 @@ function buildSuggestions(res) {
 
 }
 
+/**
+ * Destroy loading page
+ */
 function newBooking() {
     $('#stepper-booking.stepper').destroyFeedback();
     $('#stepper-booking.stepper').resetStepper();
