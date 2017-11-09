@@ -9,14 +9,12 @@ html
     link(rel='stylesheet', href='/stylesheets/components.css')
 
   body
-    ul.side-nav#mobile-demo.font-bold
+    ul.side-nav#mobile-demo
       li
         if(isHomePage)
           a(href="#home").scroll-to #{translation.NAVHOME}
-            i.material-icons.left home
         else
           a(href="/").scroll-to Home
-            i.material-icons.left home
       if(isHomePage)
         li
           a(href="#presentation").scroll-to #{translation.NAVPRESENTATION}
@@ -29,18 +27,18 @@ html
         li
           a(href="/login").modal-trigger #{translation.NAVLOGIN}
         li
-          a(href="/?clang=fr").lang-fr.lang-button FR
+          a.font-bold(href="/?clang=fr").lang-fr.lang-button FR
         li
-          a(href="/?clang=en").lang-en.lang-button EN
+          a.font-bold(href="/?clang=en").lang-en.lang-button EN
         li
-          a(href="/?clang=de").lang-de.lang-button DE
+          a.font-bold(href="/?clang=de").lang-de.lang-button DE
       else
         li
-          a(href="/login?clang=fr").lang-fr.lang-button FR
+          a.font-bold(href="/login?clang=fr").lang-fr.lang-button FR
         li
-          a(href="/login?clang=en").lang-en.lang-button EN
+          a.font-bold(href="/login?clang=en").lang-en.lang-button EN
         li
-          a(href="/login?clang=de").lang-de.lang-button DE
+          a.font-bold(href="/login?clang=de").lang-de.lang-button DE
     div.navbar-fixed
       nav.amber.lighten-2
         div.nav-wrapper
@@ -50,14 +48,12 @@ html
               | abike
             a(href="#", data-activates="mobile-demo").button-collapse
               i.material-icons menu
-            ul#nav-mobile.right.hide-on-med-and-down.font-bold
+            ul#nav-mobile.right.hide-on-med-and-down
               li
                 if(isHomePage)
                   a(href="#home").scroll-to #{translation.NAVHOME}
-                    i.material-icons.left home
                 else
                   a(href="/").scroll-to Home
-                    i.material-icons.left home
               if(isHomePage)
                 li
                   a(href="#presentation").scroll-to #{translation.NAVPRESENTATION}
@@ -70,18 +66,18 @@ html
                 li
                   a(href="/login").modal-trigger #{translation.NAVLOGIN}
                 li
-                  a(href="/?clang=fr").lang-fr.lang-button FR
+                  a.font-bold(href="/?clang=fr").lang-fr.lang-button FR
                 li
-                  a(href="/?clang=en").lang-en.lang-button EN
+                  a.font-bold(href="/?clang=en").lang-en.lang-button EN
                 li
-                  a(href="/?clang=de").lang-de.lang-button DE
+                  a.font-bold(href="/?clang=de").lang-de.lang-button DE
               else
                 li
-                  a(href="/login?clang=fr").lang-fr.lang-button FR
+                  a.font-bold(href="/login?clang=fr").lang-fr.lang-button FR
                 li
-                  a(href="/login?clang=en").lang-en.lang-button EN
+                  a.font-bold(href="/login?clang=en").lang-en.lang-button EN
                 li
-                  a(href="/login?clang=de").lang-de.lang-button DE
+                  a.font-bold(href="/login?clang=de").lang-de.lang-button DE
     block content
 
 
