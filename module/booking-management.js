@@ -341,6 +341,7 @@ function getAcceptedBookingsByZoneId(idZone)
             }
 
             console.log(JSON.stringify(bookinglist));
+
             resolve(JSON.parse(JSON.stringify(bookinglist)));
 
         })
