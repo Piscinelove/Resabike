@@ -28,15 +28,10 @@ function getStationById(id)
 function insertStation(id, name)
 {
     return Promise.resolve(
-        models.Station.findOrCreate
+        models.Station.upsert
         ({
-            where:{
-                id:id
-            },
-            defaults:{
-                name:name
-            }
-
+            id: id,
+            name: name
         })
     )
 }
@@ -61,40 +56,16 @@ function  getStationIdByNameFromAPI(name) {
 
 function insertStationInDatabase(stationsToAdd)
 {
-    return new Promise(function (resolve, reject) {
+    return Promise.resolve().then(function () {
 
-        stationsToAdd = JSON.parse(JSON.stringify(stationsToAdd));
         var promises = [];
-        var stops =stationsToAdd;
-        var stationsAdded = [];
+        var stops = stationsToAdd;
+        console.log(stationsToAdd);
 
         for (let i = 0; i < stops.length; i++)
         {
             var stop = stops[i];
-            //promises.push(insertStation(stop.stopid, stop.name));
-            if(stop.line != null)
-            {
-                console.log(stop.name);
-                //stationsAdded.push({'line':stop.line,'stopid':stop.stopid,'name':stop.name});
-                promises.push(insertStation(stop.stopid, stop.name));
-
-                for(let j= 0; j<stop.stops.length;j++)
-                {
-                    if(stop.stops[j].stopid != null)
-                    {
-                        console.log(stop.stops[j].name);
-                        //stationsAdded.push({'line':stop.line,'stopid':stop.stops[j].stopid,'name':stop.stops[j].name});
-                        promises.push(insertStation(stop.stops[j].stopid, stop.stops[j].name));
-                    }
-                }
-                if(stop.exit.stopid != null)
-                {
-                    console.log(stop.exit.name);
-                    //stationsAdded.push({'line':stop.line,'stopid':stop.exit.stopid,'name':stop.exit.name});
-                    promises.push(insertStation(stop.exit.stopid, stop.exit.name));
-                }
-
-            }
+            promises.push(insertStation(stop.stopid, stop.name));
         }
 
 
@@ -104,11 +75,9 @@ function insertStationInDatabase(stationsToAdd)
         //TEST PURPOSE A SUPPRIMER QUAND PLUS BESOIN !
 
 
-        return Promise.all(promises).then(function (result) {
+        return Promise.all(promises).then(function () {
             console.log("PROCESS FINISHED : INSERTION OF ALL STATIONS");
-            console.log(JSON.stringify(result));
-            console.log(JSON.stringify(stationsAdded));
-            resolve(stationsAdded);
+            return stationsToAdd;
         })
 
     })

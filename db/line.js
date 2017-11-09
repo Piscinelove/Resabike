@@ -61,50 +61,84 @@ function createLine(id, idZone, idStartStation, idEndStation)
 
 function insertLineInDatabase(stationsArray, idZone)
 {
-    return Promise.resolve().then(function () {
+    return new Promise(function (resolve, reject) {
 
         var stops = stationsArray;
         var stationsAndLinesArray = [];
         var promises = [];
 
+        console.log(JSON.stringify(stationsArray)+"ben");
+
         for (let i = 0; i < stops.length; i++)
         {
             var stop = stops[i];
+            console.log(stop.line+"ben2");
             if(stop.line != null)
             {
+                console.log(stop.line+" "+stop.name+"dan");
                 stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.stopid});
-
-                for(let j = i+1; j < stops.length-1; j++)
+                
+                for(let j = 0; j < stop.stops.length; j++)
                 {
-                    if(stops[j].line == null)
-                        stationsAndLinesArray.push({'idLine':stop.line,'idStop':stops[j].stopid});
+                    console.log(stop.line+" "+stop.stops[j].name+"dan");
+                    stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.stops[j].stopid});
                 }
-                console.log(stop.line + " "+ idZone + " "+ stop.name+" "+ stop.terminal+" fdp");
-                promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal).then(function (line) {
-                    // console.log("important : "+line.id+" "+line.idEndStation+" "+line.idStartStation);
-                    // console.log("important2 : "+ stopExists(line.id,line.idEndStation, stationsAndLinesArray));
-                    // console.log("important2 : "+ stopExists(line.id,line.idStartStation, stationsAndLinesArray));
-                    // console.log("important3 :"+JSON.stringify(stationsAndLinesArray));
-                    // if(stopExists(line.id,line.idEndStation, stationsAndLinesArray) == false)
-                    // {
-                    //     console.log("important4 : "+line.id+" "+line.idEndStation);
-                    //     stationsAndLinesArray.push({'idLine':line.id,'idStop':line.idEndStation});
-                    // }
-                    // if(!stopExists(line.id,line.idEndStation, stationsAndLinesArray))
-                    //     stationsAndLinesArray.push({'idLine':line.id,'idStop':line.idEndStation});
-                    // if(!stopExists(line.id,line.idStartStation, stationsAndLinesArray))
-                    //     stationsAndLinesArray.push({'idLine':line.id,'idStop':line.idStartStatio});
 
-                }));
+                console.log("ped"+stop.line+" "+stop.exit.name);
+                console.log("odry3 : "+stop.line+" "+stop.exit.stopid);
+                stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.exit.stopid});
+
+                promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
 
             }
         }
 
-        return Promise.all(promises).then(function () {
-            return stationsAndLinesArray;
+        Promise.all(promises).then(function () {
+            console.log(JSON.stringify(stationsAndLinesArray)+"odry5");
+            resolve(stationsAndLinesArray);
         });
     })
 }
+
+// function insertLineInDatabase(stationsArray, idZone)
+// {
+//     return Promise.resolve().then(function () {
+//
+//         var stops = stationsArray;
+//         var stationsAndLinesArray = [];
+//         var promises = [];
+//
+//         console.log(JSON.stringify(stationsArray)+"ben");
+//
+//         for (let i = 0; i < stops.length; i++)
+//         {
+//             var stop = stops[i];
+//             console.log(stop.line+"ben2");
+//             if(stop.line != null)
+//             {
+//                 stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.stopid});
+//
+//                 for(let j = 0; j < stops.length; j++)
+//                 {
+//                     console.log("ped"+stop.line+" "+stops[j].name);
+//                     stationsAndLinesArray.push({'idLine':stop.line,'idStop':stops[j].stopid});
+//                 }
+//
+//                 console.log("ped"+stop.line+" "+stop.exit.name);
+//                 console.log("odry3 : "+stop.line+" "+stop.exit.stopid);
+//                 stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.exit.stopid});
+//
+//                 promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
+//
+//             }
+//         }
+//
+//         return Promise.all(promises).then(function () {
+//             console.log(JSON.stringify(stationsAndLinesArray)+"odry5");
+//             return stationsAndLinesArray;
+//         });
+//     })
+// }
 
 function stopExists(idLine, idStop, array) {
     return array.some(function (el) {
