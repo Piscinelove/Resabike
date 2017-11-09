@@ -1,5 +1,12 @@
 var models = require('../models');
 
+/**
+ * Insert a line station
+ * @param order
+ * @param idLine
+ * @param idStation
+ * @returns {Promise.<Promise.<Model, created>>}
+ */
 function insertLineStation(order, idLine, idStation)
 {
     return Promise.resolve(
@@ -14,6 +21,11 @@ function insertLineStation(order, idLine, idStation)
     )
 }
 
+/**
+ *
+ * @param stationsAndLinesArray
+ * @returns {Promise.<TResult>}
+ */
 function insertLineStationInDatabase(stationsAndLinesArray)
 {
     return Promise.resolve().then(function () {

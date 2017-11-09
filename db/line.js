@@ -1,6 +1,11 @@
 var models = require('../models');
 var dbStation = require('../db/station');
 
+/**
+ * Delete a line using its id
+ * @param id
+ * @returns {Promise.<T>}
+ */
 function deleteLine(id)
 {
     return Promise.resolve(
@@ -13,6 +18,14 @@ function deleteLine(id)
     )
 }
 
+/**
+ * Insert a line using its id
+ * @param number
+ * @param zone
+ * @param departure
+ * @param arrival
+ * @returns {Promise.<TResult>}
+ */
 function insertLine(number, zone, departure, arrival)
 {
     return Promise.resolve().then(function () {
@@ -35,6 +48,14 @@ function insertLine(number, zone, departure, arrival)
     })
 }
 
+/**
+ * Create a line using its id
+ * @param id
+ * @param idZone
+ * @param idStartStation
+ * @param idEndStation
+ * @returns {Promise.<Promise.<TResult>>}
+ */
 function createLine(id, idZone, idStartStation, idEndStation)
 {
     return Promise.resolve(
@@ -59,6 +80,12 @@ function createLine(id, idZone, idStartStation, idEndStation)
     )
 }
 
+/**
+ * Insert a line in the database
+ * @param stationsArray
+ * @param idZone
+ * @returns {Promise}
+ */
 function insertLineInDatabase(stationsArray, idZone)
 {
     return new Promise(function (resolve, reject) {
@@ -100,52 +127,23 @@ function insertLineInDatabase(stationsArray, idZone)
     })
 }
 
-// function insertLineInDatabase(stationsArray, idZone)
-// {
-//     return Promise.resolve().then(function () {
-//
-//         var stops = stationsArray;
-//         var stationsAndLinesArray = [];
-//         var promises = [];
-//
-//         console.log(JSON.stringify(stationsArray)+"ben");
-//
-//         for (let i = 0; i < stops.length; i++)
-//         {
-//             var stop = stops[i];
-//             console.log(stop.line+"ben2");
-//             if(stop.line != null)
-//             {
-//                 stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.stopid});
-//
-//                 for(let j = 0; j < stops.length; j++)
-//                 {
-//                     console.log("ped"+stop.line+" "+stops[j].name);
-//                     stationsAndLinesArray.push({'idLine':stop.line,'idStop':stops[j].stopid});
-//                 }
-//
-//                 console.log("ped"+stop.line+" "+stop.exit.name);
-//                 console.log("odry3 : "+stop.line+" "+stop.exit.stopid);
-//                 stationsAndLinesArray.push({'idLine':stop.line,'idStop':stop.exit.stopid});
-//
-//                 promises.push(insertLine(stop.line, idZone, stop.name, stop.terminal));
-//
-//             }
-//         }
-//
-//         return Promise.all(promises).then(function () {
-//             console.log(JSON.stringify(stationsAndLinesArray)+"odry5");
-//             return stationsAndLinesArray;
-//         });
-//     })
-// }
-
+/**
+ * Test if a stop already exists
+ * @param idLine
+ * @param idStop
+ * @param array
+ * @returns {boolean|*}
+ */
 function stopExists(idLine, idStop, array) {
     return array.some(function (el) {
         return el.idLine == idLine && el.idStop == idStop;
     })
 }
 
+/**
+ * Get all lines from db
+ * @returns {Promise.<Promise.<Array.<Model>>>}
+ */
 function getAllLines()
 {
     return Promise.resolve(
@@ -153,6 +151,11 @@ function getAllLines()
     )
 }
 
+/**
+ * Find line using its id
+ * @param id
+ * @returns {Promise.<Promise.<Model>>}
+ */
 function findLineById(id) {
     return Promise.resolve(
         models.Line.findOne({

@@ -1,5 +1,21 @@
 var models = require('../models');
 
+/**
+ * Create a booking in the database
+ * @param firstname
+ * @param lastname
+ * @param group
+ * @param email
+ * @param phone
+ * @param remark
+ * @param date
+ * @param nbBikes
+ * @param token
+ * @param validated
+ * @param idStartStation
+ * @param idEndstation
+ * @returns {Promise.<T>}
+ */
 function createBooking(firstname, lastname, group, email, phone, remark, date, nbBikes, token, validated, idStartStation, idEndstation)
 {
     return Promise.resolve(
@@ -20,6 +36,11 @@ function createBooking(firstname, lastname, group, email, phone, remark, date, n
     )
 }
 
+/**
+ * Accept a booking
+ * @param id
+ * @returns {Promise.<T>}
+ */
 function acceptBooking(id)
 {
     return Promise.resolve(
@@ -31,6 +52,11 @@ function acceptBooking(id)
     )
 }
 
+/**
+ * Refuse a booking
+ * @param id
+ * @returns {Promise.<T>}
+ */
 function refuseBooking(id)
 {
     return Promise.resolve(
@@ -43,6 +69,12 @@ function refuseBooking(id)
     )
 }
 
+/**
+ * Refuse a booking with token
+ * Method for users
+ * @param token
+ * @returns {Promise.<T>}
+ */
 function refuseBookingFromClient(token)
 {
     return Promise.resolve(
@@ -55,6 +87,11 @@ function refuseBookingFromClient(token)
     )
 }
 
+/**
+ * Get a booking using his token
+ * @param token
+ * @returns {Promise.<Promise.<Model>>}
+ */
 function getBookingByToken(token)
 {
     return Promise.resolve(
