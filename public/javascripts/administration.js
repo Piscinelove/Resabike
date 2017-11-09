@@ -6,6 +6,29 @@ $(document).ready(function(){
         return false;
     });
 
+    $('.parallax').parallax();
+    $('.modal').modal();
+    $('textarea#taContact').characterCounter();
+    $('select').material_select();
+    $(".dropdown-button").dropdown();
+    $(".button-collapse").sideNav();
+
+    if($_LANG() == 'fr')
+    {
+        $('.lang-button').removeClass('amber-text text-lighten-2');
+        $('.lang-fr.lang-button').addClass('amber-text text-lighten-2');
+    }
+    else if($_LANG() == 'de')
+    {
+        $('.lang-button').removeClass('amber-text text-lighten-2');
+        $('.lang-de.lang-button').addClass('amber-text text-lighten-2');
+    }
+    else if($_LANG() == 'en')
+    {
+        $('.lang-button').removeClass('amber-text text-lighten-2');
+        $('.lang-en.lang-button').addClass('amber-text text-lighten-2');
+    }
+
 
 
 

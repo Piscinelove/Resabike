@@ -15,9 +15,6 @@ function sendContactEmail(){
                 }
                 else
                 {
-                    $("#modal-add-zone").modal('close');
-                    refreshZones();
-                    resetForm("#add-zone-form");
                     successToast(translation[$_LANG()].MAILRESTZONEADD);
                 }
             });
