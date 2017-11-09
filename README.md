@@ -42,6 +42,22 @@ Resabike project use many libraries. Here is the list :
 
 > **Samples**: [jQuery][jQuery validate][DataTable][materialize-css][nodeMailer][i18n-express][bcrypt][axios][express-session][mysql2][pug][sequelize][sequelize-cli][search-it][materialize-stepper]
 
+### Technical details
+
+The project is a node.js project. Here is some technicals details :
+
+* node.js 6.11.3
+* pug/jade
+* CSS 3
+* materialize-css
+* MySQL
+
+### Installing
+
+```
+git clone https://github.com/Piscinelove/Resabike.git
+```
+
 ### Authors
 
 * **Audrey Michel** - *Initial work* - [GitHub](https://github.com/audreycelia)
