@@ -2,20 +2,20 @@ extends layout
 
 block content
     div.section.container.full-section
-        h2 Suppression de votre réservation
+        h2 #{translation.CLIENTDELETETITLE}
         div#booking-client.row
-            button.waves-effect.waves-light.btn.red.right(onclick=`refuseBookingFromClient(${JSON.stringify(booking.token)})`) supprimer
+            button.waves-effect.waves-light.btn.red.right(onclick=`refuseBookingFromClient(${JSON.stringify(booking.token)})`) #{translation.CLIENTDELETEDELETE}
                 i.material-icons.left clear
             table.centered.highlight.responsive-table
                 thead
                     tr
-                        th Nom & Prénom
-                        th Email
-                        th Téléphone
-                        th Date
-                        th Vélos
-                        th Départ
-                        th Arrivée
+                        th #{translation.CLIENTDELETEFIRSTNAMELASTNAME}
+                        th #{translation.CLIENTDELETEEMAIL}
+                        th #{translation.CLIENTDELETEPHONE}
+                        th #{translation.CLIENTDELETEDATE}
+                        th #{translation.CLIENTDELETEBIKES}
+                        th #{translation.CLIENTDELETEDEPARTURE}
+                        th #{translation.CLIENTDELETETERMINAL}
                 tbody
                     tr
                         td #{booking.lastname} #{booking.firstname} #{booking.group}

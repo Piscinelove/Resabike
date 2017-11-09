@@ -165,7 +165,18 @@
   "NAVHISTORY" : "Histoire",
   "NAVBOOKING" : "Réservation",
   "NAVCONTACT" : "Contact",
-  "NAVLOGIN" : "Login"
+  "NAVLOGIN" : "Login",
+
+
+  "CLIENTDELETETITLE" : "Suppression de votre réservation",
+  "CLIENTDELETEFIRSTNAMELASTNAME" : "Nom & Prénom",
+  "CLIENTDELETEEMAIL" : "Email",
+  "CLIENTDELETEPHONE" : "Téléphone",
+  "CLIENTDELETEDATE" : "Date",
+  "CLIENTDELETEBIKES" : "Vélos",
+  "CLIENTDELETEDEPARTURE" : "Départ",
+  "CLIENTDELETETERMINAL" : "Arrivée",
+  "CLIENTDELETEDELETE" : "Supprimer"
 
 
 
