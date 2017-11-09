@@ -17,16 +17,16 @@ The system administrator has the option to add new zone administrators.
 ### Structure of the project
 
     .
-    ??? db                   # Compiled files (alternatively `dist`)
-    ??? i18n                    # Documentation files (alternatively `doc`)
-    ??? models                     # Source files (alternatively `lib` or `app`)
-    ??? module                    # Automated tests (alternatively `spec` or `tests`)
-    ??? public                   # Tools and utilities
-    ??? routes
-    ??? views
-    ??? app.js
-    ??? package.json
-    ??? README.md
+    ├── db
+    ├── i18n
+    ├── models
+    ├── module
+    ├── public
+    ├── routes
+    ├── views
+    ├── app.js
+    ├── package.json
+    └──  README.md
 
 > `db` directory contains all queries to the tables in the database (CREATE, DELETE, UPDATE)
 > `i18n` directory contains all translations files of views files (fr, en and de translations). Files are in JSON format.
