@@ -28,12 +28,7 @@ function getAutocompleteStationsFromAPI(input) {
 
     }).done(function (data) {
         $.each(data, function( id, val ) {
-            //if (val.iconclass.toLowerCase().indexOf("bus") >= 0)
-            //{
             stations[val.label] = null;
-            //a tester
-            //stations[val.id] = null;
-            //}
         });
 
         $('input.autocomplete').autocomplete({
@@ -54,12 +49,7 @@ function getAutocompleteStationsFromDB(input) {
 
     }).done(function (data) {
         $.each(data, function( id, val ) {
-            //if (val.iconclass.toLowerCase().indexOf("bus") >= 0)
-            //{
             stations[val.name] = null;
-            //a tester
-            //stations[val.id] = null;
-            //}
         });
         $('input.autocomplete-db').autocomplete({
             data: stations,
